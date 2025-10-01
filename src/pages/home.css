@@ -190,6 +190,21 @@
     margin-bottom: 34em;
 }
 
+.blueLineBg {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 40em;
+    padding: 4em 0;
+}
+
+.darkBlueLine {
+    position: absolute;
+    background-color: #344759;
+    height: 15em;
+    width: 100%;
+}
+
 .footer {
     z-index: 1;
     position: relative;

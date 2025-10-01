@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import './home.css';
 
 import CompressedSections from '../components/CompressedSections';
+import PricesSections from '../components/PricesSection';
 
 import { Image } from 'primereact/image';
 import { Button } from 'primereact/button';
@@ -120,21 +121,9 @@ export default function Home() {
         </div>
         <CompressedSections />
         <div className='whiteBg'>
-          <div className='bottomContentTitle'>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
+          <div className='blueLineBg'>
+            <div className='darkBlueLine' />
+            <PricesSections />
           </div>
         </div>
       </div>
