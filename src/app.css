@@ -6,6 +6,13 @@
 }
 
 @font-face {
+    font-family: 'LemonMilkLight';
+    src: url('/fonts/LEMONMILK-Light.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
     font-family: 'LemonMilkBold';
     src: url('/fonts/LEMONMILK-Bold.otf') format('opentype');
     font-weight: bold;
