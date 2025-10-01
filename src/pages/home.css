@@ -162,6 +162,22 @@
     margin-bottom: 1em;
 }
 
+.isThisForMeTitle {
+    font-family: 'LemonMilkLight', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 3em;
+    font-weight: 100;
+    color: #344759;
+}
+
+.isThisForMeText {
+    font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+    font-size: 1.2em;
+    width: 75%;
+    margin-top: 1em;
+    /* margin-bottom: 2em; */
+    text-align: center;
+}
+
 .whiteBg .curveShadow img {
     width: 100%;
     position: absolute;
@@ -171,7 +187,7 @@
 .gentleSlide {
     /* transition: none; Remove transition for smooth scroll-based animation */
     transform: translateY(5em);
-    margin-bottom: 30em;
+    margin-bottom: 34em;
 }
 
 .footer {

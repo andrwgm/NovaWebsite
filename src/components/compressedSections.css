@@ -1,0 +1,73 @@
+/* Contenedor principal */
+.age-sections {
+  display: flex;
+  gap: 1em;
+  /* height: 420px; */
+  max-width: 65em;
+  justify-content: center;
+  flex-direction: row;
+  margin: 2em auto;
+}
+
+/* Tarjeta colapsada/expandida */
+.age-card {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  position: relative;
+  background: #f8f8f8;
+  border-radius: 1.5rem;
+  transition: flex .3s ease, background .3s ease, height .3s ease, max-height .3s ease;
+  width: 20em;
+  /* min-width: 13em; */
+  max-width: 20em;
+  height: 6em;
+}
+
+/* Al pasar el cursor, la tarjeta se ensancha 3× */
+.age-card:hover {
+  flex: 3;
+  background: #e8f6f6;
+  height: 20em;
+  max-height: 20em;
+  transition: height .3s ease;
+}
+
+/* When the viewport is narrower than the component's max width,
+   switch layout to row */
+@media (max-width: 65em) {
+  .age-sections {
+    flex-direction: column;
+  }
+}
+
+.age-title {
+  /* writing-mode: horizontal-tb;  */
+  position: absolute;
+  /* margin-bottom: 1em; */
+  text-wrap-mode: nowrap;
+  font-family: TheSeries, Patrick Hand, cursive;
+  font-size: 2rem;
+}
+
+/* Título horizontal cuando está expandida */
+/* .age-card:hover .age-title { */
+  /* position: absolute; */
+  /* top: 0em; */
+  /* writing-mode: horizontal-tb; */
+  /* transform: rotate(-90deg); */
+/* } */
+
+/* Contenido oculto inicialmente */
+.age-content {
+  opacity: 0;
+  max-width: 80%;
+  margin-top: 5em;
+  transition: opacity .2s ease;
+}
+
+/* Contenido visible en hover */
+.age-card:hover .age-content {
+  opacity: 1;
+}
