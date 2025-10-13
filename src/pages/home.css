@@ -194,14 +194,13 @@
     position: relative;
     display: flex;
     align-items: center;
-    height: 40em;
     padding: 4em 0;
 }
 
 .darkBlueLine {
     position: absolute;
     background-color: #344759;
-    height: 15em;
+    height: 60%;
     width: 100%;
 }
 
