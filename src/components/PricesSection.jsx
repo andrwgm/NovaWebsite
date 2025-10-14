@@ -11,7 +11,7 @@ export default function PricesSection() {
             <div className="pricesSectionContent">
                 <div className="priceCard">
                     <div className="priceCardTitle">
-                        Full ASC assessment
+                        Full ASC<br />assessment
                     </div>
                     <div className="priceCardTextSubtitle">
                         What's included
@@ -32,7 +32,7 @@ export default function PricesSection() {
 
                 <div className="priceCard">
                     <div className="priceCardTitle">
-                        Full ADHD assessment
+                        Full ADHD<br />assessment
                     </div>
                     <div className="priceCardTextSubtitle">
                         What's included
@@ -53,13 +53,13 @@ export default function PricesSection() {
 
                 <div className="priceCard">
                     <div className="priceCardTitle">
-                        Combined     ASC + ADHD
+                        Combined<br />ASC + ADHD
                     </div>
                     <div className="priceCardTextSubtitle">
                         What's included
                     </div>
                     <div className="priceCardText">
-                        Both batteries, single integrated report
+                        Both batteries, single<br />integrated report
                     </div>
                     <div className="priceCardTextSubtitle">
                         Turnaround
@@ -72,8 +72,11 @@ export default function PricesSection() {
                     </div>
                 </div>
             </div>
-            <div className="pricesSectionFooter">
-
+            <div className="pricesSectionFooterTitle">
+                Early Adopter Discount <b>- 10 %</b> on the <b>first 50 appointments</b>
+            </div>
+            <div className="pricesSectionFooterText">
+                Payment plans available. Nova Clinics is a registered provider with major UK health insurers.
             </div>
         </div>
     );

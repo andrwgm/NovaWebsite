@@ -75,3 +75,19 @@
     justify-content: center;
     align-items: center;
 }
+
+.pricesSectionFooterTitle {
+    text-align: center;
+    font-family: 'LemonMilkLight', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 1.5em;
+    color: #344759;
+    margin-top: 1em;
+}
+
+.pricesSectionFooterText {
+    text-align: center;
+    font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+    font-size: 1em;
+    color: #344759;
+    margin-bottom: 2em;
+}
