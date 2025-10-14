@@ -23,6 +23,7 @@
   /* min-width: 13em; */
   max-width: 20em;
   height: 6em;
+  max-height: 6em;
 }
 
 /* Al pasar el cursor, la tarjeta se ensancha 3× */
@@ -31,7 +32,7 @@
   background: #e8f6f6;
   height: 20em;
   max-height: 20em;
-  transition: height .3s ease;
+  transition: height .3s ease, max-height .3s ease;
 }
 
 /* When the viewport is narrower than the component's max width,
