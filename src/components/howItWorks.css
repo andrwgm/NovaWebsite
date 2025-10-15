@@ -1,0 +1,158 @@
+.howItWorks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4em 0;
+}
+
+.howItWorksTitle {
+  font-family: 'LemonMilk', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 3em;
+  color: #344759;
+  margin-bottom: 1.2em;
+}
+
+.howItWorksContent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  width: 90%;
+}
+
+.howItWorksTimeline {
+  width: 55%;
+}
+
+/* Custom markers: numbered circles */
+.hiw-marker {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #cfeeed;
+  color: #137a72;
+  font-weight: 600;
+}
+
+.hiw-marker.active {
+  background: rgba(55, 181, 188, 0.27); /* #37B5BC at 27% */
+  color: #137a72;
+}
+
+/* Dashed connector like the mockup */
+.p-timeline-vertical .p-timeline-event-connector {
+  border-left: 2px dashed #c9d2d9;
+  background: transparent;
+  width: 2px;
+  flex-grow: 1;
+  margin: .5em 0;
+}
+/* Remove unused opposite slot to give more width */
+.p-timeline .p-timeline-event-opposite {
+  flex: 0;
+  padding: 0;
+}
+
+/* Compact default paddings */
+.p-timeline .p-timeline-event-content {
+  padding: 0 0 1rem 0;
+}
+
+/* Center marker and pill vertically on each row */
+.p-timeline.p-timeline-vertical .p-timeline-event {
+  align-items: center;
+}
+
+/* Add more horizontal gap between the marker column and pills */
+.p-timeline-vertical .p-timeline-event-separator {
+  margin-right: 1.75rem; /* increase spacing */
+  align-self: stretch; /* keep separator full height for connectors */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.75rem;
+}
+
+/* Pill content styling */
+.hiw-pill {
+  background: #cfeeed;
+  color: #344759;
+  border-radius: 9999px;
+  padding: 0.9rem 1.2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  cursor: default;
+}
+
+.hiw-pill.expanded {
+  background: #eefffe
+}
+
+.hiw-pill-title {
+  font-family: 'LemonMilkLight', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 1.1rem;
+}
+
+.hiw-pill-detail {
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: 0.95rem;
+  margin-top: 0.25rem;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: max-height 700ms ease, opacity 400ms ease, transform 400ms ease;
+}
+
+.hiw-pill.expanded .hiw-pill-detail {
+  max-height: 180px; /* enough for 3-4 lines */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.howItWorksImage {
+  width: 35%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.howItWorksImage img {
+  width: 100%;
+  max-width: 24rem;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 50% / 35%;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1200px) {
+  .howItWorksTitle { font-size: 2.6em; }
+  .howItWorksTimeline { width: 60%; }
+  .howItWorksImage { width: 40%; }
+}
+
+@media (max-width: 992px) {
+  .howItWorksContent { flex-direction: column; gap: 2rem; width: 94%; }
+  .howItWorksTimeline { width: 100%; }
+  .howItWorksImage { width: 80%; }
+  .hiw-marker { width: 30px; height: 30px; font-size: 0.95rem; }
+  .hiw-pill { padding: 0.8rem 1.05rem; }
+  .hiw-pill-title { font-size: 1.05rem; }
+  .hiw-pill-detail { font-size: 0.93rem; }
+}
+
+@media (max-width: 600px) {
+  .howItWorks { padding: 3em 0; }
+  .howItWorksTitle { font-size: 2.1em; }
+  .howItWorksImage { width: 100%; }
+  .howItWorksImage img { max-width: 20rem; border-radius: 38% / 32%; }
+  .hiw-marker { width: 26px; height: 26px; font-size: 0.85rem; }
+  .hiw-pill-title { font-size: 1rem; }
+  .hiw-pill-detail { font-size: 0.9rem; }
+}

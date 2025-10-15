@@ -4,6 +4,8 @@ import './home.css';
 
 import CompressedSections from '../components/CompressedSections';
 import PricesSections from '../components/PricesSection';
+import HowItWorks from '../components/HowItWorks';
+import QuestionsAnswered from '../components/QuestionsAnswered';
 
 import { Image } from 'primereact/image';
 import { Button } from 'primereact/button';
@@ -125,6 +127,9 @@ export default function Home() {
             <div className='darkBlueLine' />
             <PricesSections />
           </div>
+        </div>
+        <div className='whiteBg'>
+          <HowItWorks />
         </div>
       </div>
     </div>
