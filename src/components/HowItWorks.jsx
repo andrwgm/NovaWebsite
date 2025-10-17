@@ -36,15 +36,6 @@ const ITEMS = [
 export default function HowItWorks() {
   const items = useMemo(() => ITEMS.map((it, idx) => ({ ...it, idx })), []);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
-
-  useEffect(() => {
-    if (paused) return; // pause rotation on hover
-    const id = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % items.length);
-    }, 4000);
-    return () => clearInterval(id);
-  }, [paused, items.length]);
 
   return (
     <div className="howItWorks">
@@ -67,10 +58,8 @@ export default function HowItWorks() {
                   className={`hiw-pill${expanded ? ' expanded' : ''}`}
                   aria-expanded={expanded}
                   onMouseEnter={() => {
-                    setPaused(true);
                     setActiveIndex(item.idx);
                   }}
-                  onMouseLeave={() => setPaused(false)}
                 >
                   <div className="hiw-pill-title">{item.title}</div>
                   {item.detail && (

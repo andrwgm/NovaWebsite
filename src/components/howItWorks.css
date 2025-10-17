@@ -105,7 +105,7 @@
   max-height: 0;
   opacity: 0;
   transform: translateY(-4px);
-  transition: max-height 700ms ease, opacity 400ms ease, transform 400ms ease;
+  transition: max-height 400ms ease, opacity 300ms ease, transform 400ms ease;
 }
 
 .hiw-pill.expanded .hiw-pill-detail {
