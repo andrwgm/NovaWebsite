@@ -18,9 +18,9 @@
 }
 
 .bgContent img {
-    height: 100vh;
     transform: translateY(-3em);
-    min-width: 80rem;
+    max-height: 100vh;
+    min-width: 100vw;
 }
 
 /* .topContent img{
