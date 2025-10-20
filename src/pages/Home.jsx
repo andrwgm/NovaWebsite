@@ -131,6 +131,9 @@ export default function Home() {
         <div className='whiteBg'>
           <HowItWorks />
         </div>
+        <div className='whiteBg'>
+          <QuestionsAnswered />
+        </div>
       </div>
     </div>
   );
