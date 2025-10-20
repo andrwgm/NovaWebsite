@@ -1,0 +1,153 @@
+.team {
+  width: 90%;
+  margin: 0 auto;
+  padding: 4em 0 6em;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+  text-align: center;
+}
+
+.team-head {
+  max-width: 820px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.team-title {
+  font-family: 'LemonMilk', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: clamp(2.4rem, 4vw, 3rem);
+  letter-spacing: 0.04em;
+  color: #344759;
+  margin: 0;
+}
+
+.team-subtitle {
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: clamp(1.02rem, 1.6vw, 1.2rem);
+  line-height: 1.65;
+  color: #344759;
+  margin: 0;
+  padding: 1em 0 2em 0;
+}
+
+.team-grid {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.team-card {
+  width: min(100%, 320px);
+  outline: none;
+}
+
+.team-card:focus-visible {
+  box-shadow: 0 0 0 3px rgba(19, 122, 114, 0.22);
+  border-radius: 0 8em 0 0;
+}
+
+.team-card-figure {
+  position: relative;
+  border-radius: 8em 8em 0 0;
+  overflow: hidden;
+  background: #f3fbfb;
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.12);
+  cursor: default;
+}
+
+.team-card img {
+  width: 100%;
+  height: clamp(280px, 40vw, 340px);
+  object-fit: cover;
+  display: block;
+}
+
+.team-card-info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(207, 238, 237, 0.94);
+  color: #344759;
+  padding: 1.3rem 1.4rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  transform: translateY(calc(100% - var(--collapsed-height, 140px)));
+  transition: transform 360ms ease, box-shadow 360ms ease;
+  box-shadow: 0 -10px 24px rgba(0, 0, 0, 0.08);
+}
+
+.team-card:hover .team-card-info,
+.team-card:focus .team-card-info,
+.team-card:focus-within .team-card-info {
+  transform: translateY(0);
+}
+
+.team-card-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.team-card-name {
+  font-family: 'LemonMilkLight', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 1.3rem;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.team-card-role {
+  font-family: 'AthelasBold', 'Times New Roman', Times, serif;
+  font-size: 0.98rem;
+  margin: 0;
+}
+
+.team-card-bio {
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: 0.94rem;
+  line-height: 1.5;
+  margin: 0;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 300ms ease, max-height 340ms ease, margin-top 300ms ease;
+}
+
+.team-card:hover .team-card-bio,
+.team-card:focus .team-card-bio,
+.team-card:focus-within .team-card-bio {
+  opacity: 1;
+  max-height: 240px;
+  margin-top: 0.35rem;
+}
+
+@media (max-width: 768px) {
+  .team {
+    padding: 3.2em 0 4.2em;
+  }
+
+  .team-card-info {
+    --collapsed-height: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-grid {
+    gap: 1.5rem;
+  }
+
+  .team-card {
+    width: 100%;
+  }
+
+  .team-card-info {
+    --collapsed-height: 150px;
+  }
+}

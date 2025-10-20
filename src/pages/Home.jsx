@@ -6,6 +6,7 @@ import CompressedSections from '../components/CompressedSections';
 import PricesSections from '../components/PricesSection';
 import HowItWorks from '../components/HowItWorks';
 import QuestionsAnswered from '../components/QuestionsAnswered';
+import PeopleBehind from '../components/PeopleBehind';
 
 import { Image } from 'primereact/image';
 import { Button } from 'primereact/button';
@@ -141,6 +142,9 @@ export default function Home() {
             </div>
             <Button label="Get in contact" icon="pi pi-send" iconPos="right" />
           </div>
+        </div>
+        <div className='whiteBg'>
+          <PeopleBehind />
         </div>
       </div>
     </div>
