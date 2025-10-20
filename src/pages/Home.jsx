@@ -134,6 +134,14 @@ export default function Home() {
         <div className='whiteBg'>
           <QuestionsAnswered />
         </div>
+        <div className='whiteBg'>
+          <div className='stillHaveQuestionsBg'>
+            <div className='stillHaveQuestionsTitle'>
+              Still have questions?
+            </div>
+            <Button label="Get in contact" icon="pi pi-send" iconPos="right" />
+          </div>
+        </div>
       </div>
     </div>
   );

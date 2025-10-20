@@ -204,6 +204,42 @@
     width: 100%;
 }
 
+.stillHaveQuestionsBg {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    padding: 2em 0;
+    margin: 4em 0;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+}
+
+.stillHaveQuestionsTitle {
+    font-family: 'LemonMilkLight', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 3em;
+    color: #344759;
+}
+
+.stillHaveQuestionsBg .p-button{
+    border: none;
+    color: white;
+    background: #2D3B55;
+    border-radius: 2em;
+}
+
+.stillHaveQuestionsBg .p-button:hover{
+    background: #202735;
+}
+
+.stillHaveQuestionsBg .p-button:focus{
+    outline: none;
+    outline-offset: none;
+}
+
 .footer {
     z-index: 1;
     position: relative;
