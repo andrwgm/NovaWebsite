@@ -244,3 +244,52 @@
     z-index: 1;
     position: relative;
 }
+
+@media (max-width: 992px) {
+    .whyChooseUsTitle {
+        font-size: 3em;
+        text-align: center;
+    }
+
+    .whyChooseUsTextAndImg {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .whyChooseUsText {
+        width: 90%;
+        margin-left: 0;
+        align-items: center;
+        text-align: center;
+        font-size: 1.2em;
+    }
+
+    .whyChooseUsTextAndImg img {
+        width: clamp(20em, 70vw, 28em);
+    }
+}
+
+@media (max-width: 600px) {
+    .whyChooseUsTitle {
+        font-size: 2.4em;
+        padding: 2.2em 0 0.5em;
+    }
+
+    .whyChooseUsText {
+        width: 100%;
+        font-size: 1.1em;
+        gap: 0.8rem;
+    }
+
+    .whyChooseUsTextBold {
+        font-size: 1.35em;
+    }
+
+    .whyChooseUsTextRegular {
+        font-size: 1.05em;
+    }
+
+    .whyChooseUsTextAndImg img {
+        width: clamp(16em, 80vw, 24em);
+    }
+}
