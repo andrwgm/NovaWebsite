@@ -109,6 +109,10 @@
     background-color: white;
 }
 
+.whiteBg .withHeight{
+    height: 120vh;
+}
+
 .whiteBg .blueLine img {
     margin-bottom: -55em;
     position: absolute;
@@ -176,6 +180,7 @@
     margin-top: 1em;
     /* margin-bottom: 2em; */
     text-align: center;
+    padding: 0 5% 10% 5%;
 }
 
 .whiteBg .curveShadow img {
@@ -222,6 +227,7 @@
     font-family: 'LemonMilkLight', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 3em;
     color: #344759;
+    text-align: center;
 }
 
 .stillHaveQuestionsBg .p-button{
@@ -245,7 +251,23 @@
     position: relative;
 }
 
+@media (max-width: 2560px) {
+    .whiteBg .withHeight {
+        height: 120vh;
+    }
+}
+
+@media (max-width: 1440px) {
+    .whiteBg .withHeight {
+        height: 180vh;
+    }
+}
+
 @media (max-width: 992px) {
+    .whiteBg .withHeight {
+        height: 190vh;
+    }
+
     .whyChooseUsTitle {
         font-size: 3em;
         text-align: center;
@@ -266,6 +288,10 @@
 
     .whyChooseUsTextAndImg img {
         width: clamp(20em, 70vw, 28em);
+    }
+
+    .isThisForMeText {
+        padding: 0 5% 5% 5%;
     }
 }
 
@@ -291,5 +317,14 @@
 
     .whyChooseUsTextAndImg img {
         width: clamp(16em, 80vw, 24em);
+    }
+
+    .isThisForMeTitle {
+        font-size: 2.4em;
+
+    }
+    
+    .isThisForMeText {
+        font-size: 1em;
     }
 }

@@ -13,24 +13,58 @@ import { Button } from 'primereact/button';
 
 export default function Home() {
   const gentleSlideRef = useRef(null);
+  const ageSectionsRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (gentleSlideRef.current) {
-        const rect = gentleSlideRef.current.getBoundingClientRect();
+      if (gentleSlideRef.current && ageSectionsRef.current) {
+        // Get current transform value to calculate original position
+        const currentTransform = gentleSlideRef.current.style.transform;
+        let currentTranslateY = 0;
+        if (currentTransform) {
+          const match = currentTransform.match(/translateY\(([\d.]+)em\)/);
+          if (match) {
+            currentTranslateY = parseFloat(match[1]);
+          }
+        }
+        
+        // Get current visual positions (includes current transform)
+        const gentleSlideRect = gentleSlideRef.current.getBoundingClientRect();
+        const ageSectionsRect = ageSectionsRef.current.getBoundingClientRect();
+        
+        // Convert em to pixels for calculations
+        const emToPx = parseFloat(getComputedStyle(gentleSlideRef.current).fontSize);
+        const currentTranslateYPx = currentTranslateY * emToPx;
+        
+        // Calculate original position by subtracting current transform
+        const gentleSlideOriginalTop = gentleSlideRect.top - currentTranslateYPx;
+        const gentleSlideOriginalHeight = gentleSlideRect.height;
+        const gentleSlideOriginalBottom = gentleSlideRect.bottom - currentTranslateYPx;
+        
+        // Calculate progress based on original position
         const windowHeight = window.innerHeight;
-        const elementTop = rect.top;
-        const elementHeight = rect.height;
-
-        // Calculate how much of the element should be visible
+        const elementTop = gentleSlideOriginalTop;
+        const elementHeight = gentleSlideOriginalHeight;
         const progress = Math.max(0, Math.min(1, (windowHeight - elementTop) / (windowHeight + elementHeight)));
 
-        // Apply transform based on scroll progress
-        const translateY = (10 + progress * 40);
+        // Calculate desired translateY based on scroll progress
+        const desiredTranslateY = (progress * 40);
+        const desiredTranslateYPx = desiredTranslateY * emToPx;
+        
+        // Calculate where the bottom would be with the desired transform
+        const gentleSlideBottomWithTransform = gentleSlideOriginalBottom + desiredTranslateYPx;
+        const ageSectionsTop = ageSectionsRect.top;
 
-        if (translateY <= 30) {
-          gentleSlideRef.current.style.transform = `translateY(${translateY}em)`;
+        // If the transformed bottom would overlap with age-sections, cap the translateY
+        let finalTranslateY = desiredTranslateY;
+        if (gentleSlideBottomWithTransform > ageSectionsTop) {
+          // Calculate maximum allowed translateY to prevent overlap
+          const maxTranslateYPx = ageSectionsTop - gentleSlideOriginalBottom;
+          const maxTranslateYEm = maxTranslateYPx / emToPx;
+          finalTranslateY = Math.max(0, Math.min(desiredTranslateY, maxTranslateYEm));
         }
+
+        gentleSlideRef.current.style.transform = `translateY(${finalTranslateY}em)`;
       }
     };
 
@@ -74,7 +108,7 @@ export default function Home() {
             </Button>
           </div>
         </div>
-        <div className='whiteBg'>
+        <div className='whiteBg withHeight'>
           <Image className="blueLine" src="/images/blueLine.png" />
           <div className='whyChooseUsContent'>
             <div className='whyChooseUsTitle'>
@@ -122,7 +156,9 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <CompressedSections />
+        <div ref={ageSectionsRef}>
+          <CompressedSections />
+        </div>
         <div className='whiteBg'>
           <div className='blueLineBg'>
             <div className='darkBlueLine' />
