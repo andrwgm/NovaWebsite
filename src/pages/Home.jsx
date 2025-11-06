@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import './home.css';
 
 import CompressedSections from '../components/CompressedSections';
-import PricesSections from '../components/PricesSection';
+import PricesSection from '../components/PricesSection';
 import HowItWorks from '../components/HowItWorks';
 import QuestionsAnswered from '../components/QuestionsAnswered';
 import PeopleBehind from '../components/PeopleBehind';
@@ -126,7 +126,7 @@ export default function Home() {
         <div className='whiteBg'>
           <div className='blueLineBg'>
             <div className='darkBlueLine' />
-            <PricesSections />
+            <PricesSection />
           </div>
         </div>
         <div className='whiteBg'>
