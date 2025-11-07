@@ -4,10 +4,11 @@ import './navbar.css';
 import { Menubar } from 'primereact/menubar';
 import { Image } from 'primereact/image';
 import { Button } from 'primereact/button';
+import { requestContactModal } from '../utils/contactModalService';
 
 export default function Navbar({ activeIndex, onTabChange }) {
   const handleContactClick = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    requestContactModal();
   };
 
   const items = [

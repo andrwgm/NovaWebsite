@@ -10,6 +10,7 @@ import PeopleBehind from '../components/PeopleBehind';
 
 import { Image } from 'primereact/image';
 import { Button } from 'primereact/button';
+import { requestContactModal } from '../utils/contactModalService';
 
 export default function Home() {
   const gentleSlideRef = useRef(null);
@@ -102,7 +103,7 @@ export default function Home() {
             </div>
           </div>
           <div className='bookButton'>
-            <Button>
+            <Button onClick={requestContactModal}>
               <Image src="/images/bookButton.png" />
               BOOK IN 60
             </Button>
@@ -176,7 +177,7 @@ export default function Home() {
             <div className='stillHaveQuestionsTitle'>
               Still have questions?
             </div>
-            <Button label="Get in contact" icon="pi pi-send" iconPos="right" />
+            <Button label="Get in contact" icon="pi pi-send" iconPos="right" onClick={requestContactModal} />
           </div>
         </div>
         <div className='whiteBg'>

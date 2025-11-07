@@ -1,0 +1,133 @@
+.contact-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  z-index: 2000;
+}
+
+.contact-modal {
+  width: min(540px, 100%);
+  background: #fff;
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  position: relative;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.2);
+}
+
+.contact-modal-title {
+  font-family: 'LemonMilk', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: #2D3B55;
+  margin-bottom: 2.1rem;
+  font-size: 1.8rem;
+}
+
+.contact-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border: none;
+  background: #f3f5f7;
+  border-radius: 999px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #2D3B55;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+}
+
+.contact-modal-close i {
+  font-size: 0.9rem;
+}
+
+.contact-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.contact-field {
+  width: 100%;
+}
+
+.contact-field .p-inputtext,
+.contact-field .p-inputtextarea,
+.contact-field .p-inputmask {
+  padding-left: 2.8rem;
+}
+
+.contact-field .p-inputtextarea {
+  padding-left: 2.8rem;
+  padding-top: 1.2rem;
+}
+
+.contact-field .p-inputtext,
+.contact-field .p-inputtextarea,
+.contact-field .p-inputmask {
+  width: 100%;
+  border-radius: 0.8rem;
+  border: 1px solid #d8dee7;
+  padding: 0.95rem 1rem;
+}
+
+.contact-field .p-inputtextarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.contact-field .p-input-icon,
+.contact-field .p-inputicon {
+  color: #6b7a93;
+}
+
+.contact-field .p-input-icon:first-child,
+.contact-field .p-inputicon:first-child {
+  inset: 0.85rem auto auto 1rem;
+}
+
+.contact-field .p-inputtextarea ~ label {
+  top: 1.1rem;
+}
+
+.contact-field .p-inputtextarea:focus ~ label,
+.contact-field .p-inputtextarea.p-inputtextarea-filled ~ label {
+  top: -0.4rem;
+}
+
+.contact-modal-form .p-float-label > label {
+  color: #6b7a93;
+}
+
+.contact-modal-submit {
+  align-self: center;
+  border: none;
+  background: #9ECDC9;
+  color: #2D3B55;
+  border-radius: 2em;
+  padding: 0.85rem 2.5rem;
+  font-weight: 600;
+}
+
+.contact-modal-submit:hover {
+  background: #37B5BC;
+}
+
+.contact-modal-submit:focus {
+  box-shadow: 0 0 0 0.2rem rgba(55, 181, 188, 0.2);
+}
+
+@media (max-width: 480px) {
+  .contact-modal {
+    padding: 2rem 1.5rem;
+  }
+
+  .contact-modal-submit {
+    width: 100%;
+  }
+}

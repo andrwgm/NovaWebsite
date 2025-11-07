@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Footer from './components/Footer';
+import ContactModal from './components/ContactModal';
 
 import "./app.css";
 
@@ -30,6 +31,7 @@ function AppContent() {
         <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />
+      <ContactModal />
     </>
   );
 }
