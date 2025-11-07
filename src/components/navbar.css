@@ -11,8 +11,7 @@
 }
 .topbar img {
     height: 2em;
-    margin: 1em;
-    margin-left: 10%;
+    margin: 1em 1.5em 1em 0;
 }
 
 .topbar .p-menubar-start {
@@ -24,6 +23,13 @@
     border-radius: none;
     color: none;
     background: none;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.topbar .p-menubar .p-menubar-button {
+    display: none;
 }
 
 .topbar .p-button{
@@ -52,6 +58,86 @@
     border-radius: 1.5em;
 }
 
+.topbar .p-menubar-end {
+    margin-left: auto;
+}
+
+.topbar .p-menubar .menu-contact-item {
+    display: none;
+}
+
+.topbar .p-menubar .menu-contact-item .p-menuitem-content {
+    border-radius: 2em;
+}
+
 .topbar .p-menubar .p-menubar-button:focus{
     box-shadow: 0 0 0 .2rem #9ECDC9
+}
+
+@media screen and (max-width: 1200px) {
+    .topbar {
+        padding-inline: 1em;
+    }
+
+    .topbar .p-menubar {
+        gap: 0.5rem;
+    }
+
+    .topbar .p-menubar-start {
+        margin-right: 0;
+    }
+
+    .topbar .p-menubar .p-menubar-root-list {
+        display: none;
+    }
+
+    .topbar .p-menubar.p-menubar-mobile-active .p-menubar-root-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+
+    .topbar .p-menubar .p-menuitem-content {
+        border-radius: 0.75em;
+    }
+
+    .topbar .p-menubar .p-menubar-button {
+        display: flex;
+        position: fixed;
+        left: 50%;
+        top: 1.25rem;
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .topbar {
+        height: 4.5em;
+        padding-inline: 0.75em;
+    }
+
+    .topbar img {
+        margin: 0.75em 1em 0.75em 0;
+    }
+
+    .topbar .p-button {
+        display: none;
+    }
+
+    .topbar .p-menubar .menu-contact-item {
+        display: flex;
+    }
+
+    .topbar .p-menubar .menu-contact-item .p-menuitem-content {
+        background: #9ECDC9;
+        color: #2D3B55;
+        justify-content: center;
+        font-weight: 600;
+    }
+
+    .topbar .p-menubar .p-menubar-button {
+        left: 85%;
+    }
 }
