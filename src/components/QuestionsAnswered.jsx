@@ -1,9 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import './questionsAnswered.css';
 
-// Carousel: viewport + transform-based track
-// - Drag horizontally on the images to move
-// - Click dots to jump to a card
 
 const SLIDES = [
   {

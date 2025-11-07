@@ -23,11 +23,6 @@
     min-width: 100vw;
 }
 
-/* .topContent img{
-    width: 100%;
-    position: sticky;
-} */
-
 .titleAndButton {
     display: flex;
     background-color: #34475961;
@@ -190,7 +185,6 @@
 }
 
 .gentleSlide {
-    /* transition: none; Remove transition for smooth scroll-based animation */
     transform: translateY(5em);
     margin-bottom: 34em;
 }

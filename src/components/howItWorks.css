@@ -26,7 +26,6 @@
   width: 55%;
 }
 
-/* Custom markers: numbered circles */
 .hiw-marker {
   width: 34px;
   height: 34px;
@@ -44,7 +43,6 @@
   color: #137a72;
 }
 
-/* Dashed connector like the mockup */
 .p-timeline-vertical .p-timeline-event-connector {
   border-left: 2px dashed #c9d2d9;
   background: transparent;
@@ -52,33 +50,29 @@
   flex-grow: 1;
   margin: .5em 0;
 }
-/* Remove unused opposite slot to give more width */
+
 .p-timeline .p-timeline-event-opposite {
   flex: 0;
   padding: 0;
 }
 
-/* Compact default paddings */
 .p-timeline .p-timeline-event-content {
   padding: 0 0 1rem 0;
 }
 
-/* Center marker and pill vertically on each row */
 .p-timeline.p-timeline-vertical .p-timeline-event {
   align-items: center;
 }
 
-/* Add more horizontal gap between the marker column and pills */
 .p-timeline-vertical .p-timeline-event-separator {
-  margin-right: 1.75rem; /* increase spacing */
-  align-self: stretch; /* keep separator full height for connectors */
+  margin-right: 1.75rem;
+  align-self: stretch;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 0.75rem;
 }
 
-/* Pill content styling */
 .hiw-pill {
   background: #cfeeed;
   color: #344759;
@@ -130,7 +124,6 @@
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
 }
 
-/* ---------- Responsive ---------- */
 @media (max-width: 1200px) {
   .howItWorksTitle { font-size: 2.6em; }
   .howItWorksTimeline { width: 60%; }

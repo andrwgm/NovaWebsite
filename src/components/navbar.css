@@ -4,8 +4,8 @@
     left: 0;
     width: 100vw;
     z-index: 1000;
-    background: white; /* or your preferred background */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04); /* optional, for subtle shadow */
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     padding-inline: 2em;
     height: 5em;
 }
@@ -110,7 +110,6 @@
 
     .topbar .p-menubar .p-menuitem-content {
         border-radius: 0.75em;
-        /* width: 100%; */
     }
 
     .topbar .p-menubar .p-menuitem-link {
