@@ -296,6 +296,36 @@
 }
 
 @media (max-width: 600px) {
+    .titleAndButton {
+        flex-direction: column;
+        padding: 2.5rem 1.25rem 3rem;
+        gap: 2rem;
+    }
+
+    .titleAndButton .titles {
+        width: 100%;
+        align-items: flex-start;
+    }
+
+    .titleAndButton .bigTitle,
+    .titleAndButton .smallTitle {
+        padding-left: 0;
+        text-align: left;
+    }
+
+    .titleAndButton .bookButton {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .titleAndButton .bigTitle {
+        font-size: clamp(3.2em, 14vw, 4.2em);
+    }
+
+    .titleAndButton .bookButton {
+        justify-content: center;
+    }
+
     .whyChooseUsTitle {
         font-size: 2.4em;
         padding: 2.2em 0 0.5em;
