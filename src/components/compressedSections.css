@@ -2,7 +2,7 @@
 .age-sections {
   display: flex;
   gap: 1em;
-  /* height: 420px; */
+  flex-wrap: nowrap;
   max-width: 95em;
   justify-content: center;
   flex-direction: row;
@@ -12,14 +12,14 @@
 
 /* Tarjeta colapsada/expandida */
 .age-card {
-  flex: 1;
+  flex: 0 1 20em;
   display: flex;
   align-items: flex-start;
   justify-content: space-around;
   position: relative;
   background: #f8f8f8;
   border-radius: 1.5rem;
-  transition: flex .3s ease, background .3s ease, height .3s ease, max-height .3s ease;
+  transition: background .3s ease, height .3s ease, max-height .3s ease;
   width: 20em;
   /* min-width: 13em; */
   max-width: 20em;
@@ -29,7 +29,6 @@
 
 /* Al pasar el cursor, la tarjeta se ensancha 3× */
 .age-card:hover {
-  flex: 3;
   background: #e8f6f6;
   height: 20em;
   max-height: 20em;
@@ -38,10 +37,26 @@
 
 /* When the viewport is narrower than the component's max width,
    switch layout to row */
-@media (max-width: 65em) {
+@media (max-width: 70em) {
+  .age-sections {
+    flex-wrap: wrap;
+  }
+
+  .age-card {
+    flex: 0 1 calc(50% - 1em);
+    max-width: calc(50% - 1em);
+  }
+}
+
+@media (max-width: 48em) {
   .age-sections {
     align-items: center;
     flex-direction: column;
+  }
+
+  .age-card {
+    width: 100%;
+    max-width: 22em;
   }
 }
 
