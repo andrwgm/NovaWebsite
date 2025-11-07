@@ -106,7 +106,8 @@
 .qa-arrow.disabled { opacity: .4; pointer-events: none; }
 
 .qa-card {
-  flex: 0 0 clamp(220px, 72vw, 520px);
+  flex: 0 0 clamp(240px, 45vw, 520px);
+  max-width: clamp(240px, 45vw, 520px);
   background: white;
   border-radius:  0 8em 0 0;
   overflow: hidden;
@@ -137,19 +138,24 @@
 
 @media (max-width: 1200px) {
   .qa { grid-template-columns: 1fr 1fr; }
+  .qa-right { padding-right: 1rem; }
+  .qa-card {
+    flex-basis: min(360px, 62vw);
+    max-width: min(360px, 62vw);
+  }
 }
 
 @media (max-width: 992px) {
   .qa { grid-template-columns: 1fr; gap: 2rem; padding: 3.2em 0; }
   .qa-title { font-size: 2.2em; }
-  .qa-card { flex-basis: clamp(220px, 88vw, 420px); }
+  .qa-card { flex-basis: clamp(220px, 88vw, 420px); max-width: clamp(220px, 88vw, 420px); }
   .qa-card img { height: clamp(170px, 36vw, 210px); }
   .qa-left { grid-template-rows: auto 1fr auto; }
 }
 
 @media (max-width: 600px) {
   .qa-title { font-size: 1.9em; }
-  .qa-card { flex-basis: 240px; }
+  .qa-card { flex-basis: 240px; max-width: 240px; }
   .qa-card img { height: 190px; }
   .qa-right { padding-right: 1rem; }
   .qa-viewport { --fade: 24px; }
@@ -157,6 +163,6 @@
 }
 
 @media (max-width: 380px) {
-  .qa-card { flex-basis: 220px; }
+  .qa-card { flex-basis: 220px; max-width: 220px; }
   .qa-viewport { --fade: 20px; }
 }
