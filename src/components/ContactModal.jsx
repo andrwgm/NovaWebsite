@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { InputMask } from 'primereact/inputmask';
-import { IconField } from 'primereact/iconfield';
-import { InputIcon } from 'primereact/inputicon';
 import { Button } from 'primereact/button';
 
 import { onContactModalRequest } from '../utils/contactModalService';
@@ -57,56 +55,44 @@ export default function ContactModal() {
         </button>
         <h2 className="contact-modal-title">Get in contact</h2>
         <form className="contact-modal-form" onSubmit={handleSubmit}>
-          <IconField iconPosition="left" className="contact-field">
-            <InputIcon className="pi pi-user" />
-            <span className="p-float-label">
-              <InputText
-                id="contact-name"
-                value={formData.name}
-                onChange={handleChange('name')}
-                required
-              />
-              <label htmlFor="contact-name">Full name</label>
-            </span>
-          </IconField>
-          <IconField iconPosition="left" className="contact-field">
-            <InputIcon className="pi pi-envelope" />
-            <span className="p-float-label">
-              <InputText
-                id="contact-email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange('email')}
-                required
-              />
-              <label htmlFor="contact-email">Email address</label>
-            </span>
-          </IconField>
-          <IconField iconPosition="left" className="contact-field">
-            <InputIcon className="pi pi-phone" />
-            <span className="p-float-label">
-              <InputMask
-                id="contact-phone"
-                mask="+44 9999 999999"
-                value={formData.phone}
-                onChange={handleChange('phone')}
-                placeholder="+44 ____ ______"
-              />
-              <label htmlFor="contact-phone">Phone (UK)</label>
-            </span>
-          </IconField>
-          <IconField iconPosition="left" className="contact-field textarea-field">
-            <InputIcon className="pi pi-comment" />
-            <span className="p-float-label">
-              <InputTextarea
-                id="contact-message"
-                rows={4}
-                value={formData.message}
-                onChange={handleChange('message')}
-              />
-              <label htmlFor="contact-message">How can we help?</label>
-            </span>
-          </IconField>
+          <span className="p-float-label">
+            <InputText
+              id="contact-name"
+              value={formData.name}
+              onChange={handleChange('name')}
+              required
+            />
+            <label htmlFor="contact-name">Full name</label>
+          </span>
+          <span className="p-float-label">
+            <InputText
+              id="contact-email"
+              type="email"
+              value={formData.email}
+              onChange={handleChange('email')}
+              required
+            />
+            <label htmlFor="contact-email">Email address</label>
+          </span>
+          <span className="p-float-label">
+            <InputMask
+              id="contact-phone"
+              mask="+44 9999 999999"
+              value={formData.phone}
+              onChange={handleChange('phone')}
+              placeholder="+44 ____ ______"
+            />
+            <label htmlFor="contact-phone">Phone (UK)</label>
+          </span>
+          <span className="p-float-label textarea-field">
+            <InputTextarea
+              id="contact-message"
+              rows={4}
+              value={formData.message}
+              onChange={handleChange('message')}
+            />
+            <label htmlFor="contact-message">How can we help?</label>
+          </span>
 
           <Button
             type="submit"
