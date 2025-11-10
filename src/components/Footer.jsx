@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './footer.css';
 
 const SOCIAL_LINKS = [
@@ -40,9 +41,9 @@ const LINK_COLUMNS = [
   {
     title: 'Policies',
     links: [
-      { label: 'Privacy', href: '#' },
-      { label: 'Cookies', href: '#' },
-      { label: 'Terms and conditions', href: '#' },
+      { label: 'Privacy', to: '/privacy-policy' },
+      { label: 'Cookies', to: '/cookies-policy' },
+      { label: 'Terms and conditions', to: '/terms-and-conditions' },
     ],
   },
 ];
@@ -69,7 +70,11 @@ export default function Footer() {
               <ul>
                 {column.links.map((link) => (
                   <li key={link.label}>
-                    <a href={link.href}>{link.label}</a>
+                    {link.to ? (
+                      <Link to={link.to}>{link.label}</Link>
+                    ) : (
+                      <a href={link.href}>{link.label}</a>
+                    )}
                   </li>
                 ))}
               </ul>
