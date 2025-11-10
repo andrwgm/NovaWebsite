@@ -14,7 +14,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  gap: 3rem;
+  /* gap: 3rem; */
 }
 
 .footer-brand {
@@ -59,7 +59,7 @@
   flex: 2 1 480px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 2rem 3rem;
+  gap: 2rem 2rem;
 }
 
 .footer-column {
@@ -131,6 +131,7 @@
   .footer-brand {
     align-items: center;
     text-align: center;
+    flex: 1 1;
   }
 
   .footer-links {
