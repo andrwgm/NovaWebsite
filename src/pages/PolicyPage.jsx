@@ -1,5 +1,5 @@
 import React from 'react';
-import './policy.css';
+import './policyPage.css';
 
 export default function PolicyPage({ title, caption, intro = [], sections = [] }) {
   return (
