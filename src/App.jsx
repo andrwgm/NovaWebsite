@@ -10,6 +10,7 @@ import Contact from './pages/Contact';
 import CookiesPolicy from './pages/CookiesPolicy';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsAndConditions from './pages/TermsAndConditions';
+import NotFound from './pages/NotFound';
 import Footer from './components/Footer';
 import ContactModal from './components/ContactModal';
 
@@ -39,6 +40,7 @@ function AppContent() {
         <Route path="/cookies-policy" element={<CookiesPolicy />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
       <ContactModal />
