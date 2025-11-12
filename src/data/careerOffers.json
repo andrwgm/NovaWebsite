@@ -1,0 +1,46 @@
+[
+  {
+    "id": "clinical-psychologist-remote-uk",
+    "title": "Clinical Psychologist (Freelance, Remote – UK)",
+    "icon": "pi-face-smile",
+    "department": "Clinical",
+    "location": "Remote, UK",
+    "contractType": "Freelance",
+    "compensation": "£400–£500 per case",
+    "shortDescription": "Join Nova Clinic's remote network delivering autism and ADHD assessments with the full backing of our clinical operations team.",
+    "longDescription": "Provide high-quality autism and ADHD assessments for children across the UK while enjoying total control over your schedule. We manage referrals, admin, and reporting so you can stay focused on outcomes."
+  },
+  {
+    "id": "digital-marketing-assistant",
+    "title": "Digital Marketing Assistant (Part-time, Remote)",
+    "icon": "pi-megaphone",
+    "department": "Marketing",
+    "location": "Remote",
+    "contractType": "Part-time",
+    "compensation": "£1,400–£1,800/month",
+    "shortDescription": "Help us grow our online presence with creative campaigns, content optimization, and social storytelling.",
+    "longDescription": "Work closely with the growth team to build campaigns that educate families and clinicians about Nova Clinic's services. You will own social calendars, email journeys, lightweight design requests, and reporting."
+  },
+  {
+    "id": "care-coordinator",
+    "title": "Care Coordinator (Full-time, Hybrid – London)",
+    "icon": "pi-users",
+    "department": "Operations",
+    "location": "Hybrid, London",
+    "contractType": "Full-time",
+    "compensation": "£32,000–£36,000/year",
+    "shortDescription": "Be the first point of contact for families, supporting them through scheduling, preparation, and follow-up.",
+    "longDescription": "Coordinate assessments end-to-end, making sure every family feels informed and cared for. You'll work with clinicians, schools, and partners to keep each case moving smoothly."
+  },
+  {
+    "id": "product-designer",
+    "title": "Product Designer (Contract, Remote)",
+    "icon": "pi-pencil",
+    "department": "Product",
+    "location": "Remote",
+    "contractType": "Contract",
+    "compensation": "£350–£400/day",
+    "shortDescription": "Design intuitive clinician and family experiences that translate complex care workflows into simple journeys.",
+    "longDescription": "Collaborate with product, engineering, and clinical SMEs to shape Nova Clinic's digital products. You'll lead discovery, design systems, and rapid prototyping for new patient-facing features."
+  }
+]

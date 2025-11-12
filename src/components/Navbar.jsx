@@ -16,7 +16,7 @@ export default function Navbar({ activeIndex, onTabChange }) {
     { label: 'Assesments'},
     { label: 'About us'},
     { label: 'Resources'},
-    { label: 'Nova careers'},
+    { label: 'Nova careers', url: '/careers'},
     {
       label: 'Get in contact',
       icon: 'pi pi-send',
