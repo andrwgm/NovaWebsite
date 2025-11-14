@@ -1,4 +1,5 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { InputText } from 'primereact/inputtext';
@@ -9,6 +10,7 @@ import './careersJobBoard.css';
 export default function CareersJobBoard() {
     const [searchQuery, setSearchQuery] = useState('');
     const [departmentFilter, setDepartmentFilter] = useState(null);
+    const navigate = useNavigate();
 
     const departments = useMemo(() => {
         const uniqueDepartments = Array.from(new Set(careerOffers.map((offer) => offer.department)));
@@ -34,6 +36,11 @@ export default function CareersJobBoard() {
         });
     }, [departmentFilter, searchQuery]);
 
+    const handleViewOffer = useCallback((offer) => {
+        const slug = offer.publishedDate ? `${offer.id}-${offer.publishedDate}` : offer.id;
+        navigate(`/careers/${slug}`);
+    }, [navigate]);
+
     const jobTemplate = (offer) => (
         <div className="careers-offers__row">
             <div className="careers-offers__icon">
@@ -48,7 +55,12 @@ export default function CareersJobBoard() {
                 </p>
                 <p className="careers-offers__summary">{offer.shortDescription}</p>
             </div>
-            <button type="button" className="careers-offers__cta">
+            <button
+                type="button"
+                className="careers-offers__cta"
+                onClick={() => handleViewOffer(offer)}
+                aria-label={`View ${offer.title}`}
+            >
                 View
                 <i className="pi pi-arrow-right" aria-hidden="true"></i>
             </button>

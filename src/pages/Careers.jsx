@@ -1,5 +1,6 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Carousel } from 'primereact/carousel';
+import { useLocation, useNavigate } from 'react-router-dom';
 import CareersJobBoard from '../components/CareersJobBoard';
 import './careers.css';
 
@@ -53,6 +54,9 @@ const perkCards = [
 export default function Careers() {
     const [activeIndex, setActiveIndex] = useState(0);
     const [viewportWidth, setViewportWidth] = useState(getInitialWidth());
+    const jobBoardRef = useRef(null);
+    const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (typeof window === 'undefined') return;
@@ -60,6 +64,15 @@ export default function Careers() {
         window.addEventListener('resize', updateWidth);
         return () => window.removeEventListener('resize', updateWidth);
     }, []);
+
+    useEffect(() => {
+        if (location.state?.scrollTo === 'offers') {
+            requestAnimationFrame(() => {
+                jobBoardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+            navigate(location.pathname, { replace: true });
+        }
+    }, [location, navigate]);
 
     const isVerticalCarousel = viewportWidth < 1000;
     const visibleCount = isVerticalCarousel ? 1 : getHorizontalVisible(viewportWidth);
@@ -158,7 +171,7 @@ export default function Careers() {
                     </p>
                 </div>
             </div>
-            <div className="offersSection">
+            <div className="offersSection" id="careers-offers" ref={jobBoardRef}>
                 <CareersJobBoard />
             </div>
             <div className="footerSection">
