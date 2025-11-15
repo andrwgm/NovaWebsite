@@ -1,4 +1,5 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
+import { Carousel } from 'primereact/carousel';
 import './questionsAnswered.css';
 
 
@@ -31,42 +32,41 @@ const SLIDES = [
 
 export default function QuestionsAnswered() {
   const slides = useMemo(() => SLIDES.map((s, idx) => ({ ...s, idx })), []);
-  const viewportRef = useRef(null);
-  const trackRef = useRef(null);
   const [active, setActive] = useState(0);
-  const [x, setX] = useState(0); // current translateX
+  const totalSlides = slides.length;
+  const activeSlideId = slides[active]?.idx;
 
-  const getTargetX = (idx) => {
-    const viewport = viewportRef.current;
-    const track = trackRef.current;
-    if (!viewport || !track) return 0;
-    const child = track.children[idx];
-    if (!child) return 0;
-    return -(child.offsetLeft - (viewport.clientWidth - child.clientWidth) / 2);
-  };
-
-  const goTo = (idx) => {
-    const target = getTargetX(idx);
-    setX(target);
-    if (idx !== active) setActive(idx);
-  };
-
-  // Initial centering and on resize
-  useEffect(() => {
-    goTo(0);
-  }, []);
-
-  // Keep centered on responsive changes
-  useEffect(() => {
-    const onResize = () => setX(getTargetX(active));
-    window.addEventListener('resize', onResize);
-    onResize();
-    return () => window.removeEventListener('resize', onResize);
-  }, [active]);
+  const goTo = useCallback(
+    (idx) => {
+      if (!totalSlides) return;
+      const safeIndex = Math.min(Math.max(idx, 0), totalSlides - 1);
+      setActive(safeIndex);
+    },
+    [totalSlides]
+  );
 
   const onDotClick = (idx) => goTo(idx);
-  const prev = () => goTo(Math.max(0, active - 1));
-  const next = () => goTo(Math.min(slides.length - 1, active + 1));
+  const prev = () => goTo(active - 1);
+  const next = () => goTo(active + 1);
+
+  const handlePageChange = (event) => {
+    const nextIndex = typeof event.page === 'number' ? event.page : 0;
+    if (nextIndex !== active) {
+      goTo(nextIndex);
+    }
+  };
+
+  const cardTemplate = (slide) => {
+    if (!slide) return null;
+    const isActive = slide.idx === activeSlideId;
+
+    return (
+      <figure className={`qa-card${isActive ? ' active' : ''}`}>
+        <img src={slide.img} alt={slide.question} />
+        <figcaption className="qa-question">{slide.question}</figcaption>
+      </figure>
+    );
+  };
 
   return (
     <section className="qa">
@@ -87,7 +87,7 @@ export default function QuestionsAnswered() {
       </div>
 
       <div className="qa-right">
-        <div className="qa-viewport" ref={viewportRef}>
+        <div className="qa-viewport">
           <button
             type="button"
             className={`qa-arrow left${active === 0 ? ' disabled' : ''}`}
@@ -96,21 +96,18 @@ export default function QuestionsAnswered() {
           >
             <i className="pi pi-chevron-left" />
           </button>
-          <div className="qa-track" ref={trackRef} style={{ transform: `translateX(${x}px)` }}>
-          {slides.map((s, i) => (
-            <figure
-              key={s.idx}
-              className={`qa-card${i === active ? ' active' : ''}`}
-              onClick={() => {
-                if (i === active - 1) return goTo(Math.max(0, active - 1));
-                if (i === active + 1) return goTo(Math.min(slides.length - 1, active + 1));
-              }}
-            >
-              <img src={s.img} alt={s.question} />
-              <figcaption className="qa-question">{s.question}</figcaption>
-            </figure>
-          ))}
-          </div>
+          <Carousel
+            className="qa-carousel"
+            value={slides}
+            itemTemplate={cardTemplate}
+            numVisible={1}
+            numScroll={1}
+            page={active}
+            showIndicators={false}
+            showNavigators={false}
+            circular={false}
+            onPageChange={handlePageChange}
+          />
           <button
             type="button"
             className={`qa-arrow right${active === slides.length - 1 ? ' disabled' : ''}`}
