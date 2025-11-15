@@ -9,6 +9,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Careers from './pages/Careers';
 import CareersOfferDetails from './pages/CareersOfferDetails';
+import Support from './pages/Support';
 import CookiesPolicy from './pages/CookiesPolicy';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsAndConditions from './pages/TermsAndConditions';
@@ -39,6 +40,7 @@ function AppContent() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/support" element={<Support />} />
         <Route path="/careers" element={<Careers />} />
         <Route path="/careers/:slug" element={<CareersOfferDetails />} />
         <Route path="/cookies-policy" element={<CookiesPolicy />} />
