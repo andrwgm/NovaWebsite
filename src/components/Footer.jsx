@@ -11,14 +11,14 @@ const SOCIAL_LINKS = [
 
 const LINK_COLUMNS = [
   {
-    title: 'Assesments',
+    title: 'Assessments',
     links: [
-      { label: 'Why choose us', href: '#' },
-      { label: 'Is this for me?', href: '#' },
-      { label: 'Pricing', href: '#' },
-      { label: 'How it works', href: '#' },
-      { label: 'FAQs', href: '#' },
-      { label: 'People behind', href: '#' },
+      { label: 'Why choose us', to: '/#why-choose-us' },
+      { label: 'Is this for me?', to: '/#is-this-for-me' },
+      { label: 'Pricing', to: '/#pricing' },
+      { label: 'How it works', to: '/#how-it-works' },
+      { label: 'FAQs', to: '/#faqs' },
+      { label: 'People behind', to: '/#people-behind' },
     ],
   },
   {

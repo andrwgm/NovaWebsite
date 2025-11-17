@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-
+import { useLocation } from 'react-router-dom';
 import './home.css';
 
 import CompressedSections from '../components/CompressedSections';
@@ -15,6 +15,7 @@ import { requestContactModal } from '../utils/contactModalService';
 export default function Home() {
   const gentleSlideRef = useRef(null);
   const ageSectionsRef = useRef(null);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -72,12 +73,27 @@ export default function Home() {
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Call once to set initial position
 
-    window.history.scrollRestoration = 'manual'
+    window.history.scrollRestoration = 'manual';
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    if (!location.hash) return;
+    const targetId = location.hash.replace('#', '');
+    if (!targetId) return;
+
+    requestAnimationFrame(() => {
+      const target = document.getElementById(targetId);
+      if (target) {
+        const offset = 120;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+      }
+    });
+  }, [location.hash]);
 
   return (
     <div className="mainContent">
@@ -111,7 +127,7 @@ export default function Home() {
         </div>
         <div className='whiteBg withHeight'>
           <Image className="blueLine" src="/images/blueLine.png" />
-          <div className='whyChooseUsContent'>
+          <div className='whyChooseUsContent' id="why-choose-us">
             <div className='whyChooseUsTitle'>
               Why Choose Us?
             </div>
@@ -148,7 +164,7 @@ export default function Home() {
             </div>
           </div>
           <Image className="curveShadow" src="/images/curveShadow.png" />
-          <div className='whyChooseUsContent gentleSlide' ref={gentleSlideRef}>
+          <div className='whyChooseUsContent gentleSlide' ref={gentleSlideRef} id="is-this-for-me">
             <div className='isThisForMeTitle'>
               Is this for me?
             </div>
@@ -160,16 +176,16 @@ export default function Home() {
         <div ref={ageSectionsRef}>
           <CompressedSections />
         </div>
-        <div className='whiteBg'>
+        <div className='whiteBg' id="pricing">
           <div className='blueLineBg'>
             <div className='darkBlueLine' />
             <PricesSection />
           </div>
         </div>
-        <div className='whiteBg'>
+        <div className='whiteBg' id="how-it-works">
           <HowItWorks />
         </div>
-        <div className='whiteBg'>
+        <div className='whiteBg' id="faqs">
           <QuestionsAnswered />
         </div>
         <div className='whiteBg'>
@@ -180,7 +196,7 @@ export default function Home() {
             <Button label="Get in contact" icon="pi pi-send" iconPos="right" onClick={requestContactModal} />
           </div>
         </div>
-        <div className='whiteBg'>
+        <div className='whiteBg' id="people-behind">
           <PeopleBehind />
         </div>
       </div>
