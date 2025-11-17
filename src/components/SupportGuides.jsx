@@ -1,18 +1,60 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Accordion, AccordionTab } from 'primereact/accordion';
 import './supportGuides.css';
 
 export default function SupportGuides() {
+  const tabSlugs = useMemo(
+    () => ['before-the-assessment', 'after-the-assessment', 'supporting-your-child-at-home', 'youre-not-alone'],
+    []
+  );
+  const slugToIndex = useMemo(() => {
+    const map = {};
+    tabSlugs.forEach((slug, idx) => {
+      map[slug] = idx;
+    });
+    return map;
+  }, [tabSlugs]);
+
   const [activeIndex, setActiveIndex] = useState(null);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const hash = location.hash.replace('#', '').toLowerCase();
+    if (!hash) {
+      setActiveIndex(null);
+      return;
+    }
+    const idx = slugToIndex[hash];
+    if (typeof idx === 'number') {
+      setActiveIndex(idx);
+    }
+  }, [location.hash, slugToIndex]);
+
+  const handleTabChange = (event) => {
+    const nextIndex = event.index;
+    setActiveIndex(nextIndex);
+
+    if (typeof nextIndex === 'number') {
+      const nextHash = tabSlugs[nextIndex];
+      if (nextHash) {
+        navigate({ pathname: location.pathname, hash: nextHash }, { replace: true });
+      }
+    } else {
+      navigate({ pathname: location.pathname, hash: '' }, { replace: true });
+    }
+  };
 
   return (
     <section className="support-guides">
       <Accordion
         activeIndex={activeIndex}
-        onTabChange={(e) => setActiveIndex(e.index)}
+        onTabChange={handleTabChange}
         className="support-guides__accordion"
       >
         <AccordionTab
+          id="before-the-assessment"
           header="Before the assessment"
           className="support-guides__tab"
           headerClassName="support-guides__header"
@@ -28,6 +70,7 @@ export default function SupportGuides() {
         </AccordionTab>
 
         <AccordionTab
+          id="after-the-assessment"
           header="After the assessment"
           className="support-guides__tab"
           headerClassName="support-guides__header"
@@ -43,6 +86,7 @@ export default function SupportGuides() {
         </AccordionTab>
 
         <AccordionTab
+          id="supporting-your-child-at-home"
           header="Supporting your child at home"
           className="support-guides__tab"
           headerClassName="support-guides__header"
@@ -59,6 +103,7 @@ export default function SupportGuides() {
         </AccordionTab>
 
         <AccordionTab
+          id="youre-not-alone"
           header="You're not alone"
           className="support-guides__tab"
           headerClassName="support-guides__header"

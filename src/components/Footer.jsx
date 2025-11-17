@@ -11,17 +11,23 @@ const SOCIAL_LINKS = [
 
 const LINK_COLUMNS = [
   {
-    title: 'For families',
+    title: 'Assesments',
     links: [
-      { label: 'How it works', href: '#' },
+      { label: 'Why choose us', href: '#' },
       { label: 'Is this for me?', href: '#' },
       { label: 'Pricing', href: '#' },
+      { label: 'How it works', href: '#' },
+      { label: 'FAQs', href: '#' },
+      { label: 'People behind', href: '#' },
     ],
   },
   {
-    title: 'Request',
+    title: 'Support',
     links: [
-      { label: 'Book an assessment', href: '#' },
+      { label: 'Before the assessment', to: '/support#before-the-assessment' },
+      { label: 'After the assessment', to: '/support#after-the-assessment' },
+      { label: 'Supporting your child at home', to: '/support#supporting-your-child-at-home' },
+      { label: "You're not alone", to: '/support#youre-not-alone' },
     ],
   },
   {
