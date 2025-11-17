@@ -55,7 +55,11 @@ export default function SupportGuides() {
       >
         <AccordionTab
           id="before-the-assessment"
-          header="Before the assessment"
+          header={
+            <h2 >
+              Before the assessment
+            </h2>
+          }
           className="support-guides__tab"
           headerClassName="support-guides__header"
           contentClassName="support-guides__content"
@@ -71,7 +75,11 @@ export default function SupportGuides() {
 
         <AccordionTab
           id="after-the-assessment"
-          header="After the assessment"
+          header={
+            <h2>
+              After the assessment
+            </h2>
+          }
           className="support-guides__tab"
           headerClassName="support-guides__header"
           contentClassName="support-guides__content"
@@ -87,7 +95,11 @@ export default function SupportGuides() {
 
         <AccordionTab
           id="supporting-your-child-at-home"
-          header="Supporting your child at home"
+          header={
+            <h2>
+              Supporting your child at home
+            </h2>
+          }
           className="support-guides__tab"
           headerClassName="support-guides__header"
           contentClassName="support-guides__content"
@@ -104,7 +116,11 @@ export default function SupportGuides() {
 
         <AccordionTab
           id="youre-not-alone"
-          header="You're not alone"
+          header={
+            <h2>
+              You're not alone
+            </h2>
+          }
           className="support-guides__tab"
           headerClassName="support-guides__header"
           contentClassName="support-guides__content"

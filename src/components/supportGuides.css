@@ -4,6 +4,14 @@
   padding-top: 8em;
 }
 
+.support-guides__header h2 {
+  font-family: 'LemonMilk', sans-serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.08rem;
+  font-weight: unset;
+  margin: unset;
+}
+
 .support-guides__header .p-accordion-header-link {
   z-index: 2;
   background: var(--support-guide-color);
