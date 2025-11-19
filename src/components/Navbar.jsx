@@ -12,10 +12,10 @@ export default function Navbar({ activeIndex, onTabChange }) {
   };
 
   const items = [
+    { label: 'Assesments', url: '/'},
     { label: 'Support', url: '/support'},
-    { label: 'Assesments', url: '/hola'},
-    { label: 'About us', url: '/hola'},
-    { label: 'Resources', url: '/hola'},
+    { label: 'About us', url: '/about'},
+    { label: 'Resources', url: '/resources'},
     { label: 'Nova careers', url: '/careers'},
     {
       label: 'Get in contact',
