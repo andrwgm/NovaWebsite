@@ -42,4 +42,12 @@
 
 body{
     margin: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+a,
+button,
+input,
+textarea {
+    -webkit-tap-highlight-color: transparent;
 }
