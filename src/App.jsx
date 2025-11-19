@@ -14,6 +14,7 @@ import CookiesPolicy from './pages/CookiesPolicy';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsAndConditions from './pages/TermsAndConditions';
 import NotFound from './pages/NotFound';
+import UnderConstruction from './pages/UnderConstruction';
 import Footer from './components/Footer';
 import ContactModal from './components/ContactModal';
 
@@ -43,6 +44,9 @@ function AppContent() {
         <Route path="/support" element={<Support />} />
         <Route path="/careers" element={<Careers />} />
         <Route path="/careers/:slug" element={<CareersOfferDetails />} />
+        <Route path="/resources" element={<UnderConstruction />} />
+        <Route path="/blog" element={<UnderConstruction />} />
+        <Route path="/best-practices" element={<UnderConstruction />} />
         <Route path="/cookies-policy" element={<CookiesPolicy />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
