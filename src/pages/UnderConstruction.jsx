@@ -6,8 +6,8 @@ const UnderConstruction = () => (
   <section className="underconstruction">
     <div className="underconstruction__wrapper">
       <img
-        src="/images/brAInArm.png"
-        alt="A robotic arm illustration"
+        src="/images/brAInWorker.png"
+        alt="A little brain with worker hat illustration"
         className="underconstruction__image"
       />
       <div className="underconstruction__copy">
