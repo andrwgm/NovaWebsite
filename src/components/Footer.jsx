@@ -33,15 +33,15 @@ const LINK_COLUMNS = [
   {
     title: 'Nova',
     links: [
-      { label: 'Meet the team', href: '#' },
-      { label: 'Careers', href: '#' },
+      { label: 'Meet the team', to: '/about' },
+      { label: 'Careers', to: '/careers' },
     ],
   },
   {
     title: 'Resources',
     links: [
-      { label: 'Blog', href: '#' },
-      { label: 'Best practices', href: '#' },
+      { label: 'Blog', to: '/blog' },
+      { label: 'Best practices', to: '/best-practices' },
     ],
   },
   {
