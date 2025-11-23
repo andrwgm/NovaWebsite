@@ -1,0 +1,132 @@
+@keyframes floatIllustration {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-6px);
+    }
+}
+
+.about {
+    background: #fdfefe;
+    color: #2D3B55;
+    min-height: calc(100vh - 5em);
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: clamp(2rem, 4vw, 4rem) clamp(1.5rem, 6vw, 6rem) 4rem;
+}
+
+.about-hero {
+    /* background: linear-gradient(135deg, #ADE0DF 0%, #E4F4F4 60%, #ffffff 100%); */
+    /* border-radius: 2.5rem; */
+    padding: clamp(1.5rem, 4vw, 3.5rem);
+    /* box-shadow: 0 15px 40px rgba(61, 93, 119, 0.08); */
+    text-align: center;
+}
+
+.about-hero__eyebrow {
+    font-size: 0.85rem;
+    letter-spacing: 0.5rem;
+    font-weight: 600;
+    margin: 0 0 0.75rem;
+}
+
+.about-hero__title {
+    font-family: 'LemonMilkBold', 'LemonMilk', 'Public Sans', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin: 0 0 1rem;
+}
+
+.about-hero__description {
+    max-width: 780px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.about-clinic {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+    align-items: center;
+}
+
+.about-clinic__image {
+    /* background: #F6FBFF; */
+    /* border-radius: 2rem; */
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    /* box-shadow: inset 0 0 0 1px rgba(45, 59, 85, 0.06); */
+}
+
+.about-clinic__image img {
+    width: min(320px, 70vw);
+    animation: floatIllustration 3s ease-in-out infinite alternate;
+}
+
+.about-clinic__content h2 {
+    font-family: 'LemonMilkBold', 'Public Sans', sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    margin-top: 0;
+}
+
+.about-clinic__content p {
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+.about-clinic__content ul {
+    margin: 1.5rem 0 0;
+    padding-left: 1.2rem;
+    display: grid;
+    gap: 0.65rem;
+    list-style: disc;
+}
+
+.about-values {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.about-values article {
+    background: #ffffff;
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(34, 56, 81, 0.08);
+}
+
+.about-values h3 {
+    margin-top: 0;
+    font-family: 'LemonMilkBold', 'Public Sans', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.08rem;
+}
+
+.about-values p {
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+.about-team {
+    /* background: #ffffff; */
+    /* border-radius: 2rem; */
+    padding: clamp(1.5rem, 3vw, 3rem);
+    /* box-shadow: 0 20px 45px rgba(34, 56, 81, 0.06); */
+}
+
+@media (max-width: 768px) {
+    .about {
+        padding: 1.5rem;
+    }
+
+    .about-hero__eyebrow {
+        letter-spacing: 0.4rem;
+    }
+
+    .about-clinic__image {
+        order: -1;
+    }
+}

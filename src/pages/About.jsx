@@ -1,20 +1,64 @@
 import React from 'react';
+import FullTeam from '../components/FullTeam';
+import './about.css';
 
 export default function About() {
   return (
-    <div style={{
-      minHeight: '60vh',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundImage: 'url(https://picsum.photos/1200/200?text=About+Us)',
-      backgroundSize: 'cover',
-      color: '#333',
-      padding: '2rem',
-    }}>
-      <h1>About Us</h1>
-      <p>We are a team of dedicated professionals committed to your mental health and personal growth.</p>
-    </div>
+    <main className="about">
+      <section className="about-hero">
+        <h1 className="about-hero__title">A FASTER PATH TO CLEAR ANSWERS</h1>
+        <p className="about-hero__description">
+          Nova is a consultant-led clinic specialising in private Autism and ADHD assessments across the UK.
+          We combine NHS-level expertise with the warmth of a family practice—making sure you feel guided,
+          informed and supported at every milestone.
+        </p>
+      </section>
+
+      <section className="about-clinic">
+        <div className="about-clinic__image">
+          <img src="/images/flower-kid.png" alt="Child smiling while drawing" />
+        </div>
+        <div className="about-clinic__content">
+          <h2>Care built around you or your family</h2>
+          <p>
+            Our multidisciplinary team makes the diagnostic journey smoother for both adults and children.
+            We offer online assessments, same-week availability, and reports accepted for EHCPs, workplace
+            adjustments and university support plans.
+          </p>
+          <ul>
+            <li>Consultant psychiatrists with GMC registration and NHS backgrounds.</li>
+            <li>Care coordinators who handle booking, paperwork and follow-up recommendations.</li>
+            <li>Clear pricing for combined or standalone Autism and ADHD pathways.</li>
+            <li>Dedicated aftercare so you know the exact next steps once you receive your report.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section className="about-values">
+        <article>
+          <h3>Evidence-first</h3>
+          <p>
+            Assessments follow NICE guidelines and gold-standard tools, ensuring reliable outcomes recognised by schools
+            and employers.
+          </p>
+        </article>
+        <article>
+          <h3>Human support</h3>
+          <p>
+            You will always have a single point-of-contact ready to answer questions, share updates and celebrate progress.
+          </p>
+        </article>
+        <article>
+          <h3>Zero waiting list</h3>
+          <p>
+            Appointments are available right away, helping you skip the 18-24 month delays typical in the public system.
+          </p>
+        </article>
+      </section>
+
+      <div className="about-team">
+        <FullTeam />
+      </div>
+    </main>
   );
-} 
+}
