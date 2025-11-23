@@ -1,0 +1,117 @@
+.fullteam {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding: clamp(2rem, 4vw, 3.5rem) clamp(1.5rem, 5vw, 4rem);
+    background: linear-gradient(180deg, #F8FCFF 0%, #FFFFFF 65%);
+    border-radius: 2rem;
+}
+
+.fullteam__head {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    color: #1f2a3d;
+}
+
+.fullteam__eyebrow {
+    font-size: 0.85rem;
+    letter-spacing: 0.45rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+.fullteam__head h2 {
+    font-family: 'LemonMilkBold', 'Public Sans', sans-serif;
+    font-size: clamp(2rem, 5vw, 2.7rem);
+    margin: 0;
+}
+
+.fullteam__head p {
+    line-height: 1.6;
+    margin: 0;
+    font-size: 1.05rem;
+}
+
+.fullteam__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.8rem;
+}
+
+.fullteam__card {
+    background: #fff;
+    border-radius: 28px;
+    box-shadow: 0 20px 50px rgba(66, 89, 117, 0.12);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 100%;
+    border: 1px solid rgba(45, 59, 85, 0.08);
+}
+
+.fullteam__image {
+    position: relative;
+    overflow: hidden;
+}
+
+.fullteam__image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(29, 44, 68, 0.35));
+}
+
+.fullteam__image img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+    transform: scale(1);
+    transition: transform 0.4s ease;
+}
+
+.fullteam__card:hover .fullteam__image img {
+    transform: scale(1.05);
+}
+
+.fullteam__body {
+    padding: 1.8rem 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    color: #23344c;
+}
+
+.fullteam__body h3 {
+    margin: 0;
+    font-size: 1.35rem;
+    font-family: 'LemonMilkLight', 'Public Sans', sans-serif;
+}
+
+.fullteam__role {
+    margin: 0;
+    font-weight: 600;
+    font-size: 0.98rem;
+    color: #2d5f75;
+}
+
+.fullteam__focus {
+    margin: 0;
+    line-height: 1.55;
+    font-family: 'AthelasRegular', 'Times New Roman', serif;
+    color: #3a4f6c;
+}
+
+@media (max-width: 600px) {
+    .fullteam {
+        padding: 1.5rem;
+    }
+
+    .fullteam__grid {
+        grid-template-columns: 1fr;
+    }
+}
