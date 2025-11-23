@@ -7,6 +7,7 @@ import PricesSection from '../components/PricesSection';
 import HowItWorks from '../components/HowItWorks';
 import QuestionsAnswered from '../components/QuestionsAnswered';
 import PeopleBehind from '../components/PeopleBehind';
+import TrustBadges from '../components/TrustBadges';
 
 import { Image } from 'primereact/image';
 import { Button } from 'primereact/button';
@@ -198,6 +199,9 @@ export default function Home() {
         </div>
         <div className='whiteBg' id="people-behind">
           <PeopleBehind />
+        </div>
+        <div className="whiteBg">
+          <TrustBadges />
         </div>
       </div>
     </div>

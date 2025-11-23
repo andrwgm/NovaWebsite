@@ -1,5 +1,6 @@
 import React from 'react';
 import FullTeam from '../components/FullTeam';
+import TrustBadges from '../components/TrustBadges';
 import './about.css';
 
 export default function About() {
@@ -59,6 +60,8 @@ export default function About() {
       <div className="about-team">
         <FullTeam />
       </div>
+
+      <TrustBadges />
     </main>
   );
 }
