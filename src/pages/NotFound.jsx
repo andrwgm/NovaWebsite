@@ -7,7 +7,7 @@ const NotFound = () => (
     <div className="notfound__wrapper">
       <img
         src="/images/brAInArm.png"
-        alt="A robotic arm illustration"
+        alt="A little brain illustration"
         className="notfound__image"
       />
       <div className="notfound__copy">
