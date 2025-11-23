@@ -7,19 +7,19 @@ import { Image } from 'primereact/image';
 const ITEMS = [
   {
     n: 1,
-    title: 'Pre‑call (15 min, free)',
-    detail: 'Brief chat to understand your goals, explain the process and next steps.'
+    title: 'Online questionnaires (60 minutes)',
+    detail: 'Parents and teachers answer a screened questionnaire to build a full picture of your child’s development, behaviour and family history.'
   },
   {
     n: 2,
-    title: 'Information gathering',
-    detail: 'Questionnaires and background history from parents/teachers to build a full picture.'
+    title: 'Parent interview (90 minutes)',
+    detail: 'Detailed discussion with the parents about their child’s behaviour and interactions with others'
   },
   {
     n: 3,
-    title: 'Assessment day (2–3 hrs)',
+    title: 'Child observation (60 minutes)',
     detail:
-      'Online cognitive testing + structured play/interaction (ASC) or continuous‑performance tasks (ADHD).',
+      'Observation of the child in a play setting to assess their social and communication skills.',
   },
   {
     n: 4,
@@ -28,8 +28,8 @@ const ITEMS = [
   },
   {
     n: 5,
-    title: 'Feedback session (1 hr)',
-    detail: 'Walkthrough of outcomes, personalised report and time for your questions.'
+    title: 'Report and feedback session (60 minutes)',
+    detail: 'Walkthrough of outcomes, personalised report and time for your questions and feedback.'
   },
 ];
 
