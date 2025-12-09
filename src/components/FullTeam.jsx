@@ -3,25 +3,25 @@ import './fullTeam.css';
 
 const TEAM = [
   {
-    name: 'Andrew Clark',
+    name: 'Oliver Glen',
     role: 'Chief Executive Officer',
     focus: 'Holds the vision for Nova and keeps every pathway financially sustainable, so families always find a clinic that feels boutique yet scales when they need us most.',
     img: '/images/flower-kid.png',
   },
   {
-    name: 'Dr. Alice Bennett',
+    name: 'María Alonso',
     role: 'Chief Clinical Officer',
     focus: 'Architects Nova’s diagnostic pathways and personally vets every clinician, guaranteeing NICE-aligned outcomes with the bedside manner of a boutique clinic.',
     img: '/images/girl-book.png',
   },
   {
-    name: 'Marcus Reed',
+    name: 'Andrés Gómez',
     role: 'Chief Technology Officer',
     focus: 'Owns the secure, AI-enabled platform that keeps assessments moving fast and confidential—so families can book, share records and get answers without friction.',
     img: '/images/penguin-kid.jpg',
   },
   {
-    name: 'Lucy Shaw',
+    name: 'Laura Bermejo',
     role: 'Chief Marketing Officer',
     focus: 'Keeps Nova visible when families start searching for answers, offering clear language, calm reassurance and the signposting they need to reach us quickly.',
     img: '/images/ChatGPT Image.png',
