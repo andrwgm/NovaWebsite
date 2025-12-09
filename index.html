@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Nova Clinics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/favicon.png" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .wrapper {
+      width: 100%;
+      height: 100%;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <picture>
+      <!-- Imagen para pantallas grandes (horizontal) -->
+      <source srcset="/public/images/staticLandpageHorizontal.png" media="(min-width: 768px)">
+      
+      <!-- Imagen para móviles (vertical) -->
+      <img src="/public/images/staticLandpageVertical.png" alt="Nova Clinics">
+    </picture>
+  </div>
+</body>
+</html>
