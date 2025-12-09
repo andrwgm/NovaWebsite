@@ -30,20 +30,20 @@ export default function Home() {
             currentTranslateY = parseFloat(match[1]);
           }
         }
-        
+
         // Get current visual positions (includes current transform)
         const gentleSlideRect = gentleSlideRef.current.getBoundingClientRect();
         const ageSectionsRect = ageSectionsRef.current.getBoundingClientRect();
-        
+
         // Convert em to pixels for calculations
         const emToPx = parseFloat(getComputedStyle(gentleSlideRef.current).fontSize);
         const currentTranslateYPx = currentTranslateY * emToPx;
-        
+
         // Calculate original position by subtracting current transform
         const gentleSlideOriginalTop = gentleSlideRect.top - currentTranslateYPx;
         const gentleSlideOriginalHeight = gentleSlideRect.height;
         const gentleSlideOriginalBottom = gentleSlideRect.bottom - currentTranslateYPx;
-        
+
         // Calculate progress based on original position
         const windowHeight = window.innerHeight;
         const elementTop = gentleSlideOriginalTop;
@@ -53,7 +53,7 @@ export default function Home() {
         // Calculate desired translateY based on scroll progress
         const desiredTranslateY = (progress * 40);
         const desiredTranslateYPx = desiredTranslateY * emToPx;
-        
+
         // Calculate where the bottom would be with the desired transform
         const gentleSlideBottomWithTransform = gentleSlideOriginalBottom + desiredTranslateYPx;
         const ageSectionsTop = ageSectionsRect.top;
@@ -105,13 +105,13 @@ export default function Home() {
         <div className='titleAndButton'>
           <div className='titles'>
             <div className='bigTitle'>
-              Skip the Wait
+              Skip the NHS Wait
               <br />
               Feel Great
             </div>
             <div className='smallTitle'>
               <div className='smallTitleBold'>
-                Book Today, Be Seen Right Away,
+                Your assessment in weeks, not years
               </div>
               <div className='smallTitleRegular'>
                 <br />
@@ -130,33 +130,35 @@ export default function Home() {
           <Image className="blueLine" src="/images/blueLine.png" />
           <div className='whyChooseUsContent' id="why-choose-us">
             <div className='whyChooseUsTitle'>
-              Why Choose Us?
+              Why People Trust Nova
             </div>
             <div className='whyChooseUsTextAndImg'>
               <div className='whyChooseUsText'>
                 <div className='whyChooseUsTextBold'>
-                  No waiting list.
+                  End the 2 year NHS wait today.
+                  {/* No waiting list. */}
                 </div>
                 <div className='whyChooseUsTextRegular'>
-                  Automatic appointment available vs +2 years on the NHS.
+                  95% of our clients are seen within 2 weeks.
+                  All of them have an outcome within 1 month.
                 </div>
                 <div className='whyChooseUsTextBold'>
-                  Expert team.
+                  Experts Who Actually Listen.
                 </div>
                 <div className='whyChooseUsTextRegular'>
-                  Child and adult psychiatrists with GMC registration and NHS experience.
+                  HCPC and BPS registered Clinical Psychologists with decades of NHS and private experience are here to support children, young people and adults every single day.
                 </div>
                 <div className='whyChooseUsTextBold'>
-                  Valid reports
+                  Outcome Letters That Change Everything
                 </div>
                 <div className='whyChooseUsTextRegular'>
-                  for education plans and work adjustments (Equality Act 2010).
+                  Instantly accepted by schools, colleges, universities, employers and the DWP – whether it confirms a diagnosis or gives you peace of mind.
                 </div>
                 <div className='whyChooseUsTextBold'>
-                  Flexibility.
+                  100% Online, Anywhere in the UK
                 </div>
                 <div className='whyChooseUsTextRegular'>
-                  Online assessment throughout the UK.
+                  No Travel, No Stress. Perfect for busy parents, anxious teens, or adults juggling work.
                 </div>
               </div>
               <div className='whyChooseUsImg'>
