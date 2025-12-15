@@ -104,7 +104,7 @@
 }
 
 .whiteBg .withHeight{
-    height: 120vh;
+    min-height: 120vh;
 }
 
 .whiteBg .blueLine img {
@@ -119,6 +119,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 0 4vw 6vw;
 }
 
 .whyChooseUsTitle {
@@ -129,24 +130,30 @@
 }
 
 .whyChooseUsTextAndImg {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: minmax(380px, 1.15fr) minmax(320px, 0.85fr);
     align-items: center;
-    justify-content: center;
+    justify-items: center;
+    gap: 3rem;
+    width: min(1180px, 100%);
 }
 
 .whyChooseUsTextAndImg img {
-    width: 30em;
+    width: 100%;
+    max-width: 29em;
 }
 
 .whyChooseUsText {
-    width: 35%;
+    width: 100%;
+    max-width: 34rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    margin-left: 3em;
-    font-size: 1.4em;
+    margin-left: 0;
+    padding: 3rem 0rem 0 4rem;
+    font-size: 1.3em;
+    row-gap: 0.25em;
 }
 
 .whyChooseUsTextBold {
@@ -169,7 +176,7 @@
 
 .isThisForMeText {
     font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
-    font-size: 1.2em;
+    font-size: 1.4em;
     width: 75%;
     margin-top: 1em;
     text-align: center;
@@ -245,19 +252,19 @@
 
 @media (max-width: 2560px) {
     .whiteBg .withHeight {
-        height: 120vh;
+        min-height: 120vh;
     }
 }
 
 @media (max-width: 1440px) {
     .whiteBg .withHeight {
-        height: 180vh;
+        min-height: 150vh;
     }
 }
 
 @media (max-width: 992px) {
     .whiteBg .withHeight {
-        height: 190vh;
+        min-height: 165vh;
     }
 
     .whyChooseUsTitle {
@@ -266,12 +273,14 @@
     }
 
     .whyChooseUsTextAndImg {
-        flex-direction: column;
+        grid-template-columns: 1fr;
+        justify-items: center;
         gap: 2rem;
+        width: min(900px, 100%);
     }
 
     .whyChooseUsText {
-        width: 90%;
+        width: 100%;
         margin-left: 0;
         align-items: center;
         text-align: center;
@@ -327,6 +336,7 @@
         width: 100%;
         font-size: 1.1em;
         gap: 0.8rem;
+        padding: 0;
     }
 
     .whyChooseUsTextBold {
@@ -347,7 +357,7 @@
     }
     
     .isThisForMeText {
-        font-size: 1em;
+        font-size: 1.225em;
     }
 
 }

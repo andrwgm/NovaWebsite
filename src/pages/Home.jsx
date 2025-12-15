@@ -172,7 +172,9 @@ export default function Home() {
               Is this for me?
             </div>
             <div className='isThisForMeText'>
-              Every child is unique, yet certain patterns of behaviour can signal that an Autism Spectrum Condition (ASC) or Attention-Deficit/Hyperactivity Disorder (ADHD) assessment could be helpful. <br /> Below you’ll find common red-flags grouped by age—use them as a guide, not a checklist. If several points resonate, our team is here to talk things through.
+              Every child, teen and adult is unique - but sometimes those little (or big) differences start to feel like something more.
+              If school is a battle, work feels overwhelming, or daily life just seems harder than it should… you’re in the right place.
+              We’ve helped thousands recognise the signs of Autism, ADHD (or both) - and discover it’s NOT a lack of effort or “bad behaviour”.
             </div>
           </div>
         </div>
