@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import './footer.css';
 
 const SOCIAL_LINKS = [
-  { icon: 'pi pi-instagram', label: 'Instagram', href: '#' },
-  { icon: 'pi pi-linkedin', label: 'LinkedIn', href: '#' },
-  { icon: 'pi pi-youtube', label: 'YouTube', href: '#' },
+  { icon: 'pi pi-instagram', label: 'Instagram', href: 'https://www.instagram.com/novaclinicsuk/' },
+  { icon: 'pi pi-linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/company/novaclinicsuk/' },
+  // { icon: 'pi pi-youtube', label: 'YouTube', href: '#' },
   { icon: 'pi pi-tiktok', label: 'TikTok', href: '#' },
 ];
 
