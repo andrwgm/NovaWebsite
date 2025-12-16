@@ -84,21 +84,23 @@ export default function HowItWorks() {
       </div>
       <div className="howItWorksContent">
         <div className="howItWorksTimeline">
-          <div className="hiw-toggle" aria-label="Select audience for timeline">
-            <button
-              type="button"
-              className={`hiw-toggle-btn${audience === 'child' ? ' active' : ''}`}
-              onClick={() => setAudience('child')}
-            >
-              Childs
-            </button>
-            <button
-              type="button"
-              className={`hiw-toggle-btn${audience === 'adult' ? ' active' : ''}`}
-              onClick={() => setAudience('adult')}
-            >
-              Adults
-            </button>
+          <div className="hiw-center">
+            <div className="hiw-toggle" aria-label="Select audience for timeline">
+              <button
+                type="button"
+                className={`hiw-toggle-btn${audience === 'child' ? ' active' : ''}`}
+                onClick={() => setAudience('child')}
+              >
+                Childs
+              </button>
+              <button
+                type="button"
+                className={`hiw-toggle-btn${audience === 'adult' ? ' active' : ''}`}
+                onClick={() => setAudience('adult')}
+              >
+                Adults
+              </button>
+            </div>
           </div>
           <Timeline
             value={items}
@@ -112,17 +114,19 @@ export default function HowItWorks() {
             content={(item) => {
               const expanded = item.idx === activeIndex;
               return (
-                <div
-                  className={`hiw-pill${expanded ? ' expanded' : ''}`}
-                  aria-expanded={expanded}
-                  onMouseEnter={() => {
-                    setActiveIndex(item.idx);
-                  }}
-                >
-                  <div className="hiw-pill-title">{item.title}</div>
-                  {item.detail && (
-                    <div className="hiw-pill-detail">{item.detail}</div>
-                  )}
+                <div className="hiw-pill-wrap">
+                  <div
+                    className={`hiw-pill${expanded ? ' expanded' : ''}`}
+                    aria-expanded={expanded}
+                    onMouseEnter={() => {
+                      setActiveIndex(item.idx);
+                    }}
+                  >
+                    <div className="hiw-pill-title">{item.title}</div>
+                    {item.detail && (
+                      <div className="hiw-pill-detail">{item.detail}</div>
+                    )}
+                  </div>
                 </div>
               );
             }}
