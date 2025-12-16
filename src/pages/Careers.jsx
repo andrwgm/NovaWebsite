@@ -112,10 +112,10 @@ export default function Careers() {
                     &quot;When we empower clinicians, we change lives — one family at a time.&quot;
                 </div>
                 <div className="introSectionContent">
-                    Nova Clinic was founded with a simple belief — that every child deserves timely, high-quality psychological care. We’re on a mission to make autism and ADHD assessments more accessible, compassionate, and clinically excellent across the UK.
+                    Nova Clinics was founded with a simple belief - that every neurodivergent individual deserves timely, high-quality support to celebrate their unique strengths. We're on a mission to make ADHD and autism assessments more accessible, compassionate, and clinically excellent across the UK.
                     <br />
                     <br />
-                    Our team combines experienced psychologists with smart technology and modern systems that remove the barriers of traditional practice. By empowering clinicians with flexibility and full support, we ensure families receive the care they need, when they need it most.
+                    Our team combines experienced psychologists with smart technology and modern systems that remove the barriers of traditional practice. By empowering clinicians with flexibility and full support, we ensure autistic and ADHD individuals - from children to adults - receive the understanding they need, when they need it most.
                     <br />
                     <br />
                     Learn more about our culture and opportunities on LinkedIn.

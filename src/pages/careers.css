@@ -21,7 +21,7 @@
     font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
     font-size: clamp(1.15rem, 2vw, 1.5rem);
     color: #344759;
-    max-width: 960px;
+    max-width: 980px;
     margin: 0;
 }
 
