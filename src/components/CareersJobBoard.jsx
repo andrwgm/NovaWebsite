@@ -75,7 +75,7 @@ export default function CareersJobBoard() {
                 <p className="careers-offers__eyebrow">Career Opportunities</p>
                 <h2 className="careers-offers__title">
                     Learn more about our culture and team experience on our{' '}
-                    <a href="https://www.linkedin.com/company/nova-clinic" target="_blank" rel="noreferrer">LinkedIn life page</a>.
+                    <a href="https://www.linkedin.com/company/novaclinicsuk/" target="_blank" rel="noreferrer">LinkedIn page</a>.
                 </h2>
             </header>
 
