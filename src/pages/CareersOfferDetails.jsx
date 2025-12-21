@@ -124,6 +124,7 @@ export default function CareersOfferDetails() {
         daysAvailable: [],
         timesAvailable: [],
         consent: false,
+        futureOpportunities: false,
         comments: ''
     });
 
@@ -445,7 +446,7 @@ export default function CareersOfferDetails() {
                                 </div>
                             </article>
                             <article className="offer-conclusion">
-                                <p className="offer-details__conclusion">{offer.conclusion}</p>
+                                <p className="offer-details__conclusion">Nova Clinics is an equal opportunity employer. We value diversity in all its forms and are committed to fostering an inclusive, respectful, and supportive environment for everyone who works with us. We believe that different backgrounds, perspectives, and experiences strengthen our work and help us deliver better outcomes for the families and clinicians we support.</p>
                             </article>
                         </TabPanel>
                         <TabPanel header="Application" disabled={offer.status !== 'open'}>
@@ -555,7 +556,7 @@ export default function CareersOfferDetails() {
                                                     customUpload
                                                     uploadHandler={(event) => handleFileUpload('coverLetter', event)}
                                                     className="offer-application__upload"
-                                                    
+
                                                 />
                                                 {formData.coverLetter && (
                                                     <div className="offer-application__file-chip">
@@ -654,7 +655,20 @@ export default function CareersOfferDetails() {
                                     </section>
 
                                     <section className="offer-application__section">
-                                        <p className="offer-application__section-title">Final section</p>
+                                        <div className="offer-application__field">
+                                            <label htmlFor="application-comments">Additional comments (optional)</label>
+                                            <InputTextarea
+                                                id="application-comments"
+                                                rows={4}
+                                                value={formData.comments}
+                                                onChange={(e) => updateField('comments', e.target.value)}
+                                                placeholder="Anything else you’d like us to know that’s relevant to your application?"
+                                            />
+                                        </div>
+                                    </section>
+
+                                    <section className="offer-application__section">
+                                        <p className="offer-application__section-title">Legal information and consent</p>
                                         <div className="offer-application__consent">
                                             <Checkbox
                                                 inputId="application-consent"
@@ -663,24 +677,23 @@ export default function CareersOfferDetails() {
                                                 required
                                             />
                                             <label htmlFor="application-consent">
-                                                I consent to Nova Clinic processing and retaining my data to manage recruitment, conduct reference/visa
-                                                checks, and meet GDPR and related privacy regulations.
+                                                I have read and understand how Nova Clinics will process my personal data for recruitment purposes, as explained in the <a href="/privacy-policy">Privacy Policy</a>.
                                             </label>
                                         </div>
-                                        <div className="offer-application__field">
-                                            <label htmlFor="application-comments">Additional comments (optional)</label>
-                                            <InputTextarea
-                                                id="application-comments"
-                                                rows={4}
-                                                value={formData.comments}
-                                                onChange={(e) => updateField('comments', e.target.value)}
-                                                placeholder="Anything else you'd like us to know?"
+                                        <div className="offer-application__consent">
+                                            <Checkbox
+                                                inputId="application-future-opportunities"
+                                                checked={formData.futureOpportunities}
+                                                onChange={(e) => updateField('futureOpportunities', e.checked)}
                                             />
+                                            <label htmlFor="application-future-opportunities">
+                                                I consent to Nova Clinics retaining my application details for consideration for future opportunities.
+                                            </label>
                                         </div>
                                     </section>
 
                                     <div className="offer-application__actions">
-                                        <Button type="submit" label="Submit application" className="offer-application__submit p-button-sm" icon="pi pi-send" />
+                                        <Button type="submit" label="Submit application" className="offer-application__submit p-button-sm" icon="pi pi-send" disabled={!formData.consent || !formData.futureOpportunities} />
                                     </div>
                                 </form>
                             </article>
