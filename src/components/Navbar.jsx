@@ -6,7 +6,7 @@ import { Image } from 'primereact/image';
 import { Button } from 'primereact/button';
 import { requestContactModal } from '../utils/contactModalService';
 
-export default function Navbar({ activeIndex, onTabChange }) {
+export default function Navbar() {
   const handleContactClick = () => {
     requestContactModal();
   };
