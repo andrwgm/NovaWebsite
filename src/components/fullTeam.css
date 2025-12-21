@@ -3,7 +3,6 @@
     flex-direction: column;
     gap: 2.5rem;
     padding: clamp(2rem, 4vw, 3.5rem) clamp(1.5rem, 5vw, 4rem);
-    background: linear-gradient(180deg, #F8FCFF 0%, #FFFFFF 65%);
     border-radius: 2rem;
 }
 
