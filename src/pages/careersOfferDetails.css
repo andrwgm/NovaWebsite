@@ -537,27 +537,28 @@
   padding: 3rem;
   border-radius: 20px;
   text-align: center;
-  box-shadow: 0 35px 70px rgba(15, 23, 42, 0.08);
+  box-shadow: none;
   max-width: 480px;
 }
 
-.offer-details__eyebrow {
-  font-family: 'LemonMilk', 'Arial Narrow Bold', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.28em;
-  font-size: 0.75rem;
-  color: #858aa2;
+.offer-details__missing-title {
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: 2rem;
   margin: 0 0 1rem 0;
+  color: #1d2337;
 }
 
-.offer-details__missing-card h1 {
+.offer-details__missing-copy {
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  color: #2d3b55;
+  font-size: 1.05rem;
+  line-height: 1.6;
   margin-bottom: 1rem;
 }
 
-.offer-details__back.p-button {
-  margin-top: 1.5rem;
-  background: #0f172a;
-  border: none;
+.offer-details__back-link--inline {
+  margin-top: 1.25rem;
+  justify-content: center;
 }
 
 @media (max-width: 1100px) {

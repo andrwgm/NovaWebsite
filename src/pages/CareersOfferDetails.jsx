@@ -1,4 +1,4 @@
-﻿import React, { Fragment, useMemo, useRef, useState } from 'react';
+﻿import React, { Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Chip } from 'primereact/chip';
 import { TabView, TabPanel } from 'primereact/tabview';
@@ -11,7 +11,8 @@ import { RadioButton } from 'primereact/radiobutton';
 import { FileUpload } from 'primereact/fileupload';
 import { MultiSelect } from 'primereact/multiselect';
 import { Checkbox } from 'primereact/checkbox';
-import careerOffers from '../data/careerOffers.json';
+import { Skeleton } from 'primereact/skeleton';
+import { JOB_OFFERS_ENDPOINT } from '../utils/api';
 import './careersOfferDetails.css';
 
 const STATUS_LABELS = {
@@ -101,6 +102,9 @@ export default function CareersOfferDetails() {
     const navigate = useNavigate();
     const cvUploadRef = useRef(null);
     const coverUploadRef = useRef(null);
+    const [offers, setOffers] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
@@ -123,18 +127,53 @@ export default function CareersOfferDetails() {
         comments: ''
     });
 
+    useEffect(() => {
+        let isMounted = true;
+
+        const fetchOffer = async () => {
+            setIsLoading(true);
+            setError(null);
+            try {
+                const response = await fetch(JOB_OFFERS_ENDPOINT);
+                if (!response.ok) {
+                    throw new Error(`Request failed with status ${response.status}`);
+                }
+
+                const payload = await response.json();
+                if (isMounted) {
+                    setOffers(payload.data ?? []);
+                }
+            } catch (err) {
+                console.error('Failed to load job offer', err);
+                if (isMounted) {
+                    setError('No se pudo cargar la oferta. Inténtalo más tarde.');
+                    setOffers([]);
+                }
+            } finally {
+                if (isMounted) {
+                    setIsLoading(false);
+                }
+            }
+        };
+
+        fetchOffer();
+        return () => {
+            isMounted = false;
+        };
+    }, []);
+
     const offer = useMemo(() => {
         if (!slug) return null;
         const match = slug.match(/(.+)-(\d{4}-\d{2}-\d{2})$/);
         if (match) {
             const [, id, publishedDate] = match;
             return (
-                careerOffers.find((item) => item.id === id && item.publishedDate === publishedDate) ||
-                careerOffers.find((item) => item.id === id)
+                offers.find((item) => item.id === id && item.publishedDate === publishedDate) ||
+                offers.find((item) => item.id === id)
             );
         }
-        return careerOffers.find((item) => item.id === slug);
-    }, [slug]);
+        return offers.find((item) => item.id === slug);
+    }, [offers, slug]);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -160,48 +199,37 @@ export default function CareersOfferDetails() {
         updateField(field, null);
     };
 
-    if (!offer) {
-        return (
-            <section className="offer-details offer-details--missing">
-                <div className="offer-details__missing-card">
-                    <p className="offer-details__eyebrow">Careers</p>
-                    <h1>Offer not found</h1>
-                    <p>We couldn't find that opportunity. Head back to explore every open role.</p>
-                    <Button
-                        label="Back to careers"
-                        icon="pi pi-arrow-left"
-                        className="offer-details__back"
-                        onClick={() => navigate('/careers')}
-                    />
-                </div>
-            </section>
-        );
-    }
+    const formattedDate = useMemo(() => {
+        if (!offer?.publishedDate) return '';
+        return new Date(offer.publishedDate).toLocaleDateString('en-GB', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+        });
+    }, [offer]);
 
-    const formattedDate = new Date(offer.publishedDate).toLocaleDateString('en-GB', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric'
-    });
-
-    const detailItems = [
-        { label: 'Location', value: offer.location },
-        { label: 'Location Type', value: offer.locationType },
-        { label: 'Employment Type', value: offer.contractType },
-        { label: 'Department', value: offer.department },
-        { label: 'Compensation', value: offer.compensation },
-        { label: 'Status', value: offer.status, type: 'status' },
-        { label: 'Published', value: formattedDate }
-    ].filter((item) => Boolean(item.value));
+    const detailItems = useMemo(() => {
+        if (!offer) return [];
+        return [
+            { label: 'Location', value: offer.location },
+            { label: 'Location Type', value: offer.locationType },
+            { label: 'Employment Type', value: offer.contractType },
+            { label: 'Department', value: offer.department },
+            { label: 'Compensation', value: offer.compensation },
+            { label: 'Status', value: offer.status, type: 'status' },
+            { label: 'Published', value: formattedDate }
+        ].filter((item) => Boolean(item.value));
+    }, [offer, formattedDate]);
 
     const plainTitle = useMemo(() => {
-        const stripped = offer.title.replace(/\s*\(.*?\)\s*/g, '').trim();
-        return stripped || offer.title;
-    }, [offer.title]);
+        const title = offer?.title || '';
+        const stripped = title.replace(/\s*\(.*?\)\s*/g, '').trim();
+        return stripped || title;
+    }, [offer]);
 
-    const overviewHighlights = offer.overviewHighlights || [];
-    const responsibilities = offer.responsibilities || [];
-    const requirements = offer.requirements || [];
+    const overviewHighlights = offer?.overviewHighlights || [];
+    const responsibilities = offer?.responsibilities || [];
+    const requirements = offer?.requirements || [];
 
     const handleBackToCareers = () => {
         navigate('/careers', { state: { scrollTo: 'offers' } });
@@ -226,6 +254,123 @@ export default function CareersOfferDetails() {
             </div>
         </div>
     );
+
+    const renderSkeleton = () => (
+        <section className="offer-details">
+            <div className="offer-details__grid">
+                <aside className="offer-details__meta">
+                    <button type="button" className="offer-details__back-link" onClick={handleBackToCareers}>
+                        <i className="pi pi-arrow-left" aria-hidden="true"></i>
+                        Back to open roles
+                    </button>
+                    <h1 className="offer-details__title">Loading role...</h1>
+
+                    <div className="offer-details__attributes">
+                        {[
+                            { label: 'Location' },
+                            { label: 'Location Type' },
+                            { label: 'Employment Type' },
+                            { label: 'Department' }
+                        ].map((item, idx) => (
+                            <Fragment key={item.label}>
+                                <div className="offer-details__attribute">
+                                    <p className="offer-details__attribute-label">{item.label}</p>
+                                    <p className="offer-details__attribute-value">
+                                        <Skeleton width="70%" />
+                                    </p>
+                                </div>
+                                {idx < 3 && <span className="offer-details__rule" />}
+                            </Fragment>
+                        ))}
+                    </div>
+                </aside>
+
+                <div className="offer-details__content">
+                    <TabView className="offer-details__tabs" panelContainerClassName="offer-details__panels">
+                        <TabPanel header="Overview">
+                            <article className="offer-overview">
+                                <p className="offer-details__lede">Join Nova Clinic — redefining psychological assessments for children.</p>
+                                <p className="offer-details__description">
+                                    <Skeleton width="100%" />
+                                    <Skeleton width="95%" />
+                                    <Skeleton width="85%" />
+                                </p>
+
+                                <div className="offer-overview__grid">
+                                    {[
+                                        'Why join Nova Clinic?',
+                                        "What you'll do",
+                                        "What we're looking for"
+                                    ].map((heading) => (
+                                        <section key={heading}>
+                                            <h3>{heading}</h3>
+                                            <ul>
+                                                {[1, 2, 3].map((item) => (
+                                                    <li key={item}>
+                                                        <Skeleton width={`${80 - item * 10}%`} />
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </section>
+                                    ))}
+                                </div>
+                            </article>
+                            <article className="offer-conclusion">
+                                <p className="offer-details__conclusion">
+                                    <Skeleton width="90%" />
+                                    <Skeleton width="85%" />
+                                </p>
+                            </article>
+                        </TabPanel>
+                        <TabPanel header="Application" disabled>
+                            <article className="offer-application-card" id="offer-application">
+                                <form className="offer-application">
+                                    <section className="offer-application__section">
+                                        <p className="offer-application__section-title">Personal details</p>
+                                        <div className="offer-application__grid">
+                                            {[1, 2, 3, 4].map((idx) => (
+                                                <div className="offer-application__field" key={idx}>
+                                                    <Skeleton width="100%" height="3rem" />
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </section>
+                                </form>
+                            </article>
+                        </TabPanel>
+                    </TabView>
+                </div>
+            </div>
+        </section>
+    );
+
+    if (isLoading) {
+        return renderSkeleton();
+    }
+
+    if (error || !offer) {
+        return (
+            <section className="offer-details offer-details--missing">
+                <div className="offer-details__missing-card">
+                    <h1 className="offer-details__missing-title">
+                        {error ? 'No se pudo cargar la oferta' : 'Offer not found'}
+                    </h1>
+                    <p className="offer-details__missing-copy">
+                        {error ||
+                            "We couldn't find that opportunity. Head back to explore every open role."}
+                    </p>
+                    <button
+                        type="button"
+                        className="offer-details__back-link offer-details__back-link--inline"
+                        onClick={() => navigate('/careers')}
+                    >
+                        <i className="pi pi-arrow-left" aria-hidden="true"></i>
+                        Back to open roles
+                    </button>
+                </div>
+            </section>
+        );
+    }
 
     return (
         <section className="offer-details">
