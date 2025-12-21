@@ -1,24 +1,65 @@
-import React, { useMemo, useState, useCallback } from 'react';
+import React, { useMemo, useState, useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { InputText } from 'primereact/inputtext';
 import { Dropdown } from 'primereact/dropdown';
-import careerOffers from '../data/careerOffers.json';
+import { JOB_OFFERS_ENDPOINT } from '../utils/api';
 import './careersJobBoard.css';
 
 export default function CareersJobBoard() {
     const [searchQuery, setSearchQuery] = useState('');
     const [departmentFilter, setDepartmentFilter] = useState(null);
+    const [offers, setOffers] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
     const navigate = useNavigate();
 
-    const departments = useMemo(() => {
-        const uniqueDepartments = Array.from(new Set(careerOffers.map((offer) => offer.department)));
-        return uniqueDepartments.map((dept) => ({ label: dept, value: dept }));
+    useEffect(() => {
+        let isMounted = true;
+
+        const fetchOffers = async () => {
+            setIsLoading(true);
+            setError(null);
+
+            try {
+                const response = await fetch(JOB_OFFERS_ENDPOINT);
+                if (!response.ok) {
+                    throw new Error(`Request failed with status ${response.status}`);
+                }
+
+                const payload = await response.json();
+                if (isMounted) {
+                    setOffers(payload.data ?? []);
+                }
+            } catch (err) {
+                console.error('Failed to load job offers', err);
+                if (isMounted) {
+                    setError('No se pudieron cargar las ofertas ahora mismo.');
+                    setOffers([]);
+                }
+            } finally {
+                if (isMounted) {
+                    setIsLoading(false);
+                }
+            }
+        };
+
+        fetchOffers();
+        return () => {
+            isMounted = false;
+        };
     }, []);
 
+    const departments = useMemo(() => {
+        const uniqueDepartments = Array.from(
+            new Set(offers.map((offer) => offer.department).filter(Boolean))
+        );
+        return uniqueDepartments.map((dept) => ({ label: dept, value: dept }));
+    }, [offers]);
+
     const filteredOffers = useMemo(() => {
-        return careerOffers.filter((offer) => {
+        return offers.filter((offer) => {
             const matchesDepartment = departmentFilter ? offer.department === departmentFilter : true;
             if (!matchesDepartment) return false;
 
@@ -32,9 +73,9 @@ export default function CareersJobBoard() {
                 offer.contractType,
                 offer.shortDescription,
                 offer.compensation
-            ].some((field) => field.toLowerCase().includes(needle));
+            ].some((field) => String(field ?? '').toLowerCase().includes(needle));
         });
-    }, [departmentFilter, searchQuery]);
+    }, [offers, departmentFilter, searchQuery]);
 
     const handleViewOffer = useCallback((offer) => {
         const slug = offer.publishedDate ? `${offer.id}-${offer.publishedDate}` : offer.id;
@@ -67,7 +108,9 @@ export default function CareersJobBoard() {
         </div>
     );
 
-    const jobCountLabel = `${filteredOffers.length} ${filteredOffers.length === 1 ? 'Job' : 'Jobs'}`;
+    const jobCountLabel = isLoading
+        ? 'Loading...'
+        : `${filteredOffers.length} ${filteredOffers.length === 1 ? 'Job' : 'Jobs'}`;
 
     return (
         <section className="careers-offers">
@@ -108,7 +151,10 @@ export default function CareersJobBoard() {
                 value={filteredOffers}
                 dataKey="id"
                 className="careers-offers__table"
-                emptyMessage="No openings match that search just yet."
+                emptyMessage={
+                    error ||
+                    (isLoading ? 'Loading job openings...' : 'No openings match that search just yet.')
+                }
             >
                 <Column body={jobTemplate} />
             </DataTable>
