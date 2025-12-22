@@ -379,6 +379,10 @@
   border-color: #9ECDC9;
 }
 
+.p-dropdown-filter{
+  border-radius: 2em;
+}
+
 .offer-application .p-inputtextarea {
   border-radius: 18px;
   padding: 1rem 1.25rem;
@@ -397,6 +401,7 @@
 .offer-application .p-multiselect .p-multiselect-label {
   padding: 0;
   color: #2d3b55;
+  border: none;
 }
 
 .offer-application .p-inputtext:focus,
