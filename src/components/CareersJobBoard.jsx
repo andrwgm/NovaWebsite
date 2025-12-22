@@ -35,7 +35,7 @@ export default function CareersJobBoard() {
             } catch (err) {
                 console.error('Failed to load job offers', err);
                 if (isMounted) {
-                    setError('No se pudieron cargar las ofertas ahora mismo.');
+                    setError('Failed to load job offers.');
                     setOffers([]);
                 }
             } finally {
