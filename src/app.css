@@ -40,6 +40,20 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'TimesNewRomanMTCondensed';
+    src: url('/fonts/Times New Roman MT Condensed Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TimesNewRomanMTCondensedItalic';
+    src: url('/fonts/Times New Roman MT Condensed Italic.otf') format('opentype');
+    font-weight: normal;
+    font-style: italic;
+}
+
 body{
     margin: 0;
     -webkit-tap-highlight-color: transparent;
