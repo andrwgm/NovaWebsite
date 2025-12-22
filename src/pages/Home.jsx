@@ -99,15 +99,16 @@ export default function Home() {
   return (
     <div className="mainContent">
       <div className='bgContent'>
-        <Image src="/images/bg-pic-1.jpg" />
+        <Image src="/images/hands-background.png" />
       </div>
       <div className="topContent">
         <div className='titleAndButton'>
           <div className='titles'>
             <div className='bigTitle'>
-              Skip the NHS Wait
-              <br />
-              Feel Great
+              Skip the NHS wait
+              <div className='bigTitleItalic'>
+                Feel Great
+              </div>
             </div>
             <div className='smallTitle'>
               <div className='smallTitleBold'>
@@ -122,21 +123,23 @@ export default function Home() {
           <div className='bookButton'>
             <Button onClick={requestContactModal}>
               <Image src="/images/bookButton.png" />
-              BOOK IN 60
+              Contact us
             </Button>
           </div>
         </div>
         <div className='whiteBg withHeight'>
-          <Image className="blueLine" src="/images/blueLine.png" />
+          {/* <Image className="blueLine" src="/images/blueLine.png" /> */}
           <div className='whyChooseUsContent' id="why-choose-us">
             <div className='whyChooseUsTitle'>
-              Why People Trust Nova
+              Why people
+              <div className='whyChooseUsTitleItalic'>
+                trust Nova?
+              </div>
             </div>
             <div className='whyChooseUsTextAndImg'>
               <div className='whyChooseUsText'>
                 <div className='whyChooseUsTextBold'>
                   End the 2 year NHS wait today.
-                  {/* No waiting list. */}
                 </div>
                 <div className='whyChooseUsTextRegular'>
                   95% of our clients are seen within 2 weeks.
@@ -146,13 +149,14 @@ export default function Home() {
                   Experts Who Actually Listen.
                 </div>
                 <div className='whyChooseUsTextRegular'>
-                  HCPC and BPS registered Clinical Psychologists with decades of NHS and private experience are here to support children, young people and adults every single day.
+                  Experienced HCPC and BPS registered Clinical Psychologists offering compassionate support for all ages, every day.
                 </div>
                 <div className='whyChooseUsTextBold'>
                   Outcome Letters That Change Everything
                 </div>
                 <div className='whyChooseUsTextRegular'>
-                  Instantly accepted by schools, colleges, universities, employers and the DWP – whether it confirms a diagnosis or gives you peace of mind.
+                  Instantly accepted by schools, colleges, universities, employers and the DWP.
+                   {/* – whether it confirms a diagnosis or gives you peace of mind. */}
                 </div>
                 <div className='whyChooseUsTextBold'>
                   100% Online, Anywhere in the UK
@@ -162,14 +166,17 @@ export default function Home() {
                 </div>
               </div>
               <div className='whyChooseUsImg'>
-                <Image src="/images/flower-kid.png" />
+                <Image src="/images/beach-kid.png" />
               </div>
             </div>
           </div>
           <Image className="curveShadow" src="/images/curveShadow.png" />
           <div className='whyChooseUsContent gentleSlide' ref={gentleSlideRef} id="is-this-for-me">
             <div className='isThisForMeTitle'>
-              Is this for me?
+              Is this
+              <div className='isThisForMeTitleItalic'>
+                for me?
+              </div>
             </div>
             <div className='isThisForMeText'>
               Every child, teen and adult is unique - but sometimes those little (or big) differences start to feel like something more.

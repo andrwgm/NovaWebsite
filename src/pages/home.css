@@ -24,7 +24,7 @@
 
 .titleAndButton {
     display: flex;
-    background-color: #34475961;
+    background-color: #2d2f3138;
     padding-bottom: 4em;
 }
 
@@ -37,12 +37,18 @@
 .titleAndButton .bigTitle {
     width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: flex-start;
-    font-family: 'LemonMilk', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
     font-size: 5em;
     color: white;
     padding-left: 3rem;
     padding-top: 3rem;
+}
+.titleAndButton .bigTitle .bigTitleItalic {
+    font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman';
+    margin-top: -2rem;
+    margin-left: 1rem;
 }
 
 .titleAndButton .smallTitle {
@@ -52,7 +58,7 @@
     align-items: flex-start;
     color: white;
     padding-left: 3rem;
-    padding-top: 1rem;
+    padding-top: 3rem;
 }
 
 .titleAndButton .smallTitle .smallTitleBold {
@@ -86,8 +92,8 @@
     border: none;
     transition: all 0.2s ease;
     gap: 0.4em;
-    font-family: 'LemonMilk', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 1.35em;
+    font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman';
+    font-size: 1.8em;
 }
 
 .titleAndButton .bookButton .p-button:hover {
@@ -107,11 +113,11 @@
     min-height: 120vh;
 }
 
-.whiteBg .blueLine img {
+/* .whiteBg .blueLine img {
     margin-bottom: -55em;
     position: absolute;
     width: 38vw;
-}
+} */
 
 .whyChooseUsContent {
     position: relative;
@@ -123,10 +129,16 @@
 }
 
 .whyChooseUsTitle {
-    font-family: 'LemonMilk', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 4em;
+    font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
+    font-size: 5em;
     color: #344759;
-    padding: 1.5em 0 0.5em;
+    padding: 0.5em 0;
+}
+
+.whyChooseUsTitleItalic {
+    font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman';
+    padding-left: 10rem;
+    margin-top: -2rem;
 }
 
 .whyChooseUsTextAndImg {
@@ -136,22 +148,23 @@
     justify-items: center;
     gap: 3rem;
     width: min(1180px, 100%);
+    padding-top: 1em;
 }
 
 .whyChooseUsTextAndImg img {
     width: 100%;
-    max-width: 29em;
+    max-width: 23em;
+    border-radius: 5em;
 }
 
 .whyChooseUsText {
     width: 100%;
-    max-width: 34rem;
+    max-width: 40rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
     margin-left: 0;
-    padding: 3rem 0rem 0 4rem;
     font-size: 1.3em;
     row-gap: 0.25em;
 }
@@ -168,19 +181,24 @@
 }
 
 .isThisForMeTitle {
-    font-family: 'LemonMilkLight', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 3em;
-    font-weight: 100;
+    font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
+    font-size: 5em;
     color: #344759;
+}
+
+.isThisForMeTitleItalic {
+    font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman';
+    padding-left: 4rem;
+    margin-top: -2rem;
 }
 
 .isThisForMeText {
     font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
     font-size: 1.4em;
-    width: 75%;
-    margin-top: 1em;
-    text-align: center;
-    padding: 0 5% 10% 5%;
+    width: 80%;
+    margin-top: 2em;
+    text-align: justify;
+    padding: 0 5% 5% 5%;
 }
 
 .whiteBg .curveShadow img {
@@ -223,8 +241,8 @@
 }
 
 .stillHaveQuestionsTitle {
-    font-family: 'LemonMilkLight', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 3em;
+    font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman';
+    font-size: 4em;
     color: #344759;
     text-align: center;
 }
