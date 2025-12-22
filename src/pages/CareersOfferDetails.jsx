@@ -12,7 +12,8 @@ import { FileUpload } from 'primereact/fileupload';
 import { MultiSelect } from 'primereact/multiselect';
 import { Checkbox } from 'primereact/checkbox';
 import { Skeleton } from 'primereact/skeleton';
-import { JOB_OFFERS_ENDPOINT } from '../utils/api';
+import { JOB_APPLICATIONS_ENDPOINT, JOB_OFFERS_ENDPOINT } from '../utils/api';
+import ApplicationSuccessModal from '../components/ApplicationSuccessModal';
 import './careersOfferDetails.css';
 
 const STATUS_LABELS = {
@@ -105,6 +106,9 @@ export default function CareersOfferDetails() {
     const [offers, setOffers] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitError, setSubmitError] = useState(null);
+    const [submitSuccess, setSubmitSuccess] = useState(false);
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
@@ -176,8 +180,88 @@ export default function CareersOfferDetails() {
         return offers.find((item) => item.id === slug);
     }, [offers, slug]);
 
-    const handleSubmit = (event) => {
+    const booleanFromYesNo = (value) => {
+        if (value === 'yes') return true;
+        if (value === 'no') return false;
+        return null;
+    };
+
+    const handleSubmit = async (event) => {
         event.preventDefault();
+        setSubmitError(null);
+        setSubmitSuccess(false);
+
+        if (!offer?.id || !offer?.publishedDate) {
+            setSubmitError('Offer reference is missing or invalid.');
+            return;
+        }
+
+        if (!formData.cv) {
+            setSubmitError('Please upload your CV before submitting.');
+            return;
+        }
+
+        const fd = new FormData();
+        fd.append('job_post_slug', offer.id);
+        fd.append('job_post_published_date', offer.publishedDate);
+        fd.append('full_name', formData.fullName.trim());
+        fd.append('email', formData.email.trim());
+        if (formData.phone) fd.append('phone', formData.phone);
+        if (formData.country) fd.append('country_of_residence', formData.country);
+
+        const addBool = (field, value) => {
+            const parsed = booleanFromYesNo(value);
+            if (parsed === null) return;
+            fd.append(field, String(parsed));
+        };
+
+        addBool('right_to_work_uk', formData.rightToWork);
+        addBool('requires_visa_sponsorship', formData.visaRequired);
+
+        fd.append('cv_file', formData.cv);
+        if (formData.coverLetter) fd.append('cover_letter_file', formData.coverLetter);
+        if (formData.linkedIn) fd.append('linkedin_url', formData.linkedIn);
+
+        addBool('hcpc_registered', formData.registration);
+        if (formData.registrationNumber) fd.append('hcpc_number', formData.registrationNumber);
+        addBool('experience_with_children', formData.experienceChildren);
+        addBool('experience_autism_or_adhd_assessments', formData.experienceAssessments);
+        addBool('professional_indemnity_insurance', formData.indemnityInsurance);
+        addBool('dbs_up_to_date', formData.dbs);
+
+        fd.append('gdpr_consent', String(Boolean(formData.consent)));
+        fd.append('future_opportunities_consent', String(Boolean(formData.futureOpportunities)));
+
+        if (formData.daysAvailable?.length) {
+            fd.append('days_available', JSON.stringify(formData.daysAvailable));
+        }
+        if (formData.timesAvailable?.length) {
+            fd.append('time_slots_available', JSON.stringify(formData.timesAvailable));
+        }
+
+        if (formData.comments) {
+            fd.append('additional_comments', formData.comments);
+        }
+
+        setIsSubmitting(true);
+        try {
+            const response = await fetch(JOB_APPLICATIONS_ENDPOINT, {
+                method: 'POST',
+                body: fd
+            });
+
+            if (!response.ok) {
+                const message = `Request failed with status ${response.status}`;
+                throw new Error(message);
+            }
+
+            setSubmitSuccess(true);
+        } catch (err) {
+            console.error('Failed to submit application', err);
+            setSubmitError('No se pudo enviar la solicitud. Inténtalo de nuevo.');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const updateField = (field, value) => {
@@ -190,6 +274,7 @@ export default function CareersOfferDetails() {
     const handleFileUpload = (field, event) => {
         const file = event.files?.[0] || null;
         updateField(field, file);
+
         if (event.options && typeof event.options.clear === 'function') {
             event.options.clear();
         }
@@ -484,6 +569,7 @@ export default function CareersOfferDetails() {
                                                     value={formData.phone}
                                                     onChange={(e) => updateField('phone', e.value)}
                                                     placeholder="+44 7123 456789"
+                                                    required
                                                 />
                                             </div>
                                             <div className="offer-application__field">
@@ -497,6 +583,7 @@ export default function CareersOfferDetails() {
                                                     filter
                                                     className="offer-application__dropdown"
                                                     panelClassName="offer-application__dropdown-panel"
+                                                    required
                                                 />
                                             </div>
                                         </div>
@@ -528,6 +615,7 @@ export default function CareersOfferDetails() {
                                                     customUpload
                                                     uploadHandler={(event) => handleFileUpload('cv', event)}
                                                     className="offer-application__upload"
+                                                    required
                                                 />
                                                 {formData.cv && (
                                                     <div className="offer-application__file-chip">
@@ -693,7 +781,23 @@ export default function CareersOfferDetails() {
                                     </section>
 
                                     <div className="offer-application__actions">
-                                        <Button type="submit" label="Submit application" className="offer-application__submit p-button-sm" icon="pi pi-send" disabled={!formData.consent || !formData.futureOpportunities} />
+                                        {submitError && (
+                                            <p className="offer-application__status offer-application__status--error">{submitError}</p>
+                                        )}
+                                        <Button
+                                            type="submit"
+                                            label={isSubmitting ? 'Submitting...' : 'Submit application'}
+                                            className="offer-application__submit p-button-sm"
+                                            icon="pi pi-send"
+                                            disabled={!formData.consent || isSubmitting || !formData.cv}
+                                        />
+                                        <Button
+                                            type="button"
+                                            label={'Test success modal'}
+                                            className="offer-application__submit p-button-sm"
+                                            icon="pi pi-send"
+                                            onClick={() => setSubmitSuccess(!submitSuccess)}
+                                        />
                                     </div>
                                 </form>
                             </article>
@@ -701,6 +805,11 @@ export default function CareersOfferDetails() {
                     </TabView>
                 </div>
             </div>
+            <ApplicationSuccessModal
+                visible={submitSuccess}
+                onClose={() => setSubmitSuccess(false)}
+                message="Application submitted successfully."
+            />
         </section>
     );
 }

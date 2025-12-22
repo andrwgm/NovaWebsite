@@ -516,6 +516,19 @@
   margin-top: 0.5rem;
 }
 
+.offer-application__status {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+}
+
+.offer-application__status--error {
+  color: #c53030;
+}
+
+.offer-application__status--success {
+  color: #047857;
+}
+
 .offer-application__submit.p-button {
   background: #9ECDC9;
   color: #2D3B55;
