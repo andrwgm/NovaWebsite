@@ -13,6 +13,7 @@ import { MultiSelect } from 'primereact/multiselect';
 import { Checkbox } from 'primereact/checkbox';
 import { Skeleton } from 'primereact/skeleton';
 import { JOB_APPLICATIONS_ENDPOINT, JOB_OFFERS_ENDPOINT } from '../utils/api';
+import { COUNTRY_OPTIONS } from '../utils/countries';
 import ApplicationSuccessModal from '../components/ApplicationSuccessModal';
 import './careersOfferDetails.css';
 
@@ -20,66 +21,6 @@ const STATUS_LABELS = {
     open: 'Open',
     closed: 'Closed'
 };
-
-const COUNTRY_OPTIONS = [
-    { label: 'United Kingdom', value: 'united-kingdom' },
-    { label: 'Argentina', value: 'argentina' },
-    { label: 'Australia', value: 'australia' },
-    { label: 'Austria', value: 'austria' },
-    { label: 'Belgium', value: 'belgium' },
-    { label: 'Brazil', value: 'brazil' },
-    { label: 'Bulgaria', value: 'bulgaria' },
-    { label: 'Canada', value: 'canada' },
-    { label: 'Chile', value: 'chile' },
-    { label: 'China', value: 'china' },
-    { label: 'Colombia', value: 'colombia' },
-    { label: 'Croatia', value: 'croatia' },
-    { label: 'Czech Republic', value: 'czech-republic' },
-    { label: 'Denmark', value: 'denmark' },
-    { label: 'Estonia', value: 'estonia' },
-    { label: 'Finland', value: 'finland' },
-    { label: 'France', value: 'france' },
-    { label: 'Germany', value: 'germany' },
-    { label: 'Greece', value: 'greece' },
-    { label: 'Hungary', value: 'hungary' },
-    { label: 'India', value: 'india' },
-    { label: 'Indonesia', value: 'indonesia' },
-    { label: 'Ireland', value: 'ireland' },
-    { label: 'Israel', value: 'israel' },
-    { label: 'Italy', value: 'italy' },
-    { label: 'Japan', value: 'japan' },
-    { label: 'Kenya', value: 'kenya' },
-    { label: 'Latvia', value: 'latvia' },
-    { label: 'Lithuania', value: 'lithuania' },
-    { label: 'Luxembourg', value: 'luxembourg' },
-    { label: 'Malaysia', value: 'malaysia' },
-    { label: 'Mexico', value: 'mexico' },
-    { label: 'Morocco', value: 'morocco' },
-    { label: 'Netherlands', value: 'netherlands' },
-    { label: 'New Zealand', value: 'new-zealand' },
-    { label: 'Nigeria', value: 'nigeria' },
-    { label: 'Norway', value: 'norway' },
-    { label: 'Pakistan', value: 'pakistan' },
-    { label: 'Peru', value: 'peru' },
-    { label: 'Philippines', value: 'philippines' },
-    { label: 'Poland', value: 'poland' },
-    { label: 'Portugal', value: 'portugal' },
-    { label: 'Romania', value: 'romania' },
-    { label: 'Saudi Arabia', value: 'saudi-arabia' },
-    { label: 'Singapore', value: 'singapore' },
-    { label: 'South Africa', value: 'south-africa' },
-    { label: 'South Korea', value: 'south-korea' },
-    { label: 'Spain', value: 'spain' },
-    { label: 'Sweden', value: 'sweden' },
-    { label: 'Switzerland', value: 'switzerland' },
-    { label: 'Thailand', value: 'thailand' },
-    { label: 'Turkey', value: 'turkey' },
-    { label: 'United Arab Emirates', value: 'united-arab-emirates' },
-    { label: 'United States', value: 'united-states' },
-    { label: 'Uruguay', value: 'uruguay' },
-    { label: 'Vietnam', value: 'vietnam' },
-    { label: 'Other', value: 'other' }
-];
 
 const DAY_OPTIONS = [
     'Monday',
