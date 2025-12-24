@@ -42,13 +42,13 @@
     align-items: flex-start;
     font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
     font-size: 5em;
-    line-height: 1.15;
+    line-height: 0.8;
     color: white;
     padding-left: 3rem;
 }
 .titleAndButton .bigTitle .bigTitleItalic {
     font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman';
-    margin-top: -2rem;
+    /* margin-top: -2rem; */
     margin-left: 1rem;
 }
 
@@ -113,12 +113,6 @@
 .whiteBg .withHeight{
     min-height: 120vh;
 }
-
-/* .whiteBg .blueLine img {
-    margin-bottom: -55em;
-    position: absolute;
-    width: 38vw;
-} */
 
 .whyChooseUsContent {
     position: relative;
@@ -293,7 +287,6 @@
     }
 
     .titleAndButton .bigTitle .bigTitleItalic {
-        margin-top: -1.6rem;
         margin-left: 0.8rem;
     }
 
@@ -311,7 +304,7 @@
     }
 
     .whyChooseUsTitle {
-        font-size: 3em;
+        font-size: 4.5em;
         text-align: center;
     }
 
@@ -353,6 +346,43 @@
     }
 }
 
+@media (max-width: 840px) {
+    .titleAndButton .bigTitle {
+        font-size: 7.25cqi;
+    }
+
+    .titleAndButton .smallTitle .smallTitleBold{
+        font-size: 1.6em;
+    }
+
+    .titleAndButton .smallTitle .smallTitleRegular{
+        font-size: 1.2em;
+    }
+
+    .whyChooseUsTitle {
+        font-size: 3.5em;
+        text-align: center;
+    }
+}
+
+@media (max-width: 700px) {
+    .titleAndButton .bigTitle {
+        font-size: 6.9cqi;
+    }
+
+    .titleAndButton .smallTitle .smallTitleBold{
+        font-size: 1.4em;
+    }
+
+    .titleAndButton .smallTitle .smallTitleRegular{
+        font-size: 1.05em;
+    }
+
+    .titleAndButton .bookButton img {
+        width: 8em;
+    }
+}
+
 @media (max-width: 600px) {
     .titleAndButton {
         flex-direction: column;
@@ -372,7 +402,6 @@
     }
 
     .titleAndButton .bigTitle .bigTitleItalic {
-        margin-top: -1.2rem;
         margin-left: 0.6rem;
     }
 
@@ -382,7 +411,7 @@
     }
 
     .titleAndButton .bigTitle {
-        font-size: clamp(3.2em, 14vw, 4.2em);
+        font-size: clamp(3.2em, 13vw, 4.2em);
     }
 
     .titleAndButton .bookButton {
@@ -390,8 +419,7 @@
     }
 
     .whyChooseUsTitle {
-        font-size: 2.4em;
-        padding: 2.2em 0 0.5em;
+        padding: 0.5em 0;
     }
 
     .whyChooseUsText {
@@ -414,8 +442,7 @@
     }
 
     .isThisForMeTitle {
-        font-size: 2.4em;
-
+        font-size: 3.5em;
     }
 
     .isThisForMeTitleItalic {
@@ -430,5 +457,9 @@
     .whyChooseUsTitleItalic {
         padding-left: 3.2rem;
         margin-top: -1.2rem;
+    }
+
+    .stillHaveQuestionsTitle{
+        font-size: 3em;
     }
 }
