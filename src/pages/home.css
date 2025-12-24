@@ -26,6 +26,7 @@
     display: flex;
     background-color: #2d2f3138;
     padding-bottom: 4em;
+    padding-top: 4rem;
 }
 
 .titleAndButton .titles {
@@ -41,9 +42,9 @@
     align-items: flex-start;
     font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
     font-size: 5em;
+    line-height: 1.15;
     color: white;
     padding-left: 3rem;
-    padding-top: 3rem;
 }
 .titleAndButton .bigTitle .bigTitleItalic {
     font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman';
@@ -281,6 +282,30 @@
 }
 
 @media (max-width: 992px) {
+    .titleAndButton {
+        padding: 3rem 2rem 4rem;
+        gap: 2rem;
+    }
+
+    .titleAndButton .bigTitle {
+        font-size: 4em;
+        padding-left: 2rem;
+    }
+
+    .titleAndButton .bigTitle .bigTitleItalic {
+        margin-top: -1.6rem;
+        margin-left: 0.8rem;
+    }
+
+    .titleAndButton .smallTitle {
+        padding-left: 2rem;
+        padding-top: 2rem;
+    }
+
+    .titleAndButton .bookButton {
+        width: 40%;
+    }
+
     .whiteBg .withHeight {
         min-height: 165vh;
     }
@@ -288,6 +313,11 @@
     .whyChooseUsTitle {
         font-size: 3em;
         text-align: center;
+    }
+
+    .whyChooseUsTitleItalic {
+        padding-left: 5rem;
+        margin-top: -1.6rem;
     }
 
     .whyChooseUsTextAndImg {
@@ -307,6 +337,15 @@
 
     .whyChooseUsTextAndImg img {
         width: clamp(20em, 70vw, 28em);
+    }
+
+    .isThisForMeTitle {
+        font-size: 4.2em;
+    }
+
+    .isThisForMeTitleItalic {
+        padding-left: 2.8rem;
+        margin-top: -1.6rem;
     }
 
     .isThisForMeText {
@@ -330,6 +369,11 @@
     .titleAndButton .smallTitle {
         padding-left: 0;
         text-align: left;
+    }
+
+    .titleAndButton .bigTitle .bigTitleItalic {
+        margin-top: -1.2rem;
+        margin-left: 0.6rem;
     }
 
     .titleAndButton .bookButton {
@@ -373,9 +417,18 @@
         font-size: 2.4em;
 
     }
+
+    .isThisForMeTitleItalic {
+        padding-left: 1.8rem;
+        margin-top: -1.2rem;
+    }
     
     .isThisForMeText {
         font-size: 1.225em;
     }
 
+    .whyChooseUsTitleItalic {
+        padding-left: 3.2rem;
+        margin-top: -1.2rem;
+    }
 }
