@@ -50,8 +50,11 @@ export default function Home() {
         const elementHeight = gentleSlideOriginalHeight;
         const progress = Math.max(0, Math.min(1, (windowHeight - elementTop) / (windowHeight + elementHeight)));
 
+        // Allow deeper translation on very large screens
+        const maxTranslateEm = window.innerWidth >= 2560 ? 45 : 40;
+
         // Calculate desired translateY based on scroll progress
-        const desiredTranslateY = (progress * 40);
+        const desiredTranslateY = (progress * maxTranslateEm);
         const desiredTranslateYPx = desiredTranslateY * emToPx;
 
         // Calculate where the bottom would be with the desired transform
