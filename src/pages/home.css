@@ -1,26 +1,30 @@
 .mainContent {
     display: block;
-}
-
-.topContent {
-    z-index: 1;
     position: relative;
     display: flex;
     flex-direction: column;
     max-width: 100vw;
 }
 
-.bgContent {
-    z-index: 0;
-    position: fixed;
-    max-width: 100vw;
-}
-
-.bgContent img {
-    transform: translateY(-3em);
-    max-height: 100vh;
-    min-width: 100vw;
-}
+.parallax {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .parallax::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120%;
+    height: 130%; /* un poco más grande */
+    background-image: url("../../public/images/hands-background.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-position-y: -3em;
+    z-index: -1;
+  }
 
 .titleAndButton {
     display: flex;

@@ -101,122 +101,116 @@ export default function Home() {
 
   return (
     <div className="mainContent">
-      <div className='bgContent'>
-        <Image src="/images/hands-background.png" />
+      <div className='titleAndButton parallax'>
+        <div className='titles'>
+          <div className='bigTitle'>
+            Skip the NHS wait
+            <div className='bigTitleItalic'>
+              Feel Great
+            </div>
+          </div>
+          <div className='smallTitle'>
+            <div className='smallTitleBold'>
+              Your assessment in weeks, not years
+            </div>
+            <div className='smallTitleRegular'>
+              <br />
+              Private ADHD & Autism Diagnosis UK
+            </div>
+          </div>
+        </div>
+        <div className='bookButton'>
+          <Button onClick={requestContactModal}>
+            <Image src="/images/bookButton.png" />
+            Contact us
+          </Button>
+        </div>
       </div>
-      <div className="topContent">
-        <div className='titleAndButton'>
-          <div className='titles'>
-            <div className='bigTitle'>
-              Skip the NHS wait
-              <div className='bigTitleItalic'>
-                Feel Great
-              </div>
-            </div>
-            <div className='smallTitle'>
-              <div className='smallTitleBold'>
-                Your assessment in weeks, not years
-              </div>
-              <div className='smallTitleRegular'>
-                <br />
-                Private ADHD & Autism Diagnosis UK
-              </div>
+      <div className='whiteBg withHeight'>
+        <div className='whyChooseUsContent' id="why-choose-us">
+          <div className='whyChooseUsTitle'>
+            Why people
+            <div className='whyChooseUsTitleItalic'>
+              trust Nova?
             </div>
           </div>
-          <div className='bookButton'>
-            <Button onClick={requestContactModal}>
-              <Image src="/images/bookButton.png" />
-              Contact us
-            </Button>
-          </div>
-        </div>
-        <div className='whiteBg withHeight'>
-          {/* <Image className="blueLine" src="/images/blueLine.png" /> */}
-          <div className='whyChooseUsContent' id="why-choose-us">
-            <div className='whyChooseUsTitle'>
-              Why people
-              <div className='whyChooseUsTitleItalic'>
-                trust Nova?
+          <div className='whyChooseUsTextAndImg'>
+            <div className='whyChooseUsText'>
+              <div className='whyChooseUsTextBold'>
+                End the 2 year NHS wait today.
+              </div>
+              <div className='whyChooseUsTextRegular'>
+                95% of our clients are seen within 2 weeks.
+                All of them have an outcome within 1 month.
+              </div>
+              <div className='whyChooseUsTextBold'>
+                Experts Who Actually Listen.
+              </div>
+              <div className='whyChooseUsTextRegular'>
+                Experienced HCPC and BPS registered Clinical Psychologists offering compassionate support for all ages, every day.
+              </div>
+              <div className='whyChooseUsTextBold'>
+                Outcome Letters That Change Everything
+              </div>
+              <div className='whyChooseUsTextRegular'>
+                Instantly accepted by schools, colleges, universities, employers and the DWP.
+                {/* – whether it confirms a diagnosis or gives you peace of mind. */}
+              </div>
+              <div className='whyChooseUsTextBold'>
+                100% Online, Anywhere in the UK
+              </div>
+              <div className='whyChooseUsTextRegular'>
+                No Travel, No Stress. Perfect for busy parents, anxious teens, or adults juggling work.
               </div>
             </div>
-            <div className='whyChooseUsTextAndImg'>
-              <div className='whyChooseUsText'>
-                <div className='whyChooseUsTextBold'>
-                  End the 2 year NHS wait today.
-                </div>
-                <div className='whyChooseUsTextRegular'>
-                  95% of our clients are seen within 2 weeks.
-                  All of them have an outcome within 1 month.
-                </div>
-                <div className='whyChooseUsTextBold'>
-                  Experts Who Actually Listen.
-                </div>
-                <div className='whyChooseUsTextRegular'>
-                  Experienced HCPC and BPS registered Clinical Psychologists offering compassionate support for all ages, every day.
-                </div>
-                <div className='whyChooseUsTextBold'>
-                  Outcome Letters That Change Everything
-                </div>
-                <div className='whyChooseUsTextRegular'>
-                  Instantly accepted by schools, colleges, universities, employers and the DWP.
-                   {/* – whether it confirms a diagnosis or gives you peace of mind. */}
-                </div>
-                <div className='whyChooseUsTextBold'>
-                  100% Online, Anywhere in the UK
-                </div>
-                <div className='whyChooseUsTextRegular'>
-                  No Travel, No Stress. Perfect for busy parents, anxious teens, or adults juggling work.
-                </div>
-              </div>
-              <div className='whyChooseUsImg'>
-                <Image src="/images/beach-kid.png" />
-              </div>
-            </div>
-          </div>
-          <Image className="curveShadow" src="/images/curveShadow.png" />
-          <div className='whyChooseUsContent gentleSlide' ref={gentleSlideRef} id="is-this-for-me">
-            <div className='isThisForMeTitle'>
-              Is this
-              <div className='isThisForMeTitleItalic'>
-                for me?
-              </div>
-            </div>
-            <div className='isThisForMeText'>
-              Every child, teen and adult is unique - but sometimes those little (or big) differences start to feel like something more.
-              If school is a battle, work feels overwhelming, or daily life just seems harder than it should… you’re in the right place.
-              We’ve helped thousands recognise the signs of Autism, ADHD (or both) - and discover it’s NOT a lack of effort or “bad behaviour”.
+            <div className='whyChooseUsImg'>
+              <Image src="/images/beach-kid.png" />
             </div>
           </div>
         </div>
-        <div ref={ageSectionsRef}>
-          <CompressedSections />
-        </div>
-        <div className='whiteBg' id="pricing">
-          <div className='blueLineBg'>
-            <div className='darkBlueLine' />
-            <PricesSection />
-          </div>
-        </div>
-        <div className='whiteBg' id="how-it-works">
-          <HowItWorks />
-        </div>
-        <div className='whiteBg' id="faqs">
-          <QuestionsAnswered />
-        </div>
-        <div className='whiteBg'>
-          <div className='stillHaveQuestionsBg'>
-            <div className='stillHaveQuestionsTitle'>
-              Still have questions?
+        <Image className="curveShadow" src="/images/curveShadow.png" />
+        <div className='whyChooseUsContent gentleSlide' ref={gentleSlideRef} id="is-this-for-me">
+          <div className='isThisForMeTitle'>
+            Is this
+            <div className='isThisForMeTitleItalic'>
+              for me?
             </div>
-            <Button label="Get in contact" icon="pi pi-send" iconPos="right" onClick={requestContactModal} />
+          </div>
+          <div className='isThisForMeText'>
+            Every child, teen and adult is unique - but sometimes those little (or big) differences start to feel like something more.
+            If school is a battle, work feels overwhelming, or daily life just seems harder than it should… you’re in the right place.
+            We’ve helped thousands recognise the signs of Autism, ADHD (or both) - and discover it’s NOT a lack of effort or “bad behaviour”.
           </div>
         </div>
-        <div className='whiteBg' id="people-behind">
-          <PeopleBehind />
+      </div>
+      <div className='parallax' ref={ageSectionsRef}>
+        <CompressedSections />
+      </div>
+      <div id="pricing">
+        <div className='blueLineBg'>
+          <div className='darkBlueLine' />
+          <PricesSection />
         </div>
-        <div className="whiteBg">
-          <TrustBadges />
+      </div>
+      <div id="how-it-works">
+        <HowItWorks />
+      </div>
+      <div id="faqs">
+        <QuestionsAnswered />
+      </div>
+      <div>
+        <div className='stillHaveQuestionsBg'>
+          <div className='stillHaveQuestionsTitle'>
+            Still have questions?
+          </div>
+          <Button label="Get in contact" icon="pi pi-send" iconPos="right" onClick={requestContactModal} />
         </div>
+      </div>
+      <div id="people-behind">
+        <PeopleBehind />
+      </div>
+      <div>
+        <TrustBadges />
       </div>
     </div>
   );
