@@ -6,12 +6,12 @@ export default function PricesSection() {
     return (
         <div className="pricesSection">
             <div className="pricesSectionTitle">
-                What we offer
+                What we <span style={{fontFamily: 'TimesNewRomanMTCondensedItalic'}}>offer</span>
             </div>
             <div className="pricesSectionContent">
                 <div className="priceCard">
                     <div className="priceCardTitle">
-                        Full ASC<br />assessment
+                        Full <span style={{fontFamily: 'TimesNewRomanMTCondensedItalic'}}>ASC</span><br />assessment
                     </div>
                     <div className="priceCardTextSubtitle">
                         What's included
@@ -32,7 +32,7 @@ export default function PricesSection() {
 
                 <div className="priceCard">
                     <div className="priceCardTitle">
-                        Full ADHD<br />assessment
+                        Full <span style={{fontFamily: 'TimesNewRomanMTCondensedItalic'}}>ADHD</span><br />assessment
                     </div>
                     <div className="priceCardTextSubtitle">
                         What's included
@@ -53,7 +53,7 @@ export default function PricesSection() {
 
                 <div className="priceCard">
                     <div className="priceCardTitle">
-                        Combined<br />ASC + ADHD
+                        Combined<br /><span style={{fontFamily: 'TimesNewRomanMTCondensedItalic'}}>ASC</span> + <span style={{fontFamily: 'TimesNewRomanMTCondensedItalic'}}>ADHD</span>
                     </div>
                     <div className="priceCardTextSubtitle">
                         What's included
@@ -73,11 +73,11 @@ export default function PricesSection() {
                 </div>
             </div>
             <div className="pricesSectionFooterTitle">
-                Early Adopter Discount <b>- 10 %</b> on the <b>first 50 appointments</b>
+                Early Adopter Discount <b>- 10 %</b> on the <b>next 10 appointments</b>
             </div>
-            <div className="pricesSectionFooterText">
+            {/* <div className="pricesSectionFooterText">
                 Payment plans available. Nova Clinics is a registered provider with major UK health insurers.
-            </div>
+            </div> */}
         </div>
     );
 }  

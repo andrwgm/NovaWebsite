@@ -14,8 +14,8 @@
 }
 
 .pricesSectionTitle {
-    font-family: 'LemonMilk', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: clamp(2.2rem, 4vw, 3rem);
+    font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
+    font-size: clamp(3rem, 6vw, 4rem);
     color: #344759;
     padding: 0;
     text-align: center;
@@ -46,8 +46,8 @@
 }
 
 .priceCardTitle {
-    font-family: 'LemonMilk', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 1.6em;
+    font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
+    font-size: 2em;
     color: white;
     margin: 0 0 0.6em;
 }

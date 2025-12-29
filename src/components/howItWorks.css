@@ -14,8 +14,10 @@
 }
 
 .howItWorksTitle {
-  font-family: 'LemonMilk', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  font-size: 3em;
+  font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
+  font-size: clamp(4rem, 7vw, 5rem);
+  font-weight: normal;
+  line-height: .8;
   color: #344759;
 }
 

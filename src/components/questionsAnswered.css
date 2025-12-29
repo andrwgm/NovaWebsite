@@ -11,10 +11,12 @@
 }
 
 .qa-title {
-  font-family: 'LemonMilk', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  font-size: 2.6em;
+  font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
+  font-size: clamp(3rem, 6vw, 4rem);
   color: #344759;
   margin: 0 0 1rem 0;
+  font-weight: normal;
+  line-height: .8;
 }
 
 .qa-left { display: grid; grid-template-rows: auto 1fr auto; min-width: 0; }
@@ -165,14 +167,14 @@
 
 @media (max-width: 992px) {
   .qa { grid-template-columns: 1fr; gap: 2rem; padding: 3.2em 0; }
-  .qa-title { font-size: 2.2em; }
+  .qa-title { text-align: center; }
   .qa-card { width: clamp(220px, 88vw, 420px); max-width: clamp(220px, 88vw, 420px); }
   .qa-card img { height: clamp(170px, 36vw, 210px); }
   .qa-left { grid-template-rows: auto 1fr auto; }
+  .qa-dots { justify-self: center; }
 }
 
 @media (max-width: 600px) {
-  .qa-title { font-size: 1.9em; }
   .qa-card { width: 240px; max-width: 240px; }
   .qa-card img { height: 190px; }
   .qa-right { padding-right: 1rem; }

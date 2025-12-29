@@ -119,7 +119,7 @@ export default function QuestionsAnswered() {
   return (
     <section className="qa">
       <div className="qa-left">
-        <h2 className="qa-title">YOUR QUESTIONS ANSWERED</h2>
+        <h2 className="qa-title">Your questions <div style={{fontFamily: 'TimesNewRomanMTCondensedItalic', paddingLeft: '3rem'}}>answered</div></h2>
         <p className="qa-answer">{slides[active]?.answer}</p>
         <div className="qa-dots" role="tablist" aria-label="Carousel pagination">
           {slides.map((s, i) => (

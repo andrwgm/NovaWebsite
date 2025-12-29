@@ -56,9 +56,13 @@
 
 .age-title {
   position: absolute;
+  height: 2em;
+  display: flex;
+  align-items: center;
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman';
   text-wrap-mode: nowrap;
-  font-family: TheSeries, Patrick Hand, cursive;
-  font-size: 2rem;
+  font-weight: normal;
+  font-size: 1.6em;
 }
 
 .age-content {

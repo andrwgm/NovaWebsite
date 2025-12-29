@@ -80,7 +80,7 @@ export default function HowItWorks() {
   return (
     <div className="howItWorks">
       <div className="howItWorksHeader">
-        <div className="howItWorksTitle">HOW IT WORKS</div>
+        <div className="howItWorksTitle">How it <div style={{fontFamily: 'TimesNewRomanMTCondensedItalic', paddingLeft: '3rem'}}>works?</div></div>
       </div>
       <div className="howItWorksContent">
         <div className="howItWorksTimeline">

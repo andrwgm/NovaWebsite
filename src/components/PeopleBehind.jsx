@@ -81,7 +81,7 @@ export default function PeopleBehind() {
   return (
     <section className="team">
       <header className="team-head">
-        <h2 className="team-title">PEOPLE BEHIND YOUR CARE</h2>
+        <h2 className="team-title">People behind <div style={{fontFamily: 'TimesNewRomanMTCondensedItalic', paddingLeft: '3rem'}}>your care</div></h2>
         <p className="team-subtitle">
           From consultant psychiatrists to friendly care-coordinators, every member of our team plays
           a vital role in delivering a fast, seamless experience. You’ll meet GMC-registered clinicians
