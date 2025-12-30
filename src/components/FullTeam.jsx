@@ -34,8 +34,7 @@ export default function FullTeam() {
   return (
     <section className="fullteam">
       <header className="fullteam__head">
-        <p className="fullteam__eyebrow">THE PEOPLE OF NOVA</p>
-        <h2>Meet the specialists guiding every milestone</h2>
+        <h2>Meet the specialists guiding <div style={{fontFamily: 'TimesNewRomanMTCondensedItalic', paddingLeft: '3rem'}}>every milestone</div></h2>
         <p>
           Our multidisciplinary team blends medical expertise with practical support. Whether you need a consultant to
           interpret complex results or a coordinator to help you navigate paperwork, you will always know who to turn to.
