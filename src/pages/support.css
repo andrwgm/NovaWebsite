@@ -43,7 +43,6 @@
   font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
   font-size: clamp(2.8rem, 5.5vw, 3.4rem);
   font-weight: normal;
-  /* line-height: .8; */
   margin: 0;
   flex: 1 1 360px;
   color: #344759;
