@@ -10,11 +10,14 @@
 }
 
 .introSectionTitle {
-    font-family: 'LemonMilk', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: clamp(2.25rem, 5vw, 4rem);
+    font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
+    font-size: clamp(4rem, 7vw, 5rem);
+    font-weight: normal;
+    line-height: .8;
     color: #344759;
     padding-top: 1rem;
     margin: 0;
+    text-align: left;
 }
 
 .introSectionContent {
@@ -44,10 +47,6 @@
 }
 
 @media (max-width: 480px) {
-    .introSectionTitle {
-        font-size: 2rem;
-    }
-
     .introSectionContent {
         font-size: 1.05rem;
     }
@@ -225,11 +224,12 @@
 }
 
 .infoSection__eyebrow {
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-family: 'LemonMilk', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: clamp(1.6rem, 4vw, 2.4rem);
-    margin: 0 0 1rem 0;
+    font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
+    font-size: clamp(2.8rem, 5.5vw, 3.4rem);
+    font-weight: normal;
+    line-height: .8;
+    color: #344759;
+    margin: 0 0 2rem 0;
 }
 
 .infoSection__lead {

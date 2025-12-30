@@ -106,7 +106,7 @@ export default function Careers() {
         <>
             <div className="introSection">
                 <div className="introSectionTitle">
-                    Why join Nova Clinics?
+                    Why join <div style={{fontFamily: 'TimesNewRomanMTCondensedItalic', paddingLeft: '2rem'}}>Nova Clinics?</div>
                 </div>
                 <div className="introSectionContentBold">
                     &quot;When we empower clinicians, we change lives — one family at a time.&quot;
@@ -155,7 +155,7 @@ export default function Careers() {
                     <img src="/images/bike.png" alt="Child on bike with stuffed toy" />
                 </div>
                 <div className="infoSection__copy">
-                    <p className="infoSection__eyebrow">Redefining care, together</p>
+                    <p className="infoSection__eyebrow">Redefining care,<div style={{fontFamily: 'TimesNewRomanMTCondensedItalic', paddingLeft: '15rem'}}>together</div></p>
                     <p className="infoSection__lead">
                         At Nova Clinic, we’re building a better way to deliver psychological care — one that’s faster,
                         fairer, and more human.

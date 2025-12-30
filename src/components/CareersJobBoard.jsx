@@ -89,11 +89,11 @@ export default function CareersJobBoard() {
             </div>
             <div className="careers-offers__details">
                 <p className="careers-offers__role">{offer.title}</p>
-                <p className="careers-offers__meta">
+                {/* <p className="careers-offers__meta">
                     <span>{offer.contractType}</span>
                     <span>•</span>
                     <span>{offer.location}</span>
-                </p>
+                </p> */}
                 <p className="careers-offers__summary">{offer.shortDescription}</p>
             </div>
             <button
@@ -115,7 +115,7 @@ export default function CareersJobBoard() {
     return (
         <section className="careers-offers">
             <header className="careers-offers__header">
-                <p className="careers-offers__eyebrow">Career Opportunities</p>
+                <p className="careers-offers__eyebrow">Career <span style={{fontFamily: 'TimesNewRomanMTCondensedItalic'}}>opportunities</span></p>
                 <h2 className="careers-offers__title">
                     Learn more about our culture and team experience on our{' '}
                     <a href="https://www.linkedin.com/company/novaclinicsuk/" target="_blank" rel="noreferrer">LinkedIn page</a>.

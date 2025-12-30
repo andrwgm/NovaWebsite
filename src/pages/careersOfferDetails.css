@@ -10,7 +10,7 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
-  gap: clamp(2rem,7vw,6rem);
+  gap: clamp(2rem, 7vw, 6rem);
   align-items: flex-start;
 }
 
@@ -44,13 +44,12 @@
 }
 
 .offer-details__title {
-  font-family: 'LemonMilk', 'Arial Narrow Bold', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-family: Times New Roman;
+  font-weight: normal;
+  font-size: clamp(2rem, 7vw, 3rem);
   margin: 0;
-  color: #2D3B55;
-  line-height: 1.15;
+  color: #2d3b55;
+  line-height: 1;
 }
 
 .offer-details__attributes {
@@ -135,17 +134,18 @@
   border: none;
   border-radius: 0;
   background: transparent;
-  font-family: 'LemonMilkLight', 'Arial Narrow Bold', sans-serif;
-  text-transform: uppercase;
-  font-size: 0.78rem;
+  font-family: 'AthelasRegular';
+  text-transform: capitalize;
+  font-size: clamp(1.2rem, 1.8vw, 1.4rem);
   color: #9aa1b5;
   padding: 0.75rem 0;
   position: relative;
 }
 
 .offer-details__tabs .p-tabview-nav li.p-highlight .p-tabview-nav-link {
-  font-family: 'LemonMilk', 'Arial Narrow Bold', sans-serif;
-  text-transform: uppercase;
+  font-family: 'AthelasRegular';
+  text-transform: capitalize;
+  font-size: clamp(1.2rem, 1.8vw, 1.4rem);
   color: #2D3B55;
 }
 
@@ -169,10 +169,11 @@
 }
 
 .offer-details__lede {
-  font-family: 'LemonMilk', 'Arial Narrow Bold', sans-serif;
-  text-transform: uppercase;
-  font-size: 1rem;
-  color: #2D3B55;
+  font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
+  text-transform: capitalize;
+  font-size: 1.6rem;
+  word-spacing: 0.5rem;
+  color: #2d3b55;
   margin-bottom: 1rem;
 }
 
@@ -379,7 +380,7 @@
   border-color: #9ECDC9;
 }
 
-.p-dropdown-filter{
+.p-dropdown-filter {
   border-radius: 2em;
 }
 
