@@ -18,7 +18,7 @@
 
 .team-title {
   font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
-  font-size: clamp(3rem, 6vw, 4rem);
+  font-size: clamp(4rem, 7vw, 5rem);
   /* letter-spacing: 0.04em; */
   line-height: .8;
   color: #344759;

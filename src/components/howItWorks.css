@@ -151,7 +151,7 @@
 }
 
 .hiw-pill.expanded .hiw-pill-detail {
-  max-height: 180px; /* enough for 3-4 lines */
+  max-height: 180px;
   opacity: 1;
   transform: translateY(0);
 }
@@ -179,31 +179,98 @@
 }
 
 @media (max-width: 1200px) {
-  .howItWorksTitle { font-size: 2.6em; }
-  .howItWorksTimeline { width: 60%; }
-  .howItWorksImage { width: 40%; }
+  .howItWorksTimeline {
+    width: 60%;
+  }
+
+  .howItWorksImage {
+    width: 40%;
+  }
 }
 
 @media (max-width: 992px) {
-  .howItWorksContent { flex-direction: column; gap: 2rem; width: 94%; align-items: center; }
-  .howItWorksTimeline { width: 100%; }
-  .howItWorksImage { width: 80%; }
-  .hiw-pill-wrap { justify-content: center; }
-  .hiw-marker { width: 30px; height: 30px; font-size: 0.95rem; }
-  .hiw-pill { padding: 0.8rem 1.05rem; }
-  .hiw-pill-title { font-size: 1.05rem; }
-  .hiw-pill-detail { font-size: 0.93rem; }
-  .hiw-center { justify-content: center; }
+  .howItWorksContent {
+    flex-direction: column;
+    gap: 2rem;
+    width: 94%;
+    align-items: center;
+  }
+
+  .howItWorksTimeline {
+    width: 100%;
+  }
+
+  .howItWorksImage {
+    width: 80%;
+    align-self: center;
+  }
+
+  .hiw-pill-wrap {
+    justify-content: center;
+  }
+
+  .hiw-marker {
+    width: 30px;
+    height: 30px;
+    font-size: 0.95rem;
+  }
+
+  .hiw-pill {
+    padding: 0.8rem 1.05rem;
+  }
+
+  .hiw-pill-title {
+    font-size: 1.05rem;
+  }
+
+  .hiw-pill-detail {
+    font-size: 0.93rem;
+  }
+
+  .hiw-center {
+    justify-content: center;
+  }
 }
 
 @media (max-width: 600px) {
-  .howItWorks { padding: 3em 0; }
-  .howItWorksHeader { flex-direction: column; gap: 0.65rem; }
-  .howItWorksTitle { font-size: 2.1em; text-align: center; }
-  .howItWorksImage { width: 100%; }
-  .howItWorksImage img { max-width: 20rem; border-radius: 38% / 32%; }
-  .hiw-marker { width: 26px; height: 26px; font-size: 0.85rem; }
-  .hiw-pill-title { font-size: 1rem; }
-  .hiw-pill-detail { font-size: 0.9rem; }
-  .hiw-center { justify-content: center; }
+  .howItWorks {
+    padding: 3em 0;
+  }
+
+  .howItWorksHeader {
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .howItWorksTitle {
+    text-align: center;
+  }
+
+  .howItWorksImage {
+    width: 100%;
+    align-self: center;
+  }
+
+  .howItWorksImage img {
+    max-width: 20rem;
+    border-radius: 38% / 32%;
+  }
+
+  .hiw-marker {
+    width: 26px;
+    height: 26px;
+    font-size: 0.85rem;
+  }
+
+  .hiw-pill-title {
+    font-size: 1rem;
+  }
+
+  .hiw-pill-detail {
+    font-size: 0.9rem;
+  }
+
+  .hiw-center {
+    justify-content: center;
+  }
 }
