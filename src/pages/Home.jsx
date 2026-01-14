@@ -164,7 +164,7 @@ export default function Home() {
               </div>
             </div>
             <div className='whyChooseUsImg'>
-              <Image src="/images/beach-kid.png" />
+              <Image src="/images/beach-kid.webp" />
             </div>
           </div>
         </div>
