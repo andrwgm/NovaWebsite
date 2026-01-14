@@ -5,7 +5,7 @@ import './questionsAnswered.css';
 
 const SLIDES = [
   {
-    img: '/images/penguin-kid.webp',
+    img: '/images/penguin-kid.jpg',
     question: 'How fast are the results?',
     answer:
       "We aim to provide your comprehensive report within 4 weeks of completing the assessment process, although it’s usually much quicker. This includes time for our multidisciplinary team to thoughtfully review all insights, ensuring a thorough understanding of your unique strengths and needs. If any delays arise, we'll keep you informed every step of the way.",

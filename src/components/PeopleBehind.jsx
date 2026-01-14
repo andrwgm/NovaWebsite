@@ -24,7 +24,7 @@ const TEAM = [
       </>
     ),
     bio: 'Your go-to contact for bookings, paperwork and keeping you updated at each milestone of the journey.',
-    img: '/images/penguin-kid.webp',
+    img: '/images/penguin-kid.jpg',
   },
   {
     name: 'Amelia Brooks',
@@ -59,7 +59,7 @@ const TEAM = [
       </>
     ),
     bio: 'Your go-to contact for bookings, paperwork and keeping you updated at each milestone of the journey.',
-    img: '/images/penguin-kid.webp',
+    img: '/images/penguin-kid.jpg',
   },
   {
     name: 'Amelia Brooks',

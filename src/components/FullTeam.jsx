@@ -18,7 +18,7 @@ const TEAM = [
     name: 'Andrés Gómez',
     role: 'Chief Technology Officer',
     focus: 'Owns the secure, AI-enabled platform that keeps assessments moving fast and confidential—so families can book, share records and get answers without friction.',
-    img: '/images/penguin-kid.webp',
+    img: '/images/penguin-kid.jpg',
   },
   {
     name: 'Laura Bermejo',

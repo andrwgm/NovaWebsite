@@ -18,7 +18,7 @@
     left: 0;
     width: 120%;
     height: 130%; /* un poco más grande */
-    background-image: url("../../public/images/hands-background.png");
+    background-image: url("../../public/images/hands-background.webp");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
