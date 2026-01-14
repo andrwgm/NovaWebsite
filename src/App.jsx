@@ -79,12 +79,11 @@ export default function App() {
 
   return (
     <Router>
-      {showSplash ? (
+      <AppContent />
+      {showSplash && (
         <div className={`splash-screen${isFading ? ' is-fading' : ''}`} aria-hidden="true">
           <Image src="/images/topbar_logo.png" alt="Nova Clinics" />
         </div>
-      ) : (
-        <AppContent />
       )}
     </Router>
   );
