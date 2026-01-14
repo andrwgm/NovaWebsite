@@ -65,3 +65,24 @@ input,
 textarea {
     -webkit-tap-highlight-color: transparent;
 }
+
+.splash-screen {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 300ms ease;
+}
+
+.splash-screen.is-fading {
+    opacity: 0;
+}
+
+.splash-screen img {
+    width: min(70vw, 420px);
+    height: auto;
+}
