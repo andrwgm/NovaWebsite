@@ -17,7 +17,7 @@ const SLIDES = [
       'Yes, our assessments are conducted securely online via video call, making them accessible from anywhere in the UK. If you need adjustments for in-person elements, just let us know.',
   },
   {
-    img: '/images/bg-pic-1.jpg',
+    img: '/images/flower-kid.png',
     question: 'Will my GP be informed?',
     answer:
       'We only share information with your GP or other healthcare professionals with your explicit consent, conforming with GDPR regulations. Many clients choose to share their report to support ongoing care, but the decision is entirely yours - we\'re here to empower your choices.',
