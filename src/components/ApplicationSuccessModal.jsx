@@ -38,7 +38,7 @@ export default function ApplicationSuccessModal({ visible, message, onClose }) {
                 <div className="application-success-icon">
                     <i className="pi pi-check-circle" aria-hidden="true"></i>
                 </div>
-                <p className="application-success-message">Application submitted!</p>
+                <p className="application-success-message">{message || 'Application submitted!'}</p>
                 <div className="application-success-progress" >
                     <div className="application-success-progress-bar"
                         style={{

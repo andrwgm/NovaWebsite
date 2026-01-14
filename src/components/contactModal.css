@@ -19,10 +19,11 @@
 }
 
 .contact-modal-title {
-  font-family: 'LemonMilk', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
   color: #2D3B55;
-  margin-bottom: 2.1rem;
-  font-size: 1.8rem;
+  font-weight: normal;
+  margin-top: 1rem;
+  font-size: 2.5rem;
 }
 
 .contact-modal-close {
@@ -78,6 +79,34 @@
 
 .contact-modal-form .p-float-label > label {
   color: #6b7a93;
+}
+
+.contact-modal-consent-notice {
+  font-family: 'AthelasRegular', 'Times New Roman';
+  font-size: 0.9rem;
+  color: #6b7a93;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.contact-modal-consent {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contact-modal-consent label {
+  font-family: 'AthelasRegular', 'Times New Roman';
+  font-size: 0.9rem;
+  color: #6b7a93;
+  margin-bottom: 0;
+}
+
+.contact-modal-error {
+  font-family: 'AthelasRegular', 'Times New Roman';
+  font-size: 0.9rem;
+  color: #b84b4b;
+  margin: 0;
 }
 
 .contact-modal-submit {
