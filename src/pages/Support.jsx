@@ -17,7 +17,7 @@ export default function Support() {
           Through every stage, through every day — <div style={{fontFamily: 'TimesNewRomanMTCondensedItalic'}}>Nova&apos;s here to guide your way</div>
         </p>
         <div className="support-highlight__image">
-          <img src="/images/girl-book.png" alt="Person reading while resting on a sofa" />
+          <img src="/images/girl-book.webp" alt="Person reading while resting on a sofa" />
         </div>
       </section>
 

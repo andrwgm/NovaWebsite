@@ -168,7 +168,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <Image className="curveShadow" src="/images/curveShadow.png" />
+        <Image className="curveShadow" src="/images/curveShadow.webp" />
         <div className='whyChooseUsContent gentleSlide' ref={gentleSlideRef} id="is-this-for-me">
           <div className='isThisForMeTitle'>
             Is this

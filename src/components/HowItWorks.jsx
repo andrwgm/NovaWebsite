@@ -134,9 +134,9 @@ export default function HowItWorks() {
         </div>
         <div className="howItWorksImage">
           {audience === 'child' ? (
-            <Image src="/images/necklace-kid.png" alt="how it works" />
+            <Image src="/images/necklace-kid.webp" alt="how it works" />
           ) : (
-            <Image src="/images/grass-girls.png" alt="how it works" />
+            <Image src="/images/grass-girls.webp" alt="how it works" />
           )}
         </div>
       </div>
