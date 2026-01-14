@@ -8,6 +8,7 @@ lerna-debug.log*
 .pnpm-debug.log*
 
 CHANGELOG.md
+Nova Clinics – Dev Private Notes.md
 README.txt
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
