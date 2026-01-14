@@ -6,13 +6,13 @@ const TEAM = [
     name: 'Oliver Glen',
     role: 'Chief Executive Officer',
     focus: 'Holds the vision for Nova and keeps every pathway financially sustainable, so families always find a clinic that feels boutique yet scales when they need us most.',
-    img: '/images/flower-kid.webp',
+    img: '/images/flower-kid.png',
   },
   {
     name: 'María Alonso',
     role: 'Chief Clinical Officer',
     focus: 'Architects Nova’s diagnostic pathways and personally vets every clinician, guaranteeing NICE-aligned outcomes with the bedside manner of a boutique clinic.',
-    img: '/images/girl-book.webp',
+    img: '/images/girl-book.png',
   },
   {
     name: 'Andrés Gómez',
@@ -24,7 +24,7 @@ const TEAM = [
     name: 'Laura Bermejo',
     role: 'Chief Marketing Officer',
     focus: 'Keeps Nova visible when families start searching for answers, offering clear language, calm reassurance and the signposting they need to reach us quickly.',
-    img: '/images/ChatGPT Image.webp',
+    img: '/images/ChatGPT Image.png',
   },
 ];
 

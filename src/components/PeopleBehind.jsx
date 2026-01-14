@@ -12,7 +12,7 @@ const TEAM = [
       </>
     ),
     bio: 'Guides every diagnostic assessment with an evidence-based approach while making families feel heard from day one.',
-    img: '/images/ChatGPT Image.webp',
+    img: '/images/ChatGPT Image.png',
   },
   {
     name: 'Jordan Ellis',
@@ -36,7 +36,7 @@ const TEAM = [
       </>
     ),
     bio: 'Transforms test results into clear, practical reports packed with personalised next steps and resources.',
-    img: '/images/flower-kid.webp',
+    img: '/images/flower-kid.png',
   },{
     name: 'Dr. Sofia Patel',
     role: (
@@ -47,7 +47,7 @@ const TEAM = [
       </>
     ),
     bio: 'Guides every diagnostic assessment with an evidence-based approach while making families feel heard from day one.',
-    img: '/images/ChatGPT Image.webp',
+    img: '/images/ChatGPT Image.png',
   },
   {
     name: 'Jordan Ellis',
@@ -71,7 +71,7 @@ const TEAM = [
       </>
     ),
     bio: 'Transforms test results into clear, practical reports packed with personalised next steps and resources.',
-    img: '/images/flower-kid.webp',
+    img: '/images/flower-kid.png',
   },
 ];
 
