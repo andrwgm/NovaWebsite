@@ -26,6 +26,16 @@ function AppContent() {
   const [showSplash, setShowSplash] = useState(false);
   const [isFading, setIsFading] = useState(false);
   const hasShownSplash = useRef(false);
+  const consentKey = 'nova_cookie_consent';
+  const [cookieConsent, setCookieConsent] = useState(() => {
+    if (typeof window === 'undefined') {
+      return null;
+    }
+    const stored = window.localStorage.getItem(consentKey);
+    return stored === 'accepted' || stored === 'rejected' ? stored : null;
+  });
+  const shouldShowCookieBanner = cookieConsent === null;
+  const [isCookieBannerReady, setIsCookieBannerReady] = useState(false);
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -59,6 +69,68 @@ function AppContent() {
     };
   }, [location.pathname]);
 
+  useEffect(() => {
+    if (cookieConsent !== 'accepted') {
+      return undefined;
+    }
+    if (document.querySelector('script[data-cf-beacon]')) {
+      return undefined;
+    }
+    const script = document.createElement('script');
+    script.defer = true;
+    script.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+    script.setAttribute('data-cf-beacon', '{"token":"4ca237c52da34a759461480f964a0fc3"}');
+    document.body.appendChild(script);
+    return undefined;
+  }, [cookieConsent]);
+
+  useEffect(() => {
+    if (cookieConsent === 'accepted') {
+      return undefined;
+    }
+    const script = document.querySelector('script[data-cf-beacon]');
+    if (script) {
+      script.remove();
+    }
+    if (window.__cfBeacon) {
+      delete window.__cfBeacon;
+    }
+    return undefined;
+  }, [cookieConsent]);
+
+  useEffect(() => {
+    if (showSplash || !shouldShowCookieBanner) {
+      setIsCookieBannerReady(false);
+      return undefined;
+    }
+    const timer = setTimeout(() => setIsCookieBannerReady(true), 500);
+    return () => clearTimeout(timer);
+  }, [showSplash, shouldShowCookieBanner]);
+
+  useEffect(() => {
+    const handleConsentEvent = (event) => {
+      const choice = event?.detail;
+      if (choice !== 'accepted' && choice !== 'rejected' && choice !== null) {
+        return;
+      }
+      handleCookieChoice(choice);
+    };
+
+    window.addEventListener('nova-cookie-consent', handleConsentEvent);
+    return () => window.removeEventListener('nova-cookie-consent', handleConsentEvent);
+  }, []);
+
+  const handleCookieChoice = (choice) => {
+    setCookieConsent(choice);
+    if (typeof window !== 'undefined') {
+      if (choice === null) {
+        window.localStorage.removeItem(consentKey);
+      } else {
+        window.localStorage.setItem(consentKey, choice);
+      }
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -78,6 +150,32 @@ function AppContent() {
       </Routes>
       <Footer />
       <ContactModal />
+      {shouldShowCookieBanner && isCookieBannerReady && (
+        <div className="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent">
+          <div className="cookie-banner__content">
+            <p>
+            We use analytics cookies to understand how visitors interact with our website and to improve performance.
+            These cookies are only set if you give your consent.
+            You can accept or reject analytics cookies at any time.
+            </p>
+            <div className="cookie-banner__actions">
+              <button
+                type="button"
+                className="cookie-banner__button cookie-banner__button--secondary"
+                onClick={() => handleCookieChoice('rejected')}
+              >
+                Reject
+              </button>
+              <button type="button" className="cookie-banner__button" onClick={() => handleCookieChoice('accepted')}>
+                Accept
+              </button>
+              <a className="cookie-banner__link" href="/cookies-policy">
+                View details
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
       {showSplash && (
         <div className={`splash-screen${isFading ? ' is-fading' : ''}`} aria-hidden="true">
           <Image src="/images/topbar_logo.png" alt="Nova Clinics" />

@@ -48,14 +48,22 @@ const LINK_COLUMNS = [
   {
     title: 'Policies',
     links: [
-      { label: 'Privacy', to: '/privacy-policy' },
-      { label: 'Cookies', to: '/cookies-policy' },
+      { label: 'Privacy policy', to: '/privacy-policy' },
+      { label: 'Cookies policy', to: '/cookies-policy' },
       { label: 'Terms and conditions', to: '/terms-and-conditions' },
+      { label: 'Withdraw cookie consent', action: 'revoke-cookies' },
     ],
   },
 ];
 
 export default function Footer() {
+  const handleRevokeCookies = () => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+    window.dispatchEvent(new CustomEvent('nova-cookie-consent', { detail: null }));
+  };
+
   return (
     <footer className="footer">
       <div className="footer-inner">
@@ -77,7 +85,11 @@ export default function Footer() {
               <ul>
                 {column.links.map((link) => (
                   <li key={link.label}>
-                    {link.to ? (
+                    {link.action === 'revoke-cookies' ? (
+                      <button type="button" className="footer-link-button" onClick={handleRevokeCookies}>
+                        {link.label}
+                      </button>
+                    ) : link.to ? (
                       <Link to={link.to}>{link.label}</Link>
                     ) : (
                       <a href={link.href}>{link.label}</a>
