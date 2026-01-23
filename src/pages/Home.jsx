@@ -164,11 +164,11 @@ export default function Home() {
               </div>
             </div>
             <div className='whyChooseUsImg'>
-              <Image src="/images/beach-kid.webp" />
+              <Image src="/images/beach-kid.avif" />
             </div>
           </div>
         </div>
-        <Image className="curveShadow" src="/images/curveShadow.png" />
+        <Image className="curveShadow" src="/images/curveShadow.avif" />
         <div className='whyChooseUsContent gentleSlide' ref={gentleSlideRef} id="is-this-for-me">
           <div className='isThisForMeTitle'>
             Is this

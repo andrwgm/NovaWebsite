@@ -17,7 +17,7 @@ export default function About() {
 
       <section className="about-clinic">
         <div className="about-clinic__image">
-          <img src="/images/flower-kid.png" alt="Child" />
+          <img src="/images/flower-kid.avif" alt="Child" />
         </div>
         <div className="about-clinic__content">
           <h2>Care built around <div style={{fontFamily: 'TimesNewRomanMTCondensedItalic', paddingLeft: '3rem'}}>you or your family</div></h2>

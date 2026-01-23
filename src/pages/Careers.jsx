@@ -152,7 +152,7 @@ export default function Careers() {
             </div>
             <div className="infoSection">
                 <div className="infoSection__image">
-                    <img src="/images/bike.png" alt="Child on bike with stuffed toy" />
+                    <img src="/images/bike.avif" alt="Child on bike with stuffed toy" />
                 </div>
                 <div className="infoSection__copy">
                     <p className="infoSection__eyebrow">Redefining care,<div style={{fontFamily: 'TimesNewRomanMTCondensedItalic', paddingLeft: '15rem'}}>together</div></p>
@@ -175,7 +175,7 @@ export default function Careers() {
                 <CareersJobBoard />
             </div>
             <div className="footerSection">
-                <img src="/images/balloons-kid.png" alt="Balloons kid" />
+                <img src="/images/balloons-kid.avif" alt="Balloons kid" />
             </div>
         </>
     );
