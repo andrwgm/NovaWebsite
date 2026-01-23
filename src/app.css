@@ -3,7 +3,7 @@
     src: url('/fonts/LEMONMILK-Medium.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
-    font-display: auto;
+    font-display: swap;
 }
 
 @font-face {
@@ -11,7 +11,7 @@
     src: url('/fonts/LEMONMILK-Light.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
-    font-display: auto;
+    font-display: swap;
 }
 
 @font-face {
@@ -19,7 +19,7 @@
     src: url('/fonts/LEMONMILK-Bold.otf') format('opentype');
     font-weight: bold;
     font-style: normal;
-    font-display: auto;
+    font-display: swap;
 }
 
 @font-face {
@@ -27,7 +27,7 @@
     src: url('/fonts/The Series.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
-    font-display: auto;
+    font-display: swap;
 }
 
 @font-face {
@@ -35,7 +35,7 @@
     src: url('/fonts/Athelas-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-    font-display: auto;
+    font-display: swap;
 }
 
 @font-face {
@@ -43,7 +43,7 @@
     src: url('/fonts/Athelas-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
-    font-display: auto;
+    font-display: swap;
 }
 
 @font-face {
@@ -51,7 +51,7 @@
     src: url('/fonts/Times New Roman MT Condensed Regular.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
-    font-display: auto;
+    font-display: swap;
 }
 
 @font-face {
@@ -59,12 +59,45 @@
     src: url('/fonts/Times New Roman MT Condensed Italic.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
-    font-display: auto;
+    font-display: swap;
 }
 
 body{
     margin: 0;
     -webkit-tap-highlight-color: transparent;
+}
+
+.app-shell {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-main {
+    flex: 1;
+}
+
+.route-fallback {
+    min-height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.route-fallback::after {
+    content: "";
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 3px solid rgba(45, 59, 85, 0.15);
+    border-top-color: rgba(55, 181, 188, 0.65);
+    animation: route-spin 0.8s linear infinite;
+}
+
+@keyframes route-spin {
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 a,

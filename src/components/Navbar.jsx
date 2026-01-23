@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './navbar.css';
 
 import { Menubar } from 'primereact/menubar';
@@ -7,16 +8,18 @@ import { Button } from 'primereact/button';
 import { requestContactModal } from '../utils/contactModalService';
 
 export default function Navbar() {
+  const navigate = useNavigate();
+
   const handleContactClick = () => {
     requestContactModal();
   };
 
   const items = [
-    { label: 'Assesments', url: '/'},
-    { label: 'Support', url: '/support'},
-    { label: 'About us', url: '/about'},
-    { label: 'Resources', url: '/resources'},
-    { label: 'Nova careers', url: '/careers'},
+    { label: 'Assesments', command: () => navigate('/') },
+    { label: 'Support', command: () => navigate('/support') },
+    { label: 'About us', command: () => navigate('/about') },
+    { label: 'Resources', command: () => navigate('/resources') },
+    { label: 'Nova careers', command: () => navigate('/careers') },
     {
       label: 'Get in contact',
       icon: 'pi pi-send',
@@ -30,9 +33,9 @@ export default function Navbar() {
       <Menubar 
         model={items} 
         start={
-          <a href="/">
+          <Link to="/">
             <Image src="/images/topbar_logo.png" />
-          </a>
+          </Link>
         }
         end={<Button label="Get in contact" icon="pi pi-send" iconPos="right" onClick={handleContactClick} />} 
       />
