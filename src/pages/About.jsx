@@ -1,9 +1,13 @@
-import React from 'react';
-import FullTeam from '../components/FullTeam';
-import TrustBadges from '../components/TrustBadges';
+import React, { Suspense } from 'react';
+import { useDeferredRender } from '../utils/deferredRender';
 import './about.css';
 
+const FullTeam = React.lazy(() => import('../components/FullTeam'));
+const TrustBadges = React.lazy(() => import('../components/TrustBadges'));
+
 export default function About() {
+  const loadDeferred = useDeferredRender();
+
   return (
     <main className="about">
       <section className="about-hero">
@@ -57,11 +61,14 @@ export default function About() {
         </article>
       </section>
 
-      <div className="about-team">
-        <FullTeam />
-      </div>
-
-      <TrustBadges />
+      {loadDeferred && (
+        <Suspense fallback={null}>
+          <div className="about-team">
+            <FullTeam />
+          </div>
+          <TrustBadges />
+        </Suspense>
+      )}
     </main>
   );
 }

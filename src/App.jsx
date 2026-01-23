@@ -6,7 +6,7 @@ import 'primeicons/primeicons.css';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Footer from './components/Footer';
-import ContactModal from './components/ContactModal';
+import { onContactModalRequest } from './utils/contactModalService';
 
 import { Image } from 'primereact/image';
 
@@ -21,6 +21,7 @@ const PrivacyPolicy = React.lazy(() => import('./pages/PrivacyPolicy'));
 const TermsAndConditions = React.lazy(() => import('./pages/TermsAndConditions'));
 const NotFound = React.lazy(() => import('./pages/NotFound'));
 const UnderConstruction = React.lazy(() => import('./pages/UnderConstruction'));
+const ContactModal = React.lazy(() => import('./components/ContactModal'));
 
 function AppContent() {
   const location = useLocation();
@@ -37,6 +38,8 @@ function AppContent() {
   });
   const shouldShowCookieBanner = cookieConsent === null;
   const [isCookieBannerReady, setIsCookieBannerReady] = useState(false);
+  const [contactModalRequestId, setContactModalRequestId] = useState(0);
+  const [isContactModalEnabled, setIsContactModalEnabled] = useState(false);
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -109,6 +112,14 @@ function AppContent() {
   }, [showSplash, shouldShowCookieBanner]);
 
   useEffect(() => {
+    const unsubscribe = onContactModalRequest(() => {
+      setIsContactModalEnabled(true);
+      setContactModalRequestId((current) => current + 1);
+    });
+    return unsubscribe;
+  }, []);
+
+  useEffect(() => {
     const handleConsentEvent = (event) => {
       const choice = event?.detail;
       if (choice !== 'accepted' && choice !== 'rejected' && choice !== null) {
@@ -162,7 +173,11 @@ function AppContent() {
           <Footer />
         </>
       </Suspense>
-      <ContactModal />
+      {isContactModalEnabled && (
+        <Suspense fallback={null}>
+          <ContactModal requestId={contactModalRequestId} />
+        </Suspense>
+      )}
       {shouldShowCookieBanner && isCookieBannerReady && (
         <div className="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent">
           <div className="cookie-banner__content">

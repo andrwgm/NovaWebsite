@@ -6,7 +6,6 @@ import { Button } from 'primereact/button';
 import { Checkbox } from 'primereact/checkbox';
 
 import ApplicationSuccessModal from './ApplicationSuccessModal';
-import { onContactModalRequest } from '../utils/contactModalService';
 import { CONTACT_SUBMISSIONS_ENDPOINT } from '../utils/api';
 import './contactModal.css';
 
@@ -18,7 +17,7 @@ const INITIAL_FORM = {
   consent: false,
 };
 
-export default function ContactModal() {
+export default function ContactModal({ requestId = 0 }) {
   const [visible, setVisible] = useState(false);
   const [formData, setFormData] = useState(INITIAL_FORM);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -26,9 +25,10 @@ export default function ContactModal() {
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
   useEffect(() => {
-    const unsubscribe = onContactModalRequest(() => setVisible(true));
-    return unsubscribe;
-  }, []);
+    if (requestId > 0) {
+      setVisible(true);
+    }
+  }, [requestId]);
 
   const handleChange = (field) => (event) => {
     if (field === 'consent') {

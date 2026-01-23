@@ -1,8 +1,10 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { Carousel } from 'primereact/carousel';
 import { useLocation, useNavigate } from 'react-router-dom';
-import CareersJobBoard from '../components/CareersJobBoard';
+import { useDeferredRender } from '../utils/deferredRender';
 import './careers.css';
+
+const CareersJobBoard = React.lazy(() => import('../components/CareersJobBoard'));
 
 const getInitialWidth = () => (typeof window === 'undefined' ? 1440 : window.innerWidth);
 
@@ -57,6 +59,9 @@ export default function Careers() {
     const jobBoardRef = useRef(null);
     const location = useLocation();
     const navigate = useNavigate();
+    const loadDeferred = useDeferredRender({
+        immediate: location.state?.scrollTo === 'offers' || Boolean(location.hash)
+    });
 
     useEffect(() => {
         if (typeof window === 'undefined') return;
@@ -172,7 +177,11 @@ export default function Careers() {
                 </div>
             </div>
             <div className="offersSection" id="careers-offers" ref={jobBoardRef}>
-                <CareersJobBoard />
+                {loadDeferred && (
+                    <Suspense fallback={null}>
+                        <CareersJobBoard />
+                    </Suspense>
+                )}
             </div>
             <div className="footerSection">
                 <img src="/images/balloons-kid.avif" alt="Balloons kid" />

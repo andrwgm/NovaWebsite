@@ -1,8 +1,14 @@
-import React from 'react';
-import SupportGuides from '../components/SupportGuides';
+import React, { Suspense } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useDeferredRender } from '../utils/deferredRender';
 import './support.css';
 
+const SupportGuides = React.lazy(() => import('../components/SupportGuides'));
+
 export default function Support() {
+  const location = useLocation();
+  const loadDeferred = useDeferredRender({ immediate: Boolean(location.hash) });
+
   return (
     <main className="support">
       <section className="support-hero">
@@ -21,7 +27,11 @@ export default function Support() {
         </div>
       </section>
 
-      <SupportGuides />
+      {loadDeferred && (
+        <Suspense fallback={null}>
+          <SupportGuides />
+        </Suspense>
+      )}
     </main>
   );
 }
