@@ -58,7 +58,7 @@
     font-family: 'TimesNewRomanMTCondensedItalic';
     src: url('/fonts/Times New Roman MT Condensed Italic.otf') format('opentype');
     font-weight: normal;
-    font-style: italic;
+    font-style: normal;
     font-display: auto;
 }
 
