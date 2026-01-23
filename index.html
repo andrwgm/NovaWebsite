@@ -9,6 +9,55 @@
       href="/images/hands-background-compressed.avif"
       fetchpriority="high"
     />
+    <style>
+      .parallax {
+        position: relative;
+        overflow: hidden;
+      }
+      .parallax::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 120%;
+        height: 130%;
+        background-image: url("/images/hands-background-compressed.avif");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-position-y: -3em;
+        z-index: -1;
+      }
+      @supports (-webkit-touch-callout: none) {
+        .parallax::before {
+          width: 100%;
+          height: 100%;
+          background-attachment: scroll;
+          background-position: center;
+          background-position-y: 0;
+        }
+      }
+      .titleAndButton {
+        display: flex;
+        background-color: #2d2f3138;
+        padding-bottom: 4em;
+        padding-top: 4rem;
+      }
+      .titleAndButton .titles {
+        width: 65%;
+        display: flex;
+        flex-direction: column;
+      }
+      .titleAndButton .bookButton {
+        width: 35%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .titleAndButton .bookButton img {
+        width: 9em;
+      }
+    </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nova Clinics</title>
   </head>
