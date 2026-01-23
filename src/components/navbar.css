@@ -121,9 +121,9 @@
 
     .topbar .p-menubar .p-menubar-button {
         display: flex;
-        position: fixed;
-        left: 50%;
-        margin-left: 0;
+        position: relative;
+        margin-left: auto;
+        left: auto;
     }
 }
 
@@ -175,6 +175,6 @@
     }
 
     .topbar .p-menubar .p-menubar-button {
-        left: 85%;
+        left: auto;
     }
 }
