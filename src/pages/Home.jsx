@@ -1,26 +1,27 @@
-import React, { useEffect, useRef } from 'react';
+import React, { Suspense, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import './home.css';
-
-import CompressedSections from '../components/CompressedSections';
-import PricesSection from '../components/PricesSection';
-import HowItWorks from '../components/HowItWorks';
-import QuestionsAnswered from '../components/QuestionsAnswered';
-import PeopleBehind from '../components/PeopleBehind';
-import TrustBadges from '../components/TrustBadges';
 
 import { Image } from 'primereact/image';
 import { Button } from 'primereact/button';
 import { requestContactModal } from '../utils/contactModalService';
 
+const CompressedSections = React.lazy(() => import('../components/CompressedSections'));
+const PricesSection = React.lazy(() => import('../components/PricesSection'));
+const HowItWorks = React.lazy(() => import('../components/HowItWorks'));
+const QuestionsAnswered = React.lazy(() => import('../components/QuestionsAnswered'));
+const PeopleBehind = React.lazy(() => import('../components/PeopleBehind'));
+const TrustBadges = React.lazy(() => import('../components/TrustBadges'));
+
 export default function Home() {
   const gentleSlideRef = useRef(null);
   const ageSectionsRef = useRef(null);
   const location = useLocation();
+  const [loadDeferredSections, setLoadDeferredSections] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (gentleSlideRef.current && ageSectionsRef.current) {
+      if (gentleSlideRef.current) {
         // Get current transform value to calculate original position
         const currentTransform = gentleSlideRef.current.style.transform;
         let currentTranslateY = 0;
@@ -33,7 +34,6 @@ export default function Home() {
 
         // Get current visual positions (includes current transform)
         const gentleSlideRect = gentleSlideRef.current.getBoundingClientRect();
-        const ageSectionsRect = ageSectionsRef.current.getBoundingClientRect();
 
         // Convert em to pixels for calculations
         const emToPx = parseFloat(getComputedStyle(gentleSlideRef.current).fontSize);
@@ -59,15 +59,16 @@ export default function Home() {
 
         // Calculate where the bottom would be with the desired transform
         const gentleSlideBottomWithTransform = gentleSlideOriginalBottom + desiredTranslateYPx;
-        const ageSectionsTop = ageSectionsRect.top;
-
-        // If the transformed bottom would overlap with age-sections, cap the translateY
         let finalTranslateY = desiredTranslateY;
-        if (gentleSlideBottomWithTransform > ageSectionsTop) {
-          // Calculate maximum allowed translateY to prevent overlap
-          const maxTranslateYPx = ageSectionsTop - gentleSlideOriginalBottom;
-          const maxTranslateYEm = maxTranslateYPx / emToPx;
-          finalTranslateY = Math.max(0, Math.min(desiredTranslateY, maxTranslateYEm));
+        if (ageSectionsRef.current) {
+          const ageSectionsRect = ageSectionsRef.current.getBoundingClientRect();
+          const ageSectionsTop = ageSectionsRect.top;
+          if (gentleSlideBottomWithTransform > ageSectionsTop) {
+            // Calculate maximum allowed translateY to prevent overlap
+            const maxTranslateYPx = ageSectionsTop - gentleSlideOriginalBottom;
+            const maxTranslateYEm = maxTranslateYPx / emToPx;
+            finalTranslateY = Math.max(0, Math.min(desiredTranslateY, maxTranslateYEm));
+          }
         }
 
         gentleSlideRef.current.style.transform = `translateY(${finalTranslateY}em)`;
@@ -97,7 +98,31 @@ export default function Home() {
         window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
       }
     });
-  }, [location.hash]);
+  }, [location.hash, loadDeferredSections]);
+
+  useEffect(() => {
+    if (loadDeferredSections) {
+      return undefined;
+    }
+    if (location.hash) {
+      setLoadDeferredSections(true);
+      return undefined;
+    }
+
+    let idleId;
+    const timerId = setTimeout(() => setLoadDeferredSections(true), 1200);
+
+    if ('requestIdleCallback' in window) {
+      idleId = window.requestIdleCallback(() => setLoadDeferredSections(true), { timeout: 2500 });
+    }
+
+    return () => {
+      clearTimeout(timerId);
+      if (idleId && 'cancelIdleCallback' in window) {
+        window.cancelIdleCallback(idleId);
+      }
+    };
+  }, [location.hash, loadDeferredSections]);
 
   return (
     <div className="mainContent">
@@ -183,35 +208,39 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className='parallax' ref={ageSectionsRef}>
-        <CompressedSections />
-      </div>
-      <div id="pricing">
-        <div className='blueLineBg'>
-          <div className='darkBlueLine' />
-          <PricesSection />
-        </div>
-      </div>
-      <div id="how-it-works">
-        <HowItWorks />
-      </div>
-      <div id="faqs">
-        <QuestionsAnswered />
-      </div>
-      <div>
-        <div className='stillHaveQuestionsBg'>
-          <div className='stillHaveQuestionsTitle'>
-            Still have questions?
+      {loadDeferredSections && (
+        <Suspense fallback={null}>
+          <div className='parallax' ref={ageSectionsRef}>
+            <CompressedSections />
           </div>
-          <Button label="Get in contact" icon="pi pi-send" iconPos="right" onClick={requestContactModal} />
-        </div>
-      </div>
-      <div id="people-behind">
-        <PeopleBehind />
-      </div>
-      <div>
-        <TrustBadges />
-      </div>
+          <div id="pricing">
+            <div className='blueLineBg'>
+              <div className='darkBlueLine' />
+              <PricesSection />
+            </div>
+          </div>
+          <div id="how-it-works">
+            <HowItWorks />
+          </div>
+          <div id="faqs">
+            <QuestionsAnswered />
+          </div>
+          <div>
+            <div className='stillHaveQuestionsBg'>
+              <div className='stillHaveQuestionsTitle'>
+                Still have questions?
+              </div>
+              <Button label="Get in contact" icon="pi pi-send" iconPos="right" onClick={requestContactModal} />
+            </div>
+          </div>
+          <div id="people-behind">
+            <PeopleBehind />
+          </div>
+          <div>
+            <TrustBadges />
+          </div>
+        </Suspense>
+      )}
     </div>
   );
 } 
