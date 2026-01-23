@@ -34,7 +34,7 @@ export default function Navbar() {
         model={items} 
         start={
           <Link to="/">
-            <Image src="/images/topbar_logo.png" />
+            <Image src="/images/topbar_logo.avif" />
           </Link>
         }
         end={<Button label="Get in contact" icon="pi pi-send" iconPos="right" onClick={handleContactClick} />} 

@@ -206,7 +206,7 @@ function AppContent() {
       )}
       {showSplash && (
         <div className={`splash-screen${isFading ? ' is-fading' : ''}`} aria-hidden="true">
-          <Image src="/images/topbar_logo.png" alt="Nova Clinics" />
+          <Image src="/images/topbar_logo.avif" alt="Nova Clinics" />
         </div>
       )}
     </div>
