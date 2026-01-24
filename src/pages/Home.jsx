@@ -126,7 +126,7 @@ export default function Home() {
 
   return (
     <div className="mainContent">
-      <div className='titleAndButton parallax'>
+      <div className='titleAndButton parallax' fetchpriority="high">
         <div className='titles'>
           <div className='bigTitle'>
             Skip the NHS wait
