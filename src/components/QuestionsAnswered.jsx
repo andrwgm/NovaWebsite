@@ -121,13 +121,14 @@ export default function QuestionsAnswered() {
       <div className="qa-left">
         <h2 className="qa-title">Your questions <div style={{fontFamily: 'TimesNewRomanMTCondensedItalic', paddingLeft: '3rem'}}>answered</div></h2>
         <p className="qa-answer">{slides[active]?.answer}</p>
-        <div className="qa-dots" role="tablist" aria-label="Carousel pagination">
+        <div className="qa-dots" role="group" aria-label="Carousel pagination">
           {slides.map((s, i) => (
             <button
               key={s.idx}
+              type="button"
               className={`qa-dot${i === active ? ' active' : ''}`}
               aria-label={`Go to item ${i + 1}`}
-              aria-selected={i === active}
+              aria-current={i === active ? 'true' : undefined}
               onClick={() => onDotClick(i)}
             />
           ))}

@@ -113,20 +113,29 @@ export default function HowItWorks() {
             )}
             content={(item) => {
               const expanded = item.idx === activeIndex;
+              const detailId = `hiw-detail-${item.idx}`;
               return (
                 <div className="hiw-pill-wrap">
-                  <div
+                  <button
+                    type="button"
                     className={`hiw-pill${expanded ? ' expanded' : ''}`}
                     aria-expanded={expanded}
+                    aria-controls={item.detail ? detailId : undefined}
                     onMouseEnter={() => {
+                      setActiveIndex(item.idx);
+                    }}
+                    onFocus={() => {
+                      setActiveIndex(item.idx);
+                    }}
+                    onClick={() => {
                       setActiveIndex(item.idx);
                     }}
                   >
                     <div className="hiw-pill-title">{item.title}</div>
                     {item.detail && (
-                      <div className="hiw-pill-detail">{item.detail}</div>
+                      <div id={detailId} className="hiw-pill-detail">{item.detail}</div>
                     )}
-                  </div>
+                  </button>
                 </div>
               );
             }}
