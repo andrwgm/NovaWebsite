@@ -1,10 +1,11 @@
-import React, { Suspense, useEffect, useRef, useState } from 'react';
+import React, { Suspense, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import './home.css';
 
 import { Image } from 'primereact/image';
 import { Button } from 'primereact/button';
 import { requestContactModal } from '../utils/contactModalService';
+import LazySection from '../components/LazySection';
 
 const CompressedSections = React.lazy(() => import('../components/CompressedSections'));
 const PricesSection = React.lazy(() => import('../components/PricesSection'));
@@ -17,7 +18,8 @@ export default function Home() {
   const gentleSlideRef = useRef(null);
   const ageSectionsRef = useRef(null);
   const location = useLocation();
-  const [loadDeferredSections, setLoadDeferredSections] = useState(false);
+  const anchorId = location.hash ? location.hash.replace('#', '') : '';
+  const forceLazySections = ['pricing', 'how-it-works', 'faqs', 'people-behind'].includes(anchorId);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -86,43 +88,17 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (!location.hash) return;
-    const targetId = location.hash.replace('#', '');
-    if (!targetId) return;
+    if (!anchorId) return;
 
     requestAnimationFrame(() => {
-      const target = document.getElementById(targetId);
+      const target = document.getElementById(anchorId);
       if (target) {
         const offset = 120;
         const top = target.getBoundingClientRect().top + window.scrollY - offset;
         window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
       }
     });
-  }, [location.hash, loadDeferredSections]);
-
-  useEffect(() => {
-    if (loadDeferredSections) {
-      return undefined;
-    }
-    if (location.hash) {
-      setLoadDeferredSections(true);
-      return undefined;
-    }
-
-    let idleId;
-    const timerId = setTimeout(() => setLoadDeferredSections(true), 1200);
-
-    if ('requestIdleCallback' in window) {
-      idleId = window.requestIdleCallback(() => setLoadDeferredSections(true), { timeout: 2500 });
-    }
-
-    return () => {
-      clearTimeout(timerId);
-      if (idleId && 'cancelIdleCallback' in window) {
-        window.cancelIdleCallback(idleId);
-      }
-    };
-  }, [location.hash, loadDeferredSections]);
+  }, [anchorId]);
 
   return (
     <div className="mainContent">
@@ -208,39 +184,47 @@ export default function Home() {
           </div>
         </div>
       </div>
-      {loadDeferredSections && (
+      <LazySection className="parallax" ref={ageSectionsRef} forceVisible={forceLazySections}>
         <Suspense fallback={null}>
-          <div className='parallax' ref={ageSectionsRef}>
-            <CompressedSections />
-          </div>
-          <div id="pricing">
-            <div className='blueLineBg'>
-              <div className='darkBlueLine' />
-              <PricesSection />
-            </div>
-          </div>
-          <div id="how-it-works">
-            <HowItWorks />
-          </div>
-          <div id="faqs">
-            <QuestionsAnswered />
-          </div>
-          <div>
-            <div className='stillHaveQuestionsBg'>
-              <div className='stillHaveQuestionsTitle'>
-                Still have questions?
-              </div>
-              <Button label="Get in contact" icon="pi pi-send" iconPos="right" onClick={requestContactModal} />
-            </div>
-          </div>
-          <div id="people-behind">
-            <PeopleBehind />
-          </div>
-          <div>
-            <TrustBadges />
+          <CompressedSections />
+        </Suspense>
+      </LazySection>
+      <LazySection id="pricing" forceVisible={forceLazySections}>
+        <Suspense fallback={null}>
+          <div className='blueLineBg'>
+            <div className='darkBlueLine' />
+            <PricesSection />
           </div>
         </Suspense>
-      )}
+      </LazySection>
+      <LazySection id="how-it-works" forceVisible={forceLazySections}>
+        <Suspense fallback={null}>
+          <HowItWorks />
+        </Suspense>
+      </LazySection>
+      <LazySection id="faqs" forceVisible={forceLazySections}>
+        <Suspense fallback={null}>
+          <QuestionsAnswered />
+        </Suspense>
+      </LazySection>
+      <LazySection forceVisible={forceLazySections}>
+        <div className='stillHaveQuestionsBg'>
+          <div className='stillHaveQuestionsTitle'>
+            Still have questions?
+          </div>
+          <Button label="Get in contact" icon="pi pi-send" iconPos="right" onClick={requestContactModal} />
+        </div>
+      </LazySection>
+      <LazySection id="people-behind" forceVisible={forceLazySections}>
+        <Suspense fallback={null}>
+          <PeopleBehind />
+        </Suspense>
+      </LazySection>
+      <LazySection forceVisible={forceLazySections}>
+        <Suspense fallback={null}>
+          <TrustBadges />
+        </Suspense>
+      </LazySection>
     </div>
   );
 } 
