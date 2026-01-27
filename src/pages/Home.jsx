@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useRef } from 'react';
+import React, { Suspense, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import './home.css';
 
@@ -20,62 +20,99 @@ export default function Home() {
   const location = useLocation();
   const anchorId = location.hash ? location.hash.replace('#', '') : '';
   const forceLazySections = ['pricing', 'how-it-works', 'faqs', 'people-behind'].includes(anchorId);
+  const [reduceMotion, setReduceMotion] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (gentleSlideRef.current) {
-        // Get current transform value to calculate original position
-        const currentTransform = gentleSlideRef.current.style.transform;
-        let currentTranslateY = 0;
-        if (currentTransform) {
-          const match = currentTransform.match(/translateY\(([\d.]+)em\)/);
-          if (match) {
-            currentTranslateY = parseFloat(match[1]);
-          }
-        }
-
-        // Get current visual positions (includes current transform)
-        const gentleSlideRect = gentleSlideRef.current.getBoundingClientRect();
-
-        // Convert em to pixels for calculations
-        const emToPx = parseFloat(getComputedStyle(gentleSlideRef.current).fontSize);
-        const currentTranslateYPx = currentTranslateY * emToPx;
-
-        // Calculate original position by subtracting current transform
-        const gentleSlideOriginalTop = gentleSlideRect.top - currentTranslateYPx;
-        const gentleSlideOriginalHeight = gentleSlideRect.height;
-        const gentleSlideOriginalBottom = gentleSlideRect.bottom - currentTranslateYPx;
-
-        // Calculate progress based on original position
-        const windowHeight = window.innerHeight;
-        const elementTop = gentleSlideOriginalTop;
-        const elementHeight = gentleSlideOriginalHeight;
-        const progress = Math.max(0, Math.min(1, (windowHeight - elementTop) / (windowHeight + elementHeight)));
-
-        // Allow deeper translation on very large screens
-        const maxTranslateEm = window.innerWidth >= 2560 ? 45 : 40;
-
-        // Calculate desired translateY based on scroll progress
-        const desiredTranslateY = (progress * maxTranslateEm);
-        const desiredTranslateYPx = desiredTranslateY * emToPx;
-
-        // Calculate where the bottom would be with the desired transform
-        const gentleSlideBottomWithTransform = gentleSlideOriginalBottom + desiredTranslateYPx;
-        let finalTranslateY = desiredTranslateY;
-        if (ageSectionsRef.current) {
-          const ageSectionsRect = ageSectionsRef.current.getBoundingClientRect();
-          const ageSectionsTop = ageSectionsRect.top;
-          if (gentleSlideBottomWithTransform > ageSectionsTop) {
-            // Calculate maximum allowed translateY to prevent overlap
-            const maxTranslateYPx = ageSectionsTop - gentleSlideOriginalBottom;
-            const maxTranslateYEm = maxTranslateYPx / emToPx;
-            finalTranslateY = Math.max(0, Math.min(desiredTranslateY, maxTranslateYEm));
-          }
-        }
-
-        gentleSlideRef.current.style.transform = `translateY(${finalTranslateY}em)`;
+    if (typeof window === 'undefined' || !('matchMedia' in window)) {
+      return undefined;
+    }
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const updateMotionPreference = () => {
+      setReduceMotion(mediaQuery.matches);
+    };
+    updateMotionPreference();
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', updateMotionPreference);
+    } else if (mediaQuery.addListener) {
+      mediaQuery.addListener(updateMotionPreference);
+    }
+    return () => {
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener('change', updateMotionPreference);
+      } else if (mediaQuery.removeListener) {
+        mediaQuery.removeListener(updateMotionPreference);
       }
     };
+  }, []);
+
+  useEffect(() => {
+    const applyGentleSlideTransform = (progressOverride) => {
+      if (!gentleSlideRef.current) return;
+
+      // Get current transform value to calculate original position
+      const currentTransform = gentleSlideRef.current.style.transform;
+      let currentTranslateY = 0;
+      if (currentTransform) {
+        const match = currentTransform.match(/translateY\(([\d.]+)em\)/);
+        if (match) {
+          currentTranslateY = parseFloat(match[1]);
+        }
+      }
+
+      // Get current visual positions (includes current transform)
+      const gentleSlideRect = gentleSlideRef.current.getBoundingClientRect();
+
+      // Convert em to pixels for calculations
+      const emToPx = parseFloat(getComputedStyle(gentleSlideRef.current).fontSize);
+      const currentTranslateYPx = currentTranslateY * emToPx;
+
+      // Calculate original position by subtracting current transform
+      const gentleSlideOriginalTop = gentleSlideRect.top - currentTranslateYPx;
+      const gentleSlideOriginalHeight = gentleSlideRect.height;
+      const gentleSlideOriginalBottom = gentleSlideRect.bottom - currentTranslateYPx;
+
+      // Calculate progress based on original position
+      const windowHeight = window.innerHeight;
+      const elementTop = gentleSlideOriginalTop;
+      const elementHeight = gentleSlideOriginalHeight;
+      const progress = typeof progressOverride === 'number'
+        ? progressOverride
+        : Math.max(0, Math.min(1, (windowHeight - elementTop) / (windowHeight + elementHeight)));
+
+      // Allow deeper translation on very large screens
+      const maxTranslateEm = window.innerWidth >= 2560 ? 45 : 40;
+
+      // Calculate desired translateY based on scroll progress
+      const desiredTranslateY = (progress * maxTranslateEm);
+      const desiredTranslateYPx = desiredTranslateY * emToPx;
+
+      // Calculate where the bottom would be with the desired transform
+      const gentleSlideBottomWithTransform = gentleSlideOriginalBottom + desiredTranslateYPx;
+      let finalTranslateY = desiredTranslateY;
+      if (ageSectionsRef.current) {
+        const ageSectionsRect = ageSectionsRef.current.getBoundingClientRect();
+        const ageSectionsTop = ageSectionsRect.top;
+        if (gentleSlideBottomWithTransform > ageSectionsTop) {
+          // Calculate maximum allowed translateY to prevent overlap
+          const maxTranslateYPx = ageSectionsTop - gentleSlideOriginalBottom;
+          const maxTranslateYEm = maxTranslateYPx / emToPx;
+          finalTranslateY = Math.max(0, Math.min(desiredTranslateY, maxTranslateYEm));
+        }
+      }
+
+      gentleSlideRef.current.style.transform = `translateY(${finalTranslateY}em)`;
+    };
+
+    if (reduceMotion) {
+      const handleResize = () => applyGentleSlideTransform(1);
+      handleResize();
+      window.addEventListener('resize', handleResize);
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }
+
+    const handleScroll = () => applyGentleSlideTransform();
 
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Call once to set initial position
@@ -85,7 +122,7 @@ export default function Home() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [reduceMotion]);
 
   useEffect(() => {
     if (!anchorId) return;

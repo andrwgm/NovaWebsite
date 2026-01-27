@@ -42,6 +42,13 @@
     }
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .parallax::before {
+        background-attachment: scroll;
+        background-position-y: 0;
+    }
+}
+
 .titleAndButton {
     display: flex;
     background-color: #2d2f3138;
