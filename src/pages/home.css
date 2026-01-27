@@ -18,7 +18,7 @@
     left: 0;
     width: 120%;
     height: 130%; /* un poco más grande */
-    background-image: url("/public/images/hands-background-compressed.avif");
+    background-image: url("/images/hands-background-compressed.avif");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -33,6 +33,12 @@
         background-attachment: scroll;
         background-position: center;
         background-position-y: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .parallax::before {
+        background-image: url("/images/hands-background-compressed-mobile.avif");
     }
 }
 
