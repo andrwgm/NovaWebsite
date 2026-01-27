@@ -33,8 +33,8 @@ export default function Navbar() {
       <Menubar 
         model={items} 
         start={
-          <Link to="/">
-            <Image src="/images/topbar_logo.avif" />
+          <Link to="/" aria-label="Go to Nova Clinics home page">
+            <Image src="/images/topbar_logo.avif" alt="Nova Clinics Logo" />
           </Link>
         }
         end={<Button label="Get in contact" icon="pi pi-send" iconPos="right" onClick={handleContactClick} />} 

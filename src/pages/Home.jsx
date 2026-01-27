@@ -146,7 +146,7 @@ export default function Home() {
         </div>
         <div className='bookButton'>
           <Button onClick={requestContactModal}>
-            <Image src="/images/bookButton.png" />
+            <Image src="/images/bookButton.png" alt="Book Button" />
             Contact us
           </Button>
         </div>
@@ -189,11 +189,11 @@ export default function Home() {
               </div>
             </div>
             <div className='whyChooseUsImg'>
-              <Image src="/images/beach-kid.avif" />
+              <Image src="/images/beach-kid.avif" alt="Kid on the beach" />
             </div>
           </div>
         </div>
-        <Image className="curveShadow" src="/images/curveShadow.avif" />
+        <Image className="curveShadow" src="/images/curveShadow.avif" alt="Curve Shadow Image" />
         <div className='whyChooseUsContent gentleSlide' ref={gentleSlideRef} id="is-this-for-me">
           <div className='isThisForMeTitle'>
             Is this

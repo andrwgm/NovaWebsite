@@ -90,6 +90,7 @@ export default function HowItWorks() {
                 type="button"
                 className={`hiw-toggle-btn${audience === 'child' ? ' active' : ''}`}
                 onClick={() => setAudience('child')}
+                aria-label="Select child audience for timeline"
               >
                 Childs
               </button>
@@ -97,6 +98,7 @@ export default function HowItWorks() {
                 type="button"
                 className={`hiw-toggle-btn${audience === 'adult' ? ' active' : ''}`}
                 onClick={() => setAudience('adult')}
+                aria-label="Select adult audience for timeline"
               >
                 Adults
               </button>

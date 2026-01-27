@@ -42,7 +42,8 @@
 .hiw-toggle-btn {
   border: none;
   background: transparent;
-  color: #344759;
+  /* color: #344759; */
+  color: #4c545d;
   font-weight: 600;
   padding: 0.45rem 0.9rem;
   border-radius: 999px;
@@ -55,8 +56,10 @@
 }
 
 .hiw-toggle-btn.active {
-  background: #37b5bc;
-  color: #ffffff;
+  /* background: #37b5bc; */
+  background: #b0e0de;
+  /* color: #ffffff; */
+  color: #324253;
   box-shadow: 0 6px 16px rgba(55, 181, 188, 0.35);
 }
 
