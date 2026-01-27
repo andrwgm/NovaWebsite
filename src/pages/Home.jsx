@@ -122,7 +122,7 @@ export default function Home() {
         </div>
         <div className='bookButton'>
           <Button onClick={requestContactModal}>
-            <Image src="/images/bookButton.png" alt="Book Button" />
+            <Image src="/images/bookButton.avif" alt="Book Button" />
             Contact us
           </Button>
         </div>
