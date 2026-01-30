@@ -8,6 +8,7 @@ import { requestContactModal } from '../utils/contactModalService';
 import LazySection from '../components/LazySection';
 
 const CompressedSections = React.lazy(() => import('../components/CompressedSections'));
+const QuestionnaireSection = React.lazy(() => import('../components/QuestionnaireSection'));
 const PricesSection = React.lazy(() => import('../components/PricesSection'));
 const HowItWorks = React.lazy(() => import('../components/HowItWorks'));
 const QuestionsAnswered = React.lazy(() => import('../components/QuestionsAnswered'));
@@ -223,7 +224,7 @@ export default function Home() {
       </div>
       <LazySection className="parallax" ref={ageSectionsRef} forceVisible={forceLazySections}>
         <Suspense fallback={null}>
-          <CompressedSections />
+          <QuestionnaireSection />
         </Suspense>
       </LazySection>
       <LazySection id="pricing" forceVisible={forceLazySections}>
