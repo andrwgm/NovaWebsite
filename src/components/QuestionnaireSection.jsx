@@ -230,23 +230,21 @@ export default function QuestionnaireSection() {
             <div className="questionnaire-actions">
               <Button
                 className="questionnaire-secondary"
+                label="Back"
                 icon="pi pi-arrow-left"
                 iconPos="left"
                 onClick={handlePrevious}
                 disabled={currentIndex === 0}
               >
-                Back
               </Button>
               <Button
                 className="questionnaire-primary"
-                icon="pi pi-arrow-right"
+                label={currentIndex === activeQuestionnaire.items.length - 1 ? 'Finish' : 'Next'}
+                icon={currentIndex === activeQuestionnaire.items.length - 1 ? 'pi pi-check' : 'pi pi-arrow-right'} 
                 iconPos="right"
                 onClick={handleNext}
                 disabled={!currentAnswer}
               >
-                {currentIndex === activeQuestionnaire.items.length - 1
-                  ? 'Finish'
-                  : 'Next'}
               </Button>
             </div>
           </>
