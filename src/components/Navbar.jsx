@@ -15,7 +15,7 @@ export default function Navbar() {
   };
 
   const items = [
-    { label: 'Assesments', command: () => navigate('/') },
+    { label: 'Assessments', command: () => navigate('/') },
     { label: 'Support', command: () => navigate('/support') },
     { label: 'About us', command: () => navigate('/about') },
     { label: 'Resources', command: () => navigate('/resources') },

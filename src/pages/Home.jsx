@@ -154,7 +154,7 @@ export default function Home() {
             </div>
             <div className='smallTitleRegular'>
               <br />
-              Private ADHD & Autism Diagnosis UK
+              Private Autism & ADHD Assessments
             </div>
           </div>
         </div>
