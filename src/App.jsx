@@ -39,6 +39,7 @@ function AppContent() {
   const shouldShowCookieBanner = cookieConsent === null;
   const [isCookieBannerReady, setIsCookieBannerReady] = useState(false);
   const [contactModalRequestId, setContactModalRequestId] = useState(0);
+  const [contactModalPrefill, setContactModalPrefill] = useState('');
   const [isContactModalEnabled, setIsContactModalEnabled] = useState(false);
 
   useEffect(() => {
@@ -112,8 +113,10 @@ function AppContent() {
   }, [showSplash, shouldShowCookieBanner]);
 
   useEffect(() => {
-    const unsubscribe = onContactModalRequest(() => {
+    const unsubscribe = onContactModalRequest((payload) => {
       setIsContactModalEnabled(true);
+      const nextMessage = typeof payload?.message === 'string' ? payload.message : '';
+      setContactModalPrefill(nextMessage);
       setContactModalRequestId((current) => current + 1);
     });
     return unsubscribe;
@@ -175,7 +178,7 @@ function AppContent() {
       </Suspense>
       {isContactModalEnabled && (
         <Suspense fallback={null}>
-          <ContactModal requestId={contactModalRequestId} />
+          <ContactModal requestId={contactModalRequestId} prefillMessage={contactModalPrefill} />
         </Suspense>
       )}
       {shouldShowCookieBanner && isCookieBannerReady && (

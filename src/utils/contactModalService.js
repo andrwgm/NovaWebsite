@@ -5,6 +5,6 @@ export const onContactModalRequest = (listener) => {
   return () => listeners.delete(listener);
 };
 
-export const requestContactModal = () => {
-  listeners.forEach((listener) => listener());
+export const requestContactModal = (payload = {}) => {
+  listeners.forEach((listener) => listener(payload));
 };

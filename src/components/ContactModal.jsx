@@ -17,7 +17,7 @@ const INITIAL_FORM = {
   consent: false,
 };
 
-export default function ContactModal({ requestId = 0 }) {
+export default function ContactModal({ requestId = 0, prefillMessage = '' }) {
   const [visible, setVisible] = useState(false);
   const [formData, setFormData] = useState(INITIAL_FORM);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -27,8 +27,9 @@ export default function ContactModal({ requestId = 0 }) {
   useEffect(() => {
     if (requestId > 0) {
       setVisible(true);
+      setFormData((prev) => ({ ...prev, message: prefillMessage }));
     }
-  }, [requestId]);
+  }, [requestId, prefillMessage]);
 
   const handleChange = (field) => (event) => {
     if (field === 'consent') {
