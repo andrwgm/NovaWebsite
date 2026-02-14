@@ -21,10 +21,13 @@
   color: #344759;
 }
 
-.hiw-center {
+.hiw-toggles {
   display: flex;
-  justify-content: left;
+  align-items: center;
+  gap: 1.4rem;
+  flex-wrap: wrap;
   width: 100%;
+  margin-bottom: 2em;
 }
 
 .hiw-toggle {
@@ -35,7 +38,6 @@
   border-radius: 999px;
   border: 1px solid #d3e7e5;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-  margin-bottom: 2em;
   gap: 0.2em
 }
 
@@ -233,7 +235,7 @@
     font-size: 0.93rem;
   }
 
-  .hiw-center {
+  .hiw-toggles {
     justify-content: center;
   }
 }
@@ -276,7 +278,7 @@
     font-size: 0.9rem;
   }
 
-  .hiw-center {
+  .hiw-toggles {
     justify-content: center;
   }
 }
