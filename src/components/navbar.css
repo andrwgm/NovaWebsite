@@ -53,6 +53,12 @@
     transition: background-color .2s;
 }
 
+.topbar .p-menubar .p-menuitem-link:focus-visible {
+    outline: 2px solid #37B5BC;
+    outline-offset: 3px;
+    border-radius: 2em;
+}
+
 .topbar .p-menubar .p-menubar-root-list{
     padding: 0.5rem;
     border-radius: 1.5em;

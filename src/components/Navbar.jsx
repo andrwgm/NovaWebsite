@@ -31,7 +31,13 @@ export default function Navbar() {
   return (
     <div className="topbar">
       <Menubar 
-        model={items} 
+        model={items}
+        pt={{
+          menu: { tabIndex: -1 },
+          action: ({ context }) => ({
+            tabIndex: context?.disabled ? -1 : 0
+          })
+        }}
         start={
           <Link to="/" aria-label="Go to Nova Clinics home page">
             <Image src="/images/topbar_logo.avif" alt="Nova Clinics Logo" />
