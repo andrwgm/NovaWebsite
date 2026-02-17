@@ -136,15 +136,98 @@
   font: inherit;
   cursor: pointer;
   width: 100%;
+  position: relative;
 }
 
 .hiw-pill.expanded {
   background: #eefffe
 }
 
+.hiw-pill:focus-visible {
+  outline: 2px solid #5c8ba3;
+  outline-offset: 2px;
+}
+
+.hiw-pill-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
 .hiw-pill-title {
   font-family: 'LemonMilkLight', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: 1.1rem;
+  line-height: 1.2;
+  flex: 1;
+}
+
+.hiw-info-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.hiw-info-btn {
+  border: none;
+  background: transparent;
+  color: #344759;
+  cursor: pointer;
+  width: 1.8rem;
+  height: 1.8rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0;
+}
+
+.hiw-info-btn .pi {
+  font-size: 1.25rem;
+}
+
+.hiw-info-btn:hover,
+.hiw-info-btn:focus-visible {
+  background: rgba(52, 71, 89, 0.08);
+}
+
+.hiw-info-btn:focus-visible {
+  outline: 2px solid #5c8ba3;
+  outline-offset: 1px;
+}
+
+.hiw-info-tooltip {
+  position: absolute;
+  top: calc(100% + 0.45rem);
+  right: 0;
+  z-index: 12;
+  width: min(44rem, calc(100vw - 5rem));
+  max-width: 44rem;
+  background: #ffffff;
+  color: #172431;
+  border: 1px solid #85b9bc;
+  border-radius: 1.5rem;
+  padding: 1rem 1.15rem;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: 1.05rem;
+  line-height: 1.2;
+  text-transform: none;
+  letter-spacing: normal;
+  opacity: 0;
+  transform: translateY(6px);
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
+}
+
+.hiw-info-tooltip.visible {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .hiw-pill-detail {
@@ -231,6 +314,15 @@
     font-size: 1.05rem;
   }
 
+  .hiw-info-btn .pi {
+    font-size: 1.15rem;
+  }
+
+  .hiw-info-tooltip {
+    width: min(34rem, calc(100vw - 4rem));
+    font-size: 1rem;
+  }
+
   .hiw-pill-detail {
     font-size: 0.93rem;
   }
@@ -272,6 +364,28 @@
 
   .hiw-pill-title {
     font-size: 1rem;
+  }
+
+  .hiw-pill-head {
+    gap: 0.55rem;
+  }
+
+  .hiw-info-btn {
+    width: 1.65rem;
+    height: 1.65rem;
+  }
+
+  .hiw-info-btn .pi {
+    font-size: 1.05rem;
+  }
+
+  .hiw-info-tooltip {
+    right: -0.25rem;
+    width: min(24rem, calc(100vw - 2.5rem));
+    border-radius: 1rem;
+    padding: 0.75rem 0.85rem;
+    font-size: 1rem;
+    line-height: 1.25;
   }
 
   .hiw-pill-detail {
