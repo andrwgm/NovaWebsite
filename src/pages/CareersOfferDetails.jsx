@@ -776,13 +776,6 @@ export default function CareersOfferDetails() {
                                             icon="pi pi-send"
                                             disabled={!formData.consent || isSubmitting || !formData.cv}
                                         />
-                                        <Button
-                                            type="button"
-                                            label={'Test success modal'}
-                                            className="offer-application__submit p-button-sm"
-                                            icon="pi pi-send"
-                                            onClick={() => setSubmitSuccess(!submitSuccess)}
-                                        />
                                     </div>
                                 </form>
                             </article>
