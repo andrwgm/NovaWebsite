@@ -1,4 +1,4 @@
-﻿import React, { Fragment, useEffect, useMemo, useRef, useState } from 'react';
+import React, { Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Chip } from 'primereact/chip';
 import { TabView, TabPanel } from 'primereact/tabview';
@@ -13,7 +13,6 @@ import { MultiSelect } from 'primereact/multiselect';
 import { Checkbox } from 'primereact/checkbox';
 import { Skeleton } from 'primereact/skeleton';
 import { JOB_APPLICATIONS_ENDPOINT, JOB_OFFERS_ENDPOINT } from '../utils/api';
-import { COUNTRY_OPTIONS } from '../utils/countries';
 import ApplicationSuccessModal from '../components/ApplicationSuccessModal';
 import './careersOfferDetails.css';
 
@@ -50,6 +49,7 @@ export default function CareersOfferDetails() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitError, setSubmitError] = useState(null);
     const [submitSuccess, setSubmitSuccess] = useState(false);
+    const [countryOptions, setCountryOptions] = useState([]);
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
@@ -72,6 +72,48 @@ export default function CareersOfferDetails() {
         futureOpportunities: false,
         comments: ''
     });
+
+    useEffect(() => {
+        let cancelled = false;
+
+        const loadCountries = async () => {
+            try {
+                const response = await fetch('https://restcountries.com/v3.1/all?fields=name,cca2');
+                if (!response.ok) {
+                    throw new Error(`Country request failed with status ${response.status}`);
+                }
+
+                const payload = await response.json();
+                const options = (Array.isArray(payload) ? payload : [])
+                    .map((item) => {
+                        const label = item?.name?.common;
+                        const iso2 = item?.cca2;
+                        if (!label || !iso2) {
+                            return null;
+                        }
+                        return { label: String(label), value: String(iso2).toUpperCase() };
+                    })
+                    .filter(Boolean)
+                    .sort((a, b) => a.label.localeCompare(b.label, 'en', { sensitivity: 'base' }));
+
+                options.push({ label: 'Other', value: 'OTHER' });
+
+                if (!cancelled) {
+                    setCountryOptions(options);
+                }
+            } catch (err) {
+                console.error('Failed to load country options', err);
+                if (!cancelled) {
+                    setCountryOptions([{ label: 'Other', value: 'OTHER' }]);
+                }
+            }
+        };
+
+        void loadCountries();
+        return () => {
+            cancelled = true;
+        };
+    }, []);
 
     useEffect(() => {
         let isMounted = true;
@@ -519,7 +561,9 @@ export default function CareersOfferDetails() {
                                                     id="application-country"
                                                     value={formData.country}
                                                     onChange={(e) => updateField('country', e.value)}
-                                                    options={COUNTRY_OPTIONS}
+                                                    options={countryOptions}
+                                                    optionLabel="label"
+                                                    optionValue="value"
                                                     placeholder="Select country"
                                                     filter
                                                     className="offer-application__dropdown"
