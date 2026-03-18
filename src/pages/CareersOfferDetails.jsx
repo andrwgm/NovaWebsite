@@ -13,6 +13,7 @@ import { MultiSelect } from 'primereact/multiselect';
 import { Checkbox } from 'primereact/checkbox';
 import { Skeleton } from 'primereact/skeleton';
 import { JOB_APPLICATIONS_ENDPOINT, JOB_OFFERS_ENDPOINT } from '../utils/api';
+import { COUNTRY_OPTIONS_FALLBACK } from '../utils/countries';
 import ApplicationSuccessModal from '../components/ApplicationSuccessModal';
 import './careersOfferDetails.css';
 
@@ -49,7 +50,7 @@ export default function CareersOfferDetails() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitError, setSubmitError] = useState(null);
     const [submitSuccess, setSubmitSuccess] = useState(false);
-    const [countryOptions, setCountryOptions] = useState([]);
+    const [countryOptions, setCountryOptions] = useState(() => COUNTRY_OPTIONS_FALLBACK);
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
@@ -104,7 +105,7 @@ export default function CareersOfferDetails() {
             } catch (err) {
                 console.error('Failed to load country options', err);
                 if (!cancelled) {
-                    setCountryOptions([{ label: 'Other', value: 'OTHER' }]);
+                    setCountryOptions(COUNTRY_OPTIONS_FALLBACK);
                 }
             }
         };

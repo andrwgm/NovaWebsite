@@ -201,3 +201,22 @@ export const COUNTRY_OPTIONS = [
     { label: 'Other', value: 'other' }
 ];
 
+/**
+ * Fallback local (sin llamadas externas) usando ISO 3166-1 alpha-2.
+ * Esto permite pintar banderas en el admin y guardar valores consistentes en BBDD.
+ */
+export const COUNTRY_OPTIONS_FALLBACK = [
+    { label: 'United Kingdom', value: 'GB' },
+    { label: 'Spain', value: 'ES' },
+    { label: 'Portugal', value: 'PT' },
+    { label: 'France', value: 'FR' },
+    { label: 'Italy', value: 'IT' },
+    { label: 'Ireland', value: 'IE' },
+    { label: 'Germany', value: 'DE' },
+    { label: 'Netherlands', value: 'NL' },
+    { label: 'Belgium', value: 'BE' },
+    { label: 'Switzerland', value: 'CH' },
+    { label: 'United States', value: 'US' },
+    { label: 'Other', value: 'OTHER' }
+];
+
