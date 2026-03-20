@@ -162,7 +162,7 @@ export default function Careers() {
                 <div className="infoSection__copy">
                     <p className="infoSection__eyebrow">Redefining care,<div style={{fontFamily: 'TimesNewRomanMTCondensedItalic', paddingLeft: '15rem'}}>together</div></p>
                     <p className="infoSection__lead">
-                        At Nova Clinic, we’re building a better way to deliver psychological care — one that’s faster,
+                        At Nova Clinics, we’re building a better way to deliver psychological care — one that’s faster,
                         fairer, and more human.
                     </p>
                     <ul className="infoSection__list">

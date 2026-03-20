@@ -359,7 +359,7 @@ export default function CareersOfferDetails() {
                     <TabView className="offer-details__tabs" panelContainerClassName="offer-details__panels">
                         <TabPanel header="Overview">
                             <article className="offer-overview">
-                                <p className="offer-details__lede">Join Nova Clinic — redefining psychological assessments for children.</p>
+                                <p className="offer-details__lede">Join Nova Clinics — redefining psychological assessments for everyone.</p>
                                 <p className="offer-details__description">
                                     <Skeleton width="100%" />
                                     <Skeleton width="95%" />
@@ -368,7 +368,7 @@ export default function CareersOfferDetails() {
 
                                 <div className="offer-overview__grid">
                                     {[
-                                        'Why join Nova Clinic?',
+                                        'Why join Nova Clinics?',
                                         "What you'll do",
                                         "What we're looking for"
                                     ].map((heading) => (
@@ -477,14 +477,14 @@ export default function CareersOfferDetails() {
                         <TabPanel header="Overview">
                             <article className="offer-overview">
                                 <p className="offer-details__lede">
-                                    Join Nova Clinic — redefining psychological assessments for children.
+                                    Join Nova Clinics — redefining psychological assessments for everyone.
                                 </p>
                                 <p className="offer-details__description">{offer.longDescription}</p>
 
                                 <div className="offer-overview__grid">
                                     {overviewHighlights.length > 0 && (
                                         <section>
-                                            <h3>Why join Nova Clinic?</h3>
+                                            <h3>Why join Nova Clinics?</h3>
                                             <ul>
                                                 {overviewHighlights.map((item) => (
                                                     <li key={item}>{item}</li>
