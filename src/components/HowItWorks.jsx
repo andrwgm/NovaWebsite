@@ -54,7 +54,7 @@ const CHILD_STEPS_ADHD = [
     extraInfo: 'We will also use the QbCheck - a reliable computer-based test designed to objectively measure and assess various aspects of hyperactivity, impulsivity, and inattention. It is administered remotely using your computer\'s web browser and takes approximately 20 minutes to complete. Our support team will send you detailed instructions and a voucher code to remotely access the QbCheck test. A part from this QbCheck, our clinical team will have meeting with your child to gather his/her stenches and needs. We will also use a DIVA/ACE questionnaire to gather more information about ADHD traits and the impact that those are having in your child day - to - day.',
   },
   {
-    title: 'Multi‑disciplinary Team Review',
+    title: 'Multi-disciplinary Team Review',
     detail: 'All involved clinicians meet to review the collected evidence against DSM-5 criteria to establish if the child has ADHD.',
     extraInfo: 'A multi-disciplinary team meeting is when all the clinicians who are involved in the child\'s assessment review and discuss all the information from the assessment. The MDT will use the DSM-5 criteria for ADHD to determine if there is sufficient evidence from the assessment to meet the minimum criteria for ADHD or not. Sometimes, at this point, clinicians may request further information from the family, to help them reach an outcome.',
   },
@@ -87,7 +87,7 @@ const CHILD_STEPS_COMBINED = [
     extraInfo: 'We will complete an observation assessment with the child/young person/adult. We use an ADOS-2 (the Autism Diagnostic Observation Schedule – Second Edition) informed format, which includes activities that can help a specialised trained clinician to understand an individual\'s communication skills, social interaction style and play or imaginative use of materials, depending upon the individual\'s developmental age. The ADOS-2 is a ‘gold standard’ observational tool when assessing for possible Autism. We will also use the QbCheck - a reliable computer-based test designed to objectively measure and assess various aspects of hyperactivity, impulsivity, and inattention. It is administered remotely using your computer\'s web browser and takes approximately 20 minutes to complete. Our support team will send you detailed instructions and a voucher code to remotely access the QbCheck test. A part from this QbCheck, our clinical team will have meeting with your child to gather his/her stenches and needs. We will also use a DIVA/ACE questionnaire to gather more information about ADHD traits and the impact that those are having in your child day - to - day.',
   },
   {
-    title: 'Multi‑disciplinary Team Review',
+    title: 'Multi-disciplinary Team Review',
     detail: 'The multi-disciplinary team collaboratively reviews the assessment evidence against DSM-5 criteria for both autism and ADHD.',
     extraInfo: 'A multi-disciplinary team meeting is when all the clinicians who are involved in the child\'s assessment review and discuss all the information from the assessment. The MDT will use the DSM-5 criteria for autism spectrum disorder and ADHD to determine if there is sufficient evidence from the assessment to meet the minimum criteria for autism and/or ADHD or not. Sometimes, at this point, clinicians may request further information from the family, to help them reach an outcome.',
   },
@@ -120,7 +120,7 @@ const ADULT_STEPS_AUTISM = [
     extraInfo: 'Getting information from someone who knows you well, getting their insights are a key part of the assessment process. We will invite your informant to attend a separate appointment to share your neurodevelopmental history and how you present day to day. You are welcome to attend this appointment too. We will use an interview based on the DMS-5 criteria for Autism.',
   },
   {
-    title: 'Multidisciplinary Team Review',
+    title: 'Multi-disciplinary Team Review',
     detail: 'Clinicians meet to collectively evaluate all collected information against DSM-5 guidelines to determine an autism diagnosis.',
     extraInfo: 'A multi-disciplinary team meeting is when all the clinicians who are involved in your assessment review and discuss all the information from the assessment. The MDT will use the DSM-5 criteria for autism spectrum disorder to determine if there is sufficient evidence from the assessment to meet the minimum criteria for autism or not. Sometimes, at this point, clinicians may request further information from the family, to help them reach an outcome.',
   },
@@ -153,7 +153,7 @@ const ADULT_STEPS_ADHD = [
     extraInfo: 'Getting information from someone who knows you well, getting their insights are a key part of the assessment process. We will invite your informant to attend a separate appointment to share your neurodevelopmental history and how you present day to day. You are welcome to attend this appointment too. We will also use a DIVA/ACE questionnaire to gather more information about ADHD traits.',
   },
   {
-    title: 'Multidisciplinary Team Review',
+    title: 'Multi-disciplinary Team Review',
     detail: 'The multi-disciplinary team reviews the assessment evidence collectively using the DSM-5 criteria for ADHD.',
     extraInfo: 'A multi-disciplinary team meeting is when all the clinicians who are involved in your assessment review and discuss all the information from the assessment. The MDT will use the DSM-5 criteria for ADHD to determine if there is sufficient evidence from the assessment to meet the minimum criteria for ADHD or not. Sometimes, at this point, clinicians may request further information from the family, to help them reach an outcome.',
   },
@@ -186,7 +186,7 @@ const ADULT_STEPS_COMBINED = [
     extraInfo: 'Getting information from someone who knows you well, getting their insights are a key part of the assessment process. We will invite your informant to attend a separate appointment to share your neurodevelopmental history and how you present day to day. You are welcome to attend this appointment too. We will use an interview based on the DMS-5 criteria for Autism. We will also use a DIVA/ACE questionnaire to gather information about ADHD traits.',
   },
   {
-    title: 'Multidisciplinary Team Review',
+    title: 'Multi-disciplinary Team Review',
     detail: 'The clinical team conducts a multi-disciplinary review of all collected data using DSM-5 criteria to determine the presence of autism and/or ADHD.',
     extraInfo: 'A multi-disciplinary team meeting is when all the clinicians who are involved in your assessment review and discuss all the information from the assessment. The MDT will use the DSM-5 criteria for autism and ADHD to determine if there is sufficient evidence from the assessment to meet the minimum criteria for autism and/or ADHD or not. Sometimes, at this point, clinicians may request further information from the family, to help them reach an outcome.',
   },
