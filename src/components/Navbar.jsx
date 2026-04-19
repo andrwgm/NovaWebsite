@@ -19,6 +19,7 @@ export default function Navbar() {
     { label: 'Support', command: () => navigate('/support') },
     { label: 'About us', command: () => navigate('/about') },
     { label: 'Resources', command: () => navigate('/resources') },
+    { label: 'Blog', command: () => navigate('/blog') },
     { label: 'Nova careers', command: () => navigate('/careers') },
     {
       label: 'Get in contact',
