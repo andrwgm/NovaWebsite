@@ -1,4 +1,5 @@
 import React, { Suspense, useEffect, useRef, useState } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import 'primereact/resources/themes/lara-light-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
@@ -21,6 +22,8 @@ const PrivacyPolicy = React.lazy(() => import('./pages/PrivacyPolicy'));
 const TermsAndConditions = React.lazy(() => import('./pages/TermsAndConditions'));
 const NotFound = React.lazy(() => import('./pages/NotFound'));
 const UnderConstruction = React.lazy(() => import('./pages/UnderConstruction'));
+const Blog = React.lazy(() => import('./pages/Blog'));
+const BlogPost = React.lazy(() => import('./pages/BlogPost'));
 const ContactModal = React.lazy(() => import('./components/ContactModal'));
 
 function AppContent() {
@@ -165,7 +168,8 @@ function AppContent() {
               <Route path="/careers" element={<Careers />} />
               <Route path="/careers/:slug" element={<CareersOfferDetails />} />
               <Route path="/resources" element={<UnderConstruction />} />
-              <Route path="/blog" element={<UnderConstruction />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/best-practices" element={<UnderConstruction />} />
               <Route path="/cookies-policy" element={<CookiesPolicy />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
@@ -218,8 +222,10 @@ function AppContent() {
 
 export default function App() {
   return (
-    <Router>
-      <AppContent />
-    </Router>
+    <HelmetProvider>
+      <Router>
+        <AppContent />
+      </Router>
+    </HelmetProvider>
   );
 } 
