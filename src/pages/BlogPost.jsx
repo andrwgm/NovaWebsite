@@ -99,12 +99,12 @@ export default function BlogPost() {
                 <MdxArticle markdown={post.body} />
               </article>
             </div>
-
-            <BlogBottomCta />
           </div>
 
           <BlogPostSidebar miniPost={sidebarMini} relatedPosts={related} />
         </div>
+
+        <BlogBottomCta />
       </div>
     </div>
   )

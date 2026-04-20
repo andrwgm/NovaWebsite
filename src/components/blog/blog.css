@@ -75,10 +75,9 @@
 
 .blog-hero__media img {
   width: 100%;
-  height: 100%;
+  height: clamp(280px, 30vw, 380px);
   display: block;
   object-fit: cover;
-  aspect-ratio: 4 / 3;
 }
 
 .blog-search {
@@ -212,7 +211,7 @@
   position: relative;
   border-radius: 18px;
   overflow: hidden;
-  min-height: 320px;
+  height: clamp(220px, 28vw, 290px);
   border: 1px solid rgba(45, 59, 85, 0.08);
 }
 
@@ -221,7 +220,6 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  min-height: 320px;
 }
 
 .blog-featured__overlay {
@@ -232,12 +230,18 @@
 
 .blog-featured__content {
   position: absolute;
-  inset: auto 0 0 0;
-  padding: 26px 26px 22px;
+  left: 20px;
+  bottom: 20px;
+  right: auto;
+  width: min(700px, calc(100% - 40px));
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: #ffffff;
   display: grid;
-  gap: 12px;
-  max-width: min(720px, 100%);
+  gap: 10px;
 }
 
 .blog-featured__title {
@@ -688,7 +692,7 @@
   grid-template-columns: minmax(0, 1fr) 320px;
   gap: 28px;
   align-items: start;
-  padding-bottom: 64px;
+  padding-bottom: 0;
 }
 
 .blog-post-layout__reading {
@@ -853,7 +857,7 @@
 }
 
 .blog-bottom-cta {
-  margin-top: 22px;
+  margin: 28px 0 64px;
   border-radius: 18px;
   overflow: hidden;
   border: 1px solid rgba(45, 59, 85, 0.08);
@@ -867,12 +871,15 @@
   align-items: center;
 }
 
+.blog-bottom-cta__media {
+  height: clamp(220px, 24vw, 300px);
+}
+
 .blog-bottom-cta__media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  min-height: 220px;
 }
 
 .blog-bottom-cta__copy {
@@ -902,6 +909,14 @@
 
   .blog-hero__media {
     order: -1;
+  }
+
+  .blog-hero__media img {
+    height: clamp(240px, 48vw, 320px);
+  }
+
+  .blog-featured__media {
+    height: clamp(220px, 42vw, 300px);
   }
 
   .blog-layout,
@@ -952,5 +967,9 @@
 
   .blog-bottom-cta__grid {
     grid-template-columns: 1fr;
+  }
+
+  .blog-bottom-cta__media {
+    height: clamp(190px, 56vw, 240px);
   }
 }
