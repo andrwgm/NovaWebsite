@@ -959,7 +959,7 @@
   }
 
   .blog-featured__media {
-    height: clamp(250px, 62vw, 330px);
+    height: clamp(360px, 92vw, 520px);
   }
 
   .blog-featured__content {
