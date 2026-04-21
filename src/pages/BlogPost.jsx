@@ -10,6 +10,7 @@ import BlogBreadcrumbs from '../components/blog/BlogBreadcrumbs'
 import BlogJsonLd, { buildArticleJsonLd } from '../components/blog/BlogJsonLd'
 import { BlogPostSidebar } from '../components/blog/BlogSidebar'
 import BlogSeo from '../components/blog/BlogSeo'
+import BlogShareBar from '../components/blog/BlogShareBar'
 import BlogTableOfContents from '../components/blog/BlogTableOfContents'
 import MdxArticle from '../components/blog/MdxArticle'
 import NotFound from './NotFound'
@@ -99,6 +100,8 @@ export default function BlogPost() {
                 <MdxArticle markdown={post.body} />
               </article>
             </div>
+
+            <BlogShareBar title={post.title} url={canonicalUrl} />
           </div>
 
           <BlogPostSidebar miniPost={sidebarMini} relatedPosts={related} />
