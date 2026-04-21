@@ -3,23 +3,26 @@
  * @returns {{ label: string, count: number }[]}
  */
 export function computeTopicCounts(posts) {
-  const map = new Map()
+  const topicCounts = new Map()
+  const topicLabels = new Map()
 
   for (const post of posts) {
-    const category = String(post.category || '').trim()
-    if (category) {
-      map.set(category, (map.get(category) || 0) + 1)
-    }
-
-    for (const tag of post.tags || []) {
-      const label = String(tag).trim()
+    // Count only MDX topics/tags (not category) and only once per post.
+    const seenInPost = new Set()
+    for (const rawTag of post.tags || []) {
+      const label = String(rawTag).trim()
       if (!label) continue
-      map.set(label, (map.get(label) || 0) + 1)
+      const key = label.toLowerCase()
+      if (seenInPost.has(key)) continue
+      seenInPost.add(key)
+
+      topicLabels.set(key, topicLabels.get(key) || label)
+      topicCounts.set(key, (topicCounts.get(key) || 0) + 1)
     }
   }
 
-  return Array.from(map.entries())
-    .map(([label, count]) => ({ label, count }))
+  return Array.from(topicCounts.entries())
+    .map(([key, count]) => ({ label: topicLabels.get(key) || key, count }))
     .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label))
     .slice(0, 10)
 }

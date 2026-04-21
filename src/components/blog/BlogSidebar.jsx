@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { formatBlogDate, formatNumber } from '../../utils/formatBlogDate'
+import { formatBlogDate } from '../../utils/formatBlogDate'
 
 export default function BlogSidebar({ popularTopics, miniPost }) {
   const [email, setEmail] = useState('')
@@ -158,12 +158,6 @@ export function BlogPostSidebar({ miniPost, relatedPosts }) {
               <span>{formatBlogDate(miniPost.publishedAt)}</span>
               <span aria-hidden="true">·</span>
               <span>{miniPost.readingTime} min read</span>
-              {miniPost.viewCount ? (
-                <>
-                  <span aria-hidden="true">·</span>
-                  <span>{formatNumber(miniPost.viewCount)} views</span>
-                </>
-              ) : null}
             </div>
           </Link>
         </section>

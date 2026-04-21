@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { formatBlogDate, formatNumber } from '../../utils/formatBlogDate'
+import { formatBlogDate } from '../../utils/formatBlogDate'
 
 export default function BlogFeaturedCard({ post }) {
   if (!post) return null
@@ -29,10 +29,6 @@ export default function BlogFeaturedCard({ post }) {
           |
         </span>
         <span>{post.readingTime} min read</span>
-        <span className="blog-featured__sep" aria-hidden="true">
-          |
-        </span>
-        <span>{formatNumber(post.viewCount || 0)} views</span>
       </div>
     </section>
   )
