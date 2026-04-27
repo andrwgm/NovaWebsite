@@ -301,14 +301,14 @@ export default function HowItWorks() {
                 className={`hiw-toggle-btn${audience === 'child' ? ' active' : ''}`}
                 onClick={() => setAudience('child')}
               >
-                Childs
+                Child
               </button>
               <button
                 type="button"
                 className={`hiw-toggle-btn${audience === 'adult' ? ' active' : ''}`}
                 onClick={() => setAudience('adult')}
               >
-                Adults
+                Adult
               </button>
             </div>
           </div>
