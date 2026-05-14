@@ -1,11 +1,13 @@
 Guía rápida (frontend + API de ofertas)
 =======================================
 
+Entorno local: **Node.js 22+** y **pnpm 11** (por ejemplo `corepack enable && corepack prepare pnpm@11.1.1 --activate`). Instalación: `pnpm install`; desarrollo: `pnpm run dev`.
+
 El frontend usa Vite/React y consume las ofertas de trabajo desde la API FastAPI en `GET /api/v1/job-offers`. Tanto el listado (`CareersJobBoard.jsx`) como el detalle (`CareersOfferDetails.jsx`) leen la URL base del backend desde la variable `VITE_API_BASE_URL`.
 
 Variables de entorno (Vite)
 ---------------------------
-- `.env.production` (para `npm run build` y Docker):
+- `.env.production` (para `pnpm run build` y Docker):
   ```
   VITE_API_BASE_URL=https://tu-backend-prod.tld
   ```
