@@ -1,10 +1,17 @@
-# Use official Node.js image as the build environment
-FROM node:alpine as build
+# syntax=docker/dockerfile:1.7
+FROM node:22-bookworm-slim AS build
 WORKDIR /app
-COPY package*.json ./
-RUN npm install
+
+ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0
+
+RUN corepack enable && corepack prepare pnpm@11.1.1 --activate
+
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
+RUN --mount=type=cache,id=pnpm-novaweb,target=/root/.local/share/pnpm/store \
+    pnpm install --frozen-lockfile
+
 COPY . .
-RUN npm run build
+RUN pnpm run build
 
 # Use a lightweight web server to serve the static files
 FROM nginx:alpine
