@@ -105,7 +105,7 @@ export default function Footer() {
       <div className="footer-bottom">
         <div className="footer-bottom-line" />
         <div className="footer-bottom-content">
-          <span>© Nova Clinics 2025</span>
+          <span>© Nova Clinics 2026</span>
           <span>
             {/* Nova Clinics is the trading name of Novaclinicsuk Ltd, a company registered in England
             and Wales, registration number 16344901. */}
