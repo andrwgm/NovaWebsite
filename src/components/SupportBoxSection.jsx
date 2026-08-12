@@ -13,7 +13,7 @@ export default function SupportBoxSection() {
             <h2 className="supportBoxSectionTitle" id="support-box-title">
               <span className="supportBoxSectionTitleLine">Everything</span>
               <span className="supportBoxSectionTitleLine">you need,</span>
-              <span className="supportBoxSectionTitleLine">
+              <span className="supportBoxSectionTitleLine supportBoxSectionTitleLineIndented">
                 in one <span className="supportBoxSectionTitleItalic">box.</span>
               </span>
             </h2>
