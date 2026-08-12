@@ -257,8 +257,13 @@
 .blueLineBg {
     position: relative;
     display: flex;
+    flex-direction: column;
     align-items: center;
     padding: 4em 0;
+}
+
+.blueLineBg--withSupportBox {
+    padding-bottom: 0;
 }
 
 .darkBlueLine {

@@ -230,15 +230,11 @@ export default function Home() {
       </LazySection>
       <LazySection id="pricing" forceVisible={forceLazySections}>
         <Suspense fallback={null}>
-          <div className='blueLineBg'>
+          <div className='blueLineBg blueLineBg--withSupportBox'>
             <div className='darkBlueLine' />
             <PricesSection />
+            <SupportBoxSection />
           </div>
-        </Suspense>
-      </LazySection>
-      <LazySection forceVisible={forceLazySections}>
-        <Suspense fallback={null}>
-          <SupportBoxSection />
         </Suspense>
       </LazySection>
       <LazySection id="how-it-works" forceVisible={forceLazySections}>
