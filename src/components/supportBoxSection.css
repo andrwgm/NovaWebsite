@@ -1,5 +1,5 @@
 .supportBoxSection {
-  --support-image-height: clamp(24rem, 56vw, 50rem);
+  --support-image-height: clamp(20rem, 48vw, 44rem);
 
   position: relative;
   background-color: #ffffff;
@@ -32,7 +32,7 @@
   display: flex;
   flex-direction: column;
   width: auto;
-  max-width: min(1180px, 52%);
+  max-width: min(42%, 30rem);
   margin-left: max(
     var(--support-gutter),
     calc((100% - min(90%, 1320px)) / 2)
@@ -138,13 +138,23 @@
   display: block;
 }
 
-@media (max-width: 1280px) {
+@media (min-width: 1536px) {
   .supportBoxSection {
-    --support-image-height: clamp(22rem, 52vw, 46rem);
+    --support-image-height: clamp(24rem, 56vw, 50rem);
   }
 
   .supportBoxSectionContent {
-    max-width: min(40%, 30rem);
+    max-width: min(1180px, 52%);
+  }
+}
+
+@media (max-width: 1280px) {
+  .supportBoxSection {
+    --support-image-height: clamp(20rem, 50vw, 40rem);
+  }
+
+  .supportBoxSectionContent {
+    max-width: min(38%, 28rem);
   }
 
   .supportBoxSectionCopy {
@@ -154,11 +164,11 @@
 
 @media (max-width: 1024px) {
   .supportBoxSection {
-    --support-image-height: clamp(18rem, 48vw, 36rem);
+    --support-image-height: clamp(18rem, 46vw, 32rem);
   }
 
   .supportBoxSectionContent {
-    max-width: min(36%, 26rem);
+    max-width: min(34%, 24rem);
     margin-left: var(--support-gutter);
   }
 
@@ -178,7 +188,7 @@
 
 @media (max-width: 768px) {
   .supportBoxSection {
-    --support-image-height: clamp(14rem, 44vw, 20rem);
+    --support-image-height: clamp(20rem, 62vw, 30rem);
   }
 
   .supportBoxSectionLayout {
@@ -232,18 +242,24 @@
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
-    flex: 0 0 var(--support-image-height);
+    flex: 0 0 auto;
+    min-height: var(--support-image-height);
     pointer-events: auto;
   }
 
   .supportBoxSectionImage img {
-    max-width: min(92vw, 520px);
+    width: calc(100vw - var(--support-gutter));
+    max-width: calc(100vw - var(--support-gutter));
+    height: auto;
+    max-height: var(--support-image-height);
+    object-fit: contain;
+    object-position: right bottom;
   }
 }
 
 @media (max-width: 480px) {
   .supportBoxSection {
-    --support-image-height: clamp(12rem, 48vw, 16rem);
+    --support-image-height: clamp(18rem, 64vw, 26rem);
   }
 
   .supportBoxSectionContent {
@@ -261,9 +277,5 @@
   .supportBoxSectionCta {
     width: 100%;
     max-width: 20rem;
-  }
-
-  .supportBoxSectionImage img {
-    max-width: 100%;
   }
 }
