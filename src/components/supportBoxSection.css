@@ -1,18 +1,15 @@
 .supportBoxSection {
-  background-color: #ffffff;
+  background-color: #eefffe;
   width: 100%;
-  padding: 0 clamp(1.5rem, 4vw, 3rem) clamp(3rem, 6vw, 4.5rem);
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 4vw, 3rem);
   box-sizing: border-box;
-  position: relative;
-  z-index: 2;
 }
 
 .supportBoxSectionInner {
   display: grid;
   grid-template-columns: minmax(280px, 1fr) minmax(260px, 0.95fr);
-  grid-template-rows: auto;
-  align-items: start;
-  gap: clamp(1.5rem, 3vw, 3rem) clamp(2rem, 4vw, 4rem);
+  align-items: center;
+  gap: clamp(2rem, 4vw, 4rem);
   width: min(1180px, 100%);
   margin: 0 auto;
 }
@@ -21,30 +18,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1.75rem;
-}
-
-.supportBoxSectionHighlight {
-  position: relative;
-  width: 100%;
-  padding: clamp(2rem, 4vw, 3rem) 0 clamp(1.1rem, 2vw, 1.5rem);
-}
-
-.supportBoxSectionHighlight::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100vw;
-  background-color: #eefffe;
-  z-index: 0;
-}
-
-.supportBoxSectionHighlight > * {
-  position: relative;
-  z-index: 1;
+  gap: 1.5rem;
 }
 
 .supportBoxSectionTitle {
@@ -53,7 +27,7 @@
   font-weight: normal;
   line-height: 0.95;
   color: #344759;
-  margin: 0 0 1.25rem;
+  margin: 0;
 }
 
 .supportBoxSectionTitleLine {
@@ -113,8 +87,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  grid-row: 1 / span 2;
-  align-self: center;
 }
 
 .supportBoxSectionImage img {
@@ -137,7 +109,6 @@
 
   .supportBoxSectionImage {
     order: 2;
-    grid-row: auto;
   }
 
   .supportBoxSectionText {
@@ -147,7 +118,7 @@
 
 @media (max-width: 480px) {
   .supportBoxSection {
-    padding: 0 1.25rem 2.5rem;
+    padding: 2.5rem 1.25rem;
   }
 
   .supportBoxSectionCta {
