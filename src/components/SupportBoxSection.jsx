@@ -5,9 +5,9 @@ import './supportBoxSection.css';
 export default function SupportBoxSection() {
   return (
     <section className="supportBoxSection" aria-labelledby="support-box-title">
-      <div className="supportBoxSectionInner">
-        <div className="supportBoxSectionContent">
-          <div className="supportBoxSectionHighlight">
+      <div className="supportBoxSectionHighlightBand">
+        <div className="supportBoxSectionInner">
+          <div className="supportBoxSectionCopy">
             <h2 className="supportBoxSectionTitle" id="support-box-title">
               <span className="supportBoxSectionTitleLine">Everything</span>
               <span className="supportBoxSectionTitleLine">you need,</span>
@@ -21,22 +21,27 @@ export default function SupportBoxSection() {
               to help you feel informed, prepared and supported throughout the assessment journey.
             </p>
           </div>
+          <div className="supportBoxSectionImage">
+            <img
+              src="/images/box-no-bg.avif"
+              alt="Nova Clinics support box with practical guides and family resources"
+              loading="lazy"
+              decoding="async"
+              width={640}
+              height={480}
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className="supportBoxSectionActions">
+        <div className="supportBoxSectionInner">
           <Link className="supportBoxSectionCta" to="/support">
             Explore what&apos;s inside
             <span className="supportBoxSectionCtaArrow" aria-hidden="true">
               →
             </span>
           </Link>
-        </div>
-        <div className="supportBoxSectionImage">
-          <img
-            src="/images/box-no-bg.avif"
-            alt="Nova Clinics support box with practical guides and family resources"
-            loading="lazy"
-            decoding="async"
-            width={640}
-            height={480}
-          />
         </div>
       </div>
     </section>
