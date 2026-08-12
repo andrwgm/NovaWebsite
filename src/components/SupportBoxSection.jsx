@@ -7,18 +7,20 @@ export default function SupportBoxSection() {
     <section className="supportBoxSection" aria-labelledby="support-box-title">
       <div className="supportBoxSectionInner">
         <div className="supportBoxSectionContent">
-          <h2 className="supportBoxSectionTitle" id="support-box-title">
-            <span className="supportBoxSectionTitleLine">Everything</span>
-            <span className="supportBoxSectionTitleLine">you need,</span>
-            <span className="supportBoxSectionTitleLine">
-              in one <span className="supportBoxSectionTitleItalic">box.</span>
-            </span>
-          </h2>
-          <p className="supportBoxSectionText">
-            Whichever Nova Clinics plan you choose, your support box is included. Inside,
-            you&apos;ll find practical guides, family resources and thoughtfully designed tools
-            to help you feel informed, prepared and supported throughout the assessment journey.
-          </p>
+          <div className="supportBoxSectionHighlight">
+            <h2 className="supportBoxSectionTitle" id="support-box-title">
+              <span className="supportBoxSectionTitleLine">Everything</span>
+              <span className="supportBoxSectionTitleLine">you need,</span>
+              <span className="supportBoxSectionTitleLine">
+                in one <span className="supportBoxSectionTitleItalic">box.</span>
+              </span>
+            </h2>
+            <p className="supportBoxSectionText">
+              Whichever Nova Clinics plan you choose, your support box is included. Inside,
+              you&apos;ll find practical guides, family resources and thoughtfully designed tools
+              to help you feel informed, prepared and supported throughout the assessment journey.
+            </p>
+          </div>
           <Link className="supportBoxSectionCta" to="/support">
             Explore what&apos;s inside
             <span className="supportBoxSectionCtaArrow" aria-hidden="true">
