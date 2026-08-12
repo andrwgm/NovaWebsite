@@ -138,49 +138,80 @@
   display: block;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1280px) {
   .supportBoxSection {
-    --support-image-height: clamp(16rem, 46vw, 26rem);
+    --support-image-height: clamp(22rem, 52vw, 46rem);
   }
 
   .supportBoxSectionContent {
-    max-width: calc(100% - min(38vw, 220px));
-    margin-left: var(--support-gutter);
+    max-width: min(40%, 30rem);
   }
 
   .supportBoxSectionCopy {
-    margin-bottom: calc(var(--support-image-height) / 3);
+    max-width: 100%;
   }
 }
 
-@media (max-width: 680px) {
+@media (max-width: 1024px) {
   .supportBoxSection {
-    --support-image-height: clamp(14rem, 50vw, 20rem);
+    --support-image-height: clamp(18rem, 48vw, 36rem);
   }
 
   .supportBoxSectionContent {
-    display: flex;
-    flex-direction: column;
-    max-width: 100%;
-    margin-inline: var(--support-gutter);
-    min-height: calc(var(--support-image-height) + 12rem);
+    max-width: min(36%, 26rem);
+    margin-left: var(--support-gutter);
   }
 
-  .supportBoxSectionCopy {
-    max-width: 100%;
-    margin-top: 0;
-    margin-bottom: 0;
-    text-align: center;
-    padding-inline: 0;
-    padding-top: clamp(2rem, 4vw, 3rem);
-  }
-
-  .supportBoxSectionTitleLineIndented {
-    padding-left: 0;
+  .supportBoxSectionTitle {
+    font-size: clamp(2.4rem, 4.8vw, 3.4rem);
   }
 
   .supportBoxSectionText {
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    line-height: 1.6;
+  }
+
+  .supportBoxSectionTitleLineIndented {
+    padding-left: clamp(2rem, 5vw, 3.5rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .supportBoxSection {
+    --support-image-height: clamp(14rem, 44vw, 20rem);
+  }
+
+  .supportBoxSectionLayout {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .supportBoxSectionContent {
+    position: relative;
+    z-index: 3;
+    order: 1;
+    width: 100%;
+    max-width: 100%;
+    min-height: 0;
+    margin-inline: 0;
+    padding: clamp(2rem, 5vw, 3rem) var(--support-gutter) clamp(1.25rem, 3vw, 1.75rem);
+    align-items: center;
+    text-align: center;
+  }
+
+  .supportBoxSectionCopy {
     max-width: 34rem;
+    margin: 0;
+    width: 100%;
+  }
+
+  .supportBoxSectionTitleLineIndented {
+    padding-left: clamp(2rem, 8vw, 3.5rem);
+  }
+
+  .supportBoxSectionText {
+    max-width: 100%;
     margin-inline: auto;
   }
 
@@ -188,23 +219,51 @@
     position: relative;
     left: auto;
     bottom: auto;
-    align-self: center;
-    margin: 1.75rem auto 0;
+    margin-top: 1.5rem;
+  }
+
+  .supportBoxSectionImage {
+    position: relative;
+    order: 2;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    height: var(--support-image-height);
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex: 0 0 var(--support-image-height);
+    pointer-events: auto;
   }
 
   .supportBoxSectionImage img {
-    max-width: min(88vw, 480px);
+    max-width: min(92vw, 520px);
   }
 }
 
 @media (max-width: 480px) {
+  .supportBoxSection {
+    --support-image-height: clamp(12rem, 48vw, 16rem);
+  }
+
   .supportBoxSectionContent {
-    min-height: calc(var(--support-image-height) + 13rem);
-    padding-bottom: 2.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .supportBoxSectionTitle {
+    font-size: clamp(2.2rem, 9vw, 2.8rem);
+  }
+
+  .supportBoxSectionTitleLineIndented {
+    padding-left: clamp(1.5rem, 10vw, 2.5rem);
   }
 
   .supportBoxSectionCta {
     width: 100%;
     max-width: 20rem;
+  }
+
+  .supportBoxSectionImage img {
+    max-width: 100%;
   }
 }
