@@ -10,6 +10,7 @@ import LazySection from '../components/LazySection';
 const CompressedSections = React.lazy(() => import('../components/CompressedSections'));
 const QuestionnaireSection = React.lazy(() => import('../components/QuestionnaireSection'));
 const PricesSection = React.lazy(() => import('../components/PricesSection'));
+const SupportBoxSection = React.lazy(() => import('../components/SupportBoxSection'));
 const HowItWorks = React.lazy(() => import('../components/HowItWorks'));
 const QuestionsAnswered = React.lazy(() => import('../components/QuestionsAnswered'));
 const PeopleBehind = React.lazy(() => import('../components/PeopleBehind'));
@@ -233,6 +234,11 @@ export default function Home() {
             <div className='darkBlueLine' />
             <PricesSection />
           </div>
+        </Suspense>
+      </LazySection>
+      <LazySection forceVisible={forceLazySections}>
+        <Suspense fallback={null}>
+          <SupportBoxSection />
         </Suspense>
       </LazySection>
       <LazySection id="how-it-works" forceVisible={forceLazySections}>
