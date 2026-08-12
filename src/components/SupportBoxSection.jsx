@@ -34,7 +34,7 @@ export default function SupportBoxSection() {
 
         <div className="supportBoxSectionImage">
           <img
-            src="/images/box-no-bg.avif"
+            src="/images/box-no-bg-shadow-cropped.avif"
             alt="Nova Clinics support box with practical guides and family resources"
             loading="lazy"
             decoding="async"
