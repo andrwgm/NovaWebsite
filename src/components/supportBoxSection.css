@@ -25,13 +25,20 @@
 }
 
 .supportBoxSectionContent {
+  --support-gutter: clamp(1.5rem, 4vw, 3rem);
+
   position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  margin: 0;
-  padding-inline: clamp(1.25rem, 3vw, 2.25rem);
+  width: auto;
+  max-width: min(1180px, 52%);
+  margin-left: max(
+    var(--support-gutter),
+    calc((100% - min(90%, 1320px)) / 2)
+  );
+  margin-right: 0;
+  padding-inline: 0;
   min-height: var(--support-image-height);
   box-sizing: border-box;
 }
@@ -136,8 +143,12 @@
     --support-image-height: clamp(16rem, 46vw, 26rem);
   }
 
-  .supportBoxSectionCopy {
+  .supportBoxSectionContent {
     max-width: calc(100% - min(38vw, 220px));
+    margin-left: var(--support-gutter);
+  }
+
+  .supportBoxSectionCopy {
     margin-bottom: calc(var(--support-image-height) / 3);
   }
 }
@@ -150,6 +161,8 @@
   .supportBoxSectionContent {
     display: flex;
     flex-direction: column;
+    max-width: 100%;
+    margin-inline: var(--support-gutter);
     min-height: calc(var(--support-image-height) + 12rem);
   }
 
