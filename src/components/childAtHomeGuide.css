@@ -37,32 +37,25 @@
   margin-bottom: 0.5rem;
 }
 
-.childAtHomeGuideSchool {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 20.5rem);
-  grid-template-areas:
-    'label cover'
-    'intro cover';
-  column-gap: 1.6rem;
-  row-gap: 1.35rem;
-  align-items: start;
+.childAtHomeGuideSchoolIntroRow {
   margin-top: 4.25rem;
 }
 
-.childAtHomeGuideLabel--school {
-  grid-area: label;
-}
-
 .childAtHomeGuideSchoolIntro {
-  grid-area: intro;
   max-width: none;
 }
 
+.childAtHomeGuideSchoolFeature {
+  display: grid;
+  grid-template-columns: minmax(0, 11.5rem) minmax(0, 1fr);
+  column-gap: 1.85rem;
+  align-items: stretch;
+  margin-top: 2rem;
+}
+
 .childAtHomeGuideSchoolCover {
-  grid-area: cover;
   width: 100%;
-  max-width: 20.5rem;
-  justify-self: end;
+  max-width: 11.5rem;
 }
 
 .childAtHomeGuideSchoolCover img {
@@ -75,6 +68,15 @@
 .childAtHomeGuideSchoolBlocks {
   display: flex;
   flex-direction: column;
+}
+
+.childAtHomeGuideSchoolBlocks--side {
+  justify-content: space-around;
+  gap: 0;
+  min-height: 0;
+}
+
+.childAtHomeGuideSchoolBlocks--full {
   gap: 1.35rem;
   margin-top: 2.75rem;
 }
@@ -103,7 +105,8 @@
     grid-template-columns: minmax(0, 18.5rem) minmax(0, 1fr);
   }
 
-  .childAtHomeGuideSchool {
+  .childAtHomeGuideSchoolFeature {
+    grid-template-columns: minmax(0, 10rem) minmax(0, 1fr);
     column-gap: 1.25rem;
   }
 }
@@ -140,23 +143,18 @@
     gap: 1.35rem;
   }
 
-  .childAtHomeGuideSchool {
+  .childAtHomeGuideSchoolFeature {
     grid-template-columns: 1fr;
-    grid-template-areas:
-      'label'
-      'cover'
-      'intro';
-    justify-items: center;
     row-gap: 1.5rem;
-  }
-
-  .childAtHomeGuideSchoolIntro {
-    max-width: none;
-    width: 100%;
+    justify-items: center;
   }
 
   .childAtHomeGuideSchoolCover {
-    justify-self: center;
-    max-width: 20.5rem;
+    max-width: 11.5rem;
+  }
+
+  .childAtHomeGuideSchoolBlocks--side {
+    width: 100%;
+    gap: 1.35rem;
   }
 }

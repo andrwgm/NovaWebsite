@@ -1,12 +1,6 @@
 .supportGuideContent.notAloneGuide {
-  width: 100%;
-  max-width: none;
-}
-
-.notAloneGuideInner {
   width: 80%;
   max-width: none;
-  margin: 0 auto;
 }
 
 .notAloneGuideIntro {
@@ -208,10 +202,6 @@
 }
 
 @media (max-width: 700px) {
-  .notAloneGuideInner {
-    width: 100%;
-  }
-
   .notAloneGuideSectionHeading {
     margin-right: 0;
   }

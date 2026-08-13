@@ -13,14 +13,14 @@ const HOME_SIDE_ITEMS = [
     body:
       'Explore sensory preferences and discover practical ways to help your child feel more comfortable and regulated. From movement and textures to calming activities, the guide encourages you to find what works best for them.',
   },
-];
-
-const HOME_FULL_ITEMS = [
   {
     title: 'Routines, emotions & communication',
     body:
       'Use simple tools to make routines and transitions more predictable, while helping your child recognise emotions, body signals and different ways to communicate what they need.',
   },
+];
+
+const HOME_FULL_ITEMS = [
   {
     title: 'Activities to explore together',
     body:
@@ -28,7 +28,7 @@ const HOME_FULL_ITEMS = [
   },
 ];
 
-const SCHOOL_ITEMS = [
+const SCHOOL_SIDE_ITEMS = [
   {
     title: 'What helps me feel comfortable',
     body: 'The routines and environments that help your child feel settled.',
@@ -42,6 +42,9 @@ const SCHOOL_ITEMS = [
     body:
       'Helping school understand how your child expresses emotions, communicates their needs and shows when things are becoming too much.',
   },
+];
+
+const SCHOOL_FULL_ITEMS = [
   {
     title: 'What helps me at school',
     body:
@@ -111,30 +114,41 @@ export default function ChildAtHomeGuide() {
         ))}
       </ul>
 
-      <div className="childAtHomeGuideSchool">
-        <p className="childAtHomeGuideLabel childAtHomeGuideLabel--school">
-          At
-          <br />
-          School
-        </p>
+      <div className="childAtHomeGuideIntroRow childAtHomeGuideSchoolIntroRow">
         <p className="supportGuideContentIntro childAtHomeGuideSchoolIntro">
           My School Passport is a child-friendly booklet that helps families share key information
           with school about their child’s strengths, preferences and support needs.
         </p>
+        <p className="childAtHomeGuideLabel">
+          At
+          <br />
+          School
+        </p>
+      </div>
+
+      <div className="childAtHomeGuideSchoolFeature">
         <div className="childAtHomeGuideSchoolCover">
           <img
             src="/images/my-school-passport-cover.avif"
             alt="My School Passport guide cover"
             loading="lazy"
             decoding="async"
-            width={268}
-            height={380}
+            width={160}
+            height={228}
           />
+        </div>
+        <div className="childAtHomeGuideSchoolBlocks childAtHomeGuideSchoolBlocks--side">
+          {SCHOOL_SIDE_ITEMS.map((item) => (
+            <div key={item.title} className="childAtHomeGuideSchoolBlock">
+              <strong>{item.title}</strong>
+              <span>{item.body}</span>
+            </div>
+          ))}
         </div>
       </div>
 
-      <div className="childAtHomeGuideSchoolBlocks">
-        {SCHOOL_ITEMS.map((item) => (
+      <div className="childAtHomeGuideSchoolBlocks childAtHomeGuideSchoolBlocks--full">
+        {SCHOOL_FULL_ITEMS.map((item) => (
           <div key={item.title} className="childAtHomeGuideSchoolBlock">
             <strong>{item.title}</strong>
             <span>{item.body}</span>

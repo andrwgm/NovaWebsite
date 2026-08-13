@@ -164,36 +164,34 @@ function ResourceRow({ resource }) {
 export default function NotAloneGuide() {
   return (
     <div className="supportGuideContent notAloneGuide">
-      <div className="notAloneGuideInner">
-        <p className="supportGuideContentIntro notAloneGuideIntro">
-          Living with autism or ADHD can bring questions that continue well beyond an assessment.
-          These organisations offer specialist information, practical guidance, peer support and
-          communities for neurodivergent people and the families who support them.
-        </p>
+      <p className="supportGuideContentIntro notAloneGuideIntro">
+        Living with autism or ADHD can bring questions that continue well beyond an assessment.
+        These organisations offer specialist information, practical guidance, peer support and
+        communities for neurodivergent people and the families who support them.
+      </p>
 
-        <h3 className="notAloneGuideSectionHeading">
-          Autism
-          <br />
-          <em>support</em>
-        </h3>
+      <h3 className="notAloneGuideSectionHeading">
+        Autism
+        <br />
+        <em>support</em>
+      </h3>
 
-        <div className="notAloneGuideResources">
-          {RESOURCES.map((resource) => (
-            <ResourceRow key={resource.id} resource={resource} />
-          ))}
-        </div>
+      <div className="notAloneGuideResources">
+        {RESOURCES.map((resource) => (
+          <ResourceRow key={resource.id} resource={resource} />
+        ))}
+      </div>
 
-        <h3 className="notAloneGuideSectionHeading notAloneGuideSectionHeading--adhd">
-          ADHD
-          <br />
-          <em>support</em>
-        </h3>
+      <h3 className="notAloneGuideSectionHeading notAloneGuideSectionHeading--adhd">
+        ADHD
+        <br />
+        <em>support</em>
+      </h3>
 
-        <div className="notAloneGuideResources">
-          {ADHD_RESOURCES.map((resource) => (
-            <ResourceRow key={resource.id} resource={resource} />
-          ))}
-        </div>
+      <div className="notAloneGuideResources">
+        {ADHD_RESOURCES.map((resource) => (
+          <ResourceRow key={resource.id} resource={resource} />
+        ))}
       </div>
 
       <div className="notAloneGuideClosing">
