@@ -22,7 +22,7 @@
 
 .beforeAssessmentGuideHeadline {
   margin: 1.4rem auto 2.2rem;
-  max-width: 18.5rem;
+  max-width: 36rem;
   text-align: center;
   font-family: 'AthelasBold', 'Times New Roman', Times, serif;
   font-size: clamp(1.7rem, 4.2vw, 1.95rem);
@@ -113,8 +113,8 @@
 }
 
 .beforeAssessmentGuideClosing {
-  margin: 3.25rem auto 0.5rem;
-  max-width: 22rem;
+  margin: 4.5rem auto 0.5rem;
+  max-width: 36rem;
   text-align: center;
   font-family: 'AthelasBold', 'Times New Roman', Times, serif;
   font-size: clamp(1.65rem, 4vw, 1.9rem);
@@ -140,7 +140,7 @@
 
 @media (max-width: 560px) {
   .beforeAssessmentGuideHeadline {
-    max-width: 16rem;
+    max-width: 100%;
     margin: 1.25rem auto 1.75rem;
   }
 
@@ -164,7 +164,7 @@
   }
 
   .beforeAssessmentGuideClosing {
-    margin-top: 2.5rem;
-    max-width: 18rem;
+    margin-top: 3.25rem;
+    max-width: 100%;
   }
 }
