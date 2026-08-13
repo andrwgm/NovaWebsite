@@ -4,6 +4,7 @@ import { Accordion, AccordionTab } from 'primereact/accordion';
 import BeforeAssessmentGuide from './BeforeAssessmentGuide';
 import AfterAssessmentGuide from './AfterAssessmentGuide';
 import ChildAtHomeGuide from './ChildAtHomeGuide';
+import NotAloneGuide from './NotAloneGuide';
 import './supportGuides.css';
 
 export default function SupportGuides() {
@@ -119,11 +120,8 @@ export default function SupportGuides() {
           contentClassName="support-guides__content"
           style={{ '--support-guide-color': '#961D4E', '--support-guide-z': 1 }}
         >
-          <div className="support-guides__panel">
-            <p>
-              Integer vel ligula aliquam, fermentum est sed, hendrerit justo. Proin sit amet dui sapien. Sed non
-              pharetra turpis. Aenean at accumsan orci, non volutpat nibh. Sed sed sapien nec quam hendrerit tincidunt.
-            </p>
+          <div className="support-guides__panel support-guides__panel--alone">
+            <NotAloneGuide />
           </div>
         </AccordionTab>
       </Accordion>

@@ -1,0 +1,220 @@
+.notAloneGuideIntro {
+  max-width: 36rem;
+}
+
+.notAloneGuideSectionHeading {
+  margin: 3.25rem 0 2.75rem auto;
+  max-width: 14rem;
+  text-align: left;
+  font-family: 'TimesNewRomanMTCondensed', 'Times New Roman', Times, serif;
+  font-size: clamp(2.35rem, 5vw, 2.85rem);
+  font-weight: normal;
+  line-height: 1.08;
+  color: #ffffff;
+}
+
+.notAloneGuideSectionHeading em {
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
+  font-style: normal;
+}
+
+.notAloneGuideSectionHeading--adhd {
+  margin-top: 4rem;
+}
+
+.notAloneGuideResources {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.notAloneGuideResource {
+  display: grid;
+  align-items: start;
+  column-gap: 1.75rem;
+}
+
+.notAloneGuideResource--text-image {
+  grid-template-columns: minmax(0, 1fr) minmax(10.5rem, 13rem);
+}
+
+.notAloneGuideResource--image-text {
+  grid-template-columns: minmax(10.5rem, 13rem) minmax(0, 1fr);
+}
+
+.notAloneGuideResourceText {
+  min-width: 0;
+}
+
+.notAloneGuideResourceTitle {
+  margin: 0 0 1rem;
+  font-family: 'TimesNewRomanMTCondensed', 'Times New Roman', Times, serif;
+  font-size: clamp(1.85rem, 4vw, 2.2rem);
+  font-weight: normal;
+  line-height: 1.12;
+  color: #ffffff;
+}
+
+.notAloneGuideResourceTitle em {
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
+  font-style: normal;
+}
+
+.notAloneGuideResourceBody {
+  margin: 0;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: clamp(1.1rem, 2.4vw, 1.25rem);
+  line-height: 1.5;
+  color: #ffffff;
+  max-width: 34rem;
+}
+
+.notAloneGuideResourceMeta {
+  margin: 1.35rem 0 0;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: clamp(1.05rem, 2.2vw, 1.15rem);
+  line-height: 1.45;
+  color: #ffffff;
+}
+
+.notAloneGuideResourceMeta--italic {
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
+}
+
+.notAloneGuideLink {
+  display: inline-block;
+  margin-top: 1rem;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  font-family: 'AthelasBold', 'Times New Roman', Times, serif;
+  font-size: clamp(1.05rem, 2.2vw, 1.15rem);
+  line-height: 1.4;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.notAloneGuideLink:hover,
+.notAloneGuideLink:focus-visible {
+  text-decoration: underline;
+}
+
+.notAloneGuideResourceMedia {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 0;
+}
+
+.notAloneGuideLogo {
+  width: 100%;
+  background: #ffffff;
+  box-shadow: 10px 10px 14px rgba(35, 25, 40, 0.35);
+}
+
+.notAloneGuideLogo--lg {
+  max-width: 13rem;
+}
+
+.notAloneGuideLogo--md {
+  max-width: 11rem;
+}
+
+.notAloneGuideLogo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.notAloneGuideResourceMedia .notAloneGuideLink {
+  margin-top: 0.9rem;
+}
+
+.notAloneGuideClosing {
+  margin-top: 5rem;
+}
+
+.notAloneGuideClosingTitle {
+  margin: 0 0 1.35rem;
+  font-family: 'TimesNewRomanMTCondensed', 'Times New Roman', Times, serif;
+  font-size: clamp(2.35rem, 5vw, 2.85rem);
+  font-weight: normal;
+  line-height: 1.08;
+  color: #ffffff;
+}
+
+.notAloneGuideClosingTitle em {
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
+  font-style: normal;
+}
+
+.notAloneGuideClosingBody {
+  margin: 0 0 1.35rem;
+  max-width: 48rem;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: clamp(1.1rem, 2.4vw, 1.25rem);
+  line-height: 1.5;
+  color: #ffffff;
+}
+
+.notAloneGuidePhoto {
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 52rem;
+}
+
+.notAloneGuidePhoto img {
+  display: block;
+  width: 100%;
+  height: clamp(11rem, 28vw, 15rem);
+  object-fit: cover;
+  object-position: center 35%;
+  border-radius: 1.35rem;
+  box-shadow: 10px 10px 15px rgba(35, 25, 40, 0.35);
+}
+
+@media (max-width: 700px) {
+  .notAloneGuideResource--text-image,
+  .notAloneGuideResource--image-text {
+    grid-template-columns: minmax(9.5rem, 11.5rem) minmax(0, 1fr);
+  }
+
+  .notAloneGuideResource--text-image {
+    grid-template-columns: minmax(0, 1fr) minmax(9.5rem, 11.5rem);
+  }
+
+  .notAloneGuideSectionHeading {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .notAloneGuideResources {
+    gap: 3rem;
+  }
+
+  .notAloneGuideResource--text-image,
+  .notAloneGuideResource--image-text {
+    grid-template-columns: 1fr;
+    row-gap: 1.35rem;
+  }
+
+  .notAloneGuideResource--image-text .notAloneGuideResourceMedia {
+    order: -1;
+  }
+
+  .notAloneGuideLogo--lg,
+  .notAloneGuideLogo--md {
+    max-width: 12rem;
+  }
+
+  .notAloneGuideSectionHeading {
+    margin-left: 0;
+    margin-right: auto;
+    max-width: none;
+  }
+
+  .notAloneGuidePhoto img {
+    height: 11rem;
+  }
+}
