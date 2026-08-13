@@ -21,14 +21,6 @@ function TitleParts({ parts }) {
   );
 }
 
-function ResourceLogo({ src, alt, size = 'md' }) {
-  return (
-    <div className={`notAloneGuideLogo notAloneGuideLogo--${size}`}>
-      <img src={src} alt={alt} loading="lazy" decoding="async" />
-    </div>
-  );
-}
-
 function ResourceLink({ href, children }) {
   return (
     <a
@@ -57,7 +49,6 @@ const RESOURCES = [
     url: 'https://www.autism.org.uk/advice-and-guidance/help-and-support',
     logo: '/images/national-autistic-society.avif',
     logoAlt: 'National Autistic Society logo',
-    logoSize: 'lg',
   },
   {
     id: 'autism-central',
@@ -73,7 +64,6 @@ const RESOURCES = [
     url: 'https://www.autismcentral.nhs.uk/',
     logo: '/images/autism-central.avif',
     logoAlt: 'Autism Central logo',
-    logoSize: 'lg',
   },
   {
     id: 'ambitious-youth-network',
@@ -89,7 +79,6 @@ const RESOURCES = [
     url: 'https://www.ambitiousaboutautism.org.uk',
     logo: '/images/ambitious-youth-network.avif',
     logoAlt: 'Ambitious about Autism logo',
-    logoSize: 'lg',
   },
   {
     id: 'autistica-tips-hub',
@@ -105,7 +94,6 @@ const RESOURCES = [
     url: 'https://www.autistica.org.uk/get-involved/autistica-tips-hub',
     logo: '/images/autistica-tips-hub.avif',
     logoAlt: 'Autistica Tips Hub logo',
-    logoSize: 'md',
   },
 ];
 
@@ -124,7 +112,6 @@ const ADHD_RESOURCES = [
     url: 'https://adhduk.co.uk/support/',
     logo: '/images/adhd-uk.avif',
     logoAlt: 'ADHD UK logo',
-    logoSize: 'md',
   },
   {
     id: 'addiss',
@@ -137,7 +124,6 @@ const ADHD_RESOURCES = [
     url: 'https://www.addiss.co.uk/',
     logo: '/images/addiss.avif',
     logoAlt: 'ADDISS logo',
-    logoSize: 'md',
   },
 ];
 
@@ -153,18 +139,15 @@ function ResourceRow({ resource }) {
       >
         {resource.meta}
       </p>
-      {resource.layout === 'text-image' && (
-        <ResourceLink href={resource.url}>{resource.url}</ResourceLink>
-      )}
+      <ResourceLink href={resource.url}>{resource.url}</ResourceLink>
     </div>
   );
 
   const media = (
     <div className="notAloneGuideResourceMedia">
-      <ResourceLogo src={resource.logo} alt={resource.logoAlt} size={resource.logoSize} />
-      {resource.layout === 'image-text' && (
-        <ResourceLink href={resource.url}>{resource.url}</ResourceLink>
-      )}
+      <div className="notAloneGuideLogo">
+        <img src={resource.logo} alt={resource.logoAlt} loading="lazy" decoding="async" />
+      </div>
     </div>
   );
 
@@ -172,17 +155,8 @@ function ResourceRow({ resource }) {
     <article
       className={`notAloneGuideResource notAloneGuideResource--${resource.layout}`}
     >
-      {resource.layout === 'text-image' ? (
-        <>
-          {text}
-          {media}
-        </>
-      ) : (
-        <>
-          {media}
-          {text}
-        </>
-      )}
+      {media}
+      {text}
     </article>
   );
 }
@@ -190,34 +164,36 @@ function ResourceRow({ resource }) {
 export default function NotAloneGuide() {
   return (
     <div className="supportGuideContent notAloneGuide">
-      <p className="supportGuideContentIntro notAloneGuideIntro">
-        Living with autism or ADHD can bring questions that continue well beyond an assessment.
-        These organisations offer specialist information, practical guidance, peer support and
-        communities for neurodivergent people and the families who support them.
-      </p>
+      <div className="notAloneGuideInner">
+        <p className="supportGuideContentIntro notAloneGuideIntro">
+          Living with autism or ADHD can bring questions that continue well beyond an assessment.
+          These organisations offer specialist information, practical guidance, peer support and
+          communities for neurodivergent people and the families who support them.
+        </p>
 
-      <h3 className="notAloneGuideSectionHeading">
-        Autism
-        <br />
-        <em>support</em>
-      </h3>
+        <h3 className="notAloneGuideSectionHeading">
+          Autism
+          <br />
+          <em>support</em>
+        </h3>
 
-      <div className="notAloneGuideResources">
-        {RESOURCES.map((resource) => (
-          <ResourceRow key={resource.id} resource={resource} />
-        ))}
-      </div>
+        <div className="notAloneGuideResources">
+          {RESOURCES.map((resource) => (
+            <ResourceRow key={resource.id} resource={resource} />
+          ))}
+        </div>
 
-      <h3 className="notAloneGuideSectionHeading notAloneGuideSectionHeading--adhd">
-        ADHD
-        <br />
-        <em>support</em>
-      </h3>
+        <h3 className="notAloneGuideSectionHeading notAloneGuideSectionHeading--adhd">
+          ADHD
+          <br />
+          <em>support</em>
+        </h3>
 
-      <div className="notAloneGuideResources">
-        {ADHD_RESOURCES.map((resource) => (
-          <ResourceRow key={resource.id} resource={resource} />
-        ))}
+        <div className="notAloneGuideResources">
+          {ADHD_RESOURCES.map((resource) => (
+            <ResourceRow key={resource.id} resource={resource} />
+          ))}
+        </div>
       </div>
 
       <div className="notAloneGuideClosing">

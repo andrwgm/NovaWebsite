@@ -13,6 +13,7 @@
   font-size: clamp(1.15rem, 2.6vw, 1.3rem);
   line-height: 1.55;
   color: #ffffff;
+  text-align: justify;
 }
 
 .supportGuideContentIntro strong {
@@ -80,6 +81,7 @@
   font-size: clamp(1.1rem, 2.4vw, 1.25rem);
   line-height: 1.5;
   color: #ffffff;
+  text-align: justify;
 }
 
 .supportGuideContentList li::before {

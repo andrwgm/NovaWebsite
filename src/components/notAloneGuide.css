@@ -1,15 +1,28 @@
+.supportGuideContent.notAloneGuide {
+  width: 100%;
+  max-width: none;
+}
+
+.notAloneGuideInner {
+  width: 80%;
+  max-width: none;
+  margin: 0 auto;
+}
+
 .notAloneGuideIntro {
-  max-width: 36rem;
+  max-width: none;
+  width: 100%;
+  text-align: justify;
 }
 
 .notAloneGuideSectionHeading {
   margin: 3.25rem 0 2.75rem auto;
-  max-width: 14rem;
+  max-width: 18rem;
   text-align: left;
   font-family: 'TimesNewRomanMTCondensed', 'Times New Roman', Times, serif;
-  font-size: clamp(2.35rem, 5vw, 2.85rem);
+  font-size: clamp(3rem, 6.5vw, 3.75rem);
   font-weight: normal;
-  line-height: 1.08;
+  line-height: 1.05;
   color: #ffffff;
 }
 
@@ -30,20 +43,52 @@
 
 .notAloneGuideResource {
   display: grid;
-  align-items: start;
-  column-gap: 1.75rem;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-areas: 'media text';
+  column-gap: 2.5rem;
+  align-items: center;
 }
 
 .notAloneGuideResource--text-image {
-  grid-template-columns: minmax(0, 1fr) minmax(10.5rem, 13rem);
+  grid-template-areas: 'text media';
 }
 
 .notAloneGuideResource--image-text {
-  grid-template-columns: minmax(10.5rem, 13rem) minmax(0, 1fr);
+  grid-template-areas: 'media text';
+}
+
+.notAloneGuideResourceMedia {
+  grid-area: media;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.notAloneGuideResource--text-image .notAloneGuideResourceMedia {
+  justify-content: flex-end;
+}
+
+.notAloneGuideResource--image-text .notAloneGuideResourceMedia {
+  justify-content: flex-start;
 }
 
 .notAloneGuideResourceText {
+  grid-area: text;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   min-width: 0;
+  max-width: 34rem;
+}
+
+.notAloneGuideResource--image-text .notAloneGuideResourceText {
+  justify-self: end;
+  width: 100%;
+}
+
+.notAloneGuideResource--text-image .notAloneGuideResourceText {
+  justify-self: start;
+  width: 100%;
 }
 
 .notAloneGuideResourceTitle {
@@ -53,6 +98,7 @@
   font-weight: normal;
   line-height: 1.12;
   color: #ffffff;
+  text-align: left;
 }
 
 .notAloneGuideResourceTitle em {
@@ -66,7 +112,7 @@
   font-size: clamp(1.1rem, 2.4vw, 1.25rem);
   line-height: 1.5;
   color: #ffffff;
-  max-width: 34rem;
+  text-align: justify;
 }
 
 .notAloneGuideResourceMeta {
@@ -75,6 +121,7 @@
   font-size: clamp(1.05rem, 2.2vw, 1.15rem);
   line-height: 1.45;
   color: #ffffff;
+  text-align: left;
 }
 
 .notAloneGuideResourceMeta--italic {
@@ -92,6 +139,7 @@
   line-height: 1.4;
   color: #ffffff;
   text-decoration: none;
+  text-align: left;
 }
 
 .notAloneGuideLink:hover,
@@ -99,48 +147,36 @@
   text-decoration: underline;
 }
 
-.notAloneGuideResourceMedia {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  min-width: 0;
-}
-
 .notAloneGuideLogo {
-  width: 100%;
-  background: #ffffff;
-  box-shadow: 10px 10px 14px rgba(35, 25, 40, 0.35);
-}
-
-.notAloneGuideLogo--lg {
-  max-width: 13rem;
-}
-
-.notAloneGuideLogo--md {
-  max-width: 11rem;
+  width: min(100%, 20rem);
+  aspect-ratio: 1 / 1;
+  background: transparent;
+  box-shadow: none;
 }
 
 .notAloneGuideLogo img {
   display: block;
   width: 100%;
-  height: auto;
-}
-
-.notAloneGuideResourceMedia .notAloneGuideLink {
-  margin-top: 0.9rem;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
 }
 
 .notAloneGuideClosing {
-  margin-top: 5rem;
+  width: 100%;
+  max-width: none;
+  margin: 5rem 0 0;
+  box-sizing: border-box;
 }
 
 .notAloneGuideClosingTitle {
   margin: 0 0 1.35rem;
   font-family: 'TimesNewRomanMTCondensed', 'Times New Roman', Times, serif;
-  font-size: clamp(2.35rem, 5vw, 2.85rem);
+  font-size: clamp(3rem, 6.5vw, 3.75rem);
   font-weight: normal;
-  line-height: 1.08;
+  line-height: 1.05;
   color: #ffffff;
+  text-align: left;
 }
 
 .notAloneGuideClosingTitle em {
@@ -150,23 +186,25 @@
 
 .notAloneGuideClosingBody {
   margin: 0 0 1.35rem;
-  max-width: 48rem;
+  max-width: none;
+  width: 100%;
   font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
   font-size: clamp(1.1rem, 2.4vw, 1.25rem);
   line-height: 1.5;
   color: #ffffff;
+  text-align: justify;
 }
 
 .notAloneGuidePhoto {
   margin-top: 2rem;
   width: 100%;
-  max-width: 52rem;
+  max-width: none;
 }
 
 .notAloneGuidePhoto img {
   display: block;
   width: 100%;
-  height: clamp(11rem, 28vw, 15rem);
+  height: clamp(12rem, 30vw, 18rem);
   object-fit: cover;
   object-position: center 35%;
   border-radius: 1.35rem;
@@ -174,17 +212,16 @@
 }
 
 @media (max-width: 700px) {
-  .notAloneGuideResource--text-image,
-  .notAloneGuideResource--image-text {
-    grid-template-columns: minmax(9.5rem, 11.5rem) minmax(0, 1fr);
-  }
-
-  .notAloneGuideResource--text-image {
-    grid-template-columns: minmax(0, 1fr) minmax(9.5rem, 11.5rem);
+  .notAloneGuideInner {
+    width: 100%;
   }
 
   .notAloneGuideSectionHeading {
     margin-right: 0;
+  }
+
+  .notAloneGuideLogo {
+    width: min(100%, 17rem);
   }
 }
 
@@ -193,19 +230,31 @@
     gap: 3rem;
   }
 
+  .notAloneGuideResource,
   .notAloneGuideResource--text-image,
   .notAloneGuideResource--image-text {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      'media'
+      'text';
     row-gap: 1.35rem;
   }
 
+  .notAloneGuideResourceMedia,
+  .notAloneGuideResource--text-image .notAloneGuideResourceMedia,
   .notAloneGuideResource--image-text .notAloneGuideResourceMedia {
-    order: -1;
+    justify-content: center;
   }
 
-  .notAloneGuideLogo--lg,
-  .notAloneGuideLogo--md {
-    max-width: 12rem;
+  .notAloneGuideResourceText,
+  .notAloneGuideResource--image-text .notAloneGuideResourceText,
+  .notAloneGuideResource--text-image .notAloneGuideResourceText {
+    justify-self: stretch;
+    max-width: none;
+  }
+
+  .notAloneGuideLogo {
+    width: min(100%, 18rem);
   }
 
   .notAloneGuideSectionHeading {
@@ -215,6 +264,6 @@
   }
 
   .notAloneGuidePhoto img {
-    height: 11rem;
+    height: 12rem;
   }
 }
