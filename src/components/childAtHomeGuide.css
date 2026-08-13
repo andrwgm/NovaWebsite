@@ -113,6 +113,10 @@
     row-gap: 1.25rem;
   }
 
+  .childAtHomeGuideIntroRow .childAtHomeGuideLabel {
+    order: -1;
+  }
+
   .childAtHomeGuideFeature {
     grid-template-columns: 1fr;
     grid-template-areas:
