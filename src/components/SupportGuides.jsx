@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Accordion, AccordionTab } from 'primereact/accordion';
 import BeforeAssessmentGuide from './BeforeAssessmentGuide';
 import AfterAssessmentGuide from './AfterAssessmentGuide';
+import ChildAtHomeGuide from './ChildAtHomeGuide';
 import './supportGuides.css';
 
 export default function SupportGuides() {
@@ -101,12 +102,8 @@ export default function SupportGuides() {
           contentClassName="support-guides__content"
           style={{ '--support-guide-color': '#D45286', '--support-guide-z': 2 }}
         >
-          <div className="support-guides__panel">
-            <p>
-              Cras tincidunt a metus at porta. Suspendisse eget ornare risus. Ut blandit mattis nisl non aliquet.
-              Maecenas eleifend, risus ut ornare sollicitudin, urna risus aliquet ligula, ut lacinia nisl massa non
-              arcu.
-            </p>
+          <div className="support-guides__panel support-guides__panel--child">
+            <ChildAtHomeGuide />
           </div>
         </AccordionTab>
 

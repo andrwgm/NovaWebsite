@@ -1,0 +1,155 @@
+.childAtHomeGuideIntroRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 1.25rem;
+  align-items: start;
+}
+
+.childAtHomeGuideIntro {
+  max-width: none;
+}
+
+.childAtHomeGuideLabel {
+  margin: 0;
+  flex-shrink: 0;
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
+  font-size: clamp(1.85rem, 4.2vw, 2.35rem);
+  line-height: 1.15;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.childAtHomeGuideHeadline {
+  max-width: 36rem;
+}
+
+.childAtHomeGuideFeature {
+  grid-template-columns: minmax(0, 16.75rem) minmax(0, 1fr);
+}
+
+.childAtHomeGuideCover {
+  max-width: 16.75rem;
+}
+
+.childAtHomeGuideList--homeFull {
+  margin-top: 2.75rem;
+}
+
+.childAtHomeGuideSchool {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 10rem);
+  grid-template-areas:
+    'label cover'
+    'intro cover';
+  column-gap: 1.6rem;
+  row-gap: 1.35rem;
+  align-items: start;
+  margin-top: 2.75rem;
+}
+
+.childAtHomeGuideLabel--school {
+  grid-area: label;
+}
+
+.childAtHomeGuideSchoolIntro {
+  grid-area: intro;
+  max-width: 18rem;
+}
+
+.childAtHomeGuideSchoolCover {
+  grid-area: cover;
+  width: 100%;
+  max-width: 10rem;
+  justify-self: end;
+}
+
+.childAtHomeGuideSchoolCover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+}
+
+.childAtHomeGuideSchoolBlocks {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  margin-top: 2.75rem;
+}
+
+.childAtHomeGuideSchoolBlock {
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: clamp(1.1rem, 2.4vw, 1.25rem);
+  line-height: 1.5;
+  color: #ffffff;
+}
+
+.childAtHomeGuideSchoolBlock strong {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-family: 'AthelasBold', 'Times New Roman', Times, serif;
+  font-weight: normal;
+}
+
+.childAtHomeGuideSchoolBlock span {
+  display: block;
+}
+
+@media (max-width: 700px) {
+  .childAtHomeGuideFeature {
+    grid-template-columns: minmax(0, 15.5rem) minmax(0, 1fr);
+  }
+
+  .childAtHomeGuideSchool {
+    column-gap: 1.25rem;
+  }
+}
+
+@media (max-width: 430px) {
+  .childAtHomeGuideIntroRow {
+    grid-template-columns: 1fr;
+    row-gap: 1.25rem;
+  }
+
+  .childAtHomeGuideFeature {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'explore'
+      'cover'
+      'list';
+    row-gap: 1.75rem;
+    justify-items: center;
+  }
+
+  .childAtHomeGuideCover {
+    width: 100%;
+    max-width: 16.75rem;
+  }
+
+  .childAtHomeGuideList--side {
+    width: 100%;
+    height: auto;
+    justify-content: flex-start;
+    gap: 1.35rem;
+  }
+
+  .childAtHomeGuideSchool {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'label'
+      'cover'
+      'intro';
+    justify-items: center;
+    row-gap: 1.5rem;
+  }
+
+  .childAtHomeGuideSchoolIntro {
+    max-width: none;
+    width: 100%;
+  }
+
+  .childAtHomeGuideSchoolCover {
+    justify-self: center;
+    max-width: 10rem;
+  }
+}
