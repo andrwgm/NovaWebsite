@@ -34,19 +34,17 @@
 .beforeAssessmentGuideFeature {
   display: grid;
   grid-template-columns: minmax(0, 16.75rem) minmax(0, 1fr);
-  gap: 1.6rem;
-  align-items: start;
+  grid-template-areas:
+    'explore .'
+    'cover list';
+  column-gap: 1.6rem;
+  row-gap: 0;
+  align-items: stretch;
   margin-top: 1.75rem;
 }
 
-.beforeAssessmentGuideFeatureVisual {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 0;
-}
-
 .beforeAssessmentGuideExplore {
+  grid-area: explore;
   margin: 0 0 1.35rem;
   text-align: center;
   font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
@@ -56,6 +54,7 @@
 }
 
 .beforeAssessmentGuideCover {
+  grid-area: cover;
   width: 100%;
   max-width: 16.75rem;
 }
@@ -99,10 +98,15 @@
 }
 
 .beforeAssessmentGuideList--side {
+  grid-area: list;
   display: flex;
   flex-direction: column;
-  gap: 1.35rem;
-  padding-top: 0.15rem;
+  justify-content: space-between;
+  align-self: stretch;
+  gap: 0;
+  height: 100%;
+  min-height: 0;
+  padding-top: 0;
 }
 
 .beforeAssessmentGuideList--full {
@@ -130,7 +134,7 @@
 
   .beforeAssessmentGuideFeature {
     grid-template-columns: minmax(0, 15.5rem) minmax(0, 1fr);
-    gap: 1.25rem;
+    column-gap: 1.25rem;
   }
 
   .beforeAssessmentGuideList--full {
@@ -146,17 +150,24 @@
 
   .beforeAssessmentGuideFeature {
     grid-template-columns: 1fr;
-    gap: 1.75rem;
+    grid-template-areas:
+      'explore'
+      'cover'
+      'list';
+    row-gap: 1.75rem;
     justify-items: center;
   }
 
-  .beforeAssessmentGuideFeatureVisual {
+  .beforeAssessmentGuideCover {
     width: 100%;
     max-width: 16.75rem;
   }
 
   .beforeAssessmentGuideList--side {
     width: 100%;
+    height: auto;
+    justify-content: flex-start;
+    gap: 1.35rem;
   }
 
   .beforeAssessmentGuideList--full {

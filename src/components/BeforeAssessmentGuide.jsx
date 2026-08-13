@@ -57,24 +57,21 @@ export default function BeforeAssessmentGuide() {
       </p>
 
       <div className="beforeAssessmentGuideFeature">
-        <div className="beforeAssessmentGuideFeatureVisual">
-          <p className="beforeAssessmentGuideExplore">
-            Inside, you’ll
-            <br />
-            explore
-          </p>
-          <div className="beforeAssessmentGuideCover">
-            <img
-              src="/images/while-youre-waiting-cover.avif"
-              alt="While You're Waiting guide cover"
-              loading="lazy"
-              decoding="async"
-              width={268}
-              height={380}
-            />
-          </div>
+        <p className="beforeAssessmentGuideExplore">
+          Inside, you’ll
+          <br />
+          explore
+        </p>
+        <div className="beforeAssessmentGuideCover">
+          <img
+            src="/images/while-youre-waiting-cover.avif"
+            alt="While You're Waiting guide cover"
+            loading="lazy"
+            decoding="async"
+            width={268}
+            height={380}
+          />
         </div>
-
         <ul className="beforeAssessmentGuideList beforeAssessmentGuideList--side">
           {SIDE_ITEMS.map((item) => (
             <li key={item.title}>
