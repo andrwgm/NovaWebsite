@@ -1,0 +1,58 @@
+.contact-vacation-overlay {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(2px);
+  z-index: 9999;
+}
+
+.contact-vacation-card {
+  background: #ffffff;
+  padding: 1.75rem 2rem 1.5rem;
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+  max-width: 460px;
+  width: calc(100% - 2rem);
+  text-align: center;
+  border: 1px solid #e8eef6;
+}
+
+.contact-vacation-icon i {
+  font-size: 3.5rem;
+  color: #9ecdc9;
+  padding: 0.5rem 0 1rem;
+}
+
+.contact-vacation-title {
+  margin: 0;
+  color: #344759;
+  font-size: 1.25rem;
+  font-family: 'LemonMilkLight', sans-serif;
+  line-height: 1.35;
+}
+
+.contact-vacation-message {
+  margin: 1rem 0 1.5rem;
+  color: #344759;
+  font-size: 1rem;
+  line-height: 1.65;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+}
+
+.contact-vacation-button {
+  background: #344759 !important;
+  border: none !important;
+  color: #ffffff !important;
+  font-family: 'LemonMilkLight', sans-serif;
+  padding: 0.65rem 1.75rem !important;
+}
+
+.contact-vacation-button:hover {
+  background: #2d3b55 !important;
+}
+
+.contact-vacation-button:focus {
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #9ecdc9 !important;
+}

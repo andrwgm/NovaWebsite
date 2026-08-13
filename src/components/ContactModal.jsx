@@ -6,6 +6,8 @@ import { Button } from 'primereact/button';
 import { Checkbox } from 'primereact/checkbox';
 
 import ApplicationSuccessModal from './ApplicationSuccessModal';
+import ContactVacationModal from './ContactVacationModal';
+import { CONTACT_FORM_RESPONSE_MODE } from '../config/contactFormResponse';
 import { CONTACT_SUBMISSIONS_ENDPOINT } from '../utils/api';
 import './contactModal.css';
 
@@ -165,11 +167,19 @@ export default function ContactModal({ requestId = 0, prefillMessage = '' }) {
           </div>
         </div>
       )}
-      <ApplicationSuccessModal
-        visible={submitSuccess}
-        onClose={() => setSubmitSuccess(false)}
-        message="Done! We'll get back to you as soon as possible."
-      />
+      {CONTACT_FORM_RESPONSE_MODE === 'standard' && (
+        <ApplicationSuccessModal
+          visible={submitSuccess}
+          onClose={() => setSubmitSuccess(false)}
+          message="Done! We'll get back to you as soon as possible."
+        />
+      )}
+      {CONTACT_FORM_RESPONSE_MODE === 'vacation' && (
+        <ContactVacationModal
+          visible={submitSuccess}
+          onClose={() => setSubmitSuccess(false)}
+        />
+      )}
     </>
   );
 }
