@@ -189,6 +189,7 @@
     margin-left: 0;
     font-size: 1.3em;
     row-gap: 0.25em;
+    color: #344759;
 }
 
 .whyChooseUsTextBold {
@@ -221,6 +222,7 @@
     margin-top: 2em;
     text-align: justify;
     padding: 0 5% 5% 5%;
+    color: #344759;
 }
 
 .whiteBg .curveShadow img {
