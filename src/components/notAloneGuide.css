@@ -32,7 +32,7 @@
 .notAloneGuideResources {
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: 3rem;
 }
 
 .notAloneGuideResource {
@@ -40,7 +40,7 @@
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   grid-template-areas: 'media text';
   column-gap: 2.5rem;
-  align-items: center;
+  align-items: start;
 }
 
 .notAloneGuideResource--text-image {
@@ -55,22 +55,15 @@
   grid-area: media;
   display: flex;
   align-items: center;
+  justify-content: center;
   min-width: 0;
-}
-
-.notAloneGuideResource--text-image .notAloneGuideResourceMedia {
-  justify-content: flex-end;
-}
-
-.notAloneGuideResource--image-text .notAloneGuideResourceMedia {
-  justify-content: flex-start;
 }
 
 .notAloneGuideResourceText {
   grid-area: text;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   min-width: 0;
   max-width: 34rem;
 }

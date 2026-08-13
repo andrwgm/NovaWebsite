@@ -47,7 +47,7 @@
 
 .childAtHomeGuideSchoolFeature {
   display: grid;
-  grid-template-columns: minmax(0, 11.5rem) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 14rem);
   column-gap: 1.85rem;
   align-items: stretch;
   margin-top: 2rem;
@@ -55,7 +55,9 @@
 
 .childAtHomeGuideSchoolCover {
   width: 100%;
-  max-width: 11.5rem;
+  max-width: 14rem;
+  justify-self: end;
+  order: 2;
 }
 
 .childAtHomeGuideSchoolCover img {
@@ -74,6 +76,7 @@
   justify-content: space-around;
   gap: 0;
   min-height: 0;
+  order: 1;
 }
 
 .childAtHomeGuideSchoolBlocks--full {
@@ -106,7 +109,7 @@
   }
 
   .childAtHomeGuideSchoolFeature {
-    grid-template-columns: minmax(0, 10rem) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 12.5rem);
     column-gap: 1.25rem;
   }
 }
@@ -150,11 +153,14 @@
   }
 
   .childAtHomeGuideSchoolCover {
-    max-width: 11.5rem;
+    max-width: 14rem;
+    order: -1;
+    justify-self: center;
   }
 
   .childAtHomeGuideSchoolBlocks--side {
     width: 100%;
     gap: 1.35rem;
+    order: 0;
   }
 }
