@@ -79,7 +79,7 @@ export default function PeopleBehind() {
   const team = useMemo(() => TEAM.map((member, idx) => ({ ...member, idx })), []);
 
   return (
-    <section className="team">
+    <section className="team" id="people-behind">
       <header className="team-head">
         <h2 className="team-title">People behind <div style={{fontFamily: 'TimesNewRomanMTCondensedItalic', paddingLeft: '3rem'}}>your care</div></h2>
         <p className="team-subtitle">

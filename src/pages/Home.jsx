@@ -13,7 +13,6 @@ const PricesSection = React.lazy(() => import('../components/PricesSection'));
 const SupportBoxSection = React.lazy(() => import('../components/SupportBoxSection'));
 const HowItWorks = React.lazy(() => import('../components/HowItWorks'));
 const QuestionsAnswered = React.lazy(() => import('../components/QuestionsAnswered'));
-const PeopleBehind = React.lazy(() => import('../components/PeopleBehind'));
 const TrustBadges = React.lazy(() => import('../components/TrustBadges'));
 
 export default function Home() {
@@ -21,7 +20,7 @@ export default function Home() {
   const ageSectionsRef = useRef(null);
   const location = useLocation();
   const anchorId = location.hash ? location.hash.replace('#', '') : '';
-  const forceLazySections = ['pricing', 'how-it-works', 'faqs', 'people-behind'].includes(anchorId);
+  const forceLazySections = ['pricing', 'how-it-works', 'faqs'].includes(anchorId);
   const [reduceMotion, setReduceMotion] = useState(false);
 
   useEffect(() => {
@@ -258,11 +257,6 @@ export default function Home() {
           </div>
           <Button label="Get in contact" icon="pi pi-send" iconPos="right" onClick={requestContactModal} />
         </div>
-      </LazySection>
-      <LazySection id="people-behind" forceVisible={forceLazySections}>
-        <Suspense fallback={null}>
-          <PeopleBehind />
-        </Suspense>
       </LazySection>
       <LazySection forceVisible={forceLazySections}>
         <Suspense fallback={null}>

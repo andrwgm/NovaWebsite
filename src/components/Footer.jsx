@@ -19,7 +19,7 @@ const LINK_COLUMNS = [
       { label: 'Pricing', to: '/#pricing' },
       { label: 'How it works', to: '/#how-it-works' },
       { label: 'FAQs', to: '/#faqs' },
-      { label: 'People behind', to: '/#people-behind' },
+      { label: 'People behind', to: '/about#people-behind' },
     ],
   },
   {
