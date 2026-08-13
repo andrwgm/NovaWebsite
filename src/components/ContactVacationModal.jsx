@@ -15,12 +15,12 @@ export default function ContactVacationModal({ visible, onClose }) {
           We&apos;ve received your enquiry
         </h2>
         <p className="contact-vacation-message">
-          Thank you for getting in touch. We&apos;re currently on holiday until 1 September,
-          but we&apos;ll respond as quickly as we can once we&apos;re back.
+          Thank you for getting in touch. We&apos;ll respond as quickly as we can,
+          although our team is currently away for the holidays until 1 September.
         </p>
         <Button
           type="button"
-          label="Understood"
+          label="Thank you"
           className="contact-vacation-button"
           onClick={onClose}
         />
