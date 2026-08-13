@@ -10,7 +10,7 @@
 .beforeAssessmentGuideIntro {
   margin: 0;
   font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
-  font-size: clamp(1.05rem, 2.4vw, 1.125rem);
+  font-size: clamp(1.15rem, 2.6vw, 1.3rem);
   line-height: 1.55;
   color: #ffffff;
 }
@@ -25,7 +25,7 @@
   max-width: 36rem;
   text-align: center;
   font-family: 'AthelasBold', 'Times New Roman', Times, serif;
-  font-size: clamp(1.7rem, 4.2vw, 1.95rem);
+  font-size: clamp(1.85rem, 4.4vw, 2.2rem);
   font-weight: normal;
   line-height: 1.3;
   color: #2d3b55;
@@ -48,7 +48,7 @@
   margin: 0 0 1.35rem;
   text-align: center;
   font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
-  font-size: clamp(1.7rem, 4vw, 2.1rem);
+  font-size: clamp(1.85rem, 4.2vw, 2.35rem);
   line-height: 1.15;
   color: #ffffff;
 }
@@ -76,8 +76,8 @@
   position: relative;
   padding-left: 1.15rem;
   font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
-  font-size: clamp(1rem, 2.2vw, 1.1rem);
-  line-height: 1.48;
+  font-size: clamp(1.1rem, 2.4vw, 1.25rem);
+  line-height: 1.5;
   color: #ffffff;
 }
 
@@ -93,15 +93,21 @@
 }
 
 .beforeAssessmentGuideList li strong {
+  display: block;
+  margin-bottom: 0.2rem;
   font-family: 'AthelasBold', 'Times New Roman', Times, serif;
   font-weight: normal;
+}
+
+.beforeAssessmentGuideList li span {
+  display: block;
 }
 
 .beforeAssessmentGuideList--side {
   grid-area: list;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-self: stretch;
   gap: 0;
   height: 100%;
@@ -123,7 +129,7 @@
   margin: 4.5rem 0 0.5rem;
   text-align: center;
   font-family: 'AthelasBold', 'Times New Roman', Times, serif;
-  font-size: clamp(1.65rem, 4vw, 1.9rem);
+  font-size: clamp(1.8rem, 4.2vw, 2.15rem);
   font-weight: normal;
   line-height: 1.35;
   color: #2d3b55;

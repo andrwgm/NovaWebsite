@@ -75,7 +75,8 @@ export default function BeforeAssessmentGuide() {
         <ul className="beforeAssessmentGuideList beforeAssessmentGuideList--side">
           {SIDE_ITEMS.map((item) => (
             <li key={item.title}>
-              <strong>{item.title}</strong> {item.body}
+              <strong>{item.title}</strong>
+              <span>{item.body}</span>
             </li>
           ))}
         </ul>
@@ -84,7 +85,8 @@ export default function BeforeAssessmentGuide() {
       <ul className="beforeAssessmentGuideList beforeAssessmentGuideList--full">
         {FULL_ITEMS.map((item) => (
           <li key={item.title}>
-            <strong>{item.title}</strong> {item.body}
+            <strong>{item.title}</strong>
+            <span>{item.body}</span>
           </li>
         ))}
       </ul>
