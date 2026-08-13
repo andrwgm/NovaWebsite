@@ -1,7 +1,7 @@
 .childAtHomeGuideIntroRow {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  column-gap: 1.25rem;
+  column-gap: 2.5rem;
   align-items: start;
 }
 
@@ -12,9 +12,10 @@
 .childAtHomeGuideLabel {
   margin: 0;
   flex-shrink: 0;
+  padding: 0 0.75rem 0 1.25rem;
   font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
-  font-size: clamp(1.85rem, 4.2vw, 2.35rem);
-  line-height: 1.15;
+  font-size: clamp(2.5rem, 5.5vw, 3.35rem);
+  line-height: 1.08;
   color: #ffffff;
   white-space: nowrap;
 }
@@ -33,18 +34,19 @@
 
 .childAtHomeGuideList--homeFull {
   margin-top: 2.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .childAtHomeGuideSchool {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 10rem);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 16.75rem);
   grid-template-areas:
     'label cover'
     'intro cover';
   column-gap: 1.6rem;
   row-gap: 1.35rem;
   align-items: start;
-  margin-top: 2.75rem;
+  margin-top: 4.25rem;
 }
 
 .childAtHomeGuideLabel--school {
@@ -53,13 +55,13 @@
 
 .childAtHomeGuideSchoolIntro {
   grid-area: intro;
-  max-width: 18rem;
+  max-width: none;
 }
 
 .childAtHomeGuideSchoolCover {
   grid-area: cover;
   width: 100%;
-  max-width: 10rem;
+  max-width: 16.75rem;
   justify-self: end;
 }
 
@@ -150,6 +152,6 @@
 
   .childAtHomeGuideSchoolCover {
     justify-self: center;
-    max-width: 10rem;
+    max-width: 16.75rem;
   }
 }

@@ -127,8 +127,8 @@ export default function ChildAtHomeGuide() {
             alt="My School Passport guide cover"
             loading="lazy"
             decoding="async"
-            width={160}
-            height={228}
+            width={268}
+            height={380}
           />
         </div>
       </div>
