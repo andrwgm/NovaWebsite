@@ -83,8 +83,8 @@ export default function About() {
           <div className="about-team">
             <FullTeam />
           </div>
-          <TrustBadges />
           <PeopleBehind />
+          <TrustBadges />
         </Suspense>
       )}
     </main>

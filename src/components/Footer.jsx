@@ -19,7 +19,6 @@ const LINK_COLUMNS = [
       { label: 'Pricing', to: '/#pricing' },
       { label: 'How it works', to: '/#how-it-works' },
       { label: 'FAQs', to: '/#faqs' },
-      { label: 'People behind', to: '/about#people-behind' },
     ],
   },
   {
@@ -35,6 +34,7 @@ const LINK_COLUMNS = [
     title: 'Nova',
     links: [
       { label: 'Meet the team', to: '/about' },
+      { label: 'People behind', to: '/about#people-behind' },
       { label: 'Careers', to: '/careers' },
     ],
   },
