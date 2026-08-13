@@ -260,7 +260,7 @@ export default function Home() {
       </LazySection>
       <LazySection forceVisible={forceLazySections}>
         <Suspense fallback={null}>
-          <TrustBadges />
+          <TrustBadges className="trust-badges--no-top-border" />
         </Suspense>
       </LazySection>
     </div>

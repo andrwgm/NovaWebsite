@@ -9,6 +9,10 @@
   background: #ffffff;
 }
 
+.trust-badges--no-top-border {
+  border-top: none;
+}
+
 .trust-badges-title {
   font-family: 'LemonMilkLight', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: clamp(1.4rem, 3vw, 2rem);

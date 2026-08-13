@@ -9,9 +9,13 @@ const DEFAULT_BADGES = [
   },
 ];
 
-export default function TrustBadges({ title = 'Professional accreditations', badges = DEFAULT_BADGES }) {
+export default function TrustBadges({
+  title = 'Professional accreditations',
+  badges = DEFAULT_BADGES,
+  className = '',
+}) {
   return (
-    <section className="trust-badges" aria-label={title}>
+    <section className={`trust-badges ${className}`.trim()} aria-label={title}>
       <span className="trust-badges-title">{title}</span>
       <div className="trust-badges-grid">
         {badges.map((badge) => (
