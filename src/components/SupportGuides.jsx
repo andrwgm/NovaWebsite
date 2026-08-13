@@ -9,7 +9,7 @@ import './supportGuides.css';
 
 export default function SupportGuides() {
   const tabSlugs = useMemo(
-    () => ['before-the-assessment', 'after-the-assessment', 'supporting-your-child-at-home', 'youre-not-alone'],
+    () => ['before-the-assessment', 'during-the-assessment', 'supporting-your-child-at-home', 'youre-not-alone'],
     []
   );
   const slugToIndex = useMemo(() => {
@@ -25,16 +25,20 @@ export default function SupportGuides() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const hash = location.hash.replace('#', '').toLowerCase();
-    if (!hash) {
+    const rawHash = location.hash.replace('#', '').toLowerCase();
+    if (!rawHash) {
       setActiveIndex(null);
       return;
     }
+    const hash = rawHash === 'after-the-assessment' ? 'during-the-assessment' : rawHash;
     const idx = slugToIndex[hash];
     if (typeof idx === 'number') {
       setActiveIndex(idx);
+      if (hash !== rawHash) {
+        navigate({ pathname: location.pathname, hash }, { replace: true });
+      }
     }
-  }, [location.hash, slugToIndex]);
+  }, [location.hash, location.pathname, navigate, slugToIndex]);
 
   const handleTabChange = (event) => {
     const nextIndex = event.index;
@@ -75,10 +79,10 @@ export default function SupportGuides() {
         </AccordionTab>
 
         <AccordionTab
-          id="after-the-assessment"
+          id="during-the-assessment"
           header={
             <h2>
-              After the <em>Assessment</em>
+              During the <em>Assessment</em>
             </h2>
           }
           className="support-guides__tab"
