@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Accordion, AccordionTab } from 'primereact/accordion';
 import BeforeAssessmentGuide from './BeforeAssessmentGuide';
+import AfterAssessmentGuide from './AfterAssessmentGuide';
 import './supportGuides.css';
 
 export default function SupportGuides() {
@@ -57,8 +58,8 @@ export default function SupportGuides() {
         <AccordionTab
           id="before-the-assessment"
           header={
-            <h2 >
-              Before the assessment
+            <h2>
+              Before the <em>Assessment</em>
             </h2>
           }
           className="support-guides__tab"
@@ -75,7 +76,7 @@ export default function SupportGuides() {
           id="after-the-assessment"
           header={
             <h2>
-              After the assessment
+              After the <em>Assessment</em>
             </h2>
           }
           className="support-guides__tab"
@@ -83,11 +84,8 @@ export default function SupportGuides() {
           contentClassName="support-guides__content"
           style={{ '--support-guide-color': '#FFA6A8', '--support-guide-z': 3 }}
         >
-          <div className="support-guides__panel">
-            <p>
-              Nullam vehicula arcu eu tincidunt maximus. Cras vitae justo vehicula, aliquet nisl eget, mattis nibh.
-              Donec gravida, lorem ac iaculis porta, est enim volutpat erat, eget consectetur nisl orci sed erat.
-            </p>
+          <div className="support-guides__panel support-guides__panel--after">
+            <AfterAssessmentGuide />
           </div>
         </AccordionTab>
 
@@ -95,7 +93,7 @@ export default function SupportGuides() {
           id="supporting-your-child-at-home"
           header={
             <h2>
-              Supporting your child at home
+              Supporting your <em>Child at Home</em>
             </h2>
           }
           className="support-guides__tab"
@@ -116,7 +114,7 @@ export default function SupportGuides() {
           id="youre-not-alone"
           header={
             <h2>
-              You're not alone
+              You&apos;re <em>not Alone</em>
             </h2>
           }
           className="support-guides__tab"

@@ -5,11 +5,19 @@
 }
 
 .support-guides__header h2 {
-  font-family: 'LemonMilk', sans-serif;
-  font-size: 1.15rem;
-  letter-spacing: 0.08rem;
-  font-weight: unset;
+  font-family: 'TimesNewRomanMTCondensed', 'Times New Roman', Times, serif;
+  font-size: clamp(1.55rem, 3.2vw, 2rem);
+  letter-spacing: 0;
+  font-weight: normal;
+  font-style: normal;
   margin: unset;
+  line-height: 1.15;
+}
+
+.support-guides__header h2 em {
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
+  font-style: normal;
+  font-weight: normal;
 }
 
 .support-guides__header .p-accordion-header-link {
@@ -18,9 +26,9 @@
   border: none;
   border-radius: 40px 40px 0 0;
   padding: 24px 42px;
-  font-family: 'LemonMilk', sans-serif;
-  font-size: 1.15rem;
-  letter-spacing: 0.08rem;
+  font-family: 'TimesNewRomanMTCondensed', 'Times New Roman', Times, serif;
+  font-size: clamp(1.55rem, 3.2vw, 2rem);
+  letter-spacing: 0;
 }
 
 .support-guides__header .p-accordion-toggle-icon {
@@ -56,6 +64,10 @@
   padding-top: 0.35rem;
 }
 
+.support-guides__panel--after {
+  padding-top: 0.35rem;
+}
+
 .support-guides .p-accordion .p-accordion-content {
   padding: 0;
   padding-bottom: 2rem;
@@ -76,8 +88,9 @@
     width: calc(100% + 36px);
   }
 
-  .support-guides__header .p-accordion-header-link {
-    font-size: 1rem;
+  .support-guides__header .p-accordion-header-link,
+  .support-guides__header h2 {
+    font-size: clamp(1.35rem, 5vw, 1.65rem);
   }
 
   .support-guides__panel {
