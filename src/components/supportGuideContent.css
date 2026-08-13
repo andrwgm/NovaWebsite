@@ -10,7 +10,7 @@
 .supportGuideContentIntro {
   margin: 0;
   font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
-  font-size: clamp(1.15rem, 2.6vw, 1.3rem);
+  font-size: clamp(1.25rem, 2.8vw, 1.45rem);
   line-height: 1.55;
   color: #ffffff;
   text-align: justify;
@@ -27,7 +27,7 @@
   width: 100%;
   text-align: center;
   font-family: 'AthelasBold', 'Times New Roman', Times, serif;
-  font-size: clamp(1.85rem, 4.4vw, 2.2rem);
+  font-size: clamp(2.2rem, 4.8vw, 2.6rem);
   font-weight: normal;
   line-height: 1.3;
   color: #2d3b55;
@@ -35,11 +35,11 @@
 
 .supportGuideContentFeature {
   display: grid;
-  grid-template-columns: minmax(0, 16.75rem) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 20.5rem) minmax(0, 1fr);
   grid-template-areas:
-    'explore .'
+    'explore list'
     'cover list';
-  column-gap: 1.6rem;
+  column-gap: 1.85rem;
   row-gap: 0;
   align-items: stretch;
   margin-top: 1.75rem;
@@ -50,7 +50,7 @@
   margin: 0 0 1.35rem;
   text-align: center;
   font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
-  font-size: clamp(1.85rem, 4.2vw, 2.35rem);
+  font-size: clamp(2.2rem, 4.8vw, 2.6rem);
   line-height: 1.15;
   color: #ffffff;
 }
@@ -58,7 +58,7 @@
 .supportGuideContentCover {
   grid-area: cover;
   width: 100%;
-  max-width: 16.75rem;
+  max-width: 20.5rem;
 }
 
 .supportGuideContentCover img {
@@ -78,7 +78,7 @@
   position: relative;
   padding-left: 1.15rem;
   font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
-  font-size: clamp(1.1rem, 2.4vw, 1.25rem);
+  font-size: clamp(1.2rem, 2.6vw, 1.35rem);
   line-height: 1.5;
   color: #ffffff;
   text-align: justify;
@@ -132,7 +132,7 @@
   margin: 4.5rem 0 0.5rem;
   text-align: center;
   font-family: 'AthelasBold', 'Times New Roman', Times, serif;
-  font-size: clamp(1.8rem, 4.2vw, 2.15rem);
+  font-size: clamp(2.2rem, 4.8vw, 2.6rem);
   font-weight: normal;
   line-height: 1.35;
   color: #2d3b55;
@@ -144,8 +144,8 @@
   }
 
   .supportGuideContentFeature {
-    grid-template-columns: minmax(0, 15.5rem) minmax(0, 1fr);
-    column-gap: 1.25rem;
+    grid-template-columns: minmax(0, 18.5rem) minmax(0, 1fr);
+    column-gap: 1.35rem;
   }
 
   .supportGuideContentList--full {
@@ -170,7 +170,7 @@
 
   .supportGuideContentCover {
     width: 100%;
-    max-width: 16.75rem;
+    max-width: 20.5rem;
   }
 
   .supportGuideContentList--side {

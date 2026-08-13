@@ -94,7 +94,7 @@
 .notAloneGuideResourceTitle {
   margin: 0 0 1rem;
   font-family: 'TimesNewRomanMTCondensed', 'Times New Roman', Times, serif;
-  font-size: clamp(1.85rem, 4vw, 2.2rem);
+  font-size: clamp(2.2rem, 4.8vw, 2.6rem);
   font-weight: normal;
   line-height: 1.12;
   color: #ffffff;
@@ -109,7 +109,7 @@
 .notAloneGuideResourceBody {
   margin: 0;
   font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
-  font-size: clamp(1.1rem, 2.4vw, 1.25rem);
+  font-size: clamp(1.2rem, 2.6vw, 1.35rem);
   line-height: 1.5;
   color: #ffffff;
   text-align: justify;
@@ -189,7 +189,7 @@
   max-width: none;
   width: 100%;
   font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
-  font-size: clamp(1.1rem, 2.4vw, 1.25rem);
+  font-size: clamp(1.2rem, 2.6vw, 1.35rem);
   line-height: 1.5;
   color: #ffffff;
   text-align: justify;
@@ -204,11 +204,7 @@
 .notAloneGuidePhoto img {
   display: block;
   width: 100%;
-  height: clamp(12rem, 30vw, 18rem);
-  object-fit: cover;
-  object-position: center 35%;
-  border-radius: 1.35rem;
-  box-shadow: 10px 10px 15px rgba(35, 25, 40, 0.35);
+  height: auto;
 }
 
 @media (max-width: 700px) {
@@ -261,9 +257,5 @@
     margin-left: 0;
     margin-right: auto;
     max-width: none;
-  }
-
-  .notAloneGuidePhoto img {
-    height: 12rem;
   }
 }

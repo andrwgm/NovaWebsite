@@ -14,8 +14,8 @@
   flex-shrink: 0;
   padding: 0 0.75rem 0 1.25rem;
   font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
-  font-size: clamp(2.5rem, 5.5vw, 3.35rem);
-  line-height: 1.08;
+  font-size: clamp(3rem, 6.5vw, 3.75rem);
+  line-height: 1.05;
   color: #ffffff;
   white-space: nowrap;
 }
@@ -25,11 +25,11 @@
 }
 
 .childAtHomeGuideFeature {
-  grid-template-columns: minmax(0, 16.75rem) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 20.5rem) minmax(0, 1fr);
 }
 
 .childAtHomeGuideCover {
-  max-width: 16.75rem;
+  max-width: 20.5rem;
 }
 
 .childAtHomeGuideList--homeFull {
@@ -39,7 +39,7 @@
 
 .childAtHomeGuideSchool {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 16.75rem);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 20.5rem);
   grid-template-areas:
     'label cover'
     'intro cover';
@@ -61,7 +61,7 @@
 .childAtHomeGuideSchoolCover {
   grid-area: cover;
   width: 100%;
-  max-width: 16.75rem;
+  max-width: 20.5rem;
   justify-self: end;
 }
 
@@ -81,7 +81,7 @@
 
 .childAtHomeGuideSchoolBlock {
   font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
-  font-size: clamp(1.1rem, 2.4vw, 1.25rem);
+  font-size: clamp(1.2rem, 2.6vw, 1.35rem);
   line-height: 1.5;
   color: #ffffff;
   text-align: justify;
@@ -100,7 +100,7 @@
 
 @media (max-width: 700px) {
   .childAtHomeGuideFeature {
-    grid-template-columns: minmax(0, 15.5rem) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 18.5rem) minmax(0, 1fr);
   }
 
   .childAtHomeGuideSchool {
@@ -130,7 +130,7 @@
 
   .childAtHomeGuideCover {
     width: 100%;
-    max-width: 16.75rem;
+    max-width: 20.5rem;
   }
 
   .childAtHomeGuideList--side {
@@ -157,6 +157,6 @@
 
   .childAtHomeGuideSchoolCover {
     justify-self: center;
-    max-width: 16.75rem;
+    max-width: 20.5rem;
   }
 }
