@@ -52,6 +52,10 @@
   margin: 0;
 }
 
+.support-guides__panel--before {
+  padding-top: 0.35rem;
+}
+
 .support-guides .p-accordion .p-accordion-content {
   padding: 0;
   padding-bottom: 2rem;

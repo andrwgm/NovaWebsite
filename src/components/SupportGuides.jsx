@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Accordion, AccordionTab } from 'primereact/accordion';
+import BeforeAssessmentGuide from './BeforeAssessmentGuide';
 import './supportGuides.css';
 
 export default function SupportGuides() {
@@ -65,11 +66,8 @@ export default function SupportGuides() {
           contentClassName="support-guides__content"
           style={{ '--support-guide-color': '#FF787C', '--support-guide-z': 4 }}
         >
-          <div className="support-guides__panel">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed elit ac arcu feugiat pulvinar. Vivamus
-              ac dapibus mauris, vitae lacinia elit. Integer iaculis tellus non ipsum scelerisque commodo.
-            </p>
+          <div className="support-guides__panel support-guides__panel--before">
+            <BeforeAssessmentGuide />
           </div>
         </AccordionTab>
 
