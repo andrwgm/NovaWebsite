@@ -1,5 +1,5 @@
 import React from 'react';
-import './beforeAssessmentGuide.css';
+import './supportGuideContent.css';
 
 const SIDE_ITEMS = [
   {
@@ -39,30 +39,30 @@ const FULL_ITEMS = [
 
 export default function BeforeAssessmentGuide() {
   return (
-    <div className="beforeAssessmentGuide">
-      <p className="beforeAssessmentGuideIntro">
+    <div className="supportGuideContent">
+      <p className="supportGuideContentIntro">
         Waiting for an assessment — whether for yourself or your child — can bring many
         emotions: hope, uncertainty, and questions about what comes next.
       </p>
 
-      <h3 className="beforeAssessmentGuideHeadline">
+      <h3 className="supportGuideContentHeadline">
         Support doesn’t have to wait
         <br />
         for a diagnosis
       </h3>
 
-      <p className="beforeAssessmentGuideIntro">
+      <p className="supportGuideContentIntro">
         That’s why we’ve created our <strong>Pre-Assessment Guide</strong>, designed to help you
         understand the process, prepare for your appointment.
       </p>
 
-      <div className="beforeAssessmentGuideFeature">
-        <p className="beforeAssessmentGuideExplore">
+      <div className="supportGuideContentFeature">
+        <p className="supportGuideContentExplore">
           Inside, you’ll
           <br />
           explore
         </p>
-        <div className="beforeAssessmentGuideCover">
+        <div className="supportGuideContentCover">
           <img
             src="/images/while-youre-waiting-cover.avif"
             alt="While You're Waiting guide cover"
@@ -72,7 +72,7 @@ export default function BeforeAssessmentGuide() {
             height={380}
           />
         </div>
-        <ul className="beforeAssessmentGuideList beforeAssessmentGuideList--side">
+        <ul className="supportGuideContentList supportGuideContentList--side">
           {SIDE_ITEMS.map((item) => (
             <li key={item.title}>
               <strong>{item.title}</strong>
@@ -82,7 +82,7 @@ export default function BeforeAssessmentGuide() {
         </ul>
       </div>
 
-      <ul className="beforeAssessmentGuideList beforeAssessmentGuideList--full">
+      <ul className="supportGuideContentList supportGuideContentList--full">
         {FULL_ITEMS.map((item) => (
           <li key={item.title}>
             <strong>{item.title}</strong>
@@ -91,7 +91,7 @@ export default function BeforeAssessmentGuide() {
         ))}
       </ul>
 
-      <p className="beforeAssessmentGuideClosing">
+      <p className="supportGuideContentClosing">
         Because understanding can begin
         <br />
         before the assessment does.

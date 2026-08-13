@@ -1,4 +1,4 @@
-.beforeAssessmentGuide {
+.supportGuideContent {
   color: #ffffff;
   width: 80%;
   max-width: none;
@@ -7,7 +7,7 @@
   box-sizing: border-box;
 }
 
-.beforeAssessmentGuideIntro {
+.supportGuideContentIntro {
   margin: 0;
   font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
   font-size: clamp(1.15rem, 2.6vw, 1.3rem);
@@ -15,14 +15,15 @@
   color: #ffffff;
 }
 
-.beforeAssessmentGuideIntro strong {
+.supportGuideContentIntro strong {
   font-family: 'AthelasBold', 'Times New Roman', Times, serif;
   font-weight: normal;
 }
 
-.beforeAssessmentGuideHeadline {
+.supportGuideContentHeadline {
   margin: 1.4rem auto 2.2rem;
-  max-width: 36rem;
+  max-width: none;
+  width: 100%;
   text-align: center;
   font-family: 'AthelasBold', 'Times New Roman', Times, serif;
   font-size: clamp(1.85rem, 4.4vw, 2.2rem);
@@ -31,7 +32,7 @@
   color: #2d3b55;
 }
 
-.beforeAssessmentGuideFeature {
+.supportGuideContentFeature {
   display: grid;
   grid-template-columns: minmax(0, 16.75rem) minmax(0, 1fr);
   grid-template-areas:
@@ -43,7 +44,7 @@
   margin-top: 1.75rem;
 }
 
-.beforeAssessmentGuideExplore {
+.supportGuideContentExplore {
   grid-area: explore;
   margin: 0 0 1.35rem;
   text-align: center;
@@ -53,26 +54,26 @@
   color: #ffffff;
 }
 
-.beforeAssessmentGuideCover {
+.supportGuideContentCover {
   grid-area: cover;
   width: 100%;
   max-width: 16.75rem;
 }
 
-.beforeAssessmentGuideCover img {
+.supportGuideContentCover img {
   display: block;
   width: 100%;
   height: auto;
   border-radius: 0;
 }
 
-.beforeAssessmentGuideList {
+.supportGuideContentList {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.beforeAssessmentGuideList li {
+.supportGuideContentList li {
   position: relative;
   padding-left: 1.15rem;
   font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
@@ -81,7 +82,7 @@
   color: #ffffff;
 }
 
-.beforeAssessmentGuideList li::before {
+.supportGuideContentList li::before {
   content: '';
   position: absolute;
   left: 0;
@@ -92,18 +93,18 @@
   background: #ffffff;
 }
 
-.beforeAssessmentGuideList li strong {
+.supportGuideContentList li strong {
   display: block;
   margin-bottom: 0.2rem;
   font-family: 'AthelasBold', 'Times New Roman', Times, serif;
   font-weight: normal;
 }
 
-.beforeAssessmentGuideList li span {
+.supportGuideContentList li span {
   display: block;
 }
 
-.beforeAssessmentGuideList--side {
+.supportGuideContentList--side {
   grid-area: list;
   display: flex;
   flex-direction: column;
@@ -115,14 +116,14 @@
   padding-top: 0;
 }
 
-.beforeAssessmentGuideList--full {
+.supportGuideContentList--full {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   margin-top: 3.5rem;
 }
 
-.beforeAssessmentGuide .beforeAssessmentGuideClosing {
+.supportGuideContent .supportGuideContentClosing {
   display: block;
   width: 100%;
   max-width: none;
@@ -136,27 +137,26 @@
 }
 
 @media (max-width: 700px) {
-  .beforeAssessmentGuide {
+  .supportGuideContent {
     width: 100%;
   }
 
-  .beforeAssessmentGuideFeature {
+  .supportGuideContentFeature {
     grid-template-columns: minmax(0, 15.5rem) minmax(0, 1fr);
     column-gap: 1.25rem;
   }
 
-  .beforeAssessmentGuideList--full {
+  .supportGuideContentList--full {
     margin-top: 2.75rem;
   }
 }
 
 @media (max-width: 560px) {
-  .beforeAssessmentGuideHeadline {
-    max-width: 100%;
+  .supportGuideContentHeadline {
     margin: 1.25rem auto 1.75rem;
   }
 
-  .beforeAssessmentGuideFeature {
+  .supportGuideContentFeature {
     grid-template-columns: 1fr;
     grid-template-areas:
       'explore'
@@ -166,23 +166,23 @@
     justify-items: center;
   }
 
-  .beforeAssessmentGuideCover {
+  .supportGuideContentCover {
     width: 100%;
     max-width: 16.75rem;
   }
 
-  .beforeAssessmentGuideList--side {
+  .supportGuideContentList--side {
     width: 100%;
     height: auto;
     justify-content: flex-start;
     gap: 1.35rem;
   }
 
-  .beforeAssessmentGuideList--full {
+  .supportGuideContentList--full {
     margin-top: 2.25rem;
   }
 
-  .beforeAssessmentGuide .beforeAssessmentGuideClosing {
+  .supportGuideContent .supportGuideContentClosing {
     margin-top: 3.25rem;
   }
 }
