@@ -29,6 +29,8 @@
 }
 
 .aboutStoryCopy {
+  position: relative;
+  z-index: 3;
   display: grid;
   grid-template-columns: minmax(1rem, 1fr) minmax(0, 50rem) minmax(8.5rem, 1fr);
   grid-template-areas: '. copy label';
@@ -46,7 +48,7 @@
   font-size: clamp(1.15rem, 1.8vw, 1.3rem);
   line-height: 1.32;
   color: #2d3b55;
-  text-align: left;
+  text-align: justify;
 }
 
 .aboutStoryCopyMain p:last-child {
@@ -80,7 +82,8 @@
 
 .aboutStoryPhotos {
   position: relative;
-  margin-top: 4.5rem;
+  z-index: 1;
+  margin-top: 5.75rem;
 }
 
 .aboutStoryPhotoRow {
