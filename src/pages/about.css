@@ -1,109 +1,10 @@
 .about {
-    /* background: #fdfefe; */
-    color: #2D3B55;
+    color: #2d3b55;
     min-height: calc(100vh - 5em);
     display: flex;
     flex-direction: column;
     gap: 3rem;
     padding: clamp(2rem, 4vw, 4rem) clamp(1.5rem, 6vw, 6rem) 4rem;
-}
-
-.about-hero {
-    text-align: center;
-}
-
-.about-hero__title {
-    font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
-    font-size: clamp(4rem, 7vw, 5rem);
-    margin: 0 0 3rem;
-    font-weight: normal;
-    line-height: .8;
-}
-
-.about-hero__description {
-    font-family: 'Athelas', 'Times New Roman';
-    font-size: clamp(1.2rem, 2vw, 1.4rem);
-    max-width: 780px;
-    margin: 0 auto;
-    line-height: 1.7;
-    color: #344759;
-}
-
-.about-clinic {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: clamp(1.5rem, 4vw, 3.5rem);
-    align-items: center;
-}
-
-.about-clinic__image {
-    padding: 1.5rem;
-    display: flex;
-    justify-content: center;
-}
-
-.about-clinic__image img {
-    width: 100%;
-    max-width: 420px;
-    border-radius: 32px;
-}
-
-.about-clinic__content h2 {
-    font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
-    font-size: clamp(2.8rem, 5.5vw, 3.4rem);
-    font-weight: normal;
-    line-height: .8;
-    margin-top: 0;
-    color: #344759;
-}
-
-.about-clinic__content p {
-    font-family: 'AthelasRegular', 'Times New Roman';
-    line-height: 1.7;
-    font-size: clamp(1.2rem,2vw,1.4rem);
-    color: #344759;
-}
-
-.about-clinic__content ul {
-    font-family: 'AthelasRegular', 'Times New Roman';
-    font-size: clamp(1rem, 1.8vw, 1.2rem);
-    line-height: 1.7;
-    margin: 1.5rem 0 0;
-    padding-left: 1.2rem;
-    display: grid;
-    gap: 0.8rem;
-    list-style: disc;
-    color: #344759;
-}
-
-.about-values {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
-}
-
-.about-values article {
-    background: #ffffff;
-    border-radius: 1.5rem;
-    padding: 1.5rem;
-    box-shadow: 0 10px 30px rgba(34, 56, 81, 0.08);
-}
-
-.about-values h3 {
-    margin-top: 0;
-    font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
-    font-size: clamp(2rem, 4vw, 2.6rem);
-    font-weight: normal;
-    line-height: .8;
-    color: #344759;
-}
-
-.about-values p {
-    font-family: 'AthelasRegular', 'Times New Roman';
-    line-height: 1.7;
-    font-size: clamp(1.2rem,2vw,1.4rem);
-    color: #344759;
-    margin-bottom: 0;
 }
 
 .about-team {
@@ -113,19 +14,5 @@
 @media (max-width: 768px) {
     .about {
         padding: 1.5rem;
-    }
-
-    .about-clinic__image {
-        order: -1;
-    }
-}
-
-@media (max-width: 648px) {
-    .about-clinic__content h2 {
-        text-align: center;
-    }
-
-    .about-clinic__content p {
-        text-align: center;
     }
 }

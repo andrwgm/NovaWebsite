@@ -1,0 +1,155 @@
+.aboutStory {
+  color: #2d3b55;
+}
+
+.aboutStoryTitle {
+  margin: 0 auto 5rem;
+  max-width: 18.5rem;
+  text-align: center;
+  font-family: 'TimesNewRomanMTCondensed', 'Times New Roman', Times, serif;
+  font-size: clamp(3.4rem, 7vw, 5rem);
+  font-weight: normal;
+  line-height: 0.95;
+  color: #2d3b55;
+}
+
+.aboutStoryTitle em {
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
+  font-style: normal;
+}
+
+.aboutStoryCopy {
+  display: grid;
+  grid-template-columns: minmax(1rem, 1fr) minmax(0, 36.5rem) minmax(8.5rem, 1fr);
+  grid-template-areas: '. copy label';
+  column-gap: 1.25rem;
+  align-items: start;
+}
+
+.aboutStoryCopyMain {
+  grid-area: copy;
+}
+
+.aboutStoryCopyMain p {
+  margin: 0 0 1.75rem;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: clamp(1.15rem, 1.8vw, 1.3rem);
+  line-height: 1.32;
+  color: #2d3b55;
+  text-align: left;
+}
+
+.aboutStoryCopyMain p:last-child {
+  margin-bottom: 0;
+}
+
+.aboutStoryCopyMain p.aboutStoryCopyItalic {
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
+  font-size: clamp(1.35rem, 2vw, 1.55rem);
+}
+
+.aboutStoryCopyMain p.aboutStoryCopyBold {
+  font-family: 'AthelasBold', 'Times New Roman', Times, serif;
+}
+
+.aboutStoryLabel {
+  grid-area: label;
+  margin: 0;
+  justify-self: start;
+  font-family: 'TimesNewRomanMTCondensed', 'Times New Roman', Times, serif;
+  font-size: clamp(2.75rem, 4.8vw, 3.25rem);
+  font-weight: normal;
+  line-height: 1.05;
+  color: #ff787c;
+}
+
+.aboutStoryLabel em {
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
+  font-style: normal;
+}
+
+.aboutStoryPhotos {
+  position: relative;
+  margin-top: 4.5rem;
+  padding-top: 3.25rem;
+}
+
+.aboutStoryConfetti {
+  position: absolute;
+  z-index: 2;
+  left: clamp(-0.5rem, 1vw, 1.5rem);
+  top: 0;
+  width: clamp(7.5rem, 16vw, 11.5rem);
+  height: auto;
+  pointer-events: none;
+}
+
+.aboutStoryPhotoRow {
+  display: grid;
+  grid-template-columns: 1.12fr 0.74fr 1.12fr;
+  gap: 2px;
+  align-items: start;
+  width: min(100%, 66rem);
+  margin: 0 auto;
+}
+
+.aboutStoryPhotoRow img {
+  display: block;
+  width: 100%;
+  height: clamp(11.5rem, 22vw, 15.6rem);
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 14px 28px rgba(45, 59, 85, 0.16);
+}
+
+.aboutStoryPhotoRow--tall {
+  height: clamp(16.5rem, 31vw, 21.75rem) !important;
+}
+
+@media (max-width: 900px) {
+  .aboutStoryTitle {
+    margin-bottom: 3.25rem;
+  }
+
+  .aboutStoryCopy {
+    grid-template-columns: minmax(0, 36.5rem);
+    grid-template-areas:
+      'label'
+      'copy';
+    justify-content: center;
+    row-gap: 1.5rem;
+  }
+
+  .aboutStoryLabel {
+    font-size: clamp(2.4rem, 7vw, 2.9rem);
+  }
+
+  .aboutStoryPhotos {
+    margin-top: 3.25rem;
+    padding-top: 2.5rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .aboutStoryTitle {
+    max-width: 14.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .aboutStoryCopyMain p {
+    margin-bottom: 1.4rem;
+  }
+
+  .aboutStoryConfetti {
+    width: clamp(5.5rem, 28vw, 8rem);
+    left: -0.35rem;
+  }
+
+  .aboutStoryPhotoRow img {
+    height: clamp(8.5rem, 28vw, 11rem);
+  }
+
+  .aboutStoryPhotoRow--tall {
+    height: clamp(12.5rem, 40vw, 16rem) !important;
+  }
+}
