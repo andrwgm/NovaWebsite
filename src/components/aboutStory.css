@@ -67,8 +67,8 @@
 
 .aboutStoryLabel {
   grid-area: label;
-  margin: 0;
-  justify-self: start;
+  margin: -0.25em 0 0 0;
+  justify-self: center;
   font-family: 'TimesNewRomanMTCondensed', 'Times New Roman', Times, serif;
   font-size: clamp(2.75rem, 4.8vw, 3.25rem);
   font-weight: normal;
@@ -168,7 +168,7 @@
   }
 
   .aboutStoryPhotos {
-    margin-top: 3.25rem;
+    margin-top: 5.25rem;
   }
 
   .aboutStoryConfetti {
@@ -211,6 +211,6 @@
 
   .aboutStoryConfetti {
     width: clamp(6.5rem, 34vw, 9.5rem);
-    transform: translate(-18%, -22%);
+    transform: translate(-20%, -60%);
   }
 }
