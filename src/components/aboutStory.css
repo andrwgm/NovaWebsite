@@ -89,7 +89,7 @@
   gap: 0;
   align-items: start;
   width: min(88%, 70rem);
-  margin-left: 0;
+  margin: 0 auto;
 }
 
 .aboutStoryPhotoSlot {
@@ -104,7 +104,7 @@
   width: clamp(12rem, 28vw, 19rem);
   height: auto;
   pointer-events: none;
-  transform: translate(-8%, -46%);
+  transform: translate(-8%, -76%);
 }
 
 .aboutStoryPhotoRow > img,
@@ -164,7 +164,7 @@
 
   .aboutStoryConfetti {
     width: clamp(8.5rem, 42vw, 13rem);
-    transform: translate(-6%, -38%);
+    transform: translate(-6%, -68%);
   }
 
   .aboutStoryPhotoRow > img,
