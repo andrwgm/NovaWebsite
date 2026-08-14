@@ -3,14 +3,24 @@
 }
 
 .aboutStoryTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+  max-width: 100%;
   margin: 0 auto 5rem;
-  max-width: 32rem;
   text-align: center;
   font-family: 'TimesNewRomanMTCondensed', 'Times New Roman', Times, serif;
   font-size: clamp(3.4rem, 7vw, 5rem);
   font-weight: normal;
   line-height: 0.95;
   color: #2d3b55;
+}
+
+.aboutStoryTitle span,
+.aboutStoryTitle em {
+  display: block;
+  white-space: nowrap;
 }
 
 .aboutStoryTitle em {
@@ -20,7 +30,7 @@
 
 .aboutStoryCopy {
   display: grid;
-  grid-template-columns: minmax(1rem, 1fr) minmax(0, 46rem) minmax(8.5rem, 1fr);
+  grid-template-columns: minmax(1rem, 1fr) minmax(0, 58rem) minmax(8.5rem, 1fr);
   grid-template-areas: '. copy label';
   column-gap: 1.25rem;
   align-items: start;
@@ -71,17 +81,6 @@
 .aboutStoryPhotos {
   position: relative;
   margin-top: 4.5rem;
-  padding-top: 3.25rem;
-}
-
-.aboutStoryConfetti {
-  position: absolute;
-  z-index: 2;
-  left: clamp(-0.5rem, 1vw, 1.5rem);
-  top: -1.25rem;
-  width: clamp(12rem, 26vw, 18rem);
-  height: auto;
-  pointer-events: none;
 }
 
 .aboutStoryPhotoRow {
@@ -89,11 +88,26 @@
   grid-template-columns: 1.12fr 0.74fr 1.12fr;
   gap: 0;
   align-items: start;
-  width: min(100%, 66rem);
-  margin: 0 auto;
+  width: 100%;
 }
 
-.aboutStoryPhotoRow img {
+.aboutStoryPhotoSlot {
+  position: relative;
+}
+
+.aboutStoryConfetti {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: clamp(12rem, 28vw, 19rem);
+  height: auto;
+  pointer-events: none;
+  transform: translate(-8%, -46%);
+}
+
+.aboutStoryPhotoRow > img,
+.aboutStoryPhotoSlot > img.aboutStoryPhotoRow--left {
   display: block;
   width: 100%;
   height: clamp(11.5rem, 22vw, 15.6rem);
@@ -120,7 +134,7 @@
   }
 
   .aboutStoryCopy {
-    grid-template-columns: minmax(0, 46rem);
+    grid-template-columns: minmax(0, 58rem);
     grid-template-areas:
       'label'
       'copy';
@@ -134,14 +148,13 @@
 
   .aboutStoryPhotos {
     margin-top: 3.25rem;
-    padding-top: 2.5rem;
   }
 }
 
 @media (max-width: 560px) {
   .aboutStoryTitle {
-    max-width: 22rem;
     margin-bottom: 2.5rem;
+    font-size: clamp(2.4rem, 11vw, 3.4rem);
   }
 
   .aboutStoryCopyMain p {
@@ -149,12 +162,12 @@
   }
 
   .aboutStoryConfetti {
-    width: clamp(9rem, 42vw, 13rem);
-    left: -0.35rem;
-    top: -0.75rem;
+    width: clamp(8.5rem, 42vw, 13rem);
+    transform: translate(-6%, -38%);
   }
 
-  .aboutStoryPhotoRow img {
+  .aboutStoryPhotoRow > img,
+  .aboutStoryPhotoSlot > img.aboutStoryPhotoRow--left {
     height: clamp(8.5rem, 28vw, 11rem);
   }
 

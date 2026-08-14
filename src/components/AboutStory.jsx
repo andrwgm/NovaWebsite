@@ -5,8 +5,7 @@ export default function AboutStory() {
   return (
     <section className="aboutStory">
       <h1 className="aboutStoryTitle">
-        A different kind of
-        <br />
+        <span>A different kind of</span>
         <em>assessment journey</em>
       </h1>
 
@@ -38,20 +37,22 @@ export default function AboutStory() {
       </div>
 
       <div className="aboutStoryPhotos">
-        <img
-          className="aboutStoryConfetti"
-          src="/images/confetti.avif"
-          alt=""
-          decoding="async"
-        />
         <div className="aboutStoryPhotoRow">
-          <img
-            className="aboutStoryPhotoRow--left"
-            src="/images/about-us-1.avif"
-            alt="Three children smiling together"
-            loading="lazy"
-            decoding="async"
-          />
+          <div className="aboutStoryPhotoSlot">
+            <img
+              className="aboutStoryConfetti"
+              src="/images/confetti.avif"
+              alt=""
+              decoding="async"
+            />
+            <img
+              className="aboutStoryPhotoRow--left"
+              src="/images/about-us-1.avif"
+              alt="Three children smiling together"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
           <img
             className="aboutStoryPhotoRow--tall"
             src="/images/about-us-2.avif"
