@@ -52,7 +52,7 @@
   font-size: clamp(1.125rem, 1.6vw, 1.25rem);
   line-height: 1.32;
   color: var(--about-navy);
-  text-align: left;
+  text-align: justify;
 }
 
 .aboutPeopleIntro p:last-child,

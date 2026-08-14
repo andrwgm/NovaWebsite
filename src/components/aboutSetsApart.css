@@ -36,7 +36,7 @@
   font-size: clamp(1.15rem, 1.7vw, 1.28rem);
   line-height: 1.35;
   color: var(--about-navy);
-  text-align: left;
+  text-align: justify;
 }
 
 .aboutSetsIntro p:last-child {
@@ -139,6 +139,7 @@
   font-size: 1.05rem;
   line-height: 1.3;
   color: #ffffff;
+  text-align: justify;
 }
 
 @media (max-width: 1024px) {
