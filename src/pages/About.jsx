@@ -3,6 +3,7 @@ import AboutStory from '../components/AboutStory';
 import AboutSetsApart from '../components/AboutSetsApart';
 import AboutPeople from '../components/AboutPeople';
 import AboutApproach from '../components/AboutApproach';
+import AboutClosing from '../components/AboutClosing';
 import './about.css';
 
 export default function About() {
@@ -12,6 +13,7 @@ export default function About() {
       <AboutSetsApart />
       <AboutPeople />
       <AboutApproach />
+      <AboutClosing />
     </main>
   );
 }
