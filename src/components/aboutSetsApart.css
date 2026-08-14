@@ -91,7 +91,7 @@
   min-height: 22rem;
   height: 100%;
   box-sizing: border-box;
-  padding: 2.45rem 2rem 2rem;
+  padding: 5rem 2rem 2rem;
   background: var(--about-card);
   border-radius: 34px;
   box-shadow: 8px 10px 18px rgba(44, 68, 87, 0.28);
@@ -212,6 +212,9 @@
   }
 
   .aboutSetsCard {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    height: auto;
     min-height: 0;
     padding: 2.15rem 1.6rem 1.6rem;
   }
