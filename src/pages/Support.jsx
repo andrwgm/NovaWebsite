@@ -14,7 +14,7 @@ export default function Support() {
       <section className="support-hero">
         <h1 className="support-hero__title">Understanding<div style={{fontFamily: 'TimesNewRomanMTCondensedItalic', paddingLeft: '3rem'}}>starts here</div></h1>
         <p className="support-hero__description">
-          At Nova Clinics, we recognise that every neurodiverse journey is unique. This space brings together trusted information, practical tools, and emotional support - all in one place. Explore the topics below to discover guides, activities, and useful links for understanding and supporting yourself or your loved one.
+          Your Nova Clinics box has been thoughtfully created to offer support beyond the assessment itself. Inside, you’ll find practical guides, family resources and interactive activities designed to inform, reassure and support you throughout the journey. Explore each resource below to discover what’s inside and how it can help along the way.
         </p>
       </section>
 
