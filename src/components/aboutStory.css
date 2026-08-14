@@ -135,13 +135,13 @@
 
 @media (max-width: 1400px) {
   .aboutStoryConfetti {
-    transform: translate(-78%, -76%);
+    transform: translate(-48%, -76%);
   }
 }
 
 @media (max-width: 1100px) {
   .aboutStoryConfetti {
-    transform: translate(-92%, -76%);
+    transform: translate(-62%, -76%);
   }
 }
 
@@ -186,17 +186,31 @@
     margin-bottom: 1.4rem;
   }
 
-  .aboutStoryConfetti {
-    width: clamp(8.5rem, 42vw, 13rem);
-    transform: translate(-56%, -68%);
+  .aboutStoryPhotoRow {
+    grid-template-columns: 1fr;
+    width: min(92%, 22rem);
   }
 
   .aboutStoryPhotoRow > img,
-  .aboutStoryPhotoSlot > img.aboutStoryPhotoRow--left {
-    height: clamp(8.5rem, 28vw, 11rem);
+  .aboutStoryPhotoSlot > img.aboutStoryPhotoRow--left,
+  .aboutStoryPhotoRow--tall {
+    height: clamp(12rem, 52vw, 16rem) !important;
+  }
+
+  .aboutStoryPhotoRow--left {
+    border-radius: 8px 8px 0 0;
   }
 
   .aboutStoryPhotoRow--tall {
-    height: clamp(12.5rem, 40vw, 16rem) !important;
+    border-radius: 0;
+  }
+
+  .aboutStoryPhotoRow--right {
+    border-radius: 0 0 8px 8px;
+  }
+
+  .aboutStoryConfetti {
+    width: clamp(6.5rem, 34vw, 9.5rem);
+    transform: translate(-18%, -22%);
   }
 }
