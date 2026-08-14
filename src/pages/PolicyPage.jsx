@@ -31,6 +31,11 @@ export default function PolicyPage({ title, caption, intro = [], sections = [] }
                   ))}
                 </ul>
               )}
+              {section.bodyAfterList?.map((paragraph, index) => (
+                <p key={`after-${index}`} className="policy-paragraph">
+                  {paragraph}
+                </p>
+              ))}
             </article>
           ))}
         </div>
