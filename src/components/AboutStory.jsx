@@ -46,6 +46,7 @@ export default function AboutStory() {
         />
         <div className="aboutStoryPhotoRow">
           <img
+            className="aboutStoryPhotoRow--left"
             src="/images/about-us-1.avif"
             alt="Three children smiling together"
             loading="lazy"
@@ -59,6 +60,7 @@ export default function AboutStory() {
             decoding="async"
           />
           <img
+            className="aboutStoryPhotoRow--right"
             src="/images/about-us-3.avif"
             alt="Child standing in a field at sunset"
             loading="lazy"
