@@ -33,8 +33,7 @@ const LINK_COLUMNS = [
   {
     title: 'Nova',
     links: [
-      { label: 'Meet the team', to: '/about' },
-      { label: 'People behind', to: '/about#people-behind' },
+      { label: 'About us', to: '/about' },
       { label: 'Careers', to: '/careers' },
     ],
   },
