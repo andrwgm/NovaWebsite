@@ -28,14 +28,10 @@ export default function AboutPeople() {
         <div className="aboutPeoplePhoto">
           <img
             src="/images/different-minds.avif"
-            alt="Two clinicians talking together"
+            alt="Two clinicians talking together. Different minds, same mission."
             loading="lazy"
             decoding="async"
           />
-          <div className="aboutPeopleClaim">
-            <p className="aboutPeopleClaimLead">Different minds</p>
-            <p className="aboutPeopleClaimSub">Same mission</p>
-          </div>
         </div>
 
         <div className="aboutPeopleTeam">
