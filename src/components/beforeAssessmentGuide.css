@@ -1,13 +1,13 @@
-.supportGuideContent.beforeAssessmentGuide {
-  --before-accent: #722140;
+.supportGuideContent.beforeGuide {
+  --guide-accent: #722140;
   width: min(100%, 84rem);
   max-width: 84rem;
   padding: 0.75rem 0 2.5rem;
   overflow: visible;
 }
 
-.beforeAssessmentTop,
-.beforeAssessmentBottom {
+.beforeGuideTop,
+.beforeGuideBottom {
   display: grid;
   grid-template-columns: minmax(0, 1.6fr) minmax(0, .9fr);
   justify-content: space-around;
@@ -17,14 +17,14 @@
   padding-inline: 4em;
 }
 
-.beforeAssessmentTopLeft {
+.beforeGuideTopLeft {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   min-width: 0;
 }
 
-.beforeAssessmentIntro {
+.beforeGuideIntro {
   max-width: 38rem;
   width: 100%;
   display: flex;
@@ -33,7 +33,7 @@
   margin-left: -4em;
 }
 
-.beforeAssessmentIntro p {
+.beforeGuideIntro p {
   margin: 0;
   font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
   font-size: clamp(1.125rem, 1.7vw, 1.25rem);
@@ -42,11 +42,11 @@
   text-align: justify;
 }
 
-.beforeAssessmentIntro p:last-child {
+.beforeGuideIntro p:last-child {
   margin-bottom: 0;
 }
 
-.beforeAssessmentHeadline {
+.beforeGuideHeadline {
   display: grid;
   width: max-content;
   max-width: 100%;
@@ -55,53 +55,32 @@
   font-size: clamp(3.4rem, 6.5vw, 5rem);
   font-weight: normal;
   line-height: 0.95;
-  color: var(--before-accent);
+  color: var(--guide-accent);
 }
 
-.beforeAssessmentHeadline span,
-.beforeAssessmentHeadline em {
+.beforeGuideHeadline span,
+.beforeGuideHeadline em {
   display: block;
 }
 
-.beforeAssessmentHeadline span:nth-child(1),
-.beforeAssessmentHeadline span:nth-child(2) {
+.beforeGuideHeadline span:nth-child(1),
+.beforeGuideHeadline span:nth-child(2) {
   justify-self: start;
   text-align: left;
 }
 
-.beforeAssessmentHeadline em,
-.beforeAssessmentHeadline span:nth-child(4) {
+.beforeGuideHeadline em,
+.beforeGuideHeadline span:nth-child(4) {
   justify-self: end;
   text-align: right;
 }
 
-.beforeAssessmentHeadline em {
+.beforeGuideHeadline em {
   font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
   font-style: normal;
 }
 
-.beforeAssessmentHeadline--journey span:nth-child(1) {
-  justify-self: start;
-  text-align: left;
-}
-
-.beforeAssessmentHeadline--journey span:nth-child(2) {
-  justify-self: right;
-  text-align: right;
-  padding-left: 1em;
-}
-
-.beforeAssessmentHeadline--journey span:nth-child(3) {
-  justify-self: start;
-  text-align: left;
-  padding-left: 0.3em;
-}
-
-.beforeAssessmentHeadline--journey em {
-  display: inline;
-}
-
-.beforeAssessmentTopRight {
+.beforeGuideTopRight {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -110,7 +89,7 @@
   padding-top: 0.25rem;
 }
 
-.beforeAssessmentCover {
+.beforeGuideCover {
   position: relative;
   z-index: 2;
   width: min(100%, 24.5rem);
@@ -119,7 +98,7 @@
   transform-origin: center center;
 }
 
-.beforeAssessmentCover img {
+.beforeGuideCover img {
   display: block;
   width: 100%;
   height: auto;
@@ -127,7 +106,7 @@
   box-shadow: none;
 }
 
-.beforeAssessmentExplore {
+.beforeGuideExplore {
   position: relative;
   z-index: 1;
   display: grid;
@@ -138,44 +117,44 @@
   font-size: clamp(2.6rem, 4.8vw, 3.7rem);
   font-weight: normal;
   line-height: 0.95;
-  color: var(--before-accent);
+  color: var(--guide-accent);
 }
 
-.beforeAssessmentExplore span,
-.beforeAssessmentExplore em {
+.beforeGuideExplore span,
+.beforeGuideExplore em {
   display: block;
 }
 
-.beforeAssessmentExplore span:first-child,
-.beforeAssessmentExplore span:last-child {
+.beforeGuideExplore span:first-child,
+.beforeGuideExplore span:last-child {
   justify-self: start;
   text-align: left;
 }
 
-.beforeAssessmentExplore em {
+.beforeGuideExplore em {
   justify-self: end;
   text-align: right;
   font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
   font-style: normal;
 }
 
-.beforeAssessmentBottom {
+.beforeGuideBottom {
   margin-top: clamp(3.5rem, 6vw, 5.5rem);
 }
 
-.beforeAssessmentMedia {
+.beforeGuideMedia {
   min-width: 0;
   width: 100%;
 }
 
-.beforeAssessmentPages {
+.beforeGuidePages {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.85rem;
   width: 100%;
 }
 
-.beforeAssessmentPages img {
+.beforeGuidePages img {
   display: block;
   width: 100%;
   height: auto;
@@ -183,20 +162,20 @@
   background: rgba(255, 255, 255, 0.08);
 }
 
-.beforeAssessmentTopics {
+.beforeGuideTopics {
   width: 100%;
   max-width: none;
   justify-self: stretch;
 }
 
-.beforeAssessmentTopicList {
+.beforeGuideTopicList {
   display: flex;
   flex-direction: column;
   border-top: 1px solid rgba(255, 255, 255, 0.92);
   margin-bottom: 2em;
 }
 
-.beforeAssessmentTopic {
+.beforeGuideTopic {
   position: relative;
   display: flex;
   align-items: center;
@@ -213,7 +192,7 @@
   transition: background-color 180ms ease;
 }
 
-.beforeAssessmentTopicLabel {
+.beforeGuideTopicLabel {
   position: relative;
   z-index: 1;
   display: flex;
@@ -225,13 +204,13 @@
   line-height: 1.05;
 }
 
-.beforeAssessmentTopicLabel em {
+.beforeGuideTopicLabel em {
   font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
   font-style: normal;
   padding-left: 2.5em;
 }
 
-.beforeAssessmentTopic.is-active::before {
+.beforeGuideTopic.is-active::before {
   content: '';
   position: absolute;
   z-index: 0;
@@ -241,12 +220,12 @@
   pointer-events: none;
 }
 
-.beforeAssessmentTopic:focus-visible {
+.beforeGuideTopic:focus-visible {
   outline: 2px solid #ffffff;
   outline-offset: 3px;
 }
 
-.beforeAssessmentDescription {
+.beforeGuideDescription {
   margin: 1.75rem auto 0;
   font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
   font-size: clamp(1.125rem, 1.7vw, 1.25rem);
@@ -258,118 +237,115 @@
 }
 
 @media (max-width: 1100px) {
-  .beforeAssessmentTop,
-  .beforeAssessmentBottom {
+  .beforeGuideTop,
+  .beforeGuideBottom {
     grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.95fr);
     padding-inline: 3em;
   }
 
-  .beforeAssessmentIntro {
+  .beforeGuideIntro {
     margin-left: -3em;
   }
 
-  .beforeAssessmentCover {
+  .beforeGuideCover {
     width: min(100%, 21rem);
     margin: 1em 2.5rem 0 0;
   }
 
-  .beforeAssessmentExplore {
+  .beforeGuideExplore {
     margin-top: -4.25rem;
   }
 }
 
 @media (max-width: 860px) {
-  .beforeAssessmentTop,
-  .beforeAssessmentBottom {
+  .beforeGuideTop,
+  .beforeGuideBottom {
     grid-template-columns: 1fr;
     row-gap: 2.5rem;
     padding-inline: 1.5em;
   }
 
-  .beforeAssessmentIntro {
+  .beforeGuideIntro {
     margin-left: -1.5em;
   }
 
-  .beforeAssessmentTopRight {
+  .beforeGuideTopRight {
     align-items: center;
   }
 
-  .beforeAssessmentHeadline {
+  .beforeGuideHeadline {
     margin-top: 2.25rem;
     align-self: center;
   }
 
-  .beforeAssessmentCover {
+  .beforeGuideCover {
     margin: 1em auto 0;
   }
 
-  .beforeAssessmentExplore {
+  .beforeGuideExplore {
     margin-top: 2.5rem;
     align-self: center;
   }
 
-  .beforeAssessmentBottom {
+  .beforeGuideBottom {
     margin-top: 3.25rem;
   }
 
-  .beforeAssessmentPages {
+  .beforeGuidePages {
     max-width: 32rem;
     margin: 0 auto;
   }
 
-  .beforeAssessmentTopics {
+  .beforeGuideTopics {
     max-width: 28rem;
     margin: 0 auto;
   }
 
-  .beforeAssessmentDescription {
+  .beforeGuideDescription {
     width: 100%;
   }
 }
 
 @media (max-width: 560px) {
-  .supportGuideContent.beforeAssessmentGuide {
+  .supportGuideContent.beforeGuide {
     padding-bottom: 1.75rem;
   }
 
-  .beforeAssessmentTop,
-  .beforeAssessmentBottom {
+  .beforeGuideTop,
+  .beforeGuideBottom {
     padding-inline: 0;
   }
 
-  .beforeAssessmentIntro {
+  .beforeGuideIntro {
     margin-left: 0;
     max-width: none;
   }
 
-  .beforeAssessmentHeadline {
+  .beforeGuideHeadline {
     font-size: clamp(2.6rem, 12vw, 3.4rem);
   }
 
-  .beforeAssessmentCover {
+  .beforeGuideCover {
     width: min(100%, 16.5rem);
     margin: 0.75em auto 0;
     transform: rotate(12deg);
   }
 
-  .beforeAssessmentCover--school {
-    transform: rotate(-10deg);
-  }
-
-  .beforeAssessmentExplore {
+  .beforeGuideExplore {
     margin-top: 2rem;
     font-size: clamp(2.2rem, 9vw, 2.8rem);
   }
 
-  .beforeAssessmentPages {
+  .beforeGuidePages {
     gap: 0.55rem;
   }
 
-  .beforeAssessmentTopic {
+  .beforeGuideTopic {
     padding: 0.7rem 0.4rem;
   }
 
-  .beforeAssessmentTopicLabel {
+  .beforeGuideTopicLabel {
     font-size: clamp(1.4rem, 6vw, 1.65rem);
   }
 }
+

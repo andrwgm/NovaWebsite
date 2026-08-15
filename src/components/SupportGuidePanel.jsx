@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './supportGuideContent.css';
-import './beforeAssessmentGuide.css';
 
 function SupportGuidePanelInner({
+  scope,
   intro = [],
   introPlacement = 'before-headline',
   headline,
@@ -17,13 +17,15 @@ function SupportGuidePanelInner({
   const [activeId, setActiveId] = useState(topics[0]?.id);
   const activeTopic = topics.find((topic) => topic.id === activeId) ?? topics[0];
   const coverRotate = cover.rotate ?? '18deg';
+  const c = (name, modifier) =>
+    modifier ? `${scope}${name} ${scope}${name}--${modifier}` : `${scope}${name}`;
 
   const introBlock =
     intro.length > 0 ? (
       <div
-        className={`beforeAssessmentIntro${
-          introPlacement === 'after-headline' ? ' beforeAssessmentIntro--aligned' : ''
-        }`}
+        className={
+          introPlacement === 'after-headline' ? c('Intro', 'aligned') : c('Intro')
+        }
       >
         {intro.map((paragraph) => (
           <p key={paragraph}>{paragraph}</p>
@@ -33,9 +35,11 @@ function SupportGuidePanelInner({
 
   const headlineBlock = (
     <h3
-      className={`beforeAssessmentHeadline${
-        headlineVariant !== 'default' ? ` beforeAssessmentHeadline--${headlineVariant}` : ''
-      }`}
+      className={
+        headlineVariant !== 'default'
+          ? c('Headline', headlineVariant)
+          : c('Headline')
+      }
     >
       {headline}
     </h3>
@@ -43,8 +47,8 @@ function SupportGuidePanelInner({
 
   return (
     <>
-      <div className="beforeAssessmentTop">
-        <div className="beforeAssessmentTopLeft">
+      <div className={c('Top')}>
+        <div className={c('TopLeft')}>
           {introPlacement === 'before-headline' ? (
             <>
               {introBlock}
@@ -58,9 +62,9 @@ function SupportGuidePanelInner({
           )}
         </div>
 
-        <div className="beforeAssessmentTopRight">
+        <div className={c('TopRight')}>
           <div
-            className={`beforeAssessmentCover${cover.className ? ` ${cover.className}` : ''}`}
+            className={`${c('Cover')}${cover.className ? ` ${cover.className}` : ''}`}
             style={{ '--cover-rotate': coverRotate }}
           >
             <img
@@ -73,7 +77,7 @@ function SupportGuidePanelInner({
             />
           </div>
           {showExplore ? (
-            <p className="beforeAssessmentExplore">
+            <p className={c('Explore')}>
               <span>Inside,</span>
               <em>you’ll</em>
               <span>explore</span>
@@ -83,12 +87,12 @@ function SupportGuidePanelInner({
       </div>
 
       <div
-        className={`beforeAssessmentBottom${
-          orientation === 'media-right' ? ' beforeAssessmentBottom--mediaRight' : ''
-        }`}
+        className={
+          orientation === 'media-right' ? c('Bottom', 'mediaRight') : c('Bottom')
+        }
       >
-        <div className="beforeAssessmentMedia">
-          <div className="beforeAssessmentPages">
+        <div className={c('Media')}>
+          <div className={c('Pages')}>
             {pages.map((page) => (
               <img
                 key={page.src}
@@ -101,12 +105,8 @@ function SupportGuidePanelInner({
           </div>
         </div>
 
-        <div className="beforeAssessmentTopics">
-          <div
-            className="beforeAssessmentTopicList"
-            role="listbox"
-            aria-label={topicsLabel}
-          >
+        <div className={c('Topics')}>
+          <div className={c('TopicList')} role="listbox" aria-label={topicsLabel}>
             {topics.map((topic) => {
               const isActive = topic.id === activeId;
               return (
@@ -115,17 +115,17 @@ function SupportGuidePanelInner({
                   type="button"
                   role="option"
                   aria-selected={isActive}
-                  className={`beforeAssessmentTopic${isActive ? ' is-active' : ''}`}
+                  className={`${c('Topic')}${isActive ? ' is-active' : ''}`}
                   onMouseEnter={() => setActiveId(topic.id)}
                   onFocus={() => setActiveId(topic.id)}
                   onClick={() => setActiveId(topic.id)}
                 >
-                  <span className="beforeAssessmentTopicLabel">{topic.lines}</span>
+                  <span className={c('TopicLabel')}>{topic.lines}</span>
                 </button>
               );
             })}
           </div>
-          <p className="beforeAssessmentDescription" aria-live="polite">
+          <p className={c('Description')} aria-live="polite">
             {activeTopic.description}
           </p>
         </div>
@@ -135,19 +135,18 @@ function SupportGuidePanelInner({
 }
 
 export default function SupportGuidePanel({
+  scope,
   wrap = true,
   className = '',
   ...props
 }) {
-  const inner = <SupportGuidePanelInner {...props} />;
+  const inner = <SupportGuidePanelInner scope={scope} {...props} />;
 
   if (!wrap) {
     return inner;
   }
 
   return (
-    <div className={`supportGuideContent beforeAssessmentGuide ${className}`.trim()}>
-      {inner}
-    </div>
+    <div className={`supportGuideContent ${scope} ${className}`.trim()}>{inner}</div>
   );
 }

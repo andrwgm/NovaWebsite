@@ -1,5 +1,6 @@
 import React from 'react';
 import SupportGuidePanel from './SupportGuidePanel';
+import './beforeAssessmentGuide.css';
 
 const INTRO = [
   'Waiting for an assessment, whether for yourself or your child, can bring a mix of emotions and questions about what comes next.',
@@ -100,6 +101,7 @@ const PAGES = [
 export default function BeforeAssessmentGuide() {
   return (
     <SupportGuidePanel
+      scope="beforeGuide"
       intro={INTRO}
       headline={HEADLINE}
       cover={{

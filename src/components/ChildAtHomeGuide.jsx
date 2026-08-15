@@ -154,9 +154,10 @@ const SCHOOL_PAGES = [
 
 export default function ChildAtHomeGuide() {
   return (
-    <div className="supportGuideContent beforeAssessmentGuide beforeAssessmentGuide--child">
-      <section className="beforeAssessmentBlock beforeAssessmentBlock--home" aria-label="At home">
+    <div className="supportGuideContent childGuide">
+      <section className="childGuideBlock childGuideBlock--home" aria-label="At home">
         <SupportGuidePanel
+          scope="childGuide"
           wrap={false}
           intro={HOME_INTRO}
           headline={HOME_HEADLINE}
@@ -174,8 +175,9 @@ export default function ChildAtHomeGuide() {
         />
       </section>
 
-      <section className="beforeAssessmentBlock" aria-label="At school">
+      <section className="childGuideBlock" aria-label="At school">
         <SupportGuidePanel
+          scope="childGuide"
           wrap={false}
           intro={SCHOOL_INTRO}
           introPlacement="after-headline"
@@ -185,7 +187,7 @@ export default function ChildAtHomeGuide() {
             src: '/images/my-school-passport-cover.avif',
             alt: 'My School Passport guide cover',
             rotate: '-16deg',
-            className: 'beforeAssessmentCover--school',
+            className: 'childGuideCover--school',
           }}
           showExplore={false}
           topics={SCHOOL_TOPICS}

@@ -1,5 +1,6 @@
 import React from 'react';
 import SupportGuidePanel from './SupportGuidePanel';
+import './afterAssessmentGuide.css';
 
 const INTRO = [
   'Starting an assessment, can bring a mix of relief, uncertainty, and questions about what the process will involve.',
@@ -113,6 +114,7 @@ const PAGES = [
 export default function AfterAssessmentGuide() {
   return (
     <SupportGuidePanel
+      scope="journeyGuide"
       intro={INTRO}
       headline={HEADLINE}
       headlineVariant="journey"
