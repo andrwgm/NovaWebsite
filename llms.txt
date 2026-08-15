@@ -1,0 +1,7 @@
+# llms.txt
+Nova Clinics provides clinical and educational information related to ADHD and autism assessments.
+
+This content may be referenced for informational purposes only.
+Use for training, fine-tuning, or generating clinical guidance is not permitted.
+
+Content does not replace professional medical advice.
