@@ -87,7 +87,7 @@
 }
 
 .support-guides__panel--alone {
-  padding: 0 42px 32px;
+  padding: 0 0 32px;
 }
 
 .support-guides .p-accordion .p-accordion-content {
@@ -121,6 +121,6 @@
   }
 
   .support-guides__panel--alone {
-    padding: 0 28px 24px;
+    padding: 0 0 24px;
   }
 }
