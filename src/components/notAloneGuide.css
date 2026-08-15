@@ -7,25 +7,10 @@
   box-sizing: border-box;
 }
 
-.notAloneGuidePageTitle {
-  margin: 0;
-  padding: 0.85rem clamp(1.5rem, 4vw, 2.65rem) 0.95rem;
-  font-family: 'TimesNewRomanMTCondensed', 'Times New Roman', Times, serif;
-  font-size: clamp(1.25rem, 2vw, 1.5rem);
-  font-weight: normal;
-  line-height: 1.15;
-  color: #ffffff;
-  text-align: left;
-}
-
-.notAloneGuidePageTitle em {
-  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
-  font-style: normal;
-}
-
 .notAloneGuideHero {
   position: relative;
-  width: 100%;
+  width: calc(100% + 84px);
+  margin-inline: -42px;
   height: clamp(22rem, 42vw, 26.5rem);
   overflow: hidden;
 }
@@ -58,13 +43,14 @@
 .notAloneGuideAutism {
   position: relative;
   z-index: 2;
-  padding: clamp(3.5rem, 6vw, 5rem) clamp(1.5rem, 4vw, 2.65rem) clamp(3.75rem, 6vw, 5.25rem);
+  margin-top: 0;
+  padding: clamp(3.5rem, 6vw, 5rem) 0 clamp(3.75rem, 6vw, 5.25rem);
   background: rgba(255, 255, 255, 0.09);
   box-shadow: 0 10px 18px rgba(40, 12, 28, 0.28);
 }
 
 .notAloneGuideAdhd {
-  padding: clamp(3.75rem, 6.5vw, 5.5rem) clamp(1.5rem, 4vw, 2.65rem) clamp(2.5rem, 4vw, 3.5rem);
+  padding: clamp(3.75rem, 6.5vw, 5.5rem) 0 clamp(2.5rem, 4vw, 3.5rem);
 }
 
 .notAloneGuideGrid {
@@ -79,7 +65,17 @@
 }
 
 .notAloneGuideGrid--autismBottom {
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  column-gap: clamp(2rem, 4vw, 3.5rem);
   align-items: start;
+}
+
+.notAloneGuideAutisticaCluster {
+  display: grid;
+  grid-template-columns: minmax(0, 12.5rem) minmax(0, 1fr);
+  column-gap: 1.35rem;
+  align-items: start;
+  min-width: 0;
 }
 
 .notAloneGuideGrid--adhd {
@@ -112,8 +108,8 @@
   width: min(100%, 12.5rem);
   aspect-ratio: 1 / 1;
   margin: 0 0 1.35rem;
-  background: #ffffff;
-  box-shadow: 5px 7px 18px rgba(35, 8, 22, 0.22);
+  background: transparent;
+  box-shadow: none;
 }
 
 .notAloneGuideLogo img {
@@ -126,6 +122,8 @@
 
 .notAloneGuideLogo--autistica {
   margin-bottom: 0;
+  width: 100%;
+  max-width: 12.5rem;
 }
 
 .notAloneGuideResourceCopy {
@@ -143,9 +141,11 @@
 }
 
 .notAloneGuideResourceMeta {
-  margin: 1.15rem 0 0;
-  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
+  margin: 1.75rem 0 0;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
   font-size: clamp(0.98rem, 1.35vw, 1.08rem);
+  font-weight: normal;
+  font-style: normal;
   line-height: 1.4;
   color: #ffffff;
   text-align: left;
@@ -205,7 +205,7 @@
   width: 100%;
   max-width: none;
   margin: 0;
-  padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 2.65rem) 0;
+  padding: clamp(2.5rem, 5vw, 4rem) 0 0;
   box-sizing: border-box;
 }
 
@@ -245,37 +245,36 @@
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 1.75rem;
-  box-shadow: 0 14px 28px rgba(30, 6, 18, 0.28);
+  border-radius: 0;
+  box-shadow: none;
 }
 
 @media (max-width: 980px) {
   .notAloneGuideGrid--autismTop,
-  .notAloneGuideGrid--autismBottom,
   .notAloneGuideGrid--adhd {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     row-gap: 2.75rem;
   }
 
-  .notAloneGuideBandTitle--autismDesktop {
-    grid-column: 1 / -1;
+  .notAloneGuideGrid--autismBottom {
+    grid-template-columns: 1fr;
+    row-gap: 2.25rem;
+  }
+
+  .notAloneGuideAutisticaCluster {
+    grid-template-columns: minmax(0, 11rem) minmax(0, 1fr);
+    column-gap: 1.15rem;
   }
 
   .notAloneGuideBandTitle--adhd {
     grid-column: 1 / -1;
   }
-
-  .notAloneGuideLogo--autistica {
-    justify-self: start;
-  }
 }
 
 @media (max-width: 700px) {
-  .notAloneGuidePageTitle {
-    padding-inline: 1.75rem;
-  }
-
   .notAloneGuideHero {
+    width: calc(100% + 56px);
+    margin-inline: -28px;
     height: clamp(24rem, 78vw, 30rem);
   }
 
@@ -283,12 +282,6 @@
     bottom: 2.25rem;
     width: min(100% - 2rem, 26rem);
     font-size: 1rem;
-  }
-
-  .notAloneGuideAutism,
-  .notAloneGuideAdhd,
-  .notAloneGuideClosing {
-    padding-inline: 1.75rem;
   }
 
   .notAloneGuideAutism {
@@ -304,6 +297,11 @@
 
   .notAloneGuideGrid--autismTop {
     margin-bottom: 2.5rem;
+  }
+
+  .notAloneGuideAutisticaCluster {
+    grid-template-columns: 1fr;
+    row-gap: 1.25rem;
   }
 
   .notAloneGuideBandTitle--autismMobile {
@@ -323,13 +321,5 @@
   .notAloneGuideLogo,
   .notAloneGuideLogo--autistica {
     width: min(100%, 11.5rem);
-  }
-
-  .notAloneGuideResource--autistica {
-    order: 1;
-  }
-
-  .notAloneGuidePhoto img {
-    border-radius: 1.25rem;
   }
 }

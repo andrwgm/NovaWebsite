@@ -143,16 +143,18 @@ const ADHD_RESOURCES = [
   },
 ];
 
-const HERO_COPY =
-  'Living with autism or ADHD can bring questions that continue well beyond an assessment. These organisations offer specialist information, practical guidance, peer support and communities for neurodivergent people and the families who support them.';
+const HERO_COPY = (
+  <>
+    Living with autism or ADHD can bring questions that continue well beyond an assessment.
+    <br />
+    These organisations offer specialist information, practical guidance, peer support and communities
+    for neurodivergent people and the families who support them.
+  </>
+);
 
 export default function NotAloneGuide() {
   return (
     <div className="notAloneGuide">
-      <p className="notAloneGuidePageTitle">
-        You’re not <em>Alone</em>
-      </p>
-
       <div className="notAloneGuideHero">
         <img
           src="/images/chair-macbook-girl.avif"
@@ -179,23 +181,25 @@ export default function NotAloneGuide() {
         </div>
 
         <div className="notAloneGuideGrid notAloneGuideGrid--autismBottom">
-          <div className="notAloneGuideLogo notAloneGuideLogo--autistica">
-            <img
-              src={AUTISTICA.logo}
-              alt={AUTISTICA.logoAlt}
-              loading="lazy"
-              decoding="async"
+          <div className="notAloneGuideAutisticaCluster">
+            <div className="notAloneGuideLogo notAloneGuideLogo--autistica">
+              <img
+                src={AUTISTICA.logo}
+                alt={AUTISTICA.logoAlt}
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <ResourceItem
+              className="notAloneGuideResource--autistica"
+              title={AUTISTICA.title}
+              description={AUTISTICA.description}
+              meta={AUTISTICA.meta}
+              href={AUTISTICA.href}
+              showLogo={false}
             />
           </div>
-
-          <ResourceItem
-            className="notAloneGuideResource--autistica"
-            title={AUTISTICA.title}
-            description={AUTISTICA.description}
-            meta={AUTISTICA.meta}
-            href={AUTISTICA.href}
-            showLogo={false}
-          />
 
           <h3 className="notAloneGuideBandTitle notAloneGuideBandTitle--autismDesktop">
             Autism
