@@ -161,6 +161,7 @@ export default function ChildAtHomeGuide() {
           intro={HOME_INTRO}
           headline={HOME_HEADLINE}
           headlineVariant="section"
+          headlinePlacement="with-media"
           cover={{
             src: '/images/day-by-day-at-home-cover.avif',
             alt: 'Day by Day at Home guide cover',

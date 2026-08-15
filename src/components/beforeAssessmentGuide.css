@@ -163,6 +163,11 @@
   margin-top: clamp(3.5rem, 6vw, 5.5rem);
 }
 
+.beforeAssessmentMedia {
+  min-width: 0;
+  width: 100%;
+}
+
 .beforeAssessmentPages {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
