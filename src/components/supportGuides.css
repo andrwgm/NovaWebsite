@@ -48,6 +48,14 @@
   overflow: hidden;
 }
 
+.support-guides__tab:has(.support-guides__panel--before) .support-guides__content {
+  overflow: visible;
+}
+
+.support-guides__panel--before {
+  overflow: visible;
+}
+
 .support-guides__panel {
   padding: 0 42px 32px;
   color: #ffffff;

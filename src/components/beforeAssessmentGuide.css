@@ -1,0 +1,292 @@
+.supportGuideContent.beforeAssessmentGuide {
+  width: min(100%, 84rem);
+  max-width: 84rem;
+  padding: 0.75rem 0 2.5rem;
+  overflow: visible;
+}
+
+.beforeAssessmentTop {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  column-gap: clamp(1.5rem, 3vw, 3.5rem);
+  align-items: start;
+}
+
+.beforeAssessmentTopLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.beforeAssessmentIntro {
+  max-width: 28.5rem;
+}
+
+.beforeAssessmentIntro p {
+  margin: 0 0 1.65rem;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: clamp(1.125rem, 1.7vw, 1.25rem);
+  line-height: 1.5;
+  color: #ffffff;
+  text-align: left;
+}
+
+.beforeAssessmentIntro p:last-child {
+  margin-bottom: 0;
+}
+
+.beforeAssessmentHeadline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+  max-width: 100%;
+  margin: 3.25rem 0 0;
+  text-align: center;
+  font-family: 'TimesNewRomanMTCondensed', 'Times New Roman', Times, serif;
+  font-size: clamp(3.4rem, 6.5vw, 5rem);
+  font-weight: normal;
+  line-height: 0.95;
+  color: #2d3b55;
+}
+
+.beforeAssessmentHeadline span,
+.beforeAssessmentHeadline em {
+  display: block;
+}
+
+.beforeAssessmentHeadline em {
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
+  font-style: normal;
+}
+
+.beforeAssessmentTopRight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 0.5rem;
+  min-width: 0;
+}
+
+.beforeAssessmentCover {
+  width: min(100%, 24.5rem);
+  margin: 0.5rem auto 0;
+  transform: rotate(18deg);
+  transform-origin: center center;
+}
+
+.beforeAssessmentCover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+  box-shadow: 12px 16px 22px rgba(45, 59, 85, 0.24);
+}
+
+.beforeAssessmentExplore {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 4.5rem 0 0;
+  padding-left: clamp(1rem, 4vw, 3.5rem);
+  font-family: 'TimesNewRomanMTCondensed', 'Times New Roman', Times, serif;
+  font-size: clamp(2.6rem, 4.8vw, 3.7rem);
+  font-weight: normal;
+  line-height: 0.95;
+  color: #2d3b55;
+}
+
+.beforeAssessmentExplore span,
+.beforeAssessmentExplore em {
+  display: block;
+}
+
+.beforeAssessmentExplore em {
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
+  font-style: normal;
+}
+
+.beforeAssessmentBottom {
+  display: grid;
+  grid-template-columns: minmax(0, 30.5rem) minmax(0, 22rem);
+  justify-content: space-between;
+  column-gap: clamp(2rem, 4vw, 3.4rem);
+  align-items: start;
+  margin-top: clamp(3.5rem, 6vw, 5.5rem);
+}
+
+.beforeAssessmentPages {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.beforeAssessmentPages img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 230 / 320;
+  object-fit: cover;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.beforeAssessmentTopics {
+  width: 100%;
+  max-width: 22rem;
+  justify-self: end;
+}
+
+.beforeAssessmentTopicList {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba(255, 255, 255, 0.92);
+}
+
+.beforeAssessmentTopic {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+  padding: 0.85rem 0.75rem;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.92);
+  background: transparent;
+  color: #ffffff;
+  cursor: pointer;
+  text-align: center;
+  transition: color 180ms ease;
+}
+
+.beforeAssessmentTopicLabel {
+  position: relative;
+  z-index: 1;
+  display: block;
+  font-family: 'TimesNewRomanMTCondensed', 'Times New Roman', Times, serif;
+  font-size: clamp(1.55rem, 2.2vw, 1.95rem);
+  font-weight: normal;
+  line-height: 1.05;
+}
+
+.beforeAssessmentTopicLabel em {
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
+  font-style: normal;
+}
+
+.beforeAssessmentTopic.is-active .beforeAssessmentTopicLabel::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: -0.4em -0.75em;
+  border-radius: 1.4em;
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 0 22px rgba(255, 255, 255, 0.18);
+  filter: blur(1.5px);
+  pointer-events: none;
+}
+
+.beforeAssessmentTopic:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+.beforeAssessmentDescription {
+  margin: 1.75rem 0 0;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: clamp(1.125rem, 1.7vw, 1.25rem);
+  line-height: 1.6;
+  color: #ffffff;
+  text-align: left;
+}
+
+@media (max-width: 1100px) {
+  .beforeAssessmentBottom {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
+    justify-content: stretch;
+  }
+
+  .beforeAssessmentTopics {
+    justify-self: stretch;
+    max-width: none;
+  }
+
+  .beforeAssessmentCover {
+    width: min(100%, 20rem);
+  }
+}
+
+@media (max-width: 860px) {
+  .beforeAssessmentTop {
+    grid-template-columns: 1fr;
+    row-gap: 2.5rem;
+  }
+
+  .beforeAssessmentTopRight {
+    align-items: center;
+  }
+
+  .beforeAssessmentHeadline {
+    margin-top: 2.25rem;
+    align-self: center;
+  }
+
+  .beforeAssessmentExplore {
+    margin-top: 3rem;
+    padding-left: 0;
+    align-self: flex-start;
+  }
+
+  .beforeAssessmentBottom {
+    grid-template-columns: 1fr;
+    row-gap: 2.5rem;
+    margin-top: 3.25rem;
+  }
+
+  .beforeAssessmentPages {
+    max-width: 28rem;
+    margin: 0 auto;
+  }
+
+  .beforeAssessmentTopics {
+    max-width: 26rem;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .supportGuideContent.beforeAssessmentGuide {
+    padding-bottom: 1.75rem;
+  }
+
+  .beforeAssessmentIntro {
+    max-width: none;
+  }
+
+  .beforeAssessmentHeadline {
+    font-size: clamp(2.6rem, 12vw, 3.4rem);
+  }
+
+  .beforeAssessmentCover {
+    width: min(100%, 16.5rem);
+    transform: rotate(12deg);
+  }
+
+  .beforeAssessmentExplore {
+    font-size: clamp(2.2rem, 9vw, 2.8rem);
+  }
+
+  .beforeAssessmentPages {
+    gap: 0.55rem;
+  }
+
+  .beforeAssessmentTopic {
+    padding: 0.7rem 0.4rem;
+  }
+
+  .beforeAssessmentTopicLabel {
+    font-size: clamp(1.4rem, 6vw, 1.65rem);
+  }
+}
