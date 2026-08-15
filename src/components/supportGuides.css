@@ -50,13 +50,15 @@
 
 .support-guides__tab:has(.support-guides__panel--before) .support-guides__content,
 .support-guides__tab:has(.support-guides__panel--after) .support-guides__content,
-.support-guides__tab:has(.support-guides__panel--child) .support-guides__content {
+.support-guides__tab:has(.support-guides__panel--child) .support-guides__content,
+.support-guides__tab:has(.support-guides__panel--alone) .support-guides__content {
   overflow: visible;
 }
 
 .support-guides__panel--before,
 .support-guides__panel--after,
-.support-guides__panel--child {
+.support-guides__panel--child,
+.support-guides__panel--alone {
   overflow: visible;
 }
 
@@ -85,7 +87,7 @@
 }
 
 .support-guides__panel--alone {
-  padding-top: 0.35rem;
+  padding: 0 0 32px;
 }
 
 .support-guides .p-accordion .p-accordion-content {
@@ -116,5 +118,9 @@
   .support-guides__panel {
     padding: 0 28px 24px;
     font-size: 1rem;
+  }
+
+  .support-guides__panel--alone {
+    padding: 0 0 24px;
   }
 }

@@ -1,10 +1,9 @@
 import React from 'react';
-import './supportGuideContent.css';
 import './notAloneGuide.css';
 
-function TitleParts({ parts }) {
+function TitleParts({ parts, className = 'notAloneGuideResourceTitle' }) {
   return (
-    <h3 className="notAloneGuideResourceTitle">
+    <h3 className={className}>
       {parts.map((part, index) =>
         part.breakBefore ? (
           <React.Fragment key={index}>
@@ -21,23 +20,50 @@ function TitleParts({ parts }) {
   );
 }
 
-function ResourceLink({ href, children }) {
+function ResourceItem({
+  title,
+  logo,
+  logoAlt,
+  description,
+  meta,
+  href,
+  showLogo = true,
+  showCopy = true,
+  className = '',
+}) {
   return (
-    <a
-      className="notAloneGuideLink"
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      {children}
-    </a>
+    <article className={`notAloneGuideResource ${className}`.trim()}>
+      {showCopy && title ? <TitleParts parts={title} /> : null}
+
+      {showLogo ? (
+        <div className="notAloneGuideLogo">
+          <img src={logo} alt={logoAlt} loading="lazy" decoding="async" />
+        </div>
+      ) : null}
+
+      {showCopy ? (
+        <div className="notAloneGuideResourceCopy">
+          <p className="notAloneGuideResourceBody">{description}</p>
+          <p className="notAloneGuideResourceMeta">{meta}</p>
+          {href ? (
+            <a
+              className="notAloneGuideLink"
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {href}
+            </a>
+          ) : null}
+        </div>
+      ) : null}
+    </article>
   );
 }
 
-const RESOURCES = [
+const AUTISM_TOP = [
   {
     id: 'national-autistic-society',
-    layout: 'text-image',
     title: [
       { text: 'National' },
       { text: 'Autistic Society', italic: true, breakBefore: true },
@@ -45,62 +71,55 @@ const RESOURCES = [
     description:
       'One of the UK’s main autism charities, offering trusted guidance, local and online branches, an Autism Services Directory and support for autistic adults, children and their families.',
     meta: 'Autism · Children & adults · UK-wide',
-    metaItalic: false,
-    url: 'https://www.autism.org.uk/advice-and-guidance/help-and-support',
+    href: 'https://www.autism.org.uk/advice-and-guidance/help-and-support',
     logo: '/images/national-autistic-society.avif',
     logoAlt: 'National Autistic Society logo',
   },
   {
     id: 'autism-central',
-    layout: 'image-text',
     title: [
-      { text: 'Autism ' },
-      { text: 'Central', italic: true },
+      { text: 'Autism' },
+      { text: 'Central', italic: true, breakBefore: true },
     ],
     description:
       'A free NHS-funded programme for families and people supporting autistic children or adults. It offers one-to-one peer coaching, online group sessions and practical guidance on everyday life, services and support.',
     meta: 'Autism · All ages · Families & carers · England',
-    metaItalic: true,
-    url: 'https://www.autismcentral.nhs.uk/',
+    href: 'https://www.autismcentral.nhs.uk/',
     logo: '/images/autism-central.avif',
     logoAlt: 'Autism Central logo',
   },
   {
     id: 'ambitious-youth-network',
-    layout: 'text-image',
     title: [
-      { text: 'Ambitious ' },
-      { text: 'Youth Network', italic: true },
+      { text: 'Ambitious' },
+      { text: 'Youth Network', italic: true, breakBefore: true },
     ],
     description:
       'A supportive online community where autistic young people can connect with others, share experiences and access opportunities around wellbeing, education, employment and everyday life.',
     meta: 'Autism · Ages 16–25 · UK-wide',
-    metaItalic: true,
-    url: 'https://www.ambitiousaboutautism.org.uk',
+    href: 'https://www.ambitiousaboutautism.org.uk',
     logo: '/images/ambitious-youth-network.avif',
     logoAlt: 'Ambitious about Autism logo',
   },
-  {
-    id: 'autistica-tips-hub',
-    layout: 'image-text',
-    title: [
-      { text: 'Autistica ' },
-      { text: 'Tips Hub', italic: true },
-    ],
-    description:
-      'A free app created with and for autistic people, bringing together evidence-based information and community tips on everyday life, mental health, wellbeing and post-diagnostic support.',
-    meta: 'Autism · Autistic people & families · Nationwide',
-    metaItalic: true,
-    url: 'https://www.autistica.org.uk/get-involved/autistica-tips-hub',
-    logo: '/images/autistica-tips-hub.avif',
-    logoAlt: 'Autistica Tips Hub logo',
-  },
 ];
+
+const AUTISTICA = {
+  id: 'autistica-tips-hub',
+  title: [
+    { text: 'Autistica ' },
+    { text: 'Tips Hub', italic: true },
+  ],
+  description:
+    'A free app created with and for autistic people, bringing together evidence-based information and community tips on everyday life, mental health, wellbeing and post-diagnostic support.',
+  meta: 'Autism · Autistic people & families · Nationwide',
+  href: 'https://www.autistica.org.uk/get-involved/autistica-tips-hub',
+  logo: '/images/autistica-tips-hub.avif',
+  logoAlt: 'Autistica Tips Hub logo',
+};
 
 const ADHD_RESOURCES = [
   {
     id: 'adhd-uk',
-    layout: 'text-image',
     title: [
       { text: 'ADHD ' },
       { text: 'UK', italic: true },
@@ -108,91 +127,97 @@ const ADHD_RESOURCES = [
     description:
       'Peer support for people affected by ADHD, with online support groups, drop-in sessions and dedicated communities for adults, parents of children with ADHD, parents of adult children and people who are both autistic and ADHD.',
     meta: 'ADHD · Adults & families · Online',
-    metaItalic: false,
-    url: 'https://adhduk.co.uk/support/',
+    href: 'https://adhduk.co.uk/support/',
     logo: '/images/adhd-uk.avif',
     logoAlt: 'ADHD UK logo',
   },
   {
     id: 'addiss',
-    layout: 'image-text',
     title: [{ text: 'ADDISS' }],
     description:
       'The National Attention Deficit Disorder Information and Support Service provides ADHD information, training and support, with resources for adults, parents, children and teenagers and a telephone service for people who need advice or further information.',
     meta: 'ADHD · Children & adults · UK',
-    metaItalic: true,
-    url: 'https://www.addiss.co.uk/',
+    href: 'https://www.addiss.co.uk/',
     logo: '/images/addiss.avif',
     logoAlt: 'ADDISS logo',
   },
 ];
 
-function ResourceRow({ resource }) {
-  const text = (
-    <div className="notAloneGuideResourceText">
-      <TitleParts parts={resource.title} />
-      <p className="notAloneGuideResourceBody">{resource.description}</p>
-      <p
-        className={`notAloneGuideResourceMeta${
-          resource.metaItalic ? ' notAloneGuideResourceMeta--italic' : ''
-        }`}
-      >
-        {resource.meta}
-      </p>
-      <ResourceLink href={resource.url}>{resource.url}</ResourceLink>
-    </div>
-  );
-
-  const media = (
-    <div className="notAloneGuideResourceMedia">
-      <div className="notAloneGuideLogo">
-        <img src={resource.logo} alt={resource.logoAlt} loading="lazy" decoding="async" />
-      </div>
-    </div>
-  );
-
-  return (
-    <article
-      className={`notAloneGuideResource notAloneGuideResource--${resource.layout}`}
-    >
-      {media}
-      {text}
-    </article>
-  );
-}
+const HERO_COPY =
+  'Living with autism or ADHD can bring questions that continue well beyond an assessment. These organisations offer specialist information, practical guidance, peer support and communities for neurodivergent people and the families who support them.';
 
 export default function NotAloneGuide() {
   return (
-    <div className="supportGuideContent notAloneGuide">
-      <p className="supportGuideContentIntro notAloneGuideIntro">
-        Living with autism or ADHD can bring questions that continue well beyond an assessment.
-        These organisations offer specialist information, practical guidance, peer support and
-        communities for neurodivergent people and the families who support them.
+    <div className="notAloneGuide">
+      <p className="notAloneGuidePageTitle">
+        You’re not <em>Alone</em>
       </p>
 
-      <h3 className="notAloneGuideSectionHeading">
-        Autism
-        <br />
-        <em>support</em>
-      </h3>
-
-      <div className="notAloneGuideResources">
-        {RESOURCES.map((resource) => (
-          <ResourceRow key={resource.id} resource={resource} />
-        ))}
+      <div className="notAloneGuideHero">
+        <img
+          src="/images/chair-macbook-girl.avif"
+          alt=""
+          loading="eager"
+          decoding="async"
+          width={1600}
+          height={700}
+        />
+        <p className="notAloneGuideHeroCopy">{HERO_COPY}</p>
       </div>
 
-      <h3 className="notAloneGuideSectionHeading notAloneGuideSectionHeading--adhd">
-        ADHD
-        <br />
-        <em>support</em>
-      </h3>
+      <section className="notAloneGuideAutism" aria-label="Autism support">
+        <h3 className="notAloneGuideBandTitle notAloneGuideBandTitle--autismMobile">
+          Autism
+          <br />
+          <em>support</em>
+        </h3>
 
-      <div className="notAloneGuideResources">
-        {ADHD_RESOURCES.map((resource) => (
-          <ResourceRow key={resource.id} resource={resource} />
-        ))}
-      </div>
+        <div className="notAloneGuideGrid notAloneGuideGrid--autismTop">
+          {AUTISM_TOP.map((resource) => (
+            <ResourceItem key={resource.id} {...resource} />
+          ))}
+        </div>
+
+        <div className="notAloneGuideGrid notAloneGuideGrid--autismBottom">
+          <div className="notAloneGuideLogo notAloneGuideLogo--autistica">
+            <img
+              src={AUTISTICA.logo}
+              alt={AUTISTICA.logoAlt}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+
+          <ResourceItem
+            className="notAloneGuideResource--autistica"
+            title={AUTISTICA.title}
+            description={AUTISTICA.description}
+            meta={AUTISTICA.meta}
+            href={AUTISTICA.href}
+            showLogo={false}
+          />
+
+          <h3 className="notAloneGuideBandTitle notAloneGuideBandTitle--autismDesktop">
+            Autism
+            <br />
+            <em>support</em>
+          </h3>
+        </div>
+      </section>
+
+      <section className="notAloneGuideAdhd" aria-label="ADHD support">
+        <div className="notAloneGuideGrid notAloneGuideGrid--adhd">
+          <h3 className="notAloneGuideBandTitle notAloneGuideBandTitle--adhd">
+            ADHD
+            <br />
+            <em>support</em>
+          </h3>
+
+          {ADHD_RESOURCES.map((resource) => (
+            <ResourceItem key={resource.id} {...resource} />
+          ))}
+        </div>
+      </section>
 
       <div className="notAloneGuideClosing">
         <h3 className="notAloneGuideClosingTitle">
