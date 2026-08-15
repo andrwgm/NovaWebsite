@@ -125,6 +125,10 @@ export default function AfterAssessmentGuide() {
       topics={TOPICS}
       pages={PAGES}
       topicsLabel="Topics inside Your Support Journey"
+      topicVisual={{
+        src: '/images/magazine-mock-2.avif',
+        alt: 'Your Support Journey guide open in someone’s hands',
+      }}
     />
   );
 }

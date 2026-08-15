@@ -172,6 +172,10 @@ export default function ChildAtHomeGuide() {
           pages={HOME_PAGES}
           topicsLabel="Topics inside Day by Day at Home"
           orientation="media-left"
+          topicVisual={{
+            src: '/images/magazine-mock-3.avif',
+            alt: 'Day by Day at Home guide open in someone’s hands',
+          }}
         />
       </section>
 
@@ -194,6 +198,10 @@ export default function ChildAtHomeGuide() {
           pages={SCHOOL_PAGES}
           topicsLabel="Topics inside My School Passport"
           orientation="media-right"
+          topicVisual={{
+            src: '/images/passport-mock.avif',
+            alt: 'My School Passport booklet open in someone’s hands',
+          }}
         />
       </section>
     </div>

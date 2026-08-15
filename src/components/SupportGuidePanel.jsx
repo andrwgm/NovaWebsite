@@ -13,6 +13,7 @@ function SupportGuidePanelInner({
   pages,
   topicsLabel = 'Guide topics',
   orientation = 'media-left',
+  topicVisual = null,
 }) {
   const [activeId, setActiveId] = useState(topics[0]?.id);
   const activeTopic = topics.find((topic) => topic.id === activeId) ?? topics[0];
@@ -128,6 +129,18 @@ function SupportGuidePanelInner({
           <p className={c('Description')} aria-live="polite">
             {activeTopic.description}
           </p>
+          {topicVisual ? (
+            <div className={c('TopicVisual')}>
+              <img
+                src={topicVisual.src}
+                alt={topicVisual.alt ?? ''}
+                loading="lazy"
+                decoding="async"
+                width={topicVisual.width ?? 420}
+                height={topicVisual.height ?? 280}
+              />
+            </div>
+          ) : null}
         </div>
       </div>
     </>

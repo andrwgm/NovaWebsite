@@ -111,6 +111,10 @@ export default function BeforeAssessmentGuide() {
       topics={TOPICS}
       pages={PAGES}
       topicsLabel="Topics inside the Pre-Assessment Guide"
+      topicVisual={{
+        src: '/images/magazine-mock-1.avif',
+        alt: 'While You’re Waiting guide open in someone’s hands',
+      }}
     />
   );
 }

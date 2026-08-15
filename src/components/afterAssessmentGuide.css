@@ -163,6 +163,9 @@
 }
 
 .journeyGuideTopics {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
   width: 100%;
   max-width: none;
   justify-self: stretch;
@@ -235,6 +238,21 @@
   width: 80%;
   justify-self: center;
 }
+
+
+.journeyGuideTopicVisual {
+  width: 80%;
+  max-width: 17.5rem;
+  margin: 1.85rem auto 0;
+}
+
+.journeyGuideTopicVisual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 1.5rem;
+}
+
 
 .journeyGuideHeadline--journey span:nth-child(1) {
   justify-self: start;
@@ -324,6 +342,10 @@
 
   .journeyGuideDescription {
     width: 100%;
+  }
+
+  .journeyGuideTopicVisual {
+    width: min(100%, 17.5rem);
   }
 }
 
