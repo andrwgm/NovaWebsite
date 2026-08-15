@@ -140,6 +140,7 @@
 
 .beforeGuideBottom {
   margin-top: clamp(3.5rem, 6vw, 5.5rem);
+  align-items: stretch;
 }
 
 .beforeGuideMedia {
@@ -166,6 +167,9 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  align-self: stretch;
+  height: 100%;
+  min-height: 100%;
   width: 100%;
   max-width: none;
   justify-self: stretch;
@@ -243,7 +247,7 @@
 .beforeGuideTopicVisual {
   width: 80%;
   max-width: none;
-  margin: 1.85rem auto 0;
+  margin: auto auto 0;
 }
 
 .beforeGuideTopicVisual img {
@@ -325,6 +329,7 @@
 
   .beforeGuideTopicVisual {
     width: 100%;
+    margin-top: 1.85rem;
   }
 }
 
