@@ -7,14 +7,15 @@
 }
 
 .beforeAssessmentHeadline--section {
-  display: block;
+  display: inline-flex;
+  align-items: flex-start;
   width: auto;
   max-width: none;
   margin-top: 0;
   color: #ffffff;
   text-align: left;
   font-size: clamp(3.6rem, 7vw, 4.6rem);
-  line-height: 0.92;
+  line-height: 0.85;
 }
 
 .beforeAssessmentHeadline--section:not(.beforeAssessmentHeadline--withMedia) {
@@ -23,14 +24,17 @@
 
 .beforeAssessmentHeadline--section span,
 .beforeAssessmentHeadline--section em {
-  display: inline;
+  display: inline-block;
 }
 
 .beforeAssessmentHeadline--section span {
-  margin-right: 0.28em;
+  margin-right: 0.06em;
 }
 
 .beforeAssessmentHeadline--section em {
+  position: relative;
+  top: 0.42em;
+  margin-left: -0.02em;
   font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
   font-style: normal;
 }
