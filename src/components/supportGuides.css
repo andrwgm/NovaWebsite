@@ -49,12 +49,14 @@
 }
 
 .support-guides__tab:has(.support-guides__panel--before) .support-guides__content,
-.support-guides__tab:has(.support-guides__panel--after) .support-guides__content {
+.support-guides__tab:has(.support-guides__panel--after) .support-guides__content,
+.support-guides__tab:has(.support-guides__panel--child) .support-guides__content {
   overflow: visible;
 }
 
 .support-guides__panel--before,
-.support-guides__panel--after {
+.support-guides__panel--after,
+.support-guides__panel--child {
   overflow: visible;
 }
 

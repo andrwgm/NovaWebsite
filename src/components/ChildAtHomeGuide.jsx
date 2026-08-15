@@ -1,160 +1,199 @@
 import React from 'react';
-import './supportGuideContent.css';
+import SupportGuidePanel from './SupportGuidePanel';
 import './childAtHomeGuide.css';
 
-const HOME_SIDE_ITEMS = [
+const HOME_INTRO = [
+  'Starting an assessment, can bring a mix of relief, uncertainty, and questions about what the process will involve.',
+  'As the journey unfolds, understanding each stage and what it may mean can make everything feel clearer, more manageable, and less overwhelming.',
+];
+
+const HOME_HEADLINE = (
+  <>
+    <span>At</span> <em>home</em>
+  </>
+);
+
+const HOME_TOPICS = [
   {
-    title: 'Understanding your child',
-    body:
+    id: 'child',
+    lines: (
+      <>
+        Understanding
+        <br />
+        <em>your child</em>
+      </>
+    ),
+    description:
       'Learn to notice everyday patterns, strengths, preferences and the situations that may feel more difficult. The activities help families look beyond behaviour and understand what their child may be communicating through their responses.',
   },
   {
-    title: 'Sensory comfort & regulation',
-    body:
+    id: 'sensory',
+    lines: (
+      <>
+        Sensory comfort
+        <br />
+        <em>& regulation</em>
+      </>
+    ),
+    description:
       'Explore sensory preferences and discover practical ways to help your child feel more comfortable and regulated. From movement and textures to calming activities, the guide encourages you to find what works best for them.',
   },
   {
-    title: 'Routines, emotions & communication',
-    body:
+    id: 'routines',
+    lines: (
+      <>
+        Routines, emotions
+        <br />
+        <em>& communication</em>
+      </>
+    ),
+    description:
       'Use simple tools to make routines and transitions more predictable, while helping your child recognise emotions, body signals and different ways to communicate what they need.',
   },
-];
-
-const HOME_FULL_ITEMS = [
   {
-    title: 'Activities to explore together',
-    body:
+    id: 'activities',
+    lines: (
+      <>
+        Activities to
+        <br />
+        <em>explore together</em>
+      </>
+    ),
+    description:
       'Creative and interactive activities designed for parents and children to complete side by side. They create opportunities to talk, play and discover your child’s needs, interests and ways of feeling comfortable together.',
   },
 ];
 
-const SCHOOL_SIDE_ITEMS = [
+const HOME_PAGES = [
+  { src: '/images/page-9.avif', alt: 'Day by Day at Home page: the hard moment map' },
+  { src: '/images/page-10.avif', alt: 'Day by Day at Home page: first, next, then' },
+  { src: '/images/page-11.avif', alt: 'Day by Day at Home page: window painting activity' },
+  { src: '/images/page-12.avif', alt: 'Day by Day at Home page: sensory comfort at home' },
+];
+
+const SCHOOL_INTRO = [
+  'My School Passport is a child-friendly booklet designed to help families share important information with school about their child’s strengths, preferences, communication style and support needs.',
+  'It gives children and parents a simple, creative way to explain what helps them feel comfortable, understood and supported in the classroom, so teachers can build a clearer picture of the individual behind the diagnosis.',
+];
+
+const SCHOOL_HEADLINE = (
+  <>
+    <span>At</span> <em>school</em>
+  </>
+);
+
+const SCHOOL_TOPICS = [
   {
-    title: 'What helps me feel comfortable',
-    body: 'The routines and environments that help your child feel settled.',
+    id: 'comfortable',
+    lines: (
+      <>
+        What helps me
+        <br />
+        <em>feel comfortable</em>
+      </>
+    ),
+    description:
+      'The routines, familiar environments, sensory preferences and small adjustments that help your child feel settled, safe and more at ease throughout the school day.',
   },
   {
-    title: 'Things I may find difficult',
-    body: 'Sensory, social or everyday situations that may feel overwhelming.',
+    id: 'difficult',
+    lines: (
+      <>
+        Things I may
+        <br />
+        <em>find difficult</em>
+      </>
+    ),
+    description:
+      'Sensory, social or everyday situations that may feel confusing, demanding or overwhelming, alongside the early signs that your child may need more time, space or support.',
   },
   {
-    title: 'How I communicate and feel',
-    body:
-      'Helping school understand how your child expresses emotions, communicates their needs and shows when things are becoming too much.',
+    id: 'communicate',
+    lines: (
+      <>
+        How I communicate
+        <br />
+        <em>and feel</em>
+      </>
+    ),
+    description:
+      'Helping school understand how your child expresses emotions, communicates their needs, responds to other people and shows when they are becoming tired, anxious or overwhelmed.',
+  },
+  {
+    id: 'at-school',
+    lines: (
+      <>
+        What helps me
+        <br />
+        <em>at school</em>
+      </>
+    ),
+    description:
+      'Practical strategies, communication approaches, breaks and reasonable adjustments that can make learning, transitions, changes in routine and the wider school day feel more manageable and predictable.',
+  },
+  {
+    id: 'strengths',
+    lines: (
+      <>
+        My strengths
+        <br />
+        <em>& interests</em>
+      </>
+    ),
+    description:
+      'The things your child enjoys, feels confident in and is proud of, as well as the interests, skills and qualities that can help teachers understand what motivates and engages them.',
   },
 ];
 
-const SCHOOL_FULL_ITEMS = [
-  {
-    title: 'What helps me at school',
-    body:
-      'Practical strategies, breaks and adjustments that can make learning, transitions and the school day feel more manageable.',
-  },
-  {
-    title: 'My strengths & interests',
-    body: 'What your child enjoys, feels confident in and would like others to know.',
-  },
+const SCHOOL_PAGES = [
+  { src: '/images/page-13.avif', alt: 'My School Passport page: the hard moment map' },
+  { src: '/images/page-14.avif', alt: 'My School Passport page: first, next, then' },
+  { src: '/images/page-15.avif', alt: 'My School Passport page: window painting activity' },
+  { src: '/images/page-16.avif', alt: 'My School Passport page: sensory comfort' },
 ];
 
 export default function ChildAtHomeGuide() {
   return (
-    <div className="supportGuideContent childAtHomeGuide">
-      <div className="childAtHomeGuideIntroRow">
-        <p className="supportGuideContentIntro childAtHomeGuideIntro">
-          Everyday life at home can bring moments of connection, but also uncertainty about what your
-          child may be feeling, needing, or trying to communicate. Understanding their patterns,
-          preferences and responses can make daily routines feel clearer, more manageable, and more
-          supportive for the whole family.
-        </p>
-        <p className="childAtHomeGuideLabel">
-          At
-          <br />
-          Home
-        </p>
-      </div>
+    <div className="supportGuideContent beforeAssessmentGuide beforeAssessmentGuide--child">
+      <section className="beforeAssessmentBlock" aria-label="At home">
+        <SupportGuidePanel
+          wrap={false}
+          intro={HOME_INTRO}
+          headline={HOME_HEADLINE}
+          headlineVariant="section"
+          cover={{
+            src: '/images/day-by-day-at-home-cover.avif',
+            alt: 'Day by Day at Home guide cover',
+            rotate: '24deg',
+          }}
+          showExplore
+          topics={HOME_TOPICS}
+          pages={HOME_PAGES}
+          topicsLabel="Topics inside Day by Day at Home"
+          orientation="media-left"
+        />
+      </section>
 
-      <h3 className="supportGuideContentHeadline childAtHomeGuideHeadline">
-        Small moments can make a big
-        <br />
-        difference.
-      </h3>
-
-      <div className="supportGuideContentFeature childAtHomeGuideFeature">
-        <p className="supportGuideContentExplore">
-          Inside, you’ll
-          <br />
-          explore
-        </p>
-        <div className="supportGuideContentCover childAtHomeGuideCover">
-          <img
-            src="/images/day-by-day-at-home-cover.avif"
-            alt="Day by Day at Home guide cover"
-            loading="lazy"
-            decoding="async"
-            width={268}
-            height={380}
-          />
-        </div>
-        <ul className="supportGuideContentList supportGuideContentList--side childAtHomeGuideList--side">
-          {HOME_SIDE_ITEMS.map((item) => (
-            <li key={item.title}>
-              <strong>{item.title}</strong>
-              <span>{item.body}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <ul className="supportGuideContentList supportGuideContentList--full childAtHomeGuideList--homeFull">
-        {HOME_FULL_ITEMS.map((item) => (
-          <li key={item.title}>
-            <strong>{item.title}</strong>
-            <span>{item.body}</span>
-          </li>
-        ))}
-      </ul>
-
-      <div className="childAtHomeGuideIntroRow childAtHomeGuideSchoolIntroRow">
-        <p className="supportGuideContentIntro childAtHomeGuideSchoolIntro">
-          My School Passport is a child-friendly booklet that helps families share key information
-          with school about their child’s strengths, preferences and support needs.
-        </p>
-        <p className="childAtHomeGuideLabel">
-          At
-          <br />
-          School
-        </p>
-      </div>
-
-      <div className="childAtHomeGuideSchoolFeature">
-        <div className="childAtHomeGuideSchoolCover">
-          <img
-            src="/images/my-school-passport-cover.avif"
-            alt="My School Passport guide cover"
-            loading="lazy"
-            decoding="async"
-            width={160}
-            height={228}
-          />
-        </div>
-        <div className="childAtHomeGuideSchoolBlocks childAtHomeGuideSchoolBlocks--side">
-          {SCHOOL_SIDE_ITEMS.map((item) => (
-            <div key={item.title} className="childAtHomeGuideSchoolBlock">
-              <strong>{item.title}</strong>
-              <span>{item.body}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="childAtHomeGuideSchoolBlocks childAtHomeGuideSchoolBlocks--full">
-        {SCHOOL_FULL_ITEMS.map((item) => (
-          <div key={item.title} className="childAtHomeGuideSchoolBlock">
-            <strong>{item.title}</strong>
-            <span>{item.body}</span>
-          </div>
-        ))}
-      </div>
+      <section className="beforeAssessmentBlock" aria-label="At school">
+        <SupportGuidePanel
+          wrap={false}
+          intro={SCHOOL_INTRO}
+          introPlacement="after-headline"
+          headline={SCHOOL_HEADLINE}
+          headlineVariant="section"
+          cover={{
+            src: '/images/my-school-passport-cover.avif',
+            alt: 'My School Passport guide cover',
+            rotate: '-16deg',
+            className: 'beforeAssessmentCover--school',
+          }}
+          showExplore={false}
+          topics={SCHOOL_TOPICS}
+          pages={SCHOOL_PAGES}
+          topicsLabel="Topics inside My School Passport"
+          orientation="media-right"
+        />
+      </section>
     </div>
   );
 }
