@@ -155,13 +155,12 @@ const SCHOOL_PAGES = [
 export default function ChildAtHomeGuide() {
   return (
     <div className="supportGuideContent beforeAssessmentGuide beforeAssessmentGuide--child">
-      <section className="beforeAssessmentBlock" aria-label="At home">
+      <section className="beforeAssessmentBlock beforeAssessmentBlock--home" aria-label="At home">
         <SupportGuidePanel
           wrap={false}
           intro={HOME_INTRO}
           headline={HOME_HEADLINE}
           headlineVariant="section"
-          headlinePlacement="with-media"
           cover={{
             src: '/images/day-by-day-at-home-cover.avif',
             alt: 'Day by Day at Home guide cover',

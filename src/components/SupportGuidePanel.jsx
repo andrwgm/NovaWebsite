@@ -7,7 +7,6 @@ function SupportGuidePanelInner({
   introPlacement = 'before-headline',
   headline,
   headlineVariant = 'default',
-  headlinePlacement = 'top',
   cover,
   showExplore = true,
   topics,
@@ -18,7 +17,6 @@ function SupportGuidePanelInner({
   const [activeId, setActiveId] = useState(topics[0]?.id);
   const activeTopic = topics.find((topic) => topic.id === activeId) ?? topics[0];
   const coverRotate = cover.rotate ?? '18deg';
-  const headlineWithMedia = headlinePlacement === 'with-media';
 
   const introBlock =
     intro.length > 0 ? (
@@ -37,31 +35,27 @@ function SupportGuidePanelInner({
     <h3
       className={`beforeAssessmentHeadline${
         headlineVariant !== 'default' ? ` beforeAssessmentHeadline--${headlineVariant}` : ''
-      }${headlineWithMedia ? ' beforeAssessmentHeadline--withMedia' : ''}`}
+      }`}
     >
       {headline}
     </h3>
   );
 
-  const topHeadline =
-    !headlineWithMedia &&
-    (introPlacement === 'before-headline' ? (
-      <>
-        {introBlock}
-        {headlineBlock}
-      </>
-    ) : (
-      <>
-        {headlineBlock}
-        {introBlock}
-      </>
-    ));
-
   return (
     <>
       <div className="beforeAssessmentTop">
         <div className="beforeAssessmentTopLeft">
-          {headlineWithMedia ? introBlock : topHeadline}
+          {introPlacement === 'before-headline' ? (
+            <>
+              {introBlock}
+              {headlineBlock}
+            </>
+          ) : (
+            <>
+              {headlineBlock}
+              {introBlock}
+            </>
+          )}
         </div>
 
         <div className="beforeAssessmentTopRight">
@@ -94,7 +88,6 @@ function SupportGuidePanelInner({
         }`}
       >
         <div className="beforeAssessmentMedia">
-          {headlineWithMedia ? headlineBlock : null}
           <div className="beforeAssessmentPages">
             {pages.map((page) => (
               <img

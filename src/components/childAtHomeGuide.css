@@ -18,10 +18,6 @@
   line-height: 0.85;
 }
 
-.beforeAssessmentHeadline--section:not(.beforeAssessmentHeadline--withMedia) {
-  margin-bottom: 1.75rem;
-}
-
 .beforeAssessmentHeadline--section span,
 .beforeAssessmentHeadline--section em {
   display: inline-block;
@@ -39,8 +35,27 @@
   font-style: normal;
 }
 
-.beforeAssessmentHeadline--withMedia {
-  margin: 0 0 1.15rem;
+/* At home: keep title in the top column, sunk down next to explore / above photos */
+.beforeAssessmentBlock--home .beforeAssessmentTop {
+  align-items: stretch;
+}
+
+.beforeAssessmentBlock--home .beforeAssessmentTopLeft {
+  min-height: 100%;
+}
+
+.beforeAssessmentBlock--home .beforeAssessmentHeadline--section {
+  margin-top: auto;
+  margin-bottom: 0;
+  padding-bottom: 0.48em;
+}
+
+.beforeAssessmentBlock--home .beforeAssessmentBottom {
+  margin-top: 0.35rem;
+}
+
+.beforeAssessmentBlock--home .beforeAssessmentExplore {
+  margin-top: -4.75rem;
 }
 
 .beforeAssessmentGuide--child .beforeAssessmentExplore {
@@ -49,6 +64,10 @@
 
 .beforeAssessmentIntro--aligned {
   margin-left: 0;
+}
+
+.beforeAssessmentBlock:not(.beforeAssessmentBlock--home) .beforeAssessmentHeadline--section {
+  margin-bottom: 1.75rem;
 }
 
 .beforeAssessmentCover--school {
@@ -75,6 +94,10 @@
 
   .beforeAssessmentIntro--aligned {
     margin-left: 0;
+  }
+
+  .beforeAssessmentBlock--home .beforeAssessmentExplore {
+    margin-top: -3.75rem;
   }
 }
 
@@ -104,9 +127,19 @@
     margin: 1em auto 0;
   }
 
-  .beforeAssessmentHeadline--withMedia {
-    margin: 0 auto 1rem;
-    text-align: center;
+  .beforeAssessmentBlock--home .beforeAssessmentHeadline--section {
+    margin-top: 2.25rem;
+    margin-bottom: 0;
+    padding-bottom: 0.35em;
+    align-self: center;
+  }
+
+  .beforeAssessmentBlock--home .beforeAssessmentBottom {
+    margin-top: 1.5rem;
+  }
+
+  .beforeAssessmentBlock--home .beforeAssessmentExplore {
+    margin-top: 2.5rem;
   }
 
   .beforeAssessmentIntro--aligned {
