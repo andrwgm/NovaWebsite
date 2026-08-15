@@ -242,7 +242,7 @@
 
 .journeyGuideTopicVisual {
   width: 80%;
-  max-width: 17.5rem;
+  max-width: none;
   margin: 1.85rem auto 0;
 }
 
@@ -345,7 +345,7 @@
   }
 
   .journeyGuideTopicVisual {
-    width: min(100%, 17.5rem);
+    width: 100%;
   }
 }
 
