@@ -86,13 +86,15 @@
 }
 
 .beforeAssessmentHeadline--journey span:nth-child(2) {
-  justify-self: center;
-  text-align: center;
+  justify-self: right;
+  text-align: right;
+  padding-left: 1em;
 }
 
 .beforeAssessmentHeadline--journey span:nth-child(3) {
-  justify-self: end;
-  text-align: right;
+  justify-self: start;
+  text-align: left;
+  padding-left: 0.3em;
 }
 
 .beforeAssessmentHeadline--journey em {
@@ -193,7 +195,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
   margin: 0;
   padding: 0.85rem 0.75rem;
