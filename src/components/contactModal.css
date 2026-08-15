@@ -1,0 +1,138 @@
+.contact-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  z-index: 2000;
+}
+
+.contact-modal {
+  width: min(540px, 100%);
+  background: #fff;
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  position: relative;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.2);
+}
+
+.contact-modal-title {
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
+  color: #2D3B55;
+  font-weight: normal;
+  margin-top: 1rem;
+  font-size: 2.5rem;
+}
+
+.contact-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border: none;
+  background: #f3f5f7;
+  border-radius: 999px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #2D3B55;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+}
+
+.contact-modal-close i {
+  font-size: 0.9rem;
+}
+
+.contact-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.contact-modal-form .p-inputtext,
+.contact-modal-form .p-inputtextarea,
+.contact-modal-form .p-inputmask {
+  width: 100%;
+  border-radius: 0.8rem;
+  border: 1px solid #d8dee7;
+  padding: 0.95rem 1rem;
+}
+
+.contact-modal-form .p-inputtextarea {
+  min-height: 120px;
+  resize: vertical;
+  padding-top: 1.2rem;
+}
+
+.textarea-field label {
+  top: 1.1rem;
+}
+
+.textarea-field .p-inputtextarea:focus ~ label,
+.textarea-field .p-inputtextarea.p-inputtextarea-filled ~ label {
+  top: -0.4rem;
+}
+
+.contact-modal-form .p-float-label > label {
+  color: #6b7a93;
+}
+
+.contact-modal-consent-notice {
+  font-family: 'AthelasRegular', 'Times New Roman';
+  font-size: 0.9rem;
+  color: #6b7a93;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.contact-modal-consent {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contact-modal-consent label {
+  font-family: 'AthelasRegular', 'Times New Roman';
+  font-size: 0.9rem;
+  color: #6b7a93;
+  margin-bottom: 0;
+}
+
+.contact-modal-error {
+  font-family: 'AthelasRegular', 'Times New Roman';
+  font-size: 0.9rem;
+  color: #b84b4b;
+  margin: 0;
+}
+
+.contact-modal-submit {
+  align-self: center;
+  border: none;
+  background: #9ECDC9;
+  color: #2D3B55;
+  border-radius: 2em;
+  padding: 0.85rem 2.5rem;
+  font-weight: 600;
+}
+
+.contact-modal-submit:hover {
+  background: #37B5BC;
+}
+
+.contact-modal-submit:focus {
+  box-shadow: 0 0 0 0.2rem rgba(55, 181, 188, 0.2);
+}
+
+@media (max-width: 480px) {
+  .contact-modal {
+    padding: 2rem 1.5rem;
+  }
+
+  .contact-modal-submit {
+    width: 100%;
+  }
+}

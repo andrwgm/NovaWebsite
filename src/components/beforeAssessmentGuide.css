@@ -1,0 +1,378 @@
+.supportGuideContent.beforeGuide {
+  --guide-accent: #722140;
+  width: min(100%, 84rem);
+  max-width: 84rem;
+  padding: 0.75rem 0 2.5rem;
+  overflow: visible;
+}
+
+.beforeGuideTop,
+.beforeGuideBottom {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, .9fr);
+  justify-content: space-around;
+  column-gap: clamp(2rem, 4vw, 3.75rem);
+  align-items: start;
+  width: 100%;
+  padding-inline: 4em;
+}
+
+.beforeGuideTopLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.beforeGuideIntro {
+  max-width: 38rem;
+  width: 100%;
+  display: flex;
+  gap: 2em;
+  flex-direction: column;
+  margin-left: -4em;
+}
+
+.beforeGuideIntro p {
+  margin: 0;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: clamp(1.125rem, 1.7vw, 1.25rem);
+  line-height: 1.5;
+  color: #ffffff;
+  text-align: justify;
+}
+
+.beforeGuideIntro p:last-child {
+  margin-bottom: 0;
+}
+
+.beforeGuideHeadline {
+  display: grid;
+  width: max-content;
+  max-width: 100%;
+  margin: 3.25rem 0 0;
+  font-family: 'TimesNewRomanMTCondensed', 'Times New Roman', Times, serif;
+  font-size: clamp(3.4rem, 6.5vw, 5rem);
+  font-weight: normal;
+  line-height: 0.95;
+  color: var(--guide-accent);
+}
+
+.beforeGuideHeadline span,
+.beforeGuideHeadline em {
+  display: block;
+}
+
+.beforeGuideHeadline span:nth-child(1),
+.beforeGuideHeadline span:nth-child(2) {
+  justify-self: start;
+  text-align: left;
+}
+
+.beforeGuideHeadline em,
+.beforeGuideHeadline span:nth-child(4) {
+  justify-self: end;
+  text-align: right;
+}
+
+.beforeGuideHeadline em {
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
+  font-style: normal;
+}
+
+.beforeGuideTopRight {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  min-width: 0;
+  padding-top: 0.25rem;
+}
+
+.beforeGuideCover {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 24.5rem);
+  margin: 1em 3.75rem 0 0;
+  transform: rotate(var(--cover-rotate, 18deg));
+  transform-origin: center center;
+}
+
+.beforeGuideCover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.beforeGuideExplore {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: max-content;
+  max-width: 100%;
+  margin: -5.5rem 0 0;
+  font-family: 'TimesNewRomanMTCondensed', 'Times New Roman', Times, serif;
+  font-size: clamp(2.6rem, 4.8vw, 3.7rem);
+  font-weight: normal;
+  line-height: 0.95;
+  color: var(--guide-accent);
+}
+
+.beforeGuideExplore span,
+.beforeGuideExplore em {
+  display: block;
+}
+
+.beforeGuideExplore span:first-child,
+.beforeGuideExplore span:last-child {
+  justify-self: start;
+  text-align: left;
+}
+
+.beforeGuideExplore em {
+  justify-self: end;
+  text-align: right;
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
+  font-style: normal;
+}
+
+.beforeGuideBottom {
+  margin-top: clamp(3.5rem, 6vw, 5.5rem);
+  align-items: stretch;
+}
+
+.beforeGuideMedia {
+  min-width: 0;
+  width: 100%;
+}
+
+.beforeGuidePages {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  width: 100%;
+}
+
+.beforeGuidePages img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.beforeGuideTopics {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  align-self: stretch;
+  height: 100%;
+  min-height: 100%;
+  width: 100%;
+  max-width: none;
+  justify-self: stretch;
+}
+
+.beforeGuideTopicList {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba(255, 255, 255, 0.92);
+  margin-bottom: 2em;
+}
+
+.beforeGuideTopic {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  margin: 0;
+  padding: 0.85rem 0.75rem;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.92);
+  background: transparent;
+  color: #ffffff;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 180ms ease;
+}
+
+.beforeGuideTopicLabel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: 'TimesNewRomanMTCondensed', 'Times New Roman', Times, serif;
+  font-size: clamp(1.55rem, 2.2vw, 1.95rem);
+  font-weight: normal;
+  line-height: 1.05;
+}
+
+.beforeGuideTopicLabel em {
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
+  font-style: normal;
+  padding-left: 2.5em;
+}
+
+.beforeGuideTopic.is-active::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.16);
+  pointer-events: none;
+}
+
+.beforeGuideTopic:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+.beforeGuideDescription {
+  margin: 1.75rem auto 0;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: clamp(1.125rem, 1.7vw, 1.25rem);
+  line-height: 1.6;
+  color: #ffffff;
+  text-align: justify;
+  width: 80%;
+  justify-self: center;
+}
+
+
+.beforeGuideTopicVisual {
+  width: 80%;
+  max-width: none;
+  margin: auto 0 0 0;
+}
+
+.beforeGuideTopicVisual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 1.5rem;
+}
+
+
+@media (max-width: 1100px) {
+  .beforeGuideTop,
+  .beforeGuideBottom {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.95fr);
+    padding-inline: 3em;
+  }
+
+  .beforeGuideIntro {
+    margin-left: -3em;
+  }
+
+  .beforeGuideCover {
+    width: min(100%, 21rem);
+    margin: 1em 2.5rem 0 0;
+  }
+
+  .beforeGuideExplore {
+    margin-top: -4.25rem;
+  }
+}
+
+@media (max-width: 860px) {
+  .beforeGuideTop,
+  .beforeGuideBottom {
+    grid-template-columns: 1fr;
+    row-gap: 2.5rem;
+    padding-inline: 1.5em;
+  }
+
+  .beforeGuideIntro {
+    margin-left: -1.5em;
+  }
+
+  .beforeGuideTopRight {
+    align-items: center;
+  }
+
+  .beforeGuideHeadline {
+    margin-top: 2.25rem;
+    align-self: center;
+  }
+
+  .beforeGuideCover {
+    margin: 1em auto 0;
+  }
+
+  .beforeGuideExplore {
+    margin-top: 2.5rem;
+    align-self: center;
+  }
+
+  .beforeGuideBottom {
+    margin-top: 3.25rem;
+  }
+
+  .beforeGuidePages {
+    max-width: 32rem;
+    margin: 0 auto;
+  }
+
+  .beforeGuideTopics {
+    max-width: 28rem;
+    margin: 0 auto;
+  }
+
+  .beforeGuideDescription {
+    width: 100%;
+  }
+
+  .beforeGuideTopicVisual {
+    width: 100%;
+    margin-top: 1.85rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .supportGuideContent.beforeGuide {
+    padding-bottom: 1.75rem;
+  }
+
+  .beforeGuideTop,
+  .beforeGuideBottom {
+    padding-inline: 0;
+  }
+
+  .beforeGuideIntro {
+    margin-left: 0;
+    max-width: none;
+  }
+
+  .beforeGuideHeadline {
+    font-size: clamp(2.6rem, 12vw, 3.4rem);
+  }
+
+  .beforeGuideCover {
+    width: min(100%, 16.5rem);
+    margin: 0.75em auto 0;
+    transform: rotate(12deg);
+  }
+
+  .beforeGuideExplore {
+    margin-top: 2rem;
+    font-size: clamp(2.2rem, 9vw, 2.8rem);
+  }
+
+  .beforeGuidePages {
+    gap: 0.55rem;
+  }
+
+  .beforeGuideTopic {
+    padding: 0.7rem 0.4rem;
+  }
+
+  .beforeGuideTopicLabel {
+    font-size: clamp(1.4rem, 6vw, 1.65rem);
+  }
+}
+

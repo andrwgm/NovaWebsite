@@ -1,0 +1,14 @@
+.about {
+    color: #2d3b55;
+    min-height: calc(100vh - 5em);
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: clamp(2rem, 4vw, 4rem) clamp(1.5rem, 6vw, 6rem) 4rem;
+}
+
+@media (max-width: 768px) {
+    .about {
+        padding: 1.5rem;
+    }
+}

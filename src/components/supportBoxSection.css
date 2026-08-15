@@ -1,0 +1,284 @@
+.supportBoxSection {
+  --support-image-height: clamp(20rem, 48vw, 44rem);
+
+  position: relative;
+  background-color: #ffffff;
+  width: 100%;
+  overflow-x: clip;
+  box-sizing: border-box;
+}
+
+.supportBoxSectionWall {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: calc(var(--support-image-height) / 3);
+  background-color: #eefffe;
+  z-index: 0;
+}
+
+.supportBoxSectionLayout {
+  position: relative;
+  z-index: 1;
+  min-height: var(--support-image-height);
+}
+
+.supportBoxSectionContent {
+  --support-gutter: clamp(1.5rem, 4vw, 3rem);
+  --support-content-inset: clamp(0.75rem, 1.5vw, 1.5rem);
+
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  max-width: min(44%, 32rem);
+  margin-left: calc(
+    max(
+      var(--support-gutter),
+      calc((100% - min(90%, 1320px)) / 2)
+    ) + var(--support-content-inset)
+  );
+  margin-right: 0;
+  padding-inline: 0;
+  min-height: var(--support-image-height);
+  box-sizing: border-box;
+}
+
+.supportBoxSectionCopy {
+  max-width: 36rem;
+  margin-top: auto;
+  margin-bottom: calc(var(--support-image-height) / 3);
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.supportBoxSectionTitle {
+  font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
+  font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+  font-weight: normal;
+  line-height: 0.95;
+  color: #344759;
+  margin: 0 0 1.25rem;
+}
+
+.supportBoxSectionTitleLine {
+  display: block;
+}
+
+.supportBoxSectionTitleLineIndented {
+  padding-left: clamp(2.5rem, 6vw, 5rem);
+}
+
+.supportBoxSectionTitleItalic {
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman';
+}
+
+.supportBoxSectionText {
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  line-height: 1.65;
+  color: #4c545d;
+  margin: 0;
+}
+
+.supportBoxSectionCta {
+  position: absolute;
+  left: 0;
+  bottom: calc(var(--support-image-height) / 6);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  background-color: #344759;
+  color: #ffffff;
+  font-family: 'LemonMilkLight', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 9999px;
+  padding: 0.95rem 1.6rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.supportBoxSectionCta:hover {
+  background-color: #2d3b55;
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.22);
+  transform: translateY(-1px);
+}
+
+.supportBoxSectionCta:focus-visible {
+  outline: 2px solid #344759;
+  outline-offset: 3px;
+}
+
+.supportBoxSectionCtaArrow {
+  font-size: 1.1em;
+  line-height: 1;
+}
+
+.supportBoxSectionImage {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: var(--support-image-height);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.supportBoxSectionImage img {
+  height: 100%;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+  object-position: right bottom;
+  display: block;
+}
+
+@media (min-width: 1536px) {
+  .supportBoxSection {
+    --support-image-height: clamp(24rem, 56vw, 50rem);
+  }
+
+  .supportBoxSectionContent {
+    max-width: min(1180px, 52%);
+  }
+}
+
+@media (max-width: 1280px) {
+  .supportBoxSection {
+    --support-image-height: clamp(22rem, 52vw, 42rem);
+  }
+
+  .supportBoxSectionContent {
+    max-width: min(38%, 28rem);
+  }
+
+  .supportBoxSectionCopy {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .supportBoxSection {
+    --support-image-height: clamp(20rem, 52vw, 38rem);
+  }
+
+  .supportBoxSectionContent {
+    max-width: min(36%, 26rem);
+    margin-left: calc(var(--support-gutter) + var(--support-content-inset));
+  }
+
+  .supportBoxSectionTitle {
+    font-size: clamp(2.4rem, 4.8vw, 3.4rem);
+  }
+
+  .supportBoxSectionText {
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    line-height: 1.6;
+  }
+
+  .supportBoxSectionTitleLineIndented {
+    padding-left: clamp(2rem, 5vw, 3.5rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .supportBoxSection {
+    --support-image-height: clamp(24rem, 72vw, 38rem);
+  }
+
+  .supportBoxSectionLayout {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .supportBoxSectionContent {
+    position: relative;
+    z-index: 3;
+    order: 1;
+    width: 100%;
+    max-width: 100%;
+    min-height: 0;
+    margin-inline: 0;
+    padding: clamp(2rem, 5vw, 3rem) var(--support-gutter) clamp(1.25rem, 3vw, 1.75rem);
+    align-items: center;
+    text-align: center;
+  }
+
+  .supportBoxSectionCopy {
+    max-width: 34rem;
+    margin: 0;
+    width: 100%;
+  }
+
+  .supportBoxSectionTitleLineIndented {
+    padding-left: clamp(2rem, 8vw, 3.5rem);
+  }
+
+  .supportBoxSectionText {
+    max-width: 100%;
+    margin-inline: auto;
+  }
+
+  .supportBoxSectionCta {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    margin-top: 1.5rem;
+  }
+
+  .supportBoxSectionImage {
+    position: relative;
+    order: 2;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    height: var(--support-image-height);
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex: 0 0 auto;
+    min-height: var(--support-image-height);
+    pointer-events: auto;
+  }
+
+  .supportBoxSectionImage img {
+    width: 100vw;
+    max-width: 100vw;
+    height: auto;
+    max-height: var(--support-image-height);
+    object-fit: contain;
+    object-position: right bottom;
+  }
+}
+
+@media (max-width: 480px) {
+  .supportBoxSection {
+    --support-image-height: clamp(22rem, 76vw, 34rem);
+  }
+
+  .supportBoxSectionContent {
+    padding-bottom: 1rem;
+  }
+
+  .supportBoxSectionTitle {
+    font-size: clamp(2.2rem, 9vw, 2.8rem);
+  }
+
+  .supportBoxSectionTitleLineIndented {
+    padding-left: clamp(1.5rem, 10vw, 2.5rem);
+  }
+
+  .supportBoxSectionCta {
+    width: 100%;
+    max-width: 20rem;
+  }
+}

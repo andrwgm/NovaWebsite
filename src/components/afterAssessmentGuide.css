@@ -1,0 +1,399 @@
+.supportGuideContent.journeyGuide {
+  --guide-accent: #722140;
+  width: min(100%, 84rem);
+  max-width: 84rem;
+  padding: 0.75rem 0 2.5rem;
+  overflow: visible;
+}
+
+.journeyGuideTop,
+.journeyGuideBottom {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, .9fr);
+  justify-content: space-around;
+  column-gap: clamp(2rem, 4vw, 3.75rem);
+  align-items: start;
+  width: 100%;
+  padding-inline: 4em;
+}
+
+.journeyGuideTopLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.journeyGuideIntro {
+  max-width: 38rem;
+  width: 100%;
+  display: flex;
+  gap: 2em;
+  flex-direction: column;
+  margin-left: -4em;
+}
+
+.journeyGuideIntro p {
+  margin: 0;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: clamp(1.125rem, 1.7vw, 1.25rem);
+  line-height: 1.5;
+  color: #ffffff;
+  text-align: justify;
+}
+
+.journeyGuideIntro p:last-child {
+  margin-bottom: 0;
+}
+
+.journeyGuideHeadline {
+  display: grid;
+  width: max-content;
+  max-width: 100%;
+  margin: 3.25rem 0 0;
+  font-family: 'TimesNewRomanMTCondensed', 'Times New Roman', Times, serif;
+  font-size: clamp(3.4rem, 6.5vw, 5rem);
+  font-weight: normal;
+  line-height: 0.95;
+  color: var(--guide-accent);
+}
+
+.journeyGuideHeadline span,
+.journeyGuideHeadline em {
+  display: block;
+}
+
+.journeyGuideHeadline span:nth-child(1),
+.journeyGuideHeadline span:nth-child(2) {
+  justify-self: start;
+  text-align: left;
+}
+
+.journeyGuideHeadline em,
+.journeyGuideHeadline span:nth-child(4) {
+  justify-self: end;
+  text-align: right;
+}
+
+.journeyGuideHeadline em {
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
+  font-style: normal;
+}
+
+.journeyGuideTopRight {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  min-width: 0;
+  padding-top: 0.25rem;
+}
+
+.journeyGuideCover {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 24.5rem);
+  margin: 1em 3.75rem 0 0;
+  transform: rotate(var(--cover-rotate, 18deg));
+  transform-origin: center center;
+}
+
+.journeyGuideCover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.journeyGuideExplore {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: max-content;
+  max-width: 100%;
+  margin: -5.5rem 0 0;
+  font-family: 'TimesNewRomanMTCondensed', 'Times New Roman', Times, serif;
+  font-size: clamp(2.6rem, 4.8vw, 3.7rem);
+  font-weight: normal;
+  line-height: 0.95;
+  color: var(--guide-accent);
+}
+
+.journeyGuideExplore span,
+.journeyGuideExplore em {
+  display: block;
+}
+
+.journeyGuideExplore span:first-child,
+.journeyGuideExplore span:last-child {
+  justify-self: start;
+  text-align: left;
+}
+
+.journeyGuideExplore em {
+  justify-self: end;
+  text-align: right;
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
+  font-style: normal;
+}
+
+.journeyGuideBottom {
+  margin-top: clamp(3.5rem, 6vw, 5.5rem);
+  align-items: stretch;
+}
+
+.journeyGuideMedia {
+  min-width: 0;
+  width: 100%;
+}
+
+.journeyGuidePages {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  width: 100%;
+}
+
+.journeyGuidePages img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.journeyGuideTopics {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  align-self: stretch;
+  height: 100%;
+  min-height: 100%;
+  width: 100%;
+  max-width: none;
+  justify-self: stretch;
+}
+
+.journeyGuideTopicList {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba(255, 255, 255, 0.92);
+  margin-bottom: 2em;
+}
+
+.journeyGuideTopic {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  margin: 0;
+  padding: 0.85rem 0.75rem;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.92);
+  background: transparent;
+  color: #ffffff;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 180ms ease;
+}
+
+.journeyGuideTopicLabel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: 'TimesNewRomanMTCondensed', 'Times New Roman', Times, serif;
+  font-size: clamp(1.55rem, 2.2vw, 1.95rem);
+  font-weight: normal;
+  line-height: 1.05;
+}
+
+.journeyGuideTopicLabel em {
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
+  font-style: normal;
+  padding-left: 2.5em;
+}
+
+.journeyGuideTopic.is-active::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.16);
+  pointer-events: none;
+}
+
+.journeyGuideTopic:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+.journeyGuideDescription {
+  margin: 1.75rem auto 0;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: clamp(1.125rem, 1.7vw, 1.25rem);
+  line-height: 1.6;
+  color: #ffffff;
+  text-align: justify;
+  width: 80%;
+  justify-self: center;
+}
+
+
+.journeyGuideTopicVisual {
+  width: 80%;
+  max-width: none;
+  margin: auto 0 0 0;
+}
+
+.journeyGuideTopicVisual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 1.5rem;
+}
+
+
+.journeyGuideHeadline--journey span:nth-child(1) {
+  justify-self: start;
+  text-align: left;
+}
+
+.journeyGuideHeadline--journey span:nth-child(2) {
+  justify-self: right;
+  text-align: right;
+  padding-left: 1em;
+}
+
+.journeyGuideHeadline--journey span:nth-child(3) {
+  justify-self: start;
+  text-align: left;
+  padding-left: 0.3em;
+}
+
+.journeyGuideHeadline--journey em {
+  display: inline;
+}
+
+@media (max-width: 1100px) {
+  .journeyGuideTop,
+  .journeyGuideBottom {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.95fr);
+    padding-inline: 3em;
+  }
+
+  .journeyGuideIntro {
+    margin-left: -3em;
+  }
+
+  .journeyGuideCover {
+    width: min(100%, 21rem);
+    margin: 1em 2.5rem 0 0;
+  }
+
+  .journeyGuideExplore {
+    margin-top: -4.25rem;
+  }
+}
+
+@media (max-width: 860px) {
+  .journeyGuideTop,
+  .journeyGuideBottom {
+    grid-template-columns: 1fr;
+    row-gap: 2.5rem;
+    padding-inline: 1.5em;
+  }
+
+  .journeyGuideIntro {
+    margin-left: -1.5em;
+  }
+
+  .journeyGuideTopRight {
+    align-items: center;
+  }
+
+  .journeyGuideHeadline {
+    margin-top: 2.25rem;
+    align-self: center;
+  }
+
+  .journeyGuideCover {
+    margin: 1em auto 0;
+  }
+
+  .journeyGuideExplore {
+    margin-top: 2.5rem;
+    align-self: center;
+  }
+
+  .journeyGuideBottom {
+    margin-top: 3.25rem;
+  }
+
+  .journeyGuidePages {
+    max-width: 32rem;
+    margin: 0 auto;
+  }
+
+  .journeyGuideTopics {
+    max-width: 28rem;
+    margin: 0 auto;
+  }
+
+  .journeyGuideDescription {
+    width: 100%;
+  }
+
+  .journeyGuideTopicVisual {
+    width: 100%;
+    margin-top: 1.85rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .supportGuideContent.journeyGuide {
+    padding-bottom: 1.75rem;
+  }
+
+  .journeyGuideTop,
+  .journeyGuideBottom {
+    padding-inline: 0;
+  }
+
+  .journeyGuideIntro {
+    margin-left: 0;
+    max-width: none;
+  }
+
+  .journeyGuideHeadline {
+    font-size: clamp(2.6rem, 12vw, 3.4rem);
+  }
+
+  .journeyGuideCover {
+    width: min(100%, 16.5rem);
+    margin: 0.75em auto 0;
+    transform: rotate(12deg);
+  }
+
+  .journeyGuideExplore {
+    margin-top: 2rem;
+    font-size: clamp(2.2rem, 9vw, 2.8rem);
+  }
+
+  .journeyGuidePages {
+    gap: 0.55rem;
+  }
+
+  .journeyGuideTopic {
+    padding: 0.7rem 0.4rem;
+  }
+
+  .journeyGuideTopicLabel {
+    font-size: clamp(1.4rem, 6vw, 1.65rem);
+  }
+}
+

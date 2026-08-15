@@ -1,0 +1,58 @@
+.application-success-overlay {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(2px);
+  z-index: 9999;
+}
+
+.application-success-card {
+  background: #ffffff;
+  padding: 1.25rem 1.75rem;
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+  max-width: 420px;
+  width: calc(100% - 2rem);
+  text-align: center;
+  border: 1px solid #e8eef6;
+}
+
+.application-success-icon i {
+  font-size: 6rem;
+  color: #bababa;
+  padding: 2rem 0;
+  animation: pop 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+@keyframes pop {
+  0%   {transform: scale(0);}
+  100% {transform: scale(1);}
+}
+
+.application-success-message {
+  margin: 0;
+  color: #1d2337;
+  font-size: 1rem;
+  padding: 1rem 0;
+  font-family: 'LemonMilkLight';
+}
+
+.application-success-progress {
+  width: 100%;
+  height: 10px;
+  background: '#F3F3F3';
+  border-radius: 8;
+  overflow: hidden;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #ededed;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.application-success-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg,rgb(219, 255, 252), #9ECDC9 60%);
+  transition: width 2s linear;
+}

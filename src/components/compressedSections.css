@@ -1,0 +1,77 @@
+.age-sections {
+  display: flex;
+  gap: 1em;
+  flex-wrap: nowrap;
+  max-width: 95em;
+  justify-content: center;
+  flex-direction: row;
+  margin: 2em auto;
+  padding-inline: 5%;
+}
+
+.age-card {
+  flex: 0 1 20em;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  position: relative;
+  background: #f8f8f8;
+  border-radius: 1.5rem;
+  transition: background .3s ease, height .3s ease, max-height .3s ease;
+  width: 20em;
+  max-width: 20em;
+  height: 6em;
+  max-height: 6em;
+}
+
+.age-card:hover {
+  background: #e8f6f6;
+  height: 20em;
+  max-height: 20em;
+  transition: height .3s ease, max-height .3s ease;
+}
+
+@media (max-width: 70em) {
+  .age-sections {
+    flex-wrap: wrap;
+  }
+
+  .age-card {
+    flex: 0 1 calc(50% - 1em);
+    max-width: calc(50% - 1em);
+  }
+}
+
+@media (max-width: 48em) {
+  .age-sections {
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .age-card {
+    width: 100%;
+    max-width: 22em;
+  }
+}
+
+.age-title {
+  position: absolute;
+  height: 2em;
+  display: flex;
+  align-items: center;
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman';
+  text-wrap-mode: nowrap;
+  font-weight: normal;
+  font-size: 1.6em;
+}
+
+.age-content {
+  opacity: 0;
+  max-width: 80%;
+  margin-top: 5em;
+  transition: opacity .2s ease;
+}
+
+.age-card:hover .age-content {
+  opacity: 1;
+}

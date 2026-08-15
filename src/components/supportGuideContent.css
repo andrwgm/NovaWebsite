@@ -1,0 +1,190 @@
+.supportGuideContent {
+  color: #ffffff;
+  width: 80%;
+  max-width: none;
+  margin: 0 auto;
+  padding: 0.25rem 0 1.5rem;
+  box-sizing: border-box;
+}
+
+.supportGuideContentIntro {
+  margin: 0;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: clamp(1.25rem, 2.8vw, 1.45rem);
+  line-height: 1.55;
+  color: #ffffff;
+  text-align: justify;
+}
+
+.supportGuideContentIntro strong {
+  font-family: 'AthelasBold', 'Times New Roman', Times, serif;
+  font-weight: normal;
+}
+
+.supportGuideContentHeadline {
+  margin: 1.4rem auto 2.2rem;
+  max-width: none;
+  width: 100%;
+  text-align: center;
+  font-family: 'AthelasBold', 'Times New Roman', Times, serif;
+  font-size: clamp(2.2rem, 4.8vw, 2.6rem);
+  font-weight: normal;
+  line-height: 1.3;
+  color: #2d3b55;
+}
+
+.supportGuideContentFeature {
+  display: grid;
+  grid-template-columns: minmax(0, 20.5rem) minmax(0, 1fr);
+  grid-template-areas:
+    'explore list'
+    'cover list';
+  column-gap: 1.85rem;
+  row-gap: 0;
+  align-items: stretch;
+  margin-top: 1.75rem;
+}
+
+.supportGuideContentExplore {
+  grid-area: explore;
+  margin: 0 0 1.35rem;
+  text-align: center;
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
+  font-size: clamp(2.2rem, 4.8vw, 2.6rem);
+  line-height: 1.15;
+  color: #ffffff;
+}
+
+.supportGuideContentCover {
+  grid-area: cover;
+  width: 100%;
+  max-width: 20.5rem;
+}
+
+.supportGuideContentCover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+}
+
+.supportGuideContentList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.supportGuideContentList li {
+  position: relative;
+  padding-left: 1.15rem;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: clamp(1.2rem, 2.6vw, 1.35rem);
+  line-height: 1.5;
+  color: #ffffff;
+  text-align: justify;
+}
+
+.supportGuideContentList li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.38rem;
+  height: 0.38rem;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.supportGuideContentList li strong {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-family: 'AthelasBold', 'Times New Roman', Times, serif;
+  font-weight: normal;
+}
+
+.supportGuideContentList li span {
+  display: block;
+}
+
+.supportGuideContentList--side {
+  grid-area: list;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-self: stretch;
+  gap: 0;
+  height: 100%;
+  min-height: 0;
+  padding-top: 0;
+}
+
+.supportGuideContentList--full {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+}
+
+.supportGuideContent .supportGuideContentClosing {
+  display: block;
+  width: 100%;
+  max-width: none;
+  margin: 4.5rem 0 0.5rem;
+  text-align: center;
+  font-family: 'AthelasBold', 'Times New Roman', Times, serif;
+  font-size: clamp(2.2rem, 4.8vw, 2.6rem);
+  font-weight: normal;
+  line-height: 1.35;
+  color: #2d3b55;
+}
+
+@media (max-width: 700px) {
+  .supportGuideContent {
+    width: 100%;
+  }
+
+  .supportGuideContentFeature {
+    grid-template-columns: minmax(0, 18.5rem) minmax(0, 1fr);
+    column-gap: 1.35rem;
+  }
+
+  .supportGuideContentList--full {
+    margin-top: 2.75rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .supportGuideContentHeadline {
+    margin: 1.25rem auto 1.75rem;
+  }
+
+  .supportGuideContentFeature {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'explore'
+      'cover'
+      'list';
+    row-gap: 1.75rem;
+    justify-items: center;
+  }
+
+  .supportGuideContentCover {
+    width: 100%;
+    max-width: 20.5rem;
+  }
+
+  .supportGuideContentList--side {
+    width: 100%;
+    height: auto;
+    justify-content: flex-start;
+    gap: 1.35rem;
+  }
+
+  .supportGuideContentList--full {
+    margin-top: 2.25rem;
+  }
+
+  .supportGuideContent .supportGuideContentClosing {
+    margin-top: 3.25rem;
+  }
+}

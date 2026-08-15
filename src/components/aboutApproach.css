@@ -1,0 +1,174 @@
+.aboutApproach {
+  --about-navy: #2d3b55;
+  --about-coral: #ff787c;
+  --about-divider: rgba(255, 120, 124, 0.42);
+  color: var(--about-navy);
+  padding-top: 5.5rem;
+}
+
+.aboutApproachGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 100%;
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.aboutApproachCell {
+  box-sizing: border-box;
+  padding: 2.15rem 3.15rem 2.6rem;
+}
+
+.aboutApproachCell--clinical {
+  border-right: 1px solid var(--about-divider);
+  border-bottom: 1px solid var(--about-divider);
+}
+
+.aboutApproachCell--occupational {
+  border-bottom: 1px solid var(--about-divider);
+}
+
+.aboutApproachCell--speech {
+  border-right: 1px solid var(--about-divider);
+}
+
+.aboutApproachCellTitle {
+  margin: 0 0 0.55rem;
+  text-align: center;
+  font-family: 'TimesNewRomanMTCondensed', 'Times New Roman', Times, serif;
+  font-size: clamp(1.95rem, 2.6vw, 2.35rem);
+  font-weight: normal;
+  line-height: 1.05;
+  color: var(--about-navy);
+}
+
+.aboutApproachCell--speech .aboutApproachCellTitle {
+  font-size: clamp(1.75rem, 2.35vw, 2.15rem);
+  white-space: nowrap;
+}
+
+.aboutApproachCellSubtitle {
+  margin: 0 0 2.25rem;
+  text-align: center;
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
+  font-size: clamp(1.4rem, 1.9vw, 1.7rem);
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.15;
+  color: var(--about-navy);
+}
+
+.aboutApproachCell p:not(.aboutApproachCellSubtitle) {
+  margin: 0 0 1.7rem;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: clamp(1.05rem, 1.5vw, 1.15rem);
+  line-height: 1.35;
+  color: var(--about-navy);
+  text-align: justify;
+}
+
+.aboutApproachCell p:not(.aboutApproachCellSubtitle):last-child {
+  margin-bottom: 0;
+}
+
+.aboutApproachClosing {
+  max-width: 64rem;
+  margin: 7rem auto 0;
+}
+
+.aboutApproachClosingTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto 2.75rem;
+  text-align: center;
+  font-family: 'TimesNewRomanMTCondensed', 'Times New Roman', Times, serif;
+  font-size: clamp(3.1rem, 5.8vw, 3.85rem);
+  font-weight: normal;
+  line-height: 0.95;
+  color: var(--about-navy);
+}
+
+.aboutApproachClosingTitle span,
+.aboutApproachClosingTitle em {
+  display: block;
+}
+
+.aboutApproachClosingTitle em {
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
+  font-style: normal;
+}
+
+.aboutApproachClosing > p {
+  margin: 0;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: clamp(1.125rem, 1.6vw, 1.25rem);
+  line-height: 1.35;
+  color: var(--about-navy);
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .aboutApproach {
+    padding-top: 3.75rem;
+  }
+
+  .aboutApproachCell {
+    padding: 1.85rem 1.75rem 2.15rem;
+  }
+
+  .aboutApproachCell--speech .aboutApproachCellTitle {
+    white-space: normal;
+  }
+
+  .aboutApproachClosing {
+    margin-top: 5.25rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .aboutApproachGrid {
+    grid-template-columns: 1fr;
+    max-width: 36rem;
+  }
+
+  .aboutApproachCell--clinical,
+  .aboutApproachCell--occupational,
+  .aboutApproachCell--speech,
+  .aboutApproachCell--care {
+    border-right: none;
+    border-bottom: 1px solid var(--about-divider);
+  }
+
+  .aboutApproachCell--care {
+    border-bottom: none;
+  }
+
+  .aboutApproachCell {
+    padding: 1.85rem 0.35rem 2rem;
+  }
+
+  .aboutApproachCellTitle {
+    font-size: clamp(1.75rem, 7vw, 1.95rem);
+  }
+
+  .aboutApproachCell--speech .aboutApproachCellTitle {
+    font-size: clamp(1.65rem, 6.5vw, 1.9rem);
+  }
+
+  .aboutApproachCellSubtitle {
+    margin-bottom: 1.75rem;
+    font-size: clamp(1.3rem, 5.5vw, 1.5rem);
+  }
+
+  .aboutApproachClosing {
+    margin-top: 4.5rem;
+  }
+
+  .aboutApproachClosingTitle {
+    margin-bottom: 2.15rem;
+    font-size: clamp(2.6rem, 11vw, 2.95rem);
+  }
+}

@@ -1,0 +1,82 @@
+.notfound {
+    background: #fff;
+    min-height: calc(100vh - 5em);
+    padding: 6rem clamp(1.5rem, 5vw, 5rem) 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notfound__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    width: min(960px, 100%);
+    text-align: center;
+}
+
+.notfound__image {
+    width: min(320px, 70vw);
+    height: auto;
+}
+
+.notfound__copy {
+    color: #2D3B55;
+    font-family: 'AthelasRegular', 'Athelas', serif;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.notfound__oops {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin: 0;
+    font-family: 'AthelasBold', 'Athelas', serif;
+}
+
+.notfound__message {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.notfound__button {
+    align-self: center;
+    background: #2D3B55;
+    color: #fff;
+    padding: 0.85rem 2rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-family: var(--font-family, 'Public Sans', 'LemonMilk', sans-serif);
+    transition: background 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.notfound__button:hover {
+    background: #1f2a3d;
+}
+
+.notfound__button .pi {
+    font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+    .notfound__wrapper {
+        flex-direction: row;
+        text-align: left;
+        gap: clamp(2rem, 5vw, 4rem);
+    }
+
+    .notfound__image {
+        width: min(420px, 35vw);
+    }
+
+    .notfound__button {
+        align-self: flex-start;
+    }
+}

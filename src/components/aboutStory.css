@@ -1,0 +1,216 @@
+.aboutStory {
+  color: #2d3b55;
+}
+
+.aboutStoryTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto 5rem;
+  text-align: center;
+  font-family: 'TimesNewRomanMTCondensed', 'Times New Roman', Times, serif;
+  font-size: clamp(3.4rem, 7vw, 5rem);
+  font-weight: normal;
+  line-height: 0.95;
+  color: #2d3b55;
+}
+
+.aboutStoryTitle span,
+.aboutStoryTitle em {
+  display: block;
+  white-space: nowrap;
+}
+
+.aboutStoryTitle em {
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
+  font-style: normal;
+}
+
+.aboutStoryCopy {
+  --about-story-side: 10rem;
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: minmax(var(--about-story-side), 1fr) minmax(0, 50rem) minmax(var(--about-story-side), 1fr);
+  grid-template-areas: '. copy label';
+  column-gap: 1.25rem;
+  align-items: start;
+}
+
+.aboutStoryCopyMain {
+  grid-area: copy;
+}
+
+.aboutStoryCopyMain p {
+  margin: 0 0 1.75rem;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: clamp(1.15rem, 1.8vw, 1.3rem);
+  line-height: 1.32;
+  color: #2d3b55;
+  text-align: justify;
+}
+
+.aboutStoryCopyMain p:last-child {
+  margin-bottom: 0;
+}
+
+.aboutStoryCopyMain p.aboutStoryCopyItalic {
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-style: italic;
+}
+
+.aboutStoryCopyMain p.aboutStoryCopyBold {
+  font-family: 'AthelasBold', 'Times New Roman', Times, serif;
+}
+
+.aboutStoryLabel {
+  grid-area: label;
+  margin: -0.25em 0 0 0;
+  justify-self: center;
+  font-family: 'TimesNewRomanMTCondensed', 'Times New Roman', Times, serif;
+  font-size: clamp(2.75rem, 4.8vw, 3.25rem);
+  font-weight: normal;
+  line-height: 1.05;
+  color: #ff787c;
+}
+
+.aboutStoryLabel em {
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman', Times, serif;
+  font-style: normal;
+}
+
+.aboutStoryPhotos {
+  position: relative;
+  z-index: 1;
+  margin-top: 5.75rem;
+}
+
+.aboutStoryPhotoRow {
+  display: grid;
+  grid-template-columns: 1.12fr 0.74fr 1.12fr;
+  gap: 0;
+  align-items: start;
+  width: min(88%, 70rem);
+  margin: 0 auto;
+}
+
+.aboutStoryPhotoSlot {
+  position: relative;
+}
+
+.aboutStoryConfetti {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: clamp(12rem, 28vw, 19rem);
+  height: auto;
+  pointer-events: none;
+  transform: translate(-58%, -76%);
+}
+
+.aboutStoryPhotoRow > img,
+.aboutStoryPhotoSlot > img.aboutStoryPhotoRow--left {
+  display: block;
+  width: 100%;
+  height: clamp(11.5rem, 22vw, 15.6rem);
+  object-fit: cover;
+  box-shadow: 0 14px 28px rgba(45, 59, 85, 0.16);
+}
+
+.aboutStoryPhotoRow--left {
+  border-radius: 8px 0 0 8px;
+}
+
+.aboutStoryPhotoRow--tall {
+  height: clamp(16.5rem, 31vw, 21.75rem) !important;
+  border-radius: 0 0 8px 8px;
+}
+
+.aboutStoryPhotoRow--right {
+  border-radius: 0 8px 8px 0;
+}
+
+@media (max-width: 1400px) {
+  .aboutStoryConfetti {
+    transform: translate(-48%, -76%);
+  }
+}
+
+@media (max-width: 1100px) {
+  .aboutStoryConfetti {
+    transform: translate(-62%, -76%);
+  }
+}
+
+@media (max-width: 900px) {
+  .aboutStoryTitle {
+    margin-bottom: 3.25rem;
+  }
+
+  .aboutStoryCopy {
+    grid-template-columns: minmax(0, 50rem);
+    grid-template-areas:
+      'label'
+      'copy';
+    justify-content: center;
+    row-gap: 1.5rem;
+    width: min(100%, 50rem);
+    margin: 0 auto;
+    padding: 0 1.75rem;
+    box-sizing: border-box;
+  }
+
+  .aboutStoryLabel {
+    font-size: clamp(2.4rem, 7vw, 2.9rem);
+  }
+
+  .aboutStoryPhotos {
+    margin-top: 5.25rem;
+  }
+
+  .aboutStoryConfetti {
+    transform: translate(-98%, -72%);
+  }
+}
+
+@media (max-width: 560px) {
+  .aboutStoryTitle {
+    margin-bottom: 2.5rem;
+    font-size: clamp(2.4rem, 11vw, 3.4rem);
+  }
+
+  .aboutStoryCopyMain p {
+    margin-bottom: 1.4rem;
+  }
+
+  .aboutStoryPhotoRow {
+    grid-template-columns: 1fr;
+    width: min(92%, 22rem);
+  }
+
+  .aboutStoryPhotoRow > img,
+  .aboutStoryPhotoSlot > img.aboutStoryPhotoRow--left,
+  .aboutStoryPhotoRow--tall {
+    height: clamp(12rem, 52vw, 16rem) !important;
+  }
+
+  .aboutStoryPhotoRow--left {
+    border-radius: 8px 8px 0 0;
+  }
+
+  .aboutStoryPhotoRow--tall {
+    border-radius: 0;
+  }
+
+  .aboutStoryPhotoRow--right {
+    border-radius: 0 0 8px 8px;
+  }
+
+  .aboutStoryConfetti {
+    width: clamp(6.5rem, 34vw, 9.5rem);
+    transform: translate(-20%, -60%);
+  }
+}

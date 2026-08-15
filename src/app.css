@@ -1,0 +1,209 @@
+@font-face {
+    font-family: 'LemonMilk';
+    src: url('/fonts/LEMONMILK-Medium.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'LemonMilkLight';
+    src: url('/fonts/LEMONMILK-Light.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'LemonMilkBold';
+    src: url('/fonts/LEMONMILK-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'TheSeries';
+    src: url('/fonts/The Series.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'AthelasRegular';
+    src: url('/fonts/Athelas-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'AthelasBold';
+    src: url('/fonts/Athelas-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'TimesNewRomanMTCondensed';
+    src: url('/fonts/Times New Roman MT Condensed Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'TimesNewRomanMTCondensedItalic';
+    src: url('/fonts/Times New Roman MT Condensed Italic.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body{
+    margin: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.app-shell {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-main {
+    flex: 1;
+}
+
+.route-fallback {
+    min-height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.route-fallback::after {
+    content: "";
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 3px solid rgba(45, 59, 85, 0.15);
+    border-top-color: rgba(55, 181, 188, 0.65);
+    animation: route-spin 0.8s linear infinite;
+}
+
+@keyframes route-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+a,
+button,
+input,
+textarea {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.splash-screen {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 300ms ease;
+}
+
+.splash-screen.is-fading {
+    opacity: 0;
+}
+
+.splash-screen img {
+    width: min(70vw, 420px);
+    height: auto;
+}
+
+.cookie-banner {
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    z-index: 9998;
+    border-radius: 16px;
+    padding: 16px 18px;
+    background-color: rgb(255 255 255 / 70%); /* from 25% up to 70% works fine for me, check with marketing */
+    color: rgb(255 255 255 / 90%);
+    text-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+    font-size: 1.25rem;
+    box-shadow: 0 6px 6px rgb(0 0 0 / 20%), 0 0 20px rgb(0 0 0 / 10%);
+    backdrop-filter: blur(3px);
+}
+
+.cookie-banner__content {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    font-family: 'AthelasRegular', serif;
+    font-size: 0.95rem;
+}
+
+.cookie-banner__content p {
+    margin: 0;
+    color: #1f2a3d;
+}
+
+.cookie-banner__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.cookie-banner__button {
+    border: none;
+    border-radius: 999px;
+    padding: 10px 18px;
+    background: #9ecdc9c7;
+    color: #1f2a3d;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.cookie-banner__button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(55, 181, 188, 0.35);
+}
+
+.cookie-banner__button--secondary {
+    background: #969fa257;
+}
+
+.cookie-banner__button--secondary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px #969fa257;
+}
+
+.cookie-banner__link {
+    color: #1f2a3d;;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.cookie-banner__link:hover {
+    text-decoration: underline;
+}
+
+@media (min-width: 900px) {
+    .cookie-banner {
+        left: auto;
+        right: 24px;
+        max-width: 520px;
+    }
+}

@@ -1,0 +1,514 @@
+.mainContent {
+    display: block;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-width: 100vw;
+}
+
+.parallax {
+    position: relative;
+    overflow: hidden;
+  }
+  
+.parallax::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120%;
+    height: 130%; /* un poco más grande */
+    background-image: url("/images/hands-background-compressed.avif");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-position-y: -3em;
+    z-index: -1;
+  }
+
+@supports (-webkit-touch-callout: none) {
+    .parallax::before {
+        width: 100%;
+        height: 100%;
+        background-attachment: scroll;
+        background-position: center;
+        background-position-y: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .parallax::before {
+        background-image: url("/images/hands-background-compressed-mobile.avif");
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .parallax::before {
+        background-attachment: scroll;
+        background-position-y: 0;
+    }
+}
+
+.titleAndButton {
+    display: flex;
+    background-color: #2d2f3138;
+    padding-bottom: 4em;
+    padding-top: 4rem;
+}
+
+.titleAndButton .titles {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+}
+
+.titleAndButton .bigTitle {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
+    font-size: 5em;
+    line-height: 0.8;
+    color: white;
+    padding-left: 3rem;
+}
+.titleAndButton .bigTitle .bigTitleItalic {
+    font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman';
+    /* margin-top: -2rem; */
+    margin-left: 1rem;
+}
+
+.titleAndButton .smallTitle {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: white;
+    padding-left: 3rem;
+    padding-top: 3rem;
+}
+
+.titleAndButton .smallTitle .smallTitleBold {
+    font-family: 'AthelasBold', 'Times New Roman', Times, serif;
+    font-size: 2.1em;
+}
+
+.titleAndButton .smallTitle .smallTitleRegular {
+    font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+    font-size: 1.5em;
+    margin-top: -0.5em;
+}
+
+.titleAndButton .bookButton {
+    width: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titleAndButton .bookButton img {
+    width: 9em;
+}
+
+.titleAndButton .bookButton .p-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff00;
+    border: none;
+    transition: all 0.2s ease;
+    gap: 0.4em;
+    font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman';
+    font-size: 1.8em;
+}
+
+.titleAndButton .bookButton .p-button:hover {
+    transform: scale(1.05);
+}
+
+.titleAndButton .bookButton .p-button:focus {
+    box-shadow: none;
+}
+
+.whiteBg {
+    width: 100%;
+    background-color: white;
+}
+
+.whiteBg .withHeight{
+    min-height: 120vh;
+}
+
+.whyChooseUsContent {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4vw 3vw;
+}
+
+.whyChooseUsTitle {
+    font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
+    font-size: 5em;
+    color: #344759;
+    padding: 0.5em 0;
+}
+
+.whyChooseUsTitleItalic {
+    font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman';
+    padding-left: 10rem;
+    margin-top: -2rem;
+}
+
+.whyChooseUsTextAndImg {
+    display: grid;
+    grid-template-columns: minmax(380px, 1.15fr) minmax(320px, 0.85fr);
+    align-items: center;
+    justify-items: center;
+    gap: 3rem;
+    width: min(1180px, 100%);
+    padding-top: 1em;
+}
+
+.whyChooseUsTextAndImg img {
+    width: 100%;
+    max-width: 23em;
+    border-radius: 5em;
+}
+
+.whyChooseUsText {
+    width: 100%;
+    max-width: 40rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-left: 0;
+    font-size: 1.3em;
+    row-gap: 0.25em;
+    color: #344759;
+}
+
+.whyChooseUsTextBold {
+    font-family: 'AthelasBold', 'Times New Roman', Times, serif;
+    font-size: 1.5em;
+}
+
+.whyChooseUsTextRegular {
+    font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+    font-size: 1.2em;
+    margin-bottom: 1em;
+}
+
+.isThisForMeTitle {
+    font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
+    font-size: 5em;
+    color: #344759;
+}
+
+.isThisForMeTitleItalic {
+    font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman';
+    padding-left: 4rem;
+    margin-top: -2rem;
+}
+
+.isThisForMeText {
+    font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+    font-size: 1.4em;
+    width: 80%;
+    margin-top: 2em;
+    text-align: justify;
+    padding: 0 5% 5% 5%;
+    color: #344759;
+}
+
+.whiteBg .curveShadow img {
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+}
+
+.gentleSlide {
+    transform: translateY(5em);
+    margin-bottom: 34em;
+}
+
+@media (min-width: 1900px) {
+    .gentleSlide {
+        margin-bottom: 40em;
+    }
+
+    .whyChooseUsContent {
+        padding: 0 4vw 0vw;
+    }
+}
+
+@media (min-width: 2560px) {
+    .gentleSlide {
+        margin-bottom: 45em;
+    }
+
+    .whyChooseUsContent {
+        padding: 0 4vw 0vw;
+    }
+}
+
+.blueLineBg {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 4em 0;
+}
+
+.darkBlueLine {
+    position: absolute;
+    background-color: #344759;
+    height: 60%;
+    width: 100%;
+}
+
+.stillHaveQuestionsBg {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    padding: 2em 0;
+    margin: 4em 0;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+}
+
+.stillHaveQuestionsTitle {
+    font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman';
+    font-size: 4em;
+    color: #344759;
+    text-align: center;
+}
+
+.stillHaveQuestionsBg .p-button{
+    border: none;
+    color: white;
+    background: #2D3B55;
+    border-radius: 2em;
+}
+
+.stillHaveQuestionsBg .p-button:hover{
+    background: #202735;
+}
+
+.stillHaveQuestionsBg .p-button:focus{
+    outline: none;
+    outline-offset: none;
+}
+
+.footer {
+    z-index: 1;
+    position: relative;
+}
+
+@media (max-width: 2560px) {
+    .whiteBg .withHeight {
+        min-height: 120vh;
+    }
+}
+
+@media (max-width: 1440px) {
+    .whiteBg .withHeight {
+        min-height: 150vh;
+    }
+}
+
+@media (max-width: 992px) {
+    .titleAndButton {
+        padding: 3rem 2rem 4rem;
+        gap: 2rem;
+    }
+
+    .titleAndButton .bigTitle {
+        font-size: 4em;
+        padding-left: 2rem;
+    }
+
+    .titleAndButton .bigTitle .bigTitleItalic {
+        margin-left: 0.8rem;
+    }
+
+    .titleAndButton .smallTitle {
+        padding-left: 2rem;
+        padding-top: 2rem;
+    }
+
+    .titleAndButton .bookButton {
+        width: 40%;
+    }
+
+    .whiteBg .withHeight {
+        min-height: 165vh;
+    }
+
+    .whyChooseUsTitle {
+        font-size: 4.5em;
+        text-align: center;
+    }
+
+    .whyChooseUsTitleItalic {
+        padding-left: 5rem;
+        margin-top: -1.6rem;
+    }
+
+    .whyChooseUsTextAndImg {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 2rem;
+        width: min(900px, 100%);
+    }
+
+    .whyChooseUsText {
+        width: 100%;
+        margin-left: 0;
+        align-items: center;
+        text-align: center;
+        font-size: 1.2em;
+    }
+
+    .whyChooseUsTextAndImg img {
+        width: clamp(20em, 70vw, 28em);
+    }
+
+    .isThisForMeTitle {
+        font-size: 4.2em;
+    }
+
+    .isThisForMeTitleItalic {
+        padding-left: 2.8rem;
+        margin-top: -1.6rem;
+    }
+
+    .isThisForMeText {
+        padding: 0 5% 5% 5%;
+    }
+}
+
+@media (max-width: 840px) {
+    .titleAndButton .bigTitle {
+        font-size: 7.25cqi;
+    }
+
+    .titleAndButton .smallTitle .smallTitleBold{
+        font-size: 1.6em;
+    }
+
+    .titleAndButton .smallTitle .smallTitleRegular{
+        font-size: 1.2em;
+    }
+
+    .whyChooseUsTitle {
+        font-size: 3.5em;
+        text-align: center;
+    }
+}
+
+@media (max-width: 700px) {
+    .titleAndButton .bigTitle {
+        font-size: 6.9cqi;
+    }
+
+    .titleAndButton .smallTitle .smallTitleBold{
+        font-size: 1.4em;
+    }
+
+    .titleAndButton .smallTitle .smallTitleRegular{
+        font-size: 1.05em;
+    }
+
+    .titleAndButton .bookButton img {
+        width: 8em;
+    }
+}
+
+@media (max-width: 600px) {
+    .titleAndButton {
+        flex-direction: column;
+        padding: 2.5rem 1.25rem 3rem;
+        gap: 2rem;
+    }
+
+    .titleAndButton .titles {
+        width: 100%;
+        align-items: flex-start;
+    }
+
+    .titleAndButton .bigTitle,
+    .titleAndButton .smallTitle {
+        padding-left: 0;
+        text-align: left;
+    }
+
+    .titleAndButton .bigTitle .bigTitleItalic {
+        margin-left: 0.6rem;
+    }
+
+    .titleAndButton .bookButton {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .titleAndButton .bigTitle {
+        font-size: clamp(3.2em, 13vw, 4.2em);
+    }
+
+    .titleAndButton .bookButton {
+        justify-content: center;
+    }
+
+    .whyChooseUsTitle {
+        padding: 0.5em 0;
+    }
+
+    .whyChooseUsText {
+        width: 100%;
+        font-size: 1.1em;
+        gap: 0.8rem;
+        padding: 0;
+    }
+
+    .whyChooseUsTextBold {
+        font-size: 1.35em;
+    }
+
+    .whyChooseUsTextRegular {
+        font-size: 1.05em;
+    }
+
+    .whyChooseUsTextAndImg img {
+        width: clamp(16em, 80vw, 24em);
+    }
+
+    .isThisForMeTitle {
+        font-size: 3.5em;
+    }
+
+    .isThisForMeTitleItalic {
+        padding-left: 1.8rem;
+        margin-top: -1.2rem;
+    }
+    
+    .isThisForMeText {
+        font-size: 1.225em;
+    }
+
+    .whyChooseUsTitleItalic {
+        padding-left: 3.2rem;
+        margin-top: -1.2rem;
+    }
+
+    .stillHaveQuestionsTitle{
+        font-size: 3em;
+    }
+}

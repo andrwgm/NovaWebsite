@@ -7,6 +7,10 @@ yarn-error.log*
 lerna-debug.log*
 .pnpm-debug.log*
 
+CHANGELOG.md
+Nova Clinics – Dev Private Notes.md
+README.txt
+
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
@@ -77,6 +81,7 @@ web_modules/
 .env.development.local
 .env.test.local
 .env.production.local
+.env.production
 .env.local
 
 # parcel-bundler cache (https://parceljs.org/)
@@ -90,6 +95,9 @@ out
 # Nuxt.js build / generate output
 .nuxt
 dist
+
+# Vite production output (this project uses outDir: build)
+build/
 
 # Gatsby files
 .cache/
