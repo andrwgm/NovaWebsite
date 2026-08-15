@@ -9,7 +9,7 @@ import './supportGuides.css';
 
 export default function SupportGuides() {
   const tabSlugs = useMemo(
-    () => ['before-the-assessment', 'during-the-assessment', 'supporting-your-child-at-home', 'youre-not-alone'],
+    () => ['before-the-assessment', 'during-the-assessment', 'supporting-your-child', 'youre-not-alone'],
     []
   );
   const slugToIndex = useMemo(() => {
@@ -96,10 +96,10 @@ export default function SupportGuides() {
         </AccordionTab>
 
         <AccordionTab
-          id="supporting-your-child-at-home"
+          id="supporting-your-child"
           header={
             <h2>
-              Supporting your <em>Child at Home</em>
+              Supporting your <em>Child</em>
             </h2>
           }
           className="support-guides__tab"

@@ -26,7 +26,7 @@ const LINK_COLUMNS = [
     links: [
       { label: 'Before the assessment', to: '/support#before-the-assessment' },
       { label: 'During the assessment', to: '/support#during-the-assessment' },
-      { label: 'Supporting your child at home', to: '/support#supporting-your-child-at-home' },
+      { label: 'Supporting your child', to: '/support#supporting-your-child' },
       { label: "You're not alone", to: '/support#youre-not-alone' },
     ],
   },
