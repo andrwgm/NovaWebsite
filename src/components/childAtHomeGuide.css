@@ -271,6 +271,7 @@
 
 .childGuideBlock--home .childGuideTop {
   align-items: stretch;
+  margin-bottom: 3em;
 }
 
 .childGuideBlock--home .childGuideTopLeft {
@@ -300,7 +301,7 @@
 }
 
 .childGuideBlock:not(.childGuideBlock--home) .childGuideHeadline--section {
-  margin-bottom: 1.75rem;
+  margin-bottom: 5rem;
 }
 
 .childGuideCover--school {
