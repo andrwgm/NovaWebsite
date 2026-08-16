@@ -29,7 +29,7 @@ const PRICE_CARDS = [
         ),
         description:
             'Receive a comprehensive autism assessment with evidence-based tools, a detailed diagnostic report, and personalised post-assessment support.',
-        price: '£2,250',
+        price: '£2,400',
         included: [
             'ADOS - 2 informed observation',
             'ADI-R informed parent interview',
@@ -54,11 +54,10 @@ const PRICE_CARDS = [
             </>
         ),
         description:
-            'Undergo a thorough ADHD assessment combining clinical interviews and objective testing, followed by a clear report and tailored aftercare.',
+            'Undergo a thorough ADHD assessment through clinical interviews and structured questionnaires, followed by a clear report and tailored aftercare.',
         price: '£1,800',
         included: [
             'DIVA or ACE interview',
-            'QbCheck',
             'Social context input',
             'Report',
             'Feedback',
@@ -81,12 +80,11 @@ const PRICE_CARDS = [
         ),
         description:
             'A complete dual assessment for autism and ADHD, integrating validated tools, expert clinical insight, and personalised ongoing support.',
-        price: '£2,700',
+        price: '£3,200',
         included: [
             'ADOS - 2 informed observation',
             'ADI-R informed parent interview',
             'DIVA or ACE interview',
-            'QbCheck',
             'Social context input',
             'Report',
             'Feedback',

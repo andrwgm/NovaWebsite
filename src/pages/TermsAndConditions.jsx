@@ -25,7 +25,7 @@ const sections = [
     title: 'Private-pay model',
     body: [
       'All Services are delivered on a private-pay basis. Your booking confirmation sets out the requirements and price for your chosen Service.',
-      'Current standard fees are: autism assessment £2,250; ADHD assessment £1,800; combined autism and ADHD assessment £2,700. These fees include questionnaires, clinical assessment, multi-disciplinary review, feedback, and the included post-assessment support session where offered as part of your pathway.',
+      'Current standard fees are: autism assessment £2,400; ADHD assessment £1,800; combined autism and ADHD assessment £3,200. These fees include questionnaires, clinical assessment, multi-disciplinary review, feedback, and the included post-assessment support session where offered as part of your pathway.',
       'For further information email team@novaclinics.co.uk or write to Nova Clinics UK, 128 City Road, London, EC1V 2NX, United Kingdom.',
     ],
   },

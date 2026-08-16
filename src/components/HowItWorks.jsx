@@ -50,8 +50,8 @@ const CHILD_STEPS_ADHD = [
   },
   {
     title: 'Child/Young person Observation (60 minutes)',
-    detail: 'This step involves the remote QbCheck computer test, a clinical meeting with the child, and a DIVA/ACE questionnaire to evaluate the daily impact of ADHD traits.',
-    extraInfo: 'We will also use the QbCheck - a reliable computer-based test designed to objectively measure and assess various aspects of hyperactivity, impulsivity, and inattention. It is administered remotely using your computer\'s web browser and takes approximately 20 minutes to complete. Our support team will send you detailed instructions and a voucher code to remotely access the QbCheck test. A part from this QbCheck, our clinical team will have meeting with your child to gather his/her stenches and needs. We will also use a DIVA/ACE questionnaire to gather more information about ADHD traits and the impact that those are having in your child day - to - day.',
+    detail: 'This step involves a clinical meeting with the child and a DIVA/ACE questionnaire to evaluate the daily impact of ADHD traits.',
+    extraInfo: 'Our clinical team will meet with your child to gather his/her strengths and needs. We will also use a DIVA/ACE questionnaire to gather more information about ADHD traits and the impact that those are having in your child day - to - day.',
   },
   {
     title: 'Multi-disciplinary Team Review',
@@ -83,8 +83,8 @@ const CHILD_STEPS_COMBINED = [
   },
   {
     title: 'Child/Young person Observation (60 minutes)',
-    detail: 'An extensive observation combining the ADOS-2 for autism, the remote QbCheck for attention, and clinical meetings to assess daily challenges.',
-    extraInfo: 'We will complete an observation assessment with the child/young person/adult. We use an ADOS-2 (the Autism Diagnostic Observation Schedule – Second Edition) informed format, which includes activities that can help a specialised trained clinician to understand an individual\'s communication skills, social interaction style and play or imaginative use of materials, depending upon the individual\'s developmental age. The ADOS-2 is a ‘gold standard’ observational tool when assessing for possible Autism. We will also use the QbCheck - a reliable computer-based test designed to objectively measure and assess various aspects of hyperactivity, impulsivity, and inattention. It is administered remotely using your computer\'s web browser and takes approximately 20 minutes to complete. Our support team will send you detailed instructions and a voucher code to remotely access the QbCheck test. A part from this QbCheck, our clinical team will have meeting with your child to gather his/her stenches and needs. We will also use a DIVA/ACE questionnaire to gather more information about ADHD traits and the impact that those are having in your child day - to - day.',
+    detail: 'An extensive observation combining the ADOS-2 for autism with clinical meetings to assess daily challenges and ADHD traits.',
+    extraInfo: 'We will complete an observation assessment with the child/young person/adult. We use an ADOS-2 (the Autism Diagnostic Observation Schedule – Second Edition) informed format, which includes activities that can help a specialised trained clinician to understand an individual\'s communication skills, social interaction style and play or imaginative use of materials, depending upon the individual\'s developmental age. The ADOS-2 is a ‘gold standard’ observational tool when assessing for possible Autism. Our clinical team will also meet with your child to gather his/her strengths and needs. We will also use a DIVA/ACE questionnaire to gather more information about ADHD traits and the impact that those are having in your child day - to - day.',
   },
   {
     title: 'Multi-disciplinary Team Review',
@@ -144,8 +144,8 @@ const ADULT_STEPS_ADHD = [
   },
   {
     title: 'Personal interview (90 minutes)',
-    detail: 'Assessment includes the remote QbCheck test, a clinical meeting to identify strengths and needs, and a DIVA/ACE questionnaire to evaluate ADHD traits.',
-    extraInfo: 'We will also use the QbCheck - a reliable computer-based test designed to objectively measure and assess various aspects of hyperactivity, impulsivity, and inattention. It is administered remotely using your computer\'s web browser and takes approximately 20 minutes to complete. Our support team will send you detailed instructions and a voucher code to remotely access the QbCheck test. A part from this QbCheck, our clinical team will have meeting with your to gather a better understanding of your strengths and needs. We will also use a DIVA/ACE questionnaire to gather more information about ADHD traits and the impact that those are having in your day - to - day.',
+    detail: 'Assessment includes a clinical meeting to identify strengths and needs, and a DIVA/ACE questionnaire to evaluate ADHD traits.',
+    extraInfo: 'Our clinical team will meet with you to gather a better understanding of your strengths and needs. We will also use a DIVA/ACE questionnaire to gather more information about ADHD traits and the impact that those are having in your day - to - day.',
   },
   {
     title: 'Informant interview (60 minutes)',
@@ -177,8 +177,8 @@ const ADULT_STEPS_COMBINED = [
   },
   {
     title: 'Personal interview (90 minutes)',
-    detail: 'An extensive evaluation combining the ADI-R, ADOS-2, QbCheck, and DIVA/ACE tools to explore both autism and ADHD traits thoroughly.',
-    extraInfo: 'We use a detailed questionnaire to explore your current presentation. We use an ADIR (Autism Diagnostic Interview-Revised) informed questionnaire. The ADI-R is considered a ‘gold standard’ tool when exploring an Autism diagnosis, and our interview is Aldo based on the DMS-5 criteria for Autism. In this step, we will also complete an observation assessment with you. We use the ADOS-2 (the Autism Diagnostic Observation Schedule – Second Edition) which includes activities that can help a trained clinician to evaluate your communication skills, social interaction style and imaginative use of materials. The ADOS-2 is a ‘gold standard’ observational tool when assessing for possible Autism. We will also use the QbCheck - a reliable computer-based test designed to objectively measure and assess various aspects of hyperactivity, impulsivity, and inattention. It is administered remotely using your computer’s web browser and takes approximately 20 minutes to complete. Our support team will send you detailed instructions and a voucher code to remotely access the QbCheck test. A part from this QbCheck, our clinical team will have meeting with your to gather a better understanding of your strengths and needs. We will also use a DIVA/ACE questionnaire to gather more information about ADHD traits and the impact that those are having in your day - to - day.',
+    detail: 'An extensive evaluation combining the ADI-R, ADOS-2, and DIVA/ACE tools to explore both autism and ADHD traits thoroughly.',
+    extraInfo: 'We use a detailed questionnaire to explore your current presentation. We use an ADIR (Autism Diagnostic Interview-Revised) informed questionnaire. The ADI-R is considered a ‘gold standard’ tool when exploring an Autism diagnosis, and our interview is Aldo based on the DMS-5 criteria for Autism. In this step, we will also complete an observation assessment with you. We use the ADOS-2 (the Autism Diagnostic Observation Schedule – Second Edition) which includes activities that can help a trained clinician to evaluate your communication skills, social interaction style and imaginative use of materials. The ADOS-2 is a ‘gold standard’ observational tool when assessing for possible Autism. Our clinical team will also meet with you to gather a better understanding of your strengths and needs. We will also use a DIVA/ACE questionnaire to gather more information about ADHD traits and the impact that those are having in your day - to - day.',
   },
   {
     title: 'Informant interview (60 minutes)',
