@@ -7,7 +7,7 @@ const SOCIAL_LINKS = [
   { icon: 'pi pi-linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/company/novaclinicsuk/' },
   { icon: 'pi pi-facebook', label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61584780458767' },
   // { icon: 'pi pi-youtube', label: 'YouTube', href: '#' },
-  { icon: 'pi pi-tiktok', label: 'TikTok', href: '#' },
+  { icon: 'pi pi-tiktok', label: 'TikTok', href: 'https://www.tiktok.com/@novaclinicsuk' },
 ];
 
 const LINK_COLUMNS = [
