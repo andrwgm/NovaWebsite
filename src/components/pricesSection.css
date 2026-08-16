@@ -126,6 +126,12 @@
     margin-top: 0.15rem;
 }
 
+.priceCardListItemSpacer {
+    min-height: 1.45em;
+    visibility: hidden;
+    pointer-events: none;
+}
+
 .priceCardPortalContent {
     display: flex;
     flex-direction: column;

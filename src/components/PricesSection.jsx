@@ -63,6 +63,7 @@ const PRICE_CARDS = [
             'Feedback',
             'Post-assessment follow-up',
             { type: 'portal' },
+            { type: 'spacer' },
         ],
         turnaround:
             'Your assessment results will be carefully prepared and shared within approximately 10 working days.',
@@ -124,6 +125,16 @@ const renderIncludedItem = (item) => {
                     </ul>
                 </div>
             </li>
+        );
+    }
+
+    if (item?.type === 'spacer') {
+        return (
+            <li
+                className="priceCardListItem priceCardListItemSpacer"
+                key="spacer"
+                aria-hidden="true"
+            />
         );
     }
 
