@@ -7,6 +7,15 @@ const HOME_INTRO = [
   'As the journey unfolds, understanding each stage and what it may mean can make everything feel clearer, more manageable, and less overwhelming.',
 ];
 
+const HOME_TAGLINE = (
+  <>
+    <span>Small</span>
+    <span>moments shape</span>
+    <em>the bigger</em>
+    <span>picture</span>
+  </>
+);
+
 const HOME_HEADLINE = (
   <>
     <span>At</span> <em>home</em>
@@ -160,6 +169,8 @@ export default function ChildAtHomeGuide() {
           scope="childGuide"
           wrap={false}
           intro={HOME_INTRO}
+          tagline={HOME_TAGLINE}
+          taglineVariant="moments"
           headline={HOME_HEADLINE}
           headlineVariant="section"
           cover={{

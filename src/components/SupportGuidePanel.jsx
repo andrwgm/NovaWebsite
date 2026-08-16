@@ -5,6 +5,8 @@ function SupportGuidePanelInner({
   scope,
   intro = [],
   introPlacement = 'before-headline',
+  tagline = null,
+  taglineVariant = 'default',
   headline,
   headlineVariant = 'default',
   cover,
@@ -34,6 +36,16 @@ function SupportGuidePanelInner({
       </div>
     ) : null;
 
+  const taglineBlock = tagline ? (
+    <p
+      className={
+        taglineVariant !== 'default' ? c('Tagline', taglineVariant) : c('Tagline')
+      }
+    >
+      {tagline}
+    </p>
+  ) : null;
+
   const headlineBlock = (
     <h3
       className={
@@ -53,12 +65,14 @@ function SupportGuidePanelInner({
           {introPlacement === 'before-headline' ? (
             <>
               {introBlock}
+              {taglineBlock}
               {headlineBlock}
             </>
           ) : (
             <>
               {headlineBlock}
               {introBlock}
+              {taglineBlock}
             </>
           )}
         </div>
