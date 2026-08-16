@@ -336,7 +336,7 @@
 }
 
 .childGuideBlock--home .childGuideTagline--moments {
-  margin-top: auto;
+  margin-block: auto;
 }
 
 .childGuideBlock--home .childGuideHeadline--section {
@@ -422,7 +422,7 @@
   }
 
   .childGuideBlock--home .childGuideTagline--moments {
-    margin-top: 2.25rem;
+    margin-block: 2.25rem;
     align-self: center;
     font-size: clamp(2.8rem, 10vw, 3.6rem);
   }
