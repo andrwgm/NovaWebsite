@@ -15,7 +15,9 @@ import '../components/blog/blog.css'
 export default function Blog() {
   const [filterId, setFilterId] = useState('all')
   const [query, setQuery] = useState('')
-  const [visibleCount, setVisibleCount] = useState(BLOG_LIST_PAGE_SIZE)
+  const [visibleCount, setVisibleCount] = useState(
+    import.meta.env.SSR === true ? Number.MAX_SAFE_INTEGER : BLOG_LIST_PAGE_SIZE
+  )
 
   const allPosts = useMemo(() => getAllPosts(), [])
   const featured = useMemo(() => getFeaturedPost(allPosts), [allPosts])

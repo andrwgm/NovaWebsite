@@ -5,7 +5,7 @@ export const useDeferredRender = ({
   idleTimeoutMs = 2500,
   immediate = false,
 } = {}) => {
-  const [isReady, setIsReady] = useState(immediate);
+  const [isReady, setIsReady] = useState(immediate || import.meta.env.SSR === true);
 
   useEffect(() => {
     if (immediate || isReady) {

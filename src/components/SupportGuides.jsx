@@ -54,6 +54,25 @@ export default function SupportGuides() {
     }
   };
 
+  if (import.meta.env.SSR) {
+    return (
+      <section className="support-guides">
+        <div className="support-guides__panel support-guides__panel--before">
+          <BeforeAssessmentGuide />
+        </div>
+        <div className="support-guides__panel support-guides__panel--after">
+          <AfterAssessmentGuide />
+        </div>
+        <div className="support-guides__panel support-guides__panel--child">
+          <ChildAtHomeGuide />
+        </div>
+        <div className="support-guides__panel support-guides__panel--alone">
+          <NotAloneGuide />
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="support-guides">
       <Accordion

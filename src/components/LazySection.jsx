@@ -11,7 +11,9 @@ const LazySection = React.forwardRef(function LazySection(
   },
   forwardedRef
 ) {
-  const [isVisible, setIsVisible] = useState(forceVisible);
+  const [isVisible, setIsVisible] = useState(
+    () => forceVisible || import.meta.env.SSR === true
+  );
   const localRef = useRef(null);
 
   useEffect(() => {

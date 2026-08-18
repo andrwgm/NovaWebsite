@@ -26,6 +26,10 @@ const Blog = React.lazy(() => import('./pages/Blog'));
 const BlogPost = React.lazy(() => import('./pages/BlogPost'));
 const ContactModal = React.lazy(() => import('./components/ContactModal'));
 
+export function App() {
+  return <AppContent />;
+}
+
 function AppContent() {
   const location = useLocation();
   const [showSplash, setShowSplash] = useState(false);
@@ -220,11 +224,11 @@ function AppContent() {
   );
 }
 
-export default function App() {
+export default function AppRoot() {
   return (
     <HelmetProvider>
       <Router>
-        <AppContent />
+        <App />
       </Router>
     </HelmetProvider>
   );
