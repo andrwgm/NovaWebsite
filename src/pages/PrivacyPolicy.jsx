@@ -18,7 +18,7 @@ const sections = [
     body: [
       'Name: NovaClinicsUK',
       'Trading name: Nova Clinics UK',
-      'Address: 128 City Road, London, EC1V 2NX, UK',
+      'Address: 82a James Carter Road, Mildenhall, Bury St. Edmunds, IP28 7DE, UK',
       'Company number: 16344901',
       'General enquiries: team@novaclinics.co.uk',
       'We are the controller of your personal data and decide why and how it is used and shared.',
