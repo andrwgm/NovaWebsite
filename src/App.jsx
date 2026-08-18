@@ -8,7 +8,11 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Footer from './components/Footer';
 import { onContactModalRequest } from './utils/contactModalService';
-import { loadGoogleAnalytics, removeGoogleAnalytics } from './utils/googleAnalytics';
+import {
+  COOKIE_CONSENT_KEY,
+  denyAllGoogleConsent,
+  grantAnalyticsConsent,
+} from './utils/googleAnalytics';
 
 import { Image } from 'primereact/image';
 
@@ -36,12 +40,11 @@ function AppContent() {
   const [showSplash, setShowSplash] = useState(false);
   const [isFading, setIsFading] = useState(false);
   const hasShownSplash = useRef(false);
-  const consentKey = 'nova_cookie_consent';
   const [cookieConsent, setCookieConsent] = useState(() => {
     if (typeof window === 'undefined') {
       return null;
     }
-    const stored = window.localStorage.getItem(consentKey);
+    const stored = window.localStorage.getItem(COOKIE_CONSENT_KEY);
     return stored === 'accepted' || stored === 'rejected' ? stored : null;
   });
   const shouldShowCookieBanner = cookieConsent === null;
@@ -83,25 +86,20 @@ function AppContent() {
   }, [location.pathname]);
 
   useEffect(() => {
-    if (cookieConsent !== 'accepted') {
-      return undefined;
-    }
-    if (document.querySelector('script[data-cf-beacon]')) {
-      return undefined;
-    }
-    const script = document.createElement('script');
-    script.defer = true;
-    script.src = 'https://static.cloudflareinsights.com/beacon.min.js';
-    script.setAttribute('data-cf-beacon', '{"token":"4ca237c52da34a759461480f964a0fc3"}');
-    document.body.appendChild(script);
-    loadGoogleAnalytics();
-    return undefined;
-  }, [cookieConsent]);
-
-  useEffect(() => {
     if (cookieConsent === 'accepted') {
+      grantAnalyticsConsent();
+      if (document.querySelector('script[data-cf-beacon]')) {
+        return undefined;
+      }
+      const script = document.createElement('script');
+      script.defer = true;
+      script.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+      script.setAttribute('data-cf-beacon', '{"token":"4ca237c52da34a759461480f964a0fc3"}');
+      document.body.appendChild(script);
       return undefined;
     }
+
+    denyAllGoogleConsent();
     const script = document.querySelector('script[data-cf-beacon]');
     if (script) {
       script.remove();
@@ -109,7 +107,6 @@ function AppContent() {
     if (window.__cfBeacon) {
       delete window.__cfBeacon;
     }
-    removeGoogleAnalytics();
     return undefined;
   }, [cookieConsent]);
 
@@ -149,9 +146,9 @@ function AppContent() {
     setCookieConsent(choice);
     if (typeof window !== 'undefined') {
       if (choice === null) {
-        window.localStorage.removeItem(consentKey);
+        window.localStorage.removeItem(COOKIE_CONSENT_KEY);
       } else {
-        window.localStorage.setItem(consentKey, choice);
+        window.localStorage.setItem(COOKIE_CONSENT_KEY, choice);
       }
     }
   };

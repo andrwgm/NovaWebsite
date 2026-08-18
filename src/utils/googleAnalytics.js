@@ -1,28 +1,40 @@
-const GA_MEASUREMENT_ID = 'G-ZWND4BHC68';
+export const GA_MEASUREMENT_ID = 'G-ZWND4BHC68';
+export const COOKIE_CONSENT_KEY = 'nova_cookie_consent';
 
-export function loadGoogleAnalytics() {
-  if (typeof window === 'undefined' || document.querySelector('script[data-ga-gtag]')) {
+const ALL_DENIED = {
+  ad_storage: 'denied',
+  ad_user_data: 'denied',
+  ad_personalization: 'denied',
+  analytics_storage: 'denied',
+};
+
+const ANALYTICS_GRANTED = {
+  analytics_storage: 'granted',
+};
+
+/** Ad consent for when Google Ads is enabled — call alongside analytics if marketing cookies are accepted. */
+const ADS_GRANTED = {
+  ad_storage: 'granted',
+  ad_user_data: 'granted',
+  ad_personalization: 'granted',
+};
+
+function updateConsent(consentState) {
+  if (typeof window === 'undefined' || typeof window.gtag !== 'function') {
     return;
   }
-
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = function gtag() {
-    window.dataLayer.push(arguments);
-  };
-  window.gtag('js', new Date());
-  window.gtag('config', GA_MEASUREMENT_ID);
-
-  const script = document.createElement('script');
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
-  script.setAttribute('data-ga-gtag', 'true');
-  document.head.appendChild(script);
+  window.gtag('consent', 'update', consentState);
 }
 
-export function removeGoogleAnalytics() {
-  document.querySelectorAll('script[data-ga-gtag]').forEach((script) => script.remove());
-  if (typeof window !== 'undefined') {
-    delete window.gtag;
-    delete window.dataLayer;
-  }
+export function grantAnalyticsConsent() {
+  updateConsent(ANALYTICS_GRANTED);
+}
+
+export function denyAllGoogleConsent() {
+  updateConsent(ALL_DENIED);
+}
+
+/** Enable when a marketing/advertising cookie category is added to the banner. */
+export function grantAdsConsent() {
+  updateConsent(ADS_GRANTED);
 }

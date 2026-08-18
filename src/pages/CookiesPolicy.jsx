@@ -28,7 +28,7 @@ const sections = [
     body: ['We currently use the following categories:'],
     list: [
       'Strictly necessary — a local storage entry (`nova_cookie_consent`) that records whether you have accepted or rejected analytics cookies. This is required to honour your choice and does not require consent.',
-      'Analytics (consent required) — Google Analytics and Cloudflare Web Analytics, loaded only if you click “Accept” on the cookie banner. This helps us understand how visitors use the Website. We do not use advertising, remarketing, or behavioural profiling cookies.',
+      'Analytics (consent required) — Google Analytics (via Google Consent Mode v2) and Cloudflare Web Analytics. Google Analytics may send cookieless, aggregated measurement signals before you choose; full analytics cookies and detailed measurement are only enabled if you click “Accept”. Cloudflare Web Analytics is loaded only after you accept. We do not currently use advertising, remarketing, or behavioural profiling cookies.',
     ],
   },
   {
@@ -41,8 +41,8 @@ const sections = [
   {
     title: 'Third-party technology',
     body: [
-      'If you accept analytics cookies, Google Analytics and Cloudflare Web Analytics may capture anonymous usage data to help us understand how the site performs.',
-      'We do not allow third-party cookies for advertising, remarketing, or behavioural profiling.',
+      'If you accept analytics cookies, Google Analytics and Cloudflare Web Analytics may capture usage data to help us understand how the site performs. Before you choose, Google Analytics may still receive limited, cookieless signals under Consent Mode to support privacy-safe measurement.',
+      'Advertising and remarketing cookies remain disabled. We do not allow third-party cookies for advertising, remarketing, or behavioural profiling.',
     ],
   },
   {
@@ -51,7 +51,7 @@ const sections = [
       'When you first visit the Website, you can accept or reject analytics cookies using the banner.',
       'You can change your choice at any time by selecting “Withdraw cookie consent” in the footer, which clears your saved preference and shows the banner again.',
       'You can also delete cookies and site data in your browser settings. Guidance is available in the help pages for every major browser.',
-      'If you reject analytics cookies or delete site data, the Website will continue to function, but we will not load analytics scripts.',
+      'If you reject analytics cookies or delete site data, the Website will continue to function. Google Analytics will remain in a consent-denied state and Cloudflare Web Analytics will not load.',
       'Additional guidance on cookies is available from the Information Commissioner’s Office (ICO).',
     ],
   },
