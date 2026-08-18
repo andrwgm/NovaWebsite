@@ -28,7 +28,7 @@ const sections = [
     body: ['We currently use the following categories:'],
     list: [
       'Strictly necessary — a local storage entry (`nova_cookie_consent`) that records whether you have accepted or rejected analytics cookies. This is required to honour your choice and does not require consent.',
-      'Analytics (consent required) — Cloudflare Web Analytics, loaded only if you click “Accept” on the cookie banner. This helps us understand how visitors use the Website. We do not use advertising, remarketing, or behavioural profiling cookies.',
+      'Analytics (consent required) — Google Analytics and Cloudflare Web Analytics, loaded only if you click “Accept” on the cookie banner. This helps us understand how visitors use the Website. We do not use advertising, remarketing, or behavioural profiling cookies.',
     ],
   },
   {
@@ -41,7 +41,7 @@ const sections = [
   {
     title: 'Third-party technology',
     body: [
-      'If you accept analytics cookies, Cloudflare Web Analytics may capture anonymous usage data to help us understand how the site performs.',
+      'If you accept analytics cookies, Google Analytics and Cloudflare Web Analytics may capture anonymous usage data to help us understand how the site performs.',
       'We do not allow third-party cookies for advertising, remarketing, or behavioural profiling.',
     ],
   },

@@ -8,6 +8,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Footer from './components/Footer';
 import { onContactModalRequest } from './utils/contactModalService';
+import { loadGoogleAnalytics, removeGoogleAnalytics } from './utils/googleAnalytics';
 
 import { Image } from 'primereact/image';
 
@@ -93,6 +94,7 @@ function AppContent() {
     script.src = 'https://static.cloudflareinsights.com/beacon.min.js';
     script.setAttribute('data-cf-beacon', '{"token":"4ca237c52da34a759461480f964a0fc3"}');
     document.body.appendChild(script);
+    loadGoogleAnalytics();
     return undefined;
   }, [cookieConsent]);
 
@@ -107,6 +109,7 @@ function AppContent() {
     if (window.__cfBeacon) {
       delete window.__cfBeacon;
     }
+    removeGoogleAnalytics();
     return undefined;
   }, [cookieConsent]);
 
