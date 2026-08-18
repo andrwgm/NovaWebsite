@@ -1,6 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script data-cfasync="false">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { window.dataLayer.push(arguments); }
+      window.gtag = gtag;
+
+      gtag('set', 'ads_data_redaction', true);
+      gtag('set', 'url_passthrough', true);
+
+      (function () {
+        var CONSENT_KEY = 'nova_cookie_consent';
+        var stored = null;
+        try { stored = localStorage.getItem(CONSENT_KEY); } catch (e) {}
+
+        gtag('consent', 'default', {
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+          analytics_storage: stored === 'accepted' ? 'granted' : 'denied',
+          wait_for_update: stored ? 0 : 500,
+        });
+      })();
+    </script>
+    <script data-cfasync="false" async src="https://www.googletagmanager.com/gtag/js?id=G-ZWND4BHC68"></script>
+    <script data-cfasync="false">
+      gtag('js', new Date());
+      gtag('config', 'G-ZWND4BHC68');
+    </script>
     <meta charset="UTF-8" />
     <title>Nova Clinics | Private ADHD & Autism Assessments in the UK</title>
     <meta name="description"
@@ -36,35 +63,6 @@
     <link rel="preload" as="font" href="/fonts/Athelas-Bold.ttf" crossorigin fetchpriority="high">
     <link rel="preload" as="font" href="/fonts/Times New Roman MT Condensed Italic.otf" crossorigin fetchpriority="high">
     <link rel="preload" as="font" href="/fonts/Times New Roman MT Condensed Regular.otf" crossorigin fetchpriority="high">
-    <script>
-      (function () {
-        var CONSENT_KEY = 'nova_cookie_consent';
-        var stored = null;
-        try { stored = localStorage.getItem(CONSENT_KEY); } catch (e) {}
-
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { window.dataLayer.push(arguments); }
-        window.gtag = gtag;
-
-        gtag('set', 'ads_data_redaction', true);
-        gtag('set', 'url_passthrough', true);
-
-        gtag('consent', 'default', {
-          ad_storage: 'denied',
-          ad_user_data: 'denied',
-          ad_personalization: 'denied',
-          analytics_storage: stored === 'accepted' ? 'granted' : 'denied',
-          wait_for_update: stored ? 0 : 500,
-        });
-      })();
-    </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZWND4BHC68"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { window.dataLayer.push(arguments); }
-      gtag('js', new Date());
-      gtag('config', 'G-ZWND4BHC68');
-    </script>
   </head>
   <body>
     <div id="root"></div>
