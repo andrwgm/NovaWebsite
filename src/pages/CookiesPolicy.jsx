@@ -49,7 +49,7 @@ const sections = [
     title: 'Managing cookies',
     body: [
       'When you first visit the Website, you can accept or reject analytics cookies using the banner.',
-      'You can change your choice at any time by selecting “Withdraw cookie consent” in the footer, which clears your saved preference and shows the banner again.',
+      'You can change your choice at any time by selecting “Withdraw cookie consent” in the footer, which clears your saved preference, removes Google Analytics cookies from your browser, and shows the banner again.',
       'You can also delete cookies and site data in your browser settings. Guidance is available in the help pages for every major browser.',
       'If you reject analytics cookies or delete site data, the Website will continue to function. Google Analytics will remain in a consent-denied state and Cloudflare Web Analytics will not load.',
       'Additional guidance on cookies is available from the Information Commissioner’s Office (ICO).',

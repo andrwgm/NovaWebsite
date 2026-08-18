@@ -26,12 +26,44 @@ function updateConsent(consentState) {
   window.gtag('consent', 'update', consentState);
 }
 
+function clearGoogleAnalyticsCookies() {
+  if (typeof document === 'undefined') {
+    return;
+  }
+
+  const hostname = window.location.hostname;
+  const rootDomain = hostname.replace(/^www\./, '');
+  const domains = [undefined, hostname, `.${hostname}`, rootDomain, `.${rootDomain}`];
+  const measurementSuffix = GA_MEASUREMENT_ID.replace(/^G-/, '');
+
+  const cookieNames = new Set([
+    '_ga',
+    `_ga_${measurementSuffix}`,
+    '_gid',
+  ]);
+
+  document.cookie.split(';').forEach((part) => {
+    const name = part.split('=')[0]?.trim();
+    if (name && (/^(_ga|_gid|_gat|_gac_|FPID|FPLC)/.test(name) || name.startsWith('_ga_'))) {
+      cookieNames.add(name);
+    }
+  });
+
+  cookieNames.forEach((name) => {
+    domains.forEach((domain) => {
+      const domainPart = domain ? `; domain=${domain}` : '';
+      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/${domainPart}`;
+    });
+  });
+}
+
 export function grantAnalyticsConsent() {
   updateConsent(ANALYTICS_GRANTED);
 }
 
 export function denyAllGoogleConsent() {
   updateConsent(ALL_DENIED);
+  clearGoogleAnalyticsCookies();
 }
 
 /** Enable when a marketing/advertising cookie category is added to the banner. */
