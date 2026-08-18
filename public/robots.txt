@@ -27,6 +27,8 @@ User-Agent: *
 # Content-signal: search=yes,ai-train=no
 Allow: /
 
+Sitemap: https://www.novaclinics.co.uk/sitemap.xml
+
 User-agent: Amazonbot
 Disallow: /
 
