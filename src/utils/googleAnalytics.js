@@ -70,3 +70,16 @@ export function denyAllGoogleConsent() {
 export function grantAdsConsent() {
   updateConsent(ADS_GRANTED);
 }
+
+/**
+ * GA4 recommended lead event. Safe to fire on any successful enquiry submit.
+ * Consent Mode still governs whether Analytics/Ads cookies are used.
+ * Do not pass name, email, phone, or message.
+ */
+export function trackGenerateLead({ method = 'contact_form' } = {}) {
+  if (typeof window === 'undefined' || typeof window.gtag !== 'function') {
+    return;
+  }
+
+  window.gtag('event', 'generate_lead', { method });
+}

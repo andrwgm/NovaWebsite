@@ -9,6 +9,7 @@ import ApplicationSuccessModal from './ApplicationSuccessModal';
 import ContactVacationModal from './ContactVacationModal';
 import { CONTACT_FORM_RESPONSE_MODE } from '../config/contactFormResponse';
 import { CONTACT_SUBMISSIONS_ENDPOINT } from '../utils/api';
+import { trackGenerateLead } from '../utils/googleAnalytics';
 import './contactModal.css';
 
 const INITIAL_FORM = {
@@ -75,6 +76,7 @@ export default function ContactModal({ requestId = 0, prefillMessage = '' }) {
         throw new Error(message);
       }
 
+      trackGenerateLead({ method: 'contact_form' });
       setFormData(INITIAL_FORM);
       setSubmitSuccess(true);
       close();
