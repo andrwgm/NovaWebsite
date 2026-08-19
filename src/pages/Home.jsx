@@ -142,20 +142,20 @@ export default function Home() {
     <div className="mainContent">
       <div className='titleAndButton parallax' fetchpriority="high">
         <div className='titles'>
-          <div className='bigTitle'>
+          <p className='bigTitle'>
             Skip the NHS wait
-            <div className='bigTitleItalic'>
+            <span className='bigTitleItalic'>
               Feel Great
-            </div>
-          </div>
+            </span>
+          </p>
           <div className='smallTitle'>
-            <div className='smallTitleBold'>
-              Your assessment in weeks, not years
-            </div>
-            <div className='smallTitleRegular'>
-              <br />
+            <h1 className='smallTitleBold'>
               Private Autism & ADHD Assessments
-            </div>
+            </h1>
+            <p className='smallTitleRegular'>
+              <br />
+              Your assessment in weeks, not years
+            </p>
           </div>
         </div>
         <div className='bookButton'>
@@ -167,12 +167,12 @@ export default function Home() {
       </div>
       <div className='whiteBg withHeight'>
         <div className='whyChooseUsContent' id="why-choose-us">
-          <div className='whyChooseUsTitle'>
+          <h2 className='whyChooseUsTitle'>
             Why people
-            <div className='whyChooseUsTitleItalic'>
+            <span className='whyChooseUsTitleItalic'>
               trust Nova?
-            </div>
-          </div>
+            </span>
+          </h2>
           <div className='whyChooseUsTextAndImg'>
             <div className='whyChooseUsText'>
               <div className='whyChooseUsTextBold'>
@@ -209,12 +209,12 @@ export default function Home() {
         </div>
         <Image className="curveShadow" src="/images/curveShadow.avif" alt="Curve Shadow Image" />
         <div className='whyChooseUsContent gentleSlide' ref={gentleSlideRef} id="is-this-for-me">
-          <div className='isThisForMeTitle'>
+          <h2 className='isThisForMeTitle'>
             Is this
-            <div className='isThisForMeTitleItalic'>
+            <span className='isThisForMeTitleItalic'>
               for me?
-            </div>
-          </div>
+            </span>
+          </h2>
           <div className='isThisForMeText'>
             Every child, teen and adult is unique - but sometimes those little (or big) differences start to feel like something more.
             If school is a battle, work feels overwhelming, or daily life just seems harder than it should… you’re in the right place.
@@ -252,9 +252,9 @@ export default function Home() {
       </LazySection>
       <LazySection forceVisible={forceLazySections}>
         <div className='stillHaveQuestionsBg'>
-          <div className='stillHaveQuestionsTitle'>
+          <p className='stillHaveQuestionsTitle'>
             Still have questions?
-          </div>
+          </p>
           <Button label="Get in contact" icon="pi pi-send" iconPos="right" onClick={requestContactModal} />
         </div>
       </LazySection>

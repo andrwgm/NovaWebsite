@@ -15,6 +15,8 @@
 }
 
 .pricesSectionTitle {
+    margin: 0;
+    font-weight: normal;
     font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
     font-size: clamp(3.6rem, 6.2vw, 5rem);
     color: #344759;

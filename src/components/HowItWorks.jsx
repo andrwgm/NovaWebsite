@@ -267,7 +267,7 @@ export default function HowItWorks() {
   return (
     <div className="howItWorks">
       <div className="howItWorksHeader">
-        <div className="howItWorksTitle">How it <div style={{fontFamily: 'TimesNewRomanMTCondensedItalic', paddingLeft: '3rem'}}>works?</div></div>
+        <h2 className="howItWorksTitle">How it <span style={{fontFamily: 'TimesNewRomanMTCondensedItalic', paddingLeft: '3rem'}}>works?</span></h2>
       </div>
       <div className="howItWorksContent">
         <div className="howItWorksTimeline">

@@ -62,6 +62,17 @@
     flex-direction: column;
 }
 
+/* Semantic element resets — browser defaults for h1/h2/p add margin/font-weight we don't want */
+.titleAndButton .bigTitle,
+.titleAndButton .smallTitleBold,
+.titleAndButton .smallTitleRegular,
+.whyChooseUsTitle,
+.isThisForMeTitle,
+.stillHaveQuestionsTitle {
+    margin: 0;
+    font-weight: inherit;
+}
+
 .titleAndButton .bigTitle {
     width: 100%;
     display: flex;

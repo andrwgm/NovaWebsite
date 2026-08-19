@@ -172,9 +172,9 @@ export default function PricesSection() {
 
     return (
         <div className="pricesSection">
-            <div className="pricesSectionTitle">
+            <h2 className="pricesSectionTitle">
                 What we <span className="pricesSectionTitleItalic">offer</span>
-            </div>
+            </h2>
             <div
                 className={`pricesSectionContent${isThreeColumn ? ' pricesSectionContent--three' : ''}`}
                 ref={contentRef}
