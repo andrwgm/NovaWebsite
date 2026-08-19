@@ -29,10 +29,13 @@ export default function BlogSidebar({ popularTopics, miniPost }) {
             value={email}
             onChange={(event) => setEmail(event.target.value)}
           />
-          <button type="submit" className="blog-button blog-button--block">
-            Subscribe
-          </button>
-          <p className="blog-card__fineprint">This is a UI placeholder—wire your email provider when ready.</p>
+          <span className="blog-newsletter__coming-soon">
+            <button type="submit" className="blog-button blog-button--block" disabled aria-disabled="true">
+              Subscribe
+            </button>
+            <span className="blog-newsletter__tooltip" role="tooltip">Coming soon</span>
+          </span>
+          <p className="blog-card__fineprint">Newsletter subscriptions are coming soon.</p>
         </form>
       </section>
 
@@ -106,9 +109,12 @@ export function BlogPostSidebar({ miniPost, relatedPosts }) {
             value={email}
             onChange={(event) => setEmail(event.target.value)}
           />
-          <button type="submit" className="blog-button blog-button--block">
-            Subscribe
-          </button>
+          <span className="blog-newsletter__coming-soon">
+            <button type="submit" className="blog-button blog-button--block" disabled aria-disabled="true">
+              Subscribe
+            </button>
+            <span className="blog-newsletter__tooltip" role="tooltip">Coming soon</span>
+          </span>
         </form>
       </section>
 
