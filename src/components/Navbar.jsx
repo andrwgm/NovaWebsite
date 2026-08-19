@@ -19,7 +19,7 @@ export default function Navbar() {
   const { pathname } = useLocation();
 
   const handleContactClick = () => {
-    requestContactModal();
+    requestContactModal({ source: 'navbar' });
   };
 
   const items = useMemo(

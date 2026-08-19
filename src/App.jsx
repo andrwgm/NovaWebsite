@@ -51,6 +51,8 @@ function AppContent() {
   const [isCookieBannerReady, setIsCookieBannerReady] = useState(false);
   const [contactModalRequestId, setContactModalRequestId] = useState(0);
   const [contactModalPrefill, setContactModalPrefill] = useState('');
+  const [contactModalSource, setContactModalSource] = useState('unknown');
+  const [contactModalItemId, setContactModalItemId] = useState(undefined);
   const [isContactModalEnabled, setIsContactModalEnabled] = useState(false);
 
   useEffect(() => {
@@ -123,7 +125,15 @@ function AppContent() {
     const unsubscribe = onContactModalRequest((payload) => {
       setIsContactModalEnabled(true);
       const nextMessage = typeof payload?.message === 'string' ? payload.message : '';
+      const nextSource = typeof payload?.source === 'string' && payload.source
+        ? payload.source
+        : 'unknown';
+      const nextItemId = typeof payload?.itemId === 'string' && payload.itemId
+        ? payload.itemId
+        : undefined;
       setContactModalPrefill(nextMessage);
+      setContactModalSource(nextSource);
+      setContactModalItemId(nextItemId);
       setContactModalRequestId((current) => current + 1);
     });
     return unsubscribe;
@@ -186,7 +196,12 @@ function AppContent() {
       </Suspense>
       {isContactModalEnabled && (
         <Suspense fallback={null}>
-          <ContactModal requestId={contactModalRequestId} prefillMessage={contactModalPrefill} />
+          <ContactModal
+            requestId={contactModalRequestId}
+            prefillMessage={contactModalPrefill}
+            formSource={contactModalSource}
+            itemId={contactModalItemId}
+          />
         </Suspense>
       )}
       {shouldShowCookieBanner && isCookieBannerReady && (

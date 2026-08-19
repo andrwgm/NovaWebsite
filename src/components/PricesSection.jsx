@@ -206,7 +206,11 @@ export default function PricesSection() {
                         <button
                             type="button"
                             className="priceCardCta"
-                            onClick={() => requestContactModal({ message: card.message })}
+                            onClick={() => requestContactModal({
+                                message: card.message,
+                                source: 'pricing',
+                                itemId: card.key,
+                            })}
                         >
                             GET STARTED
                         </button>

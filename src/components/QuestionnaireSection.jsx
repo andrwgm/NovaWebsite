@@ -270,7 +270,7 @@ export default function QuestionnaireSection() {
                 label="Get in contact"
                 icon="pi pi-send"
                 iconPos="right"
-                onClick={requestContactModal}
+                onClick={() => requestContactModal({ source: 'questionnaire' })}
               >
               </Button>
               <Button className="questionnaire-secondary" onClick={handleTopicReset}>

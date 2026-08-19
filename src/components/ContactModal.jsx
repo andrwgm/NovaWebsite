@@ -9,7 +9,7 @@ import ApplicationSuccessModal from './ApplicationSuccessModal';
 import ContactVacationModal from './ContactVacationModal';
 import { CONTACT_FORM_RESPONSE_MODE } from '../config/contactFormResponse';
 import { CONTACT_SUBMISSIONS_ENDPOINT } from '../utils/api';
-import { trackGenerateLead } from '../utils/googleAnalytics';
+import { trackContactFormOpen, trackGenerateLead } from '../utils/googleAnalytics';
 import './contactModal.css';
 
 const INITIAL_FORM = {
@@ -20,7 +20,12 @@ const INITIAL_FORM = {
   consent: false,
 };
 
-export default function ContactModal({ requestId = 0, prefillMessage = '' }) {
+export default function ContactModal({
+  requestId = 0,
+  prefillMessage = '',
+  formSource = 'unknown',
+  itemId,
+}) {
   const [visible, setVisible] = useState(false);
   const [formData, setFormData] = useState(INITIAL_FORM);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -31,8 +36,9 @@ export default function ContactModal({ requestId = 0, prefillMessage = '' }) {
     if (requestId > 0) {
       setVisible(true);
       setFormData((prev) => ({ ...prev, message: prefillMessage }));
+      trackContactFormOpen({ form_source: formSource, item_id: itemId });
     }
-  }, [requestId, prefillMessage]);
+  }, [requestId, prefillMessage, formSource, itemId]);
 
   const handleChange = (field) => (event) => {
     if (field === 'consent') {
@@ -76,7 +82,11 @@ export default function ContactModal({ requestId = 0, prefillMessage = '' }) {
         throw new Error(message);
       }
 
-      trackGenerateLead({ method: 'contact_form' });
+      trackGenerateLead({
+        method: 'contact_form',
+        form_source: formSource,
+        item_id: itemId,
+      });
       setFormData(INITIAL_FORM);
       setSubmitSuccess(true);
       close();

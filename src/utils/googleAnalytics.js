@@ -76,10 +76,35 @@ export function grantAdsConsent() {
  * Consent Mode still governs whether Analytics/Ads cookies are used.
  * Do not pass name, email, phone, or message.
  */
-export function trackGenerateLead({ method = 'contact_form' } = {}) {
+export function trackGenerateLead({ method = 'contact_form', form_source, item_id } = {}) {
   if (typeof window === 'undefined' || typeof window.gtag !== 'function') {
     return;
   }
 
-  window.gtag('event', 'generate_lead', { method });
+  const params = { method };
+  if (form_source) {
+    params.form_source = form_source;
+  }
+  if (item_id) {
+    params.item_id = item_id;
+  }
+
+  window.gtag('event', 'generate_lead', params);
+}
+
+/**
+ * Fired when the contact modal opens. Use form_source, not source:
+ * source is a reserved GA4 traffic-source dimension.
+ */
+export function trackContactFormOpen({ form_source = 'unknown', item_id } = {}) {
+  if (typeof window === 'undefined' || typeof window.gtag !== 'function') {
+    return;
+  }
+
+  const params = { form_source };
+  if (item_id) {
+    params.item_id = item_id;
+  }
+
+  window.gtag('event', 'contact_form_open', params);
 }

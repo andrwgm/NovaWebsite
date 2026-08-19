@@ -158,7 +158,7 @@ export default function Home() {
           </div>
         </div>
         <div className='bookButton'>
-          <Button onClick={requestContactModal}>
+          <Button onClick={() => requestContactModal({ source: 'hero' })}>
             <Image src="/images/bookButton.avif" alt="Book Button" />
             Contact us
           </Button>
@@ -254,7 +254,7 @@ export default function Home() {
           <p className='stillHaveQuestionsTitle'>
             Still have questions?
           </p>
-          <Button label="Get in contact" icon="pi pi-send" iconPos="right" onClick={requestContactModal} />
+          <Button label="Get in contact" icon="pi pi-send" iconPos="right" onClick={() => requestContactModal({ source: 'still_have_questions' })} />
         </div>
       </LazySection>
       <LazySection forceVisible={forceLazySections}>
