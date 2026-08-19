@@ -68,7 +68,9 @@
 .titleAndButton .smallTitleRegular,
 .whyChooseUsTitle,
 .isThisForMeTitle,
-.stillHaveQuestionsTitle {
+.stillHaveQuestionsTitle,
+.whyChooseUsTitleItalic,
+.isThisForMeTitleItalic {
     margin: 0;
     font-weight: inherit;
 }
@@ -169,6 +171,7 @@
 }
 
 .whyChooseUsTitleItalic {
+    display: block;
     font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman';
     padding-left: 10rem;
     margin-top: -2rem;
@@ -221,6 +224,7 @@
 }
 
 .isThisForMeTitleItalic {
+    display: block;
     font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman';
     padding-left: 4rem;
     margin-top: -2rem;

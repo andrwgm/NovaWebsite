@@ -149,13 +149,12 @@ export default function Home() {
             </span>
           </p>
           <div className='smallTitle'>
-            <h1 className='smallTitleBold'>
-              Private Autism & ADHD Assessments
-            </h1>
-            <p className='smallTitleRegular'>
-              <br />
+            <p className='smallTitleBold'>
               Your assessment in weeks, not years
             </p>
+            <h1 className='smallTitleRegular'>
+              Private Autism & ADHD Assessments
+            </h1>
           </div>
         </div>
         <div className='bookButton'>
