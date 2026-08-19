@@ -70,6 +70,30 @@ export function denyAllGoogleConsent() {
   clearGoogleAnalyticsCookies();
 }
 
+/**
+ * Apply a banner choice immediately (not in a React effect) so Tag Assistant
+ * records the consent update before the next event.
+ */
+export function applyBannerConsentChoice(choice) {
+  if (choice === 'accepted') {
+    grantAnalyticsConsent();
+  } else {
+    denyAllGoogleConsent();
+  }
+
+  if (
+    (choice !== 'accepted' && choice !== 'rejected')
+    || typeof window === 'undefined'
+    || typeof window.gtag !== 'function'
+  ) {
+    return;
+  }
+
+  window.gtag('event', 'cookie_consent', {
+    consent_analytics: choice === 'accepted' ? 'granted' : 'denied',
+  });
+}
+
 /** Enable when a marketing/advertising cookie category is added to the banner. */
 export function grantAdsConsent() {
   updateConsent(ADS_GRANTED);

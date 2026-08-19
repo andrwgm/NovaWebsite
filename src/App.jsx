@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import { onContactModalRequest } from './utils/contactModalService';
 import {
   COOKIE_CONSENT_KEY,
+  applyBannerConsentChoice,
   denyAllGoogleConsent,
   grantAnalyticsConsent,
 } from './utils/googleAnalytics';
@@ -166,6 +167,7 @@ function AppContent() {
   }, []);
 
   const handleCookieChoice = (choice) => {
+    applyBannerConsentChoice(choice);
     setCookieConsent(choice);
     if (typeof window !== 'undefined') {
       if (choice === null) {
