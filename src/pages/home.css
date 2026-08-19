@@ -65,13 +65,17 @@
 /* Semantic element resets — browser defaults for h1/h2/p add margin/font-weight we don't want */
 .titleAndButton .bigTitle,
 .titleAndButton .smallTitleBold,
-.titleAndButton .smallTitleRegular,
 .whyChooseUsTitle,
 .isThisForMeTitle,
 .stillHaveQuestionsTitle,
 .whyChooseUsTitleItalic,
 .isThisForMeTitleItalic {
     margin: 0;
+    font-weight: inherit;
+}
+
+/* smallTitleRegular keeps its own margin-top from the rule below; only reset font-weight */
+.titleAndButton .smallTitleRegular {
     font-weight: inherit;
 }
 
@@ -110,7 +114,7 @@
 .titleAndButton .smallTitle .smallTitleRegular {
     font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
     font-size: 1.5em;
-    margin-top: -0.5em;
+    margin-top: 0.4em;
 }
 
 .titleAndButton .bookButton {
