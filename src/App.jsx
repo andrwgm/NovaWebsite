@@ -47,6 +47,7 @@ function AppContent() {
     const stored = window.localStorage.getItem(COOKIE_CONSENT_KEY);
     return stored === 'accepted' || stored === 'rejected' ? stored : null;
   });
+  const previousCookieConsent = useRef(cookieConsent);
   const shouldShowCookieBanner = cookieConsent === null;
   const [isCookieBannerReady, setIsCookieBannerReady] = useState(false);
   const [contactModalRequestId, setContactModalRequestId] = useState(0);
@@ -88,27 +89,39 @@ function AppContent() {
   }, [location.pathname]);
 
   useEffect(() => {
+    const previous = previousCookieConsent.current;
+    previousCookieConsent.current = cookieConsent;
+
+    const removeCloudflareBeacon = () => {
+      const script = document.querySelector('script[data-cf-beacon]');
+      if (script) {
+        script.remove();
+      }
+      if (window.__cfBeacon) {
+        delete window.__cfBeacon;
+      }
+    };
+
     if (cookieConsent === 'accepted') {
       grantAnalyticsConsent();
-      if (document.querySelector('script[data-cf-beacon]')) {
-        return undefined;
+      if (!document.querySelector('script[data-cf-beacon]')) {
+        const script = document.createElement('script');
+        script.defer = true;
+        script.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+        script.setAttribute('data-cf-beacon', '{"token":"4ca237c52da34a759461480f964a0fc3"}');
+        document.body.appendChild(script);
       }
-      const script = document.createElement('script');
-      script.defer = true;
-      script.src = 'https://static.cloudflareinsights.com/beacon.min.js';
-      script.setAttribute('data-cf-beacon', '{"token":"4ca237c52da34a759461480f964a0fc3"}');
-      document.body.appendChild(script);
       return undefined;
     }
 
-    denyAllGoogleConsent();
-    const script = document.querySelector('script[data-cf-beacon]');
-    if (script) {
-      script.remove();
+    removeCloudflareBeacon();
+
+    // First visit (null, never chosen): leave Consent Mode default denied.
+    // Do not send a consent update — Google treats that as "user denied everything".
+    if (cookieConsent === 'rejected' || previous === 'accepted' || previous === 'rejected') {
+      denyAllGoogleConsent();
     }
-    if (window.__cfBeacon) {
-      delete window.__cfBeacon;
-    }
+
     return undefined;
   }, [cookieConsent]);
 

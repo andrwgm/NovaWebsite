@@ -8,8 +8,12 @@ const ALL_DENIED = {
   analytics_storage: 'denied',
 };
 
-const ANALYTICS_GRANTED = {
+/** Analytics accepted; ads stay denied until a marketing category exists. */
+const ANALYTICS_ONLY = {
   analytics_storage: 'granted',
+  ad_storage: 'denied',
+  ad_user_data: 'denied',
+  ad_personalization: 'denied',
 };
 
 /** Ad consent for when Google Ads is enabled — call alongside analytics if marketing cookies are accepted. */
@@ -58,7 +62,7 @@ function clearGoogleAnalyticsCookies() {
 }
 
 export function grantAnalyticsConsent() {
-  updateConsent(ANALYTICS_GRANTED);
+  updateConsent(ANALYTICS_ONLY);
 }
 
 export function denyAllGoogleConsent() {
