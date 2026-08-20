@@ -1,8 +1,11 @@
 .application-success-overlay {
   position: fixed;
   inset: 0;
-  display: grid;
-  place-items: center;
+  display: flex;
+  padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   background: rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(2px);
   z-index: 9999;
@@ -14,7 +17,8 @@
   border-radius: 18px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
   max-width: 420px;
-  width: calc(100% - 2rem);
+  width: 100%;
+  margin: auto;
   text-align: center;
   border: 1px solid #e8eef6;
 }
@@ -55,4 +59,20 @@
   height: 100%;
   background: linear-gradient(90deg,rgb(219, 255, 252), #9ECDC9 60%);
   transition: width 2s linear;
+}
+
+@media (max-height: 600px) {
+  .application-success-icon i {
+    font-size: 3.5rem;
+    padding: 0.75rem 0;
+  }
+
+  .application-success-message {
+    padding: 0.5rem 0;
+  }
+
+  .application-success-progress {
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { InputMask } from 'primereact/inputmask';
@@ -31,6 +31,7 @@ export default function ContactModal({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState('');
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const overlayRef = useRef(null);
 
   useEffect(() => {
     if (requestId > 0) {
@@ -39,6 +40,43 @@ export default function ContactModal({
       trackContactFormOpen({ form_source: formSource, item_id: itemId });
     }
   }, [requestId, prefillMessage, formSource, itemId]);
+
+  useEffect(() => {
+    if (!visible) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const overlay = overlayRef.current;
+    const visualViewport = window.visualViewport;
+
+    const syncKeyboardInset = () => {
+      if (!overlay || !visualViewport) return;
+      const inset = Math.max(0, window.innerHeight - visualViewport.height - visualViewport.offsetTop);
+      overlay.style.setProperty('--keyboard-inset', `${inset}px`);
+    };
+
+    visualViewport?.addEventListener('resize', syncKeyboardInset);
+    visualViewport?.addEventListener('scroll', syncKeyboardInset);
+    syncKeyboardInset();
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      visualViewport?.removeEventListener('resize', syncKeyboardInset);
+      visualViewport?.removeEventListener('scroll', syncKeyboardInset);
+      overlay?.style.setProperty('--keyboard-inset', '0px');
+    };
+  }, [visible]);
+
+  const handleFieldFocus = (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLElement)) return;
+    if (!['INPUT', 'TEXTAREA'].includes(target.tagName)) return;
+
+    window.requestAnimationFrame(() => {
+      target.scrollIntoView({ block: 'center', inline: 'nearest' });
+    });
+  };
 
   const handleChange = (field) => (event) => {
     if (field === 'consent') {
@@ -105,7 +143,7 @@ export default function ContactModal({
   return (
     <>
       {visible && (
-        <div className="contact-modal-overlay" onClick={close}>
+        <div className="contact-modal-overlay" ref={overlayRef} onClick={close}>
           <div className="contact-modal" onClick={(event) => event.stopPropagation()}>
             <button
               type="button"
@@ -116,7 +154,7 @@ export default function ContactModal({
               <i className="pi pi-times" />
             </button>
             <h2 className="contact-modal-title">Get in contact</h2>
-            <form className="contact-modal-form" onSubmit={handleSubmit}>
+            <form className="contact-modal-form" onSubmit={handleSubmit} onFocus={handleFieldFocus}>
               <span className="p-float-label">
                 <InputText
                   id="contact-name"

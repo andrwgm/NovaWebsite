@@ -1,16 +1,23 @@
 .contact-modal-overlay {
+  --keyboard-inset: 0px;
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.45);
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 1.5rem;
+  padding-top: max(1rem, env(safe-area-inset-top));
+  padding-right: max(1rem, env(safe-area-inset-right));
+  padding-bottom: calc(max(1rem, env(safe-area-inset-bottom)) + var(--keyboard-inset));
+  padding-left: max(1rem, env(safe-area-inset-left));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   z-index: 2000;
 }
 
 .contact-modal {
   width: min(540px, 100%);
+  margin: auto;
   background: #fff;
   border-radius: 1.5rem;
   padding: 2.5rem;
@@ -60,6 +67,7 @@
   border-radius: 0.8rem;
   border: 1px solid #d8dee7;
   padding: 0.95rem 1rem;
+  font-size: 16px;
 }
 
 .contact-modal-form .p-inputtextarea {
@@ -130,6 +138,97 @@
 @media (max-width: 480px) {
   .contact-modal {
     padding: 2rem 1.5rem;
+  }
+
+  .contact-modal-submit {
+    width: 100%;
+  }
+}
+
+@media (max-height: 800px) {
+  .contact-modal-overlay {
+    padding-top: max(0.75rem, env(safe-area-inset-top));
+    padding-right: max(0.75rem, env(safe-area-inset-right));
+    padding-bottom: calc(max(0.75rem, env(safe-area-inset-bottom)) + var(--keyboard-inset));
+    padding-left: max(0.75rem, env(safe-area-inset-left));
+  }
+
+  .contact-modal {
+    padding: 1.5rem 1.75rem 1.35rem;
+  }
+
+  .contact-modal-title {
+    font-size: 1.85rem;
+    margin-top: 0.15rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .contact-modal-form {
+    gap: 1rem;
+  }
+
+  .contact-modal-form .p-inputtext,
+  .contact-modal-form .p-inputtextarea,
+  .contact-modal-form .p-inputmask {
+    padding: 0.75rem 0.9rem;
+  }
+
+  .contact-modal-form .p-inputtextarea {
+    min-height: 72px;
+    height: 72px;
+  }
+
+  .contact-modal-consent {
+    align-items: flex-start;
+  }
+}
+
+@media (max-height: 600px) {
+  .contact-modal {
+    padding: 1.15rem 1.25rem 1.1rem;
+    border-radius: 1.1rem;
+  }
+
+  .contact-modal-title {
+    font-size: 1.55rem;
+    margin-top: 0;
+  }
+
+  .contact-modal-form {
+    gap: 0.75rem;
+  }
+
+  .contact-modal-form .p-inputtextarea {
+    min-height: 56px;
+    height: 56px;
+  }
+
+  .contact-modal-consent-notice,
+  .contact-modal-consent label {
+    font-size: 0.8rem;
+  }
+
+  .contact-modal-submit {
+    padding: 0.7rem 2rem;
+  }
+}
+
+@media (max-height: 450px) {
+  .contact-modal {
+    padding: 0.9rem 1rem 0.85rem;
+  }
+
+  .contact-modal-title {
+    font-size: 1.35rem;
+  }
+
+  .contact-modal-form {
+    gap: 0.55rem;
+  }
+
+  .contact-modal-form .p-inputtextarea {
+    min-height: 44px;
+    height: 44px;
   }
 
   .contact-modal-submit {
