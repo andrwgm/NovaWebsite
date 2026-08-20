@@ -275,31 +275,6 @@
     }
 }
 
-.blueLineBg {
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding: 4em 0;
-}
-
-.darkBlueLine {
-    position: absolute;
-    background-color: #344759;
-    height: 60%;
-    width: 100%;
-}
-
-/* Prices already leaves 4em below the card; don't stack another full 4em. */
-#how-it-works .howItWorks {
-    padding-top: 2em;
-}
-
-@media (max-width: 600px) {
-    #how-it-works .howItWorks {
-        padding-top: 1.5em;
-    }
-}
-
 .stillHaveQuestionsBg {
     background-color: white;
     height: 100%;
