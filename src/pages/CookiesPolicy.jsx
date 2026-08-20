@@ -66,12 +66,12 @@ const sections = [
       'You can reject analytics cookies without affecting access to the Website.',
       'Your consent choice is stored in your browser until you clear it or withdraw consent.',
       'There are no pre-ticked boxes, dark patterns, paywalls, or service denials for refusing analytics cookies.',
-      'ICO registration: In progress — to be published at register.ico.org.uk.',
+      'ICO registration number: ZC224111 — public register at ico.org.uk/ESDWebPages/Entry/ZC224111.',
     ],
   },
   {
     title: 'Policy reviews',
-    body: ['Last reviewed: 14 August 2026', 'Next review: 14 February 2027'],
+    body: ['Last reviewed: 20 August 2026', 'Next review: 20 February 2027'],
   },
 ];
 

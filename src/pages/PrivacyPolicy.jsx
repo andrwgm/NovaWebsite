@@ -20,6 +20,7 @@ const sections = [
       'Trading name: Nova Clinics UK',
       'Address: 82a James Carter Road, Mildenhall, Bury St. Edmunds, IP28 7DE, UK',
       'Company number: 16344901',
+      'ICO registration number: ZC224111 (registered 17 August 2026; listed at ico.org.uk/ESDWebPages/Entry/ZC224111).',
       'General enquiries: team@novaclinics.co.uk',
       'We are the controller of your personal data and decide why and how it is used and shared.',
     ],
@@ -216,12 +217,12 @@ const sections = [
     body: [
       'For privacy or data protection concerns, contact dpo@novaclinics.co.uk in the first instance.',
       'For general service complaints, contact team@novaclinics.co.uk.',
-      'If unresolved, you may escalate to the Information Commissioner’s Office (ICO): Wycliffe House, Water Lane, Wilmslow, Cheshire SK9 5AF, helpline 0303 123 1113, ico.org.uk.',
+      'If unresolved, you may escalate to the Information Commissioner’s Office (ICO): Wycliffe House, Water Lane, Wilmslow, Cheshire SK9 5AF, helpline 0303 123 1113, ico.org.uk. Our ICO registration number is ZC224111.',
     ],
   },
   {
     title: 'Review cycle',
-    body: ['Date of last review: 14 August 2026', 'Next review due: 14 February 2027 (bi-annual cycle).'],
+    body: ['Date of last review: 20 August 2026', 'Next review due: 20 February 2027 (bi-annual cycle).'],
   },
 ];
 
