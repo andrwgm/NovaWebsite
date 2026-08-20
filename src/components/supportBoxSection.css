@@ -48,15 +48,17 @@
 
 .supportBoxSectionCopy {
   max-width: 36rem;
-  margin-top: auto;
+  margin-top: 6em;
   margin-bottom: calc(var(--support-image-height) / 3);
   padding: 0;
   box-sizing: border-box;
+  display: grid;
+  gap: 2em;
 }
 
 .supportBoxSectionTitle {
   font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
-  font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+  font-size: clamp(3.6rem, 6.2vw, 5rem);
   font-weight: normal;
   line-height: 0.95;
   color: #344759;
@@ -95,7 +97,7 @@
 
 .supportBoxSectionList {
   list-style: none;
-  margin: 0;
+  margin: 0 0 2em 0;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
@@ -210,10 +212,6 @@
     margin-left: calc(var(--support-gutter) + var(--support-content-inset));
   }
 
-  .supportBoxSectionTitle {
-    font-size: clamp(2.4rem, 4.8vw, 3.4rem);
-  }
-
   .supportBoxSectionText {
     font-size: clamp(1rem, 1.5vw, 1.15rem);
     line-height: 1.6;
@@ -310,10 +308,6 @@
 
   .supportBoxSectionContent {
     padding-bottom: 1rem;
-  }
-
-  .supportBoxSectionTitle {
-    font-size: clamp(2.2rem, 9vw, 2.8rem);
   }
 
   .supportBoxSectionTitleLineIndented {
