@@ -364,6 +364,18 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 1.6rem;
     }
+
+    .priceCard[data-key="autism"] {
+        order: 1;
+    }
+
+    .priceCard[data-key="adhd"] {
+        order: 2;
+    }
+
+    .priceCard[data-key="combined"] {
+        order: 3;
+    }
 }
 
 @media (max-width: 768px) {
