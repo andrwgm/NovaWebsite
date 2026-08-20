@@ -152,11 +152,21 @@ export default function PricesSection() {
                             </li>
                         ))}
                     </ul>
-                    <p className="pricesBenefitsNote">
-                        UK delivery of your support box is included. Nova Clinics provides
-                        diagnostic assessments and post-assessment guidance; medication and ongoing
-                        treatment are not included
-                    </p>
+                    <div className="pricesBenefitsNotes">
+                        <p className="pricesBenefitsNote">
+                            <span className="pricesBenefitsNoteIcon" aria-hidden="true">
+                                <i className="pi pi-truck" />
+                            </span>
+                            UK delivery of your support box is included.
+                        </p>
+                        <p className="pricesBenefitsNote">
+                            <span className="pricesBenefitsNoteIcon" aria-hidden="true">
+                                <i className="pi pi-info-circle" />
+                            </span>
+                            Nova Clinics provides diagnostic assessments and post-assessment
+                            guidance; medication and ongoing treatment are not included
+                        </p>
+                    </div>
                 </div>
             </div>
 
