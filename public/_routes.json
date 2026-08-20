@@ -8,7 +8,6 @@
     "/uploads/*",
     "/__prerender/*",
     "/favicon.png",
-    "/robots.txt",
     "/sitemap.xml"
   ]
 }

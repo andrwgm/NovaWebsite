@@ -1,2 +1,5 @@
+# Served at /robots.txt on test.novaclinics.co.uk and *.pages.dev
+# by functions/_middleware.js. Do not copy this into public/robots.txt
+# (that file is production: Allow + sitemap on www).
 User-agent: *
 Disallow: /
