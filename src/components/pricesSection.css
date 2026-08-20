@@ -10,12 +10,13 @@
     align-items: center;
     text-align: center;
     padding: 4.5em 1.75rem 2.4em;
+    gap: 2em;
 }
 
 .pricesIntroTitle,
 .pricesChooseTitle {
     display: inline-block;
-    margin: 0;
+    margin: 0 0 0.45rem;
     font-weight: normal;
     font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
     font-size: clamp(3.6rem, 6.2vw, 5rem);
@@ -47,8 +48,12 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #961D4E;
-    margin: 1.75rem 0 0;
+    margin: 0;
     max-width: min(92%, 78rem);
+}
+
+.pricesIntro .pricesEyebrow {
+    margin: 0 0 0.9rem;
 }
 
 @media (min-width: 1200px) {
@@ -73,8 +78,8 @@
 }
 
 .pricesIntroCopy {
-    margin: 1.15rem 0 0;
-    max-width: 40.5rem;
+    margin: 0;
+    max-width: min(92%, 58rem);
 }
 
 .pricesChooseText {
@@ -116,7 +121,8 @@
     padding: 0;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 2.2rem 2.4rem;
+    gap: 2.9rem 2.4rem;
+    align-items: start;
 }
 
 .pricesBenefit {
@@ -124,7 +130,7 @@
     grid-template-columns: auto 1fr;
     grid-template-rows: auto auto;
     column-gap: 0.75rem;
-    row-gap: 0.4rem;
+    row-gap: 0.8rem;
     align-items: start;
 }
 
@@ -143,21 +149,24 @@
     margin: 0;
     font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman';
     font-size: clamp(1.4rem, 1.85vw, 1.6rem);
-    font-weight: normal;
+    font-weight: 700;
     line-height: 1.15;
     color: #344759;
+    white-space: nowrap;
 }
 
 .pricesBenefitCopy {
     grid-column: 2;
     grid-row: 2;
     margin: 0;
+    text-align: justify;
+    align-self: start;
 }
 
 .pricesBenefitsNote {
     margin: 0;
     font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     line-height: 1.5;
     color: #344759;
 }
@@ -197,7 +206,7 @@
     border-radius: 1.6rem;
     box-shadow: 0 18px 30px rgba(0, 0, 0, 0.28);
     text-align: left;
-    gap: 0.75rem;
+    gap: 0.9rem;
     box-sizing: border-box;
     min-width: 0;
     height: 100%;
@@ -305,7 +314,7 @@
     width: 100%;
     justify-content: center;
     align-items: center;
-    margin-top: auto;
+    margin-top: 1.25rem;
     padding: 0.8em 1em;
     letter-spacing: 0.07em;
     text-transform: uppercase;
@@ -343,7 +352,7 @@
 
     .pricesBenefitsGrid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1.8rem 1.6rem;
+        gap: 2.4rem 1.6rem;
     }
 
     .pricesChooseHeader,
@@ -374,7 +383,7 @@
 
     .pricesBenefitsGrid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 2rem;
     }
 
     .pricesChoose {
@@ -451,5 +460,9 @@
     .pricesIntroTitleLineIndented,
     .pricesChooseTitleLineIndented {
         padding-left: clamp(1.5rem, 10vw, 2.5rem);
+    }
+
+    .pricesBenefitTitle {
+        white-space: normal;
     }
 }

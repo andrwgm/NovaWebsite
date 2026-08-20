@@ -13,26 +13,14 @@ const BENEFITS = [
     {
         id: 'process',
         icon: 'pi pi-list',
-        title: (
-            <>
-                Complete assessment
-                <br />
-                process
-            </>
-        ),
+        title: 'Complete assessment process',
         description:
             'Questionnaires, interviews, observations and review of relevant background information.',
     },
     {
         id: 'review',
         icon: 'pi pi-eye',
-        title: (
-            <>
-                Multidisciplinary
-                <br />
-                review
-            </>
-        ),
+        title: 'Multidisciplinary review',
         description:
             'Your evidence is considered jointly before the clinical outcome is agreed.',
     },
