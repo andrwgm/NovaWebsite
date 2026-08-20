@@ -144,7 +144,9 @@ export default function PricesSection() {
                     <ul className="pricesBenefitsGrid">
                         {BENEFITS.map((benefit) => (
                             <li className="pricesBenefit" key={benefit.id}>
-                                <i className={benefit.icon} aria-hidden="true" />
+                                <span className="pricesBenefitIcon" aria-hidden="true">
+                                    <i className={benefit.icon} />
+                                </span>
                                 <h3 className="pricesBenefitTitle">{benefit.title}</h3>
                                 <p className="pricesBenefitCopy">{benefit.description}</p>
                             </li>

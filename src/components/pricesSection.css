@@ -129,30 +129,55 @@
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto auto;
-    column-gap: 0.75rem;
-    row-gap: 0.8rem;
+    column-gap: 0.85rem;
+    row-gap: 0.95rem;
     align-items: start;
 }
 
-.pricesBenefit .pi {
+.pricesBenefitIcon {
     grid-column: 1;
     grid-row: 1;
-    font-size: 1.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.45rem;
+    height: 2.45rem;
+    border-radius: 50%;
+    background-color: #eef6f6;
     color: #344759;
+    flex-shrink: 0;
+    align-self: center;
+}
+
+.pricesBenefitIcon .pi {
+    font-size: 1.05rem;
     line-height: 1;
-    margin-top: 0.15rem;
 }
 
 .pricesBenefitTitle {
     grid-column: 2;
     grid-row: 1;
+    position: relative;
     margin: 0;
+    padding-bottom: 0.42rem;
     font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman';
     font-size: clamp(1.4rem, 1.85vw, 1.6rem);
     font-weight: 700;
     line-height: 1.15;
     color: #344759;
     white-space: nowrap;
+    align-self: center;
+}
+
+.pricesBenefitTitle::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 2.65rem;
+    height: 2px;
+    border-radius: 1px;
+    background-color: #137a72;
 }
 
 .pricesBenefitCopy {
@@ -160,7 +185,7 @@
     grid-row: 2;
     margin: 0;
     max-width: 15.75rem;
-    text-align: justify;
+    text-align: left;
     align-self: start;
 }
 
@@ -400,6 +425,10 @@
     .pricesBenefitsGrid {
         grid-template-columns: 1fr;
         gap: 2rem;
+    }
+
+    .pricesBenefitCopy {
+        max-width: 92%;
     }
 
     .pricesChoose {
