@@ -17,11 +17,27 @@ export default function SupportBoxSection() {
                 in one <span className="supportBoxSectionTitleItalic">box.</span>
               </span>
             </h2>
+            <p className="supportBoxSectionEyebrow">Included with every assessment</p>
             <p className="supportBoxSectionText">
-              Whichever Nova Clinics plan you choose, your support box is included. Inside,
-              you&apos;ll find practical guides, family resources and thoughtfully designed tools
-              to help you feel informed, prepared and supported throughout the assessment journey.
+              Every Nova Clinics assessment includes a physical support box delivered to your
+              home. Inside, you&apos;ll find practical guides, family resources and thoughtfully
+              designed tools to help you prepare, understand each stage and put helpful
+              strategies into practice at home or school.
             </p>
+            <ul className="supportBoxSectionList">
+              <li>
+                <i className="pi pi-check-circle" aria-hidden="true" />
+                <span>Before assessment</span>
+              </li>
+              <li>
+                <i className="pi pi-check-circle" aria-hidden="true" />
+                <span>During assessment</span>
+              </li>
+              <li>
+                <i className="pi pi-check-circle" aria-hidden="true" />
+                <span>After assessment</span>
+              </li>
+            </ul>
           </div>
 
           <Link className="supportBoxSectionCta" to="/support">
