@@ -44,9 +44,8 @@ Disallow: /
 User-agent: ClaudeBot
 Disallow: /
 
-User-agent: Google-Extended
-Disallow: /
-
+# Google-Extended is Gemini / Vertex grounding. Allowed on purpose so
+# Nova can be cited in Gemini answers. Training crawlers stay blocked.
 User-agent: GPTBot
 Disallow: /
 

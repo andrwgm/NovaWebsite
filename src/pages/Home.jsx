@@ -6,6 +6,8 @@ import { Image } from 'primereact/image';
 import { Button } from 'primereact/button';
 import { requestContactModal } from '../utils/contactModalService';
 import LazySection from '../components/LazySection';
+import BlogJsonLd from '../components/blog/BlogJsonLd';
+import { buildHomeFaqJsonLd } from '../data/clinicJsonLd';
 
 const CompressedSections = React.lazy(() => import('../components/CompressedSections'));
 const QuestionnaireSection = React.lazy(() => import('../components/QuestionnaireSection'));
@@ -140,6 +142,7 @@ export default function Home() {
 
   return (
     <div className="mainContent">
+      <BlogJsonLd schema={buildHomeFaqJsonLd()} />
       <div className='titleAndButton parallax' fetchpriority="high">
         <div className='titles'>
           <p className='bigTitle'>

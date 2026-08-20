@@ -2,6 +2,8 @@ import React, { useCallback, useMemo, useState } from 'react';
 import { Carousel } from 'primereact/carousel';
 import './questionsAnswered.css';
 
+/** Cost / online / clinician / medication answers are also in src/data/clinicJsonLd.js (FAQ schema). */
+
 
 const SLIDES = [
   {

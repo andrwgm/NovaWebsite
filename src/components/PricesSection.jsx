@@ -2,6 +2,8 @@ import React from 'react';
 import { requestContactModal } from '../utils/contactModalService';
 import './pricesSection.css';
 
+// Prices also live in index.html JSON-LD, public/llms.txt, and QuestionsAnswered FAQs.
+
 const BENEFITS = [
     {
         id: 'team',

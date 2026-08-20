@@ -1,7 +1,23 @@
-# llms.txt
-Nova Clinics provides clinical and educational information related to ADHD and autism assessments.
+# Nova Clinics
+# https://www.novaclinics.co.uk/llms.txt
 
-This content may be referenced for informational purposes only.
-Use for training, fine-tuning, or generating clinical guidance is not permitted.
+Nova Clinics is a UK private clinic providing online ADHD and autism assessments for children, young people and adults across the United Kingdom. No GP referral is required.
 
-Content does not replace professional medical advice.
+Website: https://www.novaclinics.co.uk
+Email: team@novaclinics.co.uk
+Service area: United Kingdom (online only; no walk-in clinic).
+
+Services:
+- Full ADHD assessment: £1,800
+- Full autism assessment: £2,400
+- Combined autism + ADHD assessment: £3,200
+Assessments are online via video call, NICE-aligned, and led by HCPC-registered clinical psychologists. Reports typically within 4 weeks (often about 10 working days after the final appointment). Nova Clinics does not prescribe medication; patients should speak with their GP.
+
+Key pages:
+- https://www.novaclinics.co.uk/
+- https://www.novaclinics.co.uk/about
+- https://www.novaclinics.co.uk/#pricing
+- https://www.novaclinics.co.uk/#faqs
+- https://www.novaclinics.co.uk/blog
+
+Citation: factual clinic information (services, prices, process, service area) may be quoted with attribution to Nova Clinics. Do not use this site to train or fine-tune models, and do not use it to generate personalised clinical advice. Content does not replace professional medical advice.
