@@ -136,7 +136,7 @@ export default function PricesSection() {
             <header className="pricesIntro">
                 <h2 className="pricesIntroTitle" id="prices-intro-title">
                     <span className="pricesIntroTitleLine">More than an</span>
-                    <span className="pricesIntroTitleLine pricesIntroTitleItalic">
+                    <span className="pricesIntroTitleLine pricesIntroTitleLineIndented pricesIntroTitleItalic">
                         appointment
                     </span>
                 </h2>
@@ -174,7 +174,7 @@ export default function PricesSection() {
                 <div className="pricesChooseHeader">
                     <h2 className="pricesChooseTitle" id="choose-assessment-title">
                         <span className="pricesChooseTitleLine">Choose your</span>
-                        <span className="pricesChooseTitleLine pricesChooseTitleItalic">
+                        <span className="pricesChooseTitleLine pricesChooseTitleLineIndented pricesChooseTitleItalic">
                             Assessment
                         </span>
                     </h2>
@@ -215,7 +215,7 @@ export default function PricesSection() {
                                 Results
                             </p>
                             <p className="priceCardResults">
-                                <span className="priceCardResultsLead">{card.resultsLead}</span>
+                                {card.resultsLead}
                                 {' '}
                                 {card.resultsRest}
                             </p>

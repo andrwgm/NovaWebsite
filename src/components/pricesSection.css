@@ -9,17 +9,19 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 4.5em 1.5rem 2.4em;
+    padding: 4.5em 1.75rem 2.4em;
 }
 
 .pricesIntroTitle,
 .pricesChooseTitle {
+    display: inline-block;
     margin: 0;
     font-weight: normal;
     font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
     font-size: clamp(3.6rem, 6.2vw, 5rem);
     color: #344759;
     line-height: 0.95;
+    text-align: left;
 }
 
 .pricesIntroTitleLine,
@@ -27,10 +29,14 @@
     display: block;
 }
 
+.pricesIntroTitleLineIndented,
+.pricesChooseTitleLineIndented {
+    padding-left: clamp(2.5rem, 6vw, 5rem);
+}
+
 .pricesIntroTitleItalic,
 .pricesChooseTitleItalic,
-.priceCardItalic,
-.priceCardResultsLead {
+.priceCardItalic {
     font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman';
 }
 
@@ -42,7 +48,13 @@
     text-transform: uppercase;
     color: #961D4E;
     margin: 1.75rem 0 0;
-    max-width: 46rem;
+    max-width: min(92%, 78rem);
+}
+
+@media (min-width: 1200px) {
+    .pricesIntro .pricesEyebrow {
+        white-space: nowrap;
+    }
 }
 
 .pricesEyebrow--start {
@@ -51,13 +63,22 @@
     text-align: left;
 }
 
-.pricesIntroCopy {
+.pricesIntroCopy,
+.pricesBenefitCopy,
+.pricesChooseText {
     font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
-    font-size: clamp(0.9rem, 1.15vw, 1rem);
-    line-height: 1.6;
+    font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+    line-height: 1.65;
     color: #344759;
+}
+
+.pricesIntroCopy {
     margin: 1.15rem 0 0;
     max-width: 40.5rem;
+}
+
+.pricesChooseText {
+    margin: 0;
 }
 
 .pricesBenefitsBand {
@@ -121,7 +142,7 @@
     grid-row: 1;
     margin: 0;
     font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman';
-    font-size: clamp(1.2rem, 1.5vw, 1.31rem);
+    font-size: clamp(1.4rem, 1.85vw, 1.6rem);
     font-weight: normal;
     line-height: 1.15;
     color: #344759;
@@ -131,10 +152,6 @@
     grid-column: 2;
     grid-row: 2;
     margin: 0;
-    font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
-    font-size: clamp(0.9rem, 1.15vw, 1rem);
-    line-height: 1.45;
-    color: #344759;
 }
 
 .pricesBenefitsNote {
@@ -159,15 +176,7 @@
 }
 
 .pricesChooseCopy {
-    max-width: 28rem;
-}
-
-.pricesChooseText {
-    margin: 0;
-    font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
-    font-size: clamp(0.85rem, 1.1vw, 0.95rem);
-    line-height: 1.55;
-    color: #344759;
+    max-width: 32rem;
 }
 
 .pricesSectionContent {
@@ -180,8 +189,8 @@
 }
 
 .priceCard {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto auto auto auto auto auto auto auto;
     align-items: stretch;
     background-color: #344759;
     padding: 2.1rem 1.9rem 2rem;
@@ -191,6 +200,7 @@
     gap: 0.75rem;
     box-sizing: border-box;
     min-width: 0;
+    height: 100%;
 }
 
 .priceCardEyebrow {
@@ -248,7 +258,7 @@
 }
 
 .priceCardSectionTitle .pi {
-    font-size: 0.95em;
+    font-size: 1rem;
 }
 
 .priceCardList {
@@ -349,7 +359,7 @@
 
 @media (max-width: 768px) {
     .pricesIntro {
-        padding: 3.4em 1.25rem 2em;
+        padding: 3.4em 1.75rem 2em;
     }
 
     .pricesBenefitsBand {
@@ -357,8 +367,8 @@
     }
 
     .pricesBenefitsPanel {
-        width: 92%;
-        padding: 2.2em 1.6em 1.8em;
+        width: 90%;
+        padding: 2.2em 1.75em 1.9em;
         gap: 1.8em;
     }
 
@@ -376,12 +386,17 @@
         justify-items: center;
         text-align: center;
         gap: 1.4rem;
-        width: 92%;
+        width: 90%;
         margin-bottom: 2.2em;
     }
 
     .pricesChooseTitle {
-        text-align: center;
+        text-align: left;
+    }
+
+    .pricesIntroTitleLineIndented,
+    .pricesChooseTitleLineIndented {
+        padding-left: clamp(2rem, 8vw, 3.5rem);
     }
 
     .pricesEyebrow--start,
@@ -396,29 +411,33 @@
 
     .pricesSectionContent {
         grid-template-columns: 1fr;
-        width: 92%;
+        width: 90%;
         gap: 1.8rem;
     }
 
     .priceCard {
         width: 100%;
-        padding: 1.9rem 1.5rem 1.7rem;
+        padding: 1.9rem 1.7rem 1.8rem;
     }
 }
 
 @media (max-width: 480px) {
+    .pricesIntro {
+        padding-inline: 1.5rem;
+    }
+
     .pricesBenefitsPanel {
-        padding: 1.8em 1.2em 1.5em;
-        width: 94%;
+        padding: 2em 1.5em 1.7em;
+        width: 90%;
     }
 
     .pricesChooseHeader,
     .pricesSectionContent {
-        width: 94%;
+        width: 90%;
     }
 
     .priceCard {
-        padding: 1.7rem 1.3rem 1.5rem;
+        padding: 1.8rem 1.5rem 1.6rem;
     }
 
     .priceCardTitle {
@@ -427,5 +446,10 @@
 
     .priceCardSectionTitle {
         font-size: 0.68rem;
+    }
+
+    .pricesIntroTitleLineIndented,
+    .pricesChooseTitleLineIndented {
+        padding-left: clamp(1.5rem, 10vw, 2.5rem);
     }
 }
