@@ -48,19 +48,21 @@
 
 .supportBoxSectionCopy {
   max-width: 36rem;
-  margin-top: auto;
+  margin-top: 6em;
   margin-bottom: calc(var(--support-image-height) / 3);
   padding: 0;
   box-sizing: border-box;
+  display: grid;
+  gap: 2em;
 }
 
 .supportBoxSectionTitle {
   font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
-  font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+  font-size: clamp(3.6rem, 6.2vw, 5rem);
   font-weight: normal;
   line-height: 0.95;
   color: #344759;
-  margin: 0 0 1.25rem;
+  margin: 0 0 0.45rem;
 }
 
 .supportBoxSectionTitleLine {
@@ -75,12 +77,48 @@
   font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman';
 }
 
+.supportBoxSectionEyebrow {
+  font-family: 'LemonMilkLight', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: clamp(1.12rem, 1.85vw, 1.38rem);
+  font-weight: normal;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #961D4E;
+  margin: 0 0 0.9rem;
+}
+
 .supportBoxSectionText {
   font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
   font-size: clamp(1.05rem, 1.6vw, 1.3rem);
   line-height: 1.65;
   color: #4c545d;
-  margin: 0;
+  margin: 0 0 1rem;
+  text-align: justify;
+}
+
+.supportBoxSectionList {
+  list-style: none;
+  margin: 0 0 2em 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 1.35rem;
+  width: 100%;
+}
+
+.supportBoxSectionList li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: clamp(0.98rem, 1.4vw, 1.12rem);
+  line-height: 1.3;
+  color: #344759;
+}
+
+.supportBoxSectionList .pi {
+  font-size: 0.95em;
+  color: #344759;
 }
 
 .supportBoxSectionCta {
@@ -175,10 +213,6 @@
     margin-left: calc(var(--support-gutter) + var(--support-content-inset));
   }
 
-  .supportBoxSectionTitle {
-    font-size: clamp(2.4rem, 4.8vw, 3.4rem);
-  }
-
   .supportBoxSectionText {
     font-size: clamp(1rem, 1.5vw, 1.15rem);
     line-height: 1.6;
@@ -223,9 +257,17 @@
     padding-left: clamp(2rem, 8vw, 3.5rem);
   }
 
+  .supportBoxSectionEyebrow {
+    margin-inline: auto;
+  }
+
   .supportBoxSectionText {
     max-width: 100%;
     margin-inline: auto;
+  }
+
+  .supportBoxSectionList {
+    justify-content: center;
   }
 
   .supportBoxSectionCta {
@@ -267,10 +309,6 @@
 
   .supportBoxSectionContent {
     padding-bottom: 1rem;
-  }
-
-  .supportBoxSectionTitle {
-    font-size: clamp(2.2rem, 9vw, 2.8rem);
   }
 
   .supportBoxSectionTitleLineIndented {

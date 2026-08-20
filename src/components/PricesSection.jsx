@@ -1,222 +1,241 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { requestContactModal } from '../utils/contactModalService';
 import './pricesSection.css';
 
-const PORTAL_FEATURES = [
+// Prices also live in index.html JSON-LD, public/llms.txt, and QuestionsAnswered FAQs.
+
+const BENEFITS = [
     {
-        icon: 'pi pi-envelope',
-        text: 'Secure direct messaging with your clinical team',
+        id: 'team',
+        icon: 'pi pi-users',
+        title: 'Specialist clinical team',
+        description:
+            'HCPC-registered professionals working together around one complete picture.',
     },
     {
+        id: 'process',
+        icon: 'pi pi-list',
+        title: 'Complete assessment process',
+        description:
+            'Questionnaires, interviews, observations and review of relevant background information.',
+    },
+    {
+        id: 'review',
+        icon: 'pi pi-eye',
+        title: 'Multidisciplinary review',
+        description:
+            'Your evidence is considered jointly before the clinical outcome is agreed.',
+    },
+    {
+        id: 'report',
         icon: 'pi pi-file',
-        text: 'Upload and access all documents, reports, assessment results, and additional resources',
+        title: 'Detailed written report',
+        description:
+            'A clear outcome, clinical findings and personalised recommendations.',
     },
     {
-        icon: 'pi pi-bell',
-        text: 'Real-time notifications and updates throughout the assessment process',
+        id: 'follow-up',
+        icon: 'pi pi-refresh',
+        title: 'Feedback and follow-up',
+        description:
+            'Time to discuss the outcome, ask questions and understand your next steps.',
+    },
+    {
+        id: 'portal',
+        icon: 'pi pi-box',
+        title: 'Portal and support box',
+        description:
+            'Secure updates and documents online, plus physical resources delivered to your home.',
     },
 ];
 
 const PRICE_CARDS = [
     {
         key: 'autism',
+        eyebrow: 'Autism',
         title: (
             <>
-                Full <span className="priceCardItalic">Autism</span>
-                <br />
-                Assessment
+                Full <span className="priceCardItalic">Autism</span> Assessment
             </>
         ),
         description:
-            'Receive a comprehensive autism assessment with evidence-based tools, a detailed diagnostic report, and personalised post-assessment support.',
+            'A comprehensive assessment exploring communication, social interaction, development and everyday experiences.',
         price: '£2,400',
-        included: [
-            'ADOS - 2 informed observation',
-            'ADI-R informed parent interview',
-            'Social context input',
-            'Report',
-            'Feedback',
-            'Post-assessment follow-up',
-            { type: 'portal' },
+        components: [
+            'ADOS-2-informed observation',
+            'ADI-R-informed developmental interview',
+            'Developmental and social-context evidence',
         ],
-        turnaround:
-            'Your assessment results will be carefully prepared and shared within approximately 10 working days.',
+        resultsLead: 'Approximately 10 working days',
+        resultsRest: 'after the final appointment.',
+        cta: 'Enquire about Autism assessment',
         message:
             "\n[You're welcome to edit this message if you wish]\n\nHello, I would like to receive more information and proceed with the Full Autism Assessment. I'm interested in understanding the next steps, availability, and how to begin the assessment process. Thank you.",
     },
     {
-        key: 'adhd',
-        title: (
-            <>
-                Full <span className="priceCardItalic">ADHD</span>
-                <br />
-                Assessment
-            </>
-        ),
-        description:
-            'Undergo a thorough ADHD assessment through clinical interviews and structured questionnaires, followed by a clear report and tailored aftercare.',
-        price: '£1,800',
-        included: [
-            'DIVA or ACE interview',
-            'Social context input',
-            'Report',
-            'Feedback',
-            'Post-assessment follow-up',
-            { type: 'portal' },
-            { type: 'spacer' },
-        ],
-        turnaround:
-            'Your assessment results will be carefully prepared and shared within approximately 10 working days.',
-        message:
-            "\n[You're welcome to edit this message if you wish]\n\nHello, I would like to receive more information and proceed with the Full ADHD Assessment. I'd appreciate details on the next steps, timelines, and how to move forward with the assessment. Thank you.",
-    },
-    {
         key: 'combined',
+        eyebrow: 'Combined pathway',
         title: (
             <>
-                Combined
-                <br />
-                <span className="priceCardItalic">Autism + ADHD</span>
+                <span className="priceCardItalic">Autism</span>
+                {' + '}
+                <span className="priceCardItalic">ADHD</span> Assessment
             </>
         ),
         description:
-            'A complete dual assessment for autism and ADHD, integrating validated tools, expert clinical insight, and personalised ongoing support.',
+            'One coordinated assessment exploring both profiles and how they may interact.',
         price: '£3,200',
-        included: [
-            'ADOS - 2 informed observation',
-            'ADI-R informed parent interview',
-            'DIVA or ACE interview',
-            'Social context input',
-            'Report',
-            'Feedback',
-            'Post-assessment follow-up',
-            { type: 'portal' },
+        components: [
+            'All Autism assessment components',
+            'All ADHD assessment components',
+            'One integrated Autism and ADHD formulation',
         ],
-        turnaround:
-            'Your assessment results will be carefully prepared and shared within approximately 15 working days.',
+        resultsLead: 'Approximately 15 working days',
+        resultsRest: 'after the final appointment.',
+        cta: 'Enquire about Combined assessment',
         message:
             "\n[You're welcome to edit this message if you wish]\n\nHello, I would like to receive more information and proceed with the Combined Autism and ADHD Assessment. I'm keen to understand the process, next steps, and how to start. Thank you.",
     },
+    {
+        key: 'adhd',
+        eyebrow: 'ADHD',
+        title: (
+            <>
+                Full <span className="priceCardItalic">ADHD</span> Assessment
+            </>
+        ),
+        description:
+            'A thorough assessment exploring attention, activity levels, impulsivity and their impact on everyday life.',
+        price: '£1,800',
+        components: [
+            'DIVA or ACE clinical interview',
+            'Structured ADHD questionnaires',
+            'Developmental and social-context evidence',
+        ],
+        resultsLead: 'Approximately 10 working days',
+        resultsRest: 'after the final appointment.',
+        cta: 'Enquire about ADHD assessment',
+        message:
+            "\n[You're welcome to edit this message if you wish]\n\nHello, I would like to receive more information and proceed with the Full ADHD Assessment. I'd appreciate details on the next steps, timelines, and how to move forward with the assessment. Thank you.",
+    },
 ];
 
-const renderIncludedItem = (item) => {
-    if (typeof item === 'string') {
-        return (
-            <li className="priceCardListItem" key={item}>
-                <i className="pi pi-check-circle" aria-hidden="true" />
-                <span>{item}</span>
-            </li>
-        );
-    }
+export default function PricesSection() {
+    return (
+        <section className="pricesOffer" aria-labelledby="prices-intro-title">
+            <header className="pricesIntro">
+                <h2 className="pricesIntroTitle" id="prices-intro-title">
+                    <span className="pricesIntroTitleLine">More than an</span>
+                    <span className="pricesIntroTitleLine pricesIntroTitleLineIndented pricesIntroTitleItalic">
+                        appointment
+                    </span>
+                </h2>
+                <p className="pricesEyebrow">
+                    One assessment fee. Your complete assessment pathway included.
+                </p>
+                <p className="pricesIntroCopy">
+                    The prices below cover the full assessment pathway, not only your appointments.
+                    Everything shown here is included in the stated price, with no required
+                    assessment add-ons.
+                </p>
+            </header>
 
-    if (item?.type === 'portal') {
-        return (
-            <li className="priceCardListItem priceCardListItemPortal" key="portal">
-                <i className="pi pi-check-circle" aria-hidden="true" />
-                <div className="priceCardPortalContent">
-                    <span>Dedicated client portal:</span>
-                    <ul className="priceCardSubList">
-                        {PORTAL_FEATURES.map((feature) => (
-                            <li className="priceCardSubItem" key={feature.text}>
-                                <i className={feature.icon} aria-hidden="true" />
-                                <span>{feature.text}</span>
+            <div className="pricesBenefitsBand">
+                <div className="pricesBenefitsStripe" aria-hidden="true" />
+                <div className="pricesBenefitsPanel">
+                    <ul className="pricesBenefitsGrid">
+                        {BENEFITS.map((benefit) => (
+                            <li className="pricesBenefit" key={benefit.id}>
+                                <span className="pricesBenefitIcon" aria-hidden="true">
+                                    <i className={benefit.icon} />
+                                </span>
+                                <h3 className="pricesBenefitTitle">{benefit.title}</h3>
+                                <p className="pricesBenefitCopy">{benefit.description}</p>
                             </li>
                         ))}
                     </ul>
-                </div>
-            </li>
-        );
-    }
-
-    if (item?.type === 'spacer') {
-        return (
-            <li
-                className="priceCardListItem priceCardListItemSpacer"
-                key="spacer"
-                aria-hidden="true"
-            />
-        );
-    }
-
-    return null;
-};
-
-export default function PricesSection() {
-    const contentRef = useRef(null);
-    const [isThreeColumn, setIsThreeColumn] = useState(false);
-
-    useEffect(() => {
-        const container = contentRef.current;
-        if (!container || typeof window === 'undefined') {
-            return undefined;
-        }
-
-        const computeLayout = () => {
-            const styles = window.getComputedStyle(container);
-            const gapValue = styles.columnGap || styles.gap || '0px';
-            const gap = parseFloat(gapValue);
-            const card = container.querySelector('.priceCard');
-            const minWidth = card ? parseFloat(window.getComputedStyle(card).minWidth) : 0;
-            const width = container.clientWidth;
-            const canFitThree = minWidth > 0 && width >= minWidth * 3 + gap * 2;
-            setIsThreeColumn(canFitThree);
-        };
-
-        computeLayout();
-        const observer = new ResizeObserver(() => {
-            window.requestAnimationFrame(computeLayout);
-        });
-        observer.observe(container);
-        return () => observer.disconnect();
-    }, []);
-
-    return (
-        <div className="pricesSection">
-            <h2 className="pricesSectionTitle">
-                What we <span className="pricesSectionTitleItalic">offer</span>
-            </h2>
-            <div
-                className={`pricesSectionContent${isThreeColumn ? ' pricesSectionContent--three' : ''}`}
-                ref={contentRef}
-            >
-                {PRICE_CARDS.map((card) => (
-                    <div
-                        key={card.key}
-                        className="priceCard"
-                        data-key={card.key}
-                    >
-                        <div className="priceCardHeader">
-                            <div className="priceCardTitle">{card.title}</div>
-                            <div className="priceCardDivider" />
-                            <p className="priceCardIntro">{card.description}</p>
-                        </div>
-                        <div className="priceCardDivider" />
-                        <div className="priceCardPrice">{card.price}</div>
-                        <div className="priceCardDivider" />
-                        <div className="priceCardSectionTitle">WHATS INCLUDED:</div>
-                        <ul className="priceCardList">
-                            {card.included.map((item) => renderIncludedItem(item))}
-                        </ul>
-                        <div className="priceCardSectionTitle">EST. TURNAROUND:</div>
-                        <div className="priceCardTurnaround">
-                            <i className="pi pi-clock" aria-hidden="true" />
-                            <span>{card.turnaround}</span>
-                        </div>
-                        <div className="priceCardDivider" />
-                        <button
-                            type="button"
-                            className="priceCardCta"
-                            onClick={() => requestContactModal({
-                                message: card.message,
-                                source: 'pricing',
-                                itemId: card.key,
-                            })}
-                        >
-                            GET STARTED
-                        </button>
+                    <div className="pricesBenefitsNotes">
+                        <p className="pricesBenefitsNote">
+                            <span className="pricesBenefitsNoteIcon" aria-hidden="true">
+                                <i className="pi pi-truck" />
+                            </span>
+                            UK delivery of your support box is included.
+                        </p>
+                        <p className="pricesBenefitsNote">
+                            <span className="pricesBenefitsNoteIcon" aria-hidden="true">
+                                <i className="pi pi-info-circle" />
+                            </span>
+                            Nova Clinics provides diagnostic assessments and post-assessment
+                            guidance; medication and ongoing treatment are not included
+                        </p>
                     </div>
-                ))}
+                </div>
             </div>
-        </div>
+
+            <section className="pricesChoose" aria-labelledby="choose-assessment-title">
+                <div className="pricesChooseHeader">
+                    <h2 className="pricesChooseTitle" id="choose-assessment-title">
+                        <span className="pricesChooseTitleLine">Choose your</span>
+                        <span className="pricesChooseTitleLine pricesChooseTitleLineIndented pricesChooseTitleItalic">
+                            Assessment
+                        </span>
+                    </h2>
+                    <div className="pricesChooseCopy">
+                        <p className="pricesEyebrow pricesEyebrow--start">Assessment options</p>
+                        <p className="pricesChooseText">
+                            Choose the assessment pathway that best reflects what you would like to
+                            explore. If you are unsure which option is right, our team can guide
+                            you.
+                        </p>
+                    </div>
+                </div>
+
+                <div className="pricesSectionContent">
+                    {PRICE_CARDS.map((card) => (
+                        <article
+                            key={card.key}
+                            className="priceCard"
+                            data-key={card.key}
+                        >
+                            <p className="priceCardEyebrow">{card.eyebrow}</p>
+                            <h3 className="priceCardTitle">{card.title}</h3>
+                            <p className="priceCardIntro">{card.description}</p>
+                            <div className="priceCardDivider" />
+                            <p className="priceCardPrice">{card.price}</p>
+                            <div className="priceCardDivider" />
+                            <p className="priceCardSectionTitle">Clinical components</p>
+                            <ul className="priceCardList">
+                                {card.components.map((item) => (
+                                    <li className="priceCardListItem" key={item}>
+                                        <i className="pi pi-check-circle" aria-hidden="true" />
+                                        <span>{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                            <p className="priceCardSectionTitle priceCardSectionTitle--results">
+                                <i className="pi pi-clock" aria-hidden="true" />
+                                Results
+                            </p>
+                            <p className="priceCardResults">
+                                {card.resultsLead}
+                                {' '}
+                                {card.resultsRest}
+                            </p>
+                            <button
+                                type="button"
+                                className="priceCardCta"
+                                onClick={() => requestContactModal({
+                                    message: card.message,
+                                    source: 'pricing',
+                                    itemId: card.key,
+                                })}
+                            >
+                                {card.cta}
+                            </button>
+                        </article>
+                    ))}
+                </div>
+            </section>
+        </section>
     );
 }

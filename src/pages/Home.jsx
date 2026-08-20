@@ -6,6 +6,8 @@ import { Image } from 'primereact/image';
 import { Button } from 'primereact/button';
 import { requestContactModal } from '../utils/contactModalService';
 import LazySection from '../components/LazySection';
+import BlogJsonLd from '../components/blog/BlogJsonLd';
+import { buildHomeFaqJsonLd } from '../data/clinicJsonLd';
 
 const CompressedSections = React.lazy(() => import('../components/CompressedSections'));
 const QuestionnaireSection = React.lazy(() => import('../components/QuestionnaireSection'));
@@ -140,6 +142,7 @@ export default function Home() {
 
   return (
     <div className="mainContent">
+      <BlogJsonLd schema={buildHomeFaqJsonLd()} />
       <div className='titleAndButton parallax' fetchpriority="high">
         <div className='titles'>
           <p className='bigTitle'>
@@ -226,17 +229,14 @@ export default function Home() {
           <QuestionnaireSection />
         </Suspense>
       </LazySection>
-      <LazySection id="pricing" forceVisible={forceLazySections}>
-        <Suspense fallback={null}>
-          <div className='blueLineBg'>
-            <div className='darkBlueLine' />
-            <PricesSection />
-          </div>
-        </Suspense>
-      </LazySection>
       <LazySection forceVisible={forceLazySections}>
         <Suspense fallback={null}>
           <SupportBoxSection />
+        </Suspense>
+      </LazySection>
+      <LazySection id="pricing" forceVisible={forceLazySections}>
+        <Suspense fallback={null}>
+          <PricesSection />
         </Suspense>
       </LazySection>
       <LazySection id="how-it-works" forceVisible={forceLazySections}>

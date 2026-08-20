@@ -275,20 +275,6 @@
     }
 }
 
-.blueLineBg {
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding: 4em 0;
-}
-
-.darkBlueLine {
-    position: absolute;
-    background-color: #344759;
-    height: 60%;
-    width: 100%;
-}
-
 .stillHaveQuestionsBg {
     background-color: white;
     height: 100%;

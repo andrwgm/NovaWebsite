@@ -42,12 +42,105 @@
     <link rel="icon" href="/favicon.png" />
     <script type="application/ld+json">
       {
-        "@context" : "https://schema.org",
-        "@type" : "WebSite",
-        "name" : "Nova Clinics",
-        "url" : "https://www.novaclinics.co.uk"
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://www.novaclinics.co.uk/#website",
+            "name": "Nova Clinics",
+            "url": "https://www.novaclinics.co.uk",
+            "publisher": { "@id": "https://www.novaclinics.co.uk/#clinic" }
+          },
+          {
+            "@type": ["MedicalClinic", "MedicalOrganization"],
+            "@id": "https://www.novaclinics.co.uk/#clinic",
+            "name": "Nova Clinics",
+            "legalName": "NovaClinicsUK",
+            "alternateName": "Nova Clinics UK",
+            "url": "https://www.novaclinics.co.uk",
+            "email": "team@novaclinics.co.uk",
+            "image": "https://www.novaclinics.co.uk/images/icon.png",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.novaclinics.co.uk/images/icon.png"
+            },
+            "description": "Nova Clinics is a UK private clinic providing online ADHD and autism assessments for children, young people and adults across the United Kingdom. There is no walk-in clinic; all assessments are by video call. Assessments are NICE-aligned and led by HCPC-registered clinical psychologists. No GP referral is required.",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "GB"
+            },
+            "areaServed": { "@type": "Country", "name": "United Kingdom" },
+            "availableLanguage": "English",
+            "currenciesAccepted": "GBP",
+            "priceRange": "£1800-£3200",
+            "isAcceptingNewPatients": true,
+            "medicalSpecialty": "Psychiatric",
+            "knowsAbout": ["ADHD", "Autism", "ADHD assessment", "Autism assessment"],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "email": "team@novaclinics.co.uk",
+              "contactType": "customer support",
+              "areaServed": "GB",
+              "availableLanguage": "English"
+            },
+            "sameAs": [
+              "https://www.instagram.com/novaclinicsuk/",
+              "https://www.linkedin.com/company/novaclinicsuk/",
+              "https://www.facebook.com/profile.php?id=61584780458767",
+              "https://www.tiktok.com/@novaclinicsuk"
+            ],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Neurodevelopmental assessments",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "url": "https://www.novaclinics.co.uk/#pricing",
+                  "price": "1800",
+                  "priceCurrency": "GBP",
+                  "availability": "https://schema.org/InStock",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Full ADHD assessment",
+                    "description": "A thorough online ADHD assessment exploring attention, activity levels, impulsivity and their impact on everyday life. Includes DIVA or ACE clinical interview, structured questionnaires, and developmental evidence. Typical report about 10 working days after the final appointment.",
+                    "provider": { "@id": "https://www.novaclinics.co.uk/#clinic" },
+                    "areaServed": { "@type": "Country", "name": "United Kingdom" }
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "url": "https://www.novaclinics.co.uk/#pricing",
+                  "price": "2400",
+                  "priceCurrency": "GBP",
+                  "availability": "https://schema.org/InStock",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Full autism assessment",
+                    "description": "A comprehensive online autism assessment exploring communication, social interaction, development and everyday experiences. Includes ADOS-2-informed observation, ADI-R-informed developmental interview, and social-context evidence. Typical report about 10 working days after the final appointment.",
+                    "provider": { "@id": "https://www.novaclinics.co.uk/#clinic" },
+                    "areaServed": { "@type": "Country", "name": "United Kingdom" }
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "url": "https://www.novaclinics.co.uk/#pricing",
+                  "price": "3200",
+                  "priceCurrency": "GBP",
+                  "availability": "https://schema.org/InStock",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Combined autism and ADHD assessment",
+                    "description": "One coordinated online assessment exploring both autism and ADHD profiles and how they may interact. Typical report about 15 working days after the final appointment.",
+                    "provider": { "@id": "https://www.novaclinics.co.uk/#clinic" },
+                    "areaServed": { "@type": "Country", "name": "United Kingdom" }
+                  }
+                }
+              ]
+            }
+          }
+        ]
       }
-      </script>
+    </script>
     <link rel="preload" as="image" type="image/avif" href="/images/hands-background-compressed.avif" media="(min-width: 601px)" fetchpriority="high" />
     <link rel="preload" as="image" type="image/avif" href="/images/hands-background-compressed-mobile.avif" media="(max-width: 600px)" fetchpriority="high" />
     <link rel="preload" as="image" type="image/png" href="/images/icon_white_letters.png" fetchpriority="high">
