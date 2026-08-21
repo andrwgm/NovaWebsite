@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Accordion, AccordionTab } from 'primereact/accordion';
 import BeforeAssessmentGuide from './BeforeAssessmentGuide';
@@ -6,6 +6,9 @@ import AfterAssessmentGuide from './AfterAssessmentGuide';
 import ChildAtHomeGuide from './ChildAtHomeGuide';
 import NotAloneGuide from './NotAloneGuide';
 import './supportGuides.css';
+
+const HINT_MAX_CYCLES = 2;
+const HINT_REPLAY_MS = 12000;
 
 export default function SupportGuides() {
   const tabSlugs = useMemo(
@@ -21,8 +24,21 @@ export default function SupportGuides() {
   }, [tabSlugs]);
 
   const [activeIndex, setActiveIndex] = useState(null);
+  const [isHinting, setIsHinting] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const sectionRef = useRef(null);
+  const dismissedRef = useRef(false);
+  const cyclesRef = useRef(0);
+  const inViewRef = useRef(false);
+  const replayTimerRef = useRef(0);
+  const skipHint = Boolean(location.hash.replace('#', ''));
+
+  const stopHint = useCallback(() => {
+    dismissedRef.current = true;
+    setIsHinting(false);
+    window.clearTimeout(replayTimerRef.current);
+  }, []);
 
   useEffect(() => {
     const rawHash = location.hash.replace('#', '').toLowerCase();
@@ -40,7 +56,138 @@ export default function SupportGuides() {
     }
   }, [location.hash, location.pathname, navigate, slugToIndex]);
 
+  useEffect(() => {
+    if (typeof activeIndex === 'number') {
+      stopHint();
+    }
+  }, [activeIndex, stopHint]);
+
+  useEffect(() => {
+    if (dismissedRef.current) {
+      return undefined;
+    }
+
+    if (skipHint) {
+      dismissedRef.current = true;
+      return undefined;
+    }
+
+    const section = sectionRef.current;
+    if (!section || typeof window === 'undefined') {
+      return undefined;
+    }
+
+    if (!window.matchMedia || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      dismissedRef.current = true;
+      return undefined;
+    }
+
+    if (!('IntersectionObserver' in window)) {
+      dismissedRef.current = true;
+      return undefined;
+    }
+
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    const playCycle = () => {
+      if (dismissedRef.current || !inViewRef.current) {
+        return;
+      }
+      if (cyclesRef.current >= HINT_MAX_CYCLES) {
+        return;
+      }
+
+      setIsHinting(false);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          if (dismissedRef.current || !inViewRef.current) {
+            return;
+          }
+          if (cyclesRef.current >= HINT_MAX_CYCLES) {
+            return;
+          }
+          cyclesRef.current += 1;
+          setIsHinting(true);
+        });
+      });
+    };
+
+    const scheduleReplay = () => {
+      window.clearTimeout(replayTimerRef.current);
+      if (dismissedRef.current || cyclesRef.current >= HINT_MAX_CYCLES || !inViewRef.current) {
+        return;
+      }
+
+      replayTimerRef.current = window.setTimeout(() => {
+        if (inViewRef.current && !dismissedRef.current) {
+          playCycle();
+        }
+      }, HINT_REPLAY_MS);
+    };
+
+    const onAnimationEnd = (event) => {
+      if (!(event.target instanceof HTMLElement)) {
+        return;
+      }
+      if (!event.target.classList.contains('p-accordion-tab')) {
+        return;
+      }
+      if (!String(event.animationName || '').endsWith('support-guide-peek')) {
+        return;
+      }
+      setIsHinting(false);
+      scheduleReplay();
+    };
+
+    const onMotionChange = () => {
+      if (motionQuery.matches) {
+        stopHint();
+      }
+    };
+
+    const firstTab = section.querySelector('.p-accordion-tab');
+    const observed = firstTab || section;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        inViewRef.current = entry.isIntersecting;
+        if (!entry.isIntersecting) {
+          window.clearTimeout(replayTimerRef.current);
+          return;
+        }
+        if (dismissedRef.current) {
+          return;
+        }
+        if (cyclesRef.current === 0) {
+          playCycle();
+        }
+      },
+      { threshold: 0.35 }
+    );
+
+    observer.observe(observed);
+    section.addEventListener('animationend', onAnimationEnd);
+    section.addEventListener('webkitAnimationEnd', onAnimationEnd);
+    if (motionQuery.addEventListener) {
+      motionQuery.addEventListener('change', onMotionChange);
+    } else if (motionQuery.addListener) {
+      motionQuery.addListener(onMotionChange);
+    }
+
+    return () => {
+      observer.disconnect();
+      section.removeEventListener('animationend', onAnimationEnd);
+      section.removeEventListener('webkitAnimationEnd', onAnimationEnd);
+      window.clearTimeout(replayTimerRef.current);
+      if (motionQuery.removeEventListener) {
+        motionQuery.removeEventListener('change', onMotionChange);
+      } else if (motionQuery.removeListener) {
+        motionQuery.removeListener(onMotionChange);
+      }
+    };
+  }, [skipHint, stopHint]);
+
   const handleTabChange = (event) => {
+    stopHint();
     const nextIndex = event.index;
     setActiveIndex(nextIndex);
 
@@ -74,12 +221,16 @@ export default function SupportGuides() {
   }
 
   return (
-    <section className="support-guides">
-      <Accordion
-        activeIndex={activeIndex}
-        onTabChange={handleTabChange}
-        className="support-guides__accordion"
-      >
+    <section
+      ref={sectionRef}
+      className={`support-guides${isHinting ? ' support-guides--hinting' : ''}`}
+    >
+      <div onPointerDown={stopHint}>
+        <Accordion
+          activeIndex={activeIndex}
+          onTabChange={handleTabChange}
+          className="support-guides__accordion"
+        >
         <AccordionTab
           id="before-the-assessment"
           header={
@@ -147,7 +298,8 @@ export default function SupportGuides() {
             <NotAloneGuide />
           </div>
         </AccordionTab>
-      </Accordion>
+        </Accordion>
+      </div>
     </section>
   );
 }
