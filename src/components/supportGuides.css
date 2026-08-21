@@ -115,11 +115,11 @@
 }
 
 .support-guides--hinting .support-guides__accordion .p-accordion-tab:first-of-type {
-  animation: support-guide-peek 1.9s ease-in-out 1;
+  animation: support-guide-peek 1.15s ease-in-out 1;
 }
 
 .support-guides--hinting .support-guides__accordion .p-accordion-tab:first-of-type .p-accordion-header-link {
-  animation: support-guide-peek-shadow 1.9s ease-in-out 1;
+  animation: support-guide-peek-shadow 1.15s ease-in-out 1;
 }
 
 @keyframes support-guide-peek {
@@ -133,7 +133,7 @@
 
   18%,
   62% {
-    transform: translateY(-18px);
+    transform: translateY(-10px);
   }
 }
 
