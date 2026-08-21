@@ -109,6 +109,11 @@
   transform: translateY(0);
 }
 
+.support-guides__accordion .p-accordion-tab:last-of-type .p-accordion-header-link {
+  box-shadow: 0 calc(var(--support-tab-lift) + 2px) 0 var(--support-guide-color, #961D4E);
+  transition: none;
+}
+
 .support-guides--hinting .support-guides__accordion .p-accordion-tab:first-of-type {
   animation: support-guide-peek 1.9s ease-in-out 1;
 }
@@ -182,7 +187,7 @@
     transform: none;
   }
 
-  .support-guides:not(.support-guides--hinting) .support-guides__accordion .p-accordion-tab:not(.p-accordion-tab-active):hover .p-accordion-header-link {
+  .support-guides:not(.support-guides--hinting) .support-guides__accordion .p-accordion-tab:not(.p-accordion-tab-active):not(:last-of-type):hover .p-accordion-header-link {
     box-shadow: none;
   }
 }
