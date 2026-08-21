@@ -7,7 +7,7 @@ import ChildAtHomeGuide from './ChildAtHomeGuide';
 import NotAloneGuide from './NotAloneGuide';
 import './supportGuides.css';
 
-const HINT_MAX_CYCLES = 1;
+const HINT_MAX_CYCLES = 2;
 const HINT_REPLAY_MS = 12000;
 
 export default function SupportGuides() {
