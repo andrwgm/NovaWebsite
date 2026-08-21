@@ -104,8 +104,24 @@
 }
 
 .support-guides__accordion .p-accordion-tab {
+  --support-tab-lift: 8px;
   margin-top: -40px;
+  position: relative;
+  overflow: visible;
   transform: translateY(0);
+}
+
+.support-guides__accordion .p-accordion-tab:last-of-type::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--support-tab-lift);
+  background: var(--support-guide-color);
+  pointer-events: none;
+  transform: translateY(0);
+  transition: transform 0.35s ease;
 }
 
 .support-guides--hinting .support-guides__accordion .p-accordion-tab:first-of-type {
@@ -152,11 +168,15 @@
   }
 
   .support-guides:not(.support-guides--hinting) .support-guides__accordion .p-accordion-tab:not(.p-accordion-tab-active):hover {
-    transform: translateY(-8px);
+    transform: translateY(calc(var(--support-tab-lift) * -1));
   }
 
   .support-guides:not(.support-guides--hinting) .support-guides__accordion .p-accordion-tab:not(.p-accordion-tab-active):hover .p-accordion-header-link {
     box-shadow: 0 12px 22px rgba(44, 68, 87, 0.22);
+  }
+
+  .support-guides:not(.support-guides--hinting) .support-guides__accordion .p-accordion-tab:last-of-type:not(.p-accordion-tab-active):hover::after {
+    transform: translateY(var(--support-tab-lift));
   }
 }
 
@@ -177,6 +197,10 @@
 
   .support-guides:not(.support-guides--hinting) .support-guides__accordion .p-accordion-tab:not(.p-accordion-tab-active):hover .p-accordion-header-link {
     box-shadow: none;
+  }
+
+  .support-guides:not(.support-guides--hinting) .support-guides__accordion .p-accordion-tab:last-of-type:not(.p-accordion-tab-active):hover::after {
+    transform: none;
   }
 }
 
