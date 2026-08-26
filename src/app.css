@@ -164,6 +164,30 @@ textarea {
     gap: 10px;
 }
 
+.cookie-banner__categories {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cookie-banner__category {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 0;
+    color: #1f2a3d;
+    cursor: pointer;
+}
+
+.cookie-banner__category input {
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+.cookie-banner__category strong {
+    font-weight: 700;
+}
+
 .cookie-banner__button {
     border: none;
     border-radius: 999px;

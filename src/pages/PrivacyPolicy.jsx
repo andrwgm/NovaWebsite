@@ -108,7 +108,7 @@ const sections = [
       'Your NHS GP practice, local NHS hospital, or mental health service, where you have asked us to share information or have given your consent.',
       'Schools, informants, or other contacts you provide, where needed for the assessment. Nova Clinics may contact them directly on your behalf.',
       'Clinicians, care coordinators, and other staff or sub-contractors involved in delivering your assessment.',
-      'Service providers that help us operate securely, including hosting, email, video conferencing, analytics, and payment processing (see “Service providers and international transfers”).',
+      'Service providers that help us operate securely, including hosting, email, video conferencing, analytics, advertising measurement (where you consent), and payment processing (see “Service providers and international transfers”).',
       'Integrated Care Boards or Local Authorities for safeguarding or statutory reporting, where the law requires it.',
       'Courts or regulators when the law requires it.',
     ],
@@ -121,6 +121,8 @@ const sections = [
     list: [
       'Amazon Web Services (AWS) — hosting and email delivery from the UK.',
       'Cloudflare — website delivery, security, and analytics (only where you consent to analytics cookies).',
+      'Google Analytics — website analytics under Google Consent Mode v2 (only where you consent to analytics cookies).',
+      'Google Ads — advertising measurement and conversion attribution under Google Consent Mode v2 (only where you consent to advertising cookies). We do not use clinical-path remarketing audiences or Customer Match with enquiry form data.',
       'Google Workspace — video appointments (Google Meet), meeting recordings and transcripts, and internal business documents.',
       'Stripe — payment processing and receipts.',
     ],
@@ -177,7 +179,7 @@ const sections = [
       'Adult health records: retained for eight years from the date of last contact or treatment, then securely destroyed.',
       'Recruitment records for unsuccessful applicants: retained for up to six months, unless you have given separate consent to remain in a talent pool.',
       'Website enquiries and general correspondence: typically up to twelve months, unless needed longer for an active enquiry or dispute.',
-      'Cookie consent preferences: stored in your browser until you clear them or withdraw consent via the Website footer.',
+      'Cookie consent preferences: stored in your browser until you clear them or withdraw consent via the Website footer. When we change cookie categories (for example adding advertising), you will be asked again.',
     ],
   },
   {
@@ -222,7 +224,7 @@ const sections = [
   },
   {
     title: 'Review cycle',
-    body: ['Date of last review: 20 August 2026', 'Next review due: 20 February 2027 (bi-annual cycle).'],
+    body: ['Date of last review: 26 August 2026', 'Next review due: 26 February 2027 (bi-annual cycle).'],
   },
 ];
 

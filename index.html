@@ -11,15 +11,33 @@
 
       (function () {
         var CONSENT_KEY = 'nova_cookie_consent';
-        var stored = null;
-        try { stored = localStorage.getItem(CONSENT_KEY); } catch (e) {}
+        var CONSENT_VERSION = 2;
+        var analyticsGranted = false;
+        var adsGranted = false;
+        var hasChoice = false;
+        try {
+          var raw = localStorage.getItem(CONSENT_KEY);
+          if (raw && raw !== 'accepted' && raw !== 'rejected') {
+            var parsed = JSON.parse(raw);
+            if (
+              parsed
+              && parsed.v === CONSENT_VERSION
+              && typeof parsed.analytics === 'boolean'
+              && typeof parsed.ads === 'boolean'
+            ) {
+              hasChoice = true;
+              analyticsGranted = parsed.analytics;
+              adsGranted = parsed.ads;
+            }
+          }
+        } catch (e) {}
 
         gtag('consent', 'default', {
-          ad_storage: 'denied',
-          ad_user_data: 'denied',
-          ad_personalization: 'denied',
-          analytics_storage: stored === 'accepted' ? 'granted' : 'denied',
-          wait_for_update: stored ? 0 : 500,
+          ad_storage: adsGranted ? 'granted' : 'denied',
+          ad_user_data: adsGranted ? 'granted' : 'denied',
+          ad_personalization: adsGranted ? 'granted' : 'denied',
+          analytics_storage: analyticsGranted ? 'granted' : 'denied',
+          wait_for_update: hasChoice ? 0 : 500,
         });
       })();
     </script>
