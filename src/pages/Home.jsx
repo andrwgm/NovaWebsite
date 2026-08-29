@@ -178,11 +178,10 @@ export default function Home() {
           <div className='whyChooseUsTextAndImg'>
             <div className='whyChooseUsText'>
               <div className='whyChooseUsTextBold'>
-                End the 2 year NHS wait today.
+                Start Without a Waiting List.
               </div>
               <div className='whyChooseUsTextRegular'>
-                95% of our clients are seen within 2 weeks.
-                All of them have an outcome within 1 month.
+                Appointments are available without a waiting list. We’ll explain each stage and the expected timescale before you begin.
               </div>
               <div className='whyChooseUsTextBold'>
                 Experts Who Actually Listen.
@@ -191,14 +190,13 @@ export default function Home() {
                 Experienced HCPC and BPS registered Clinical Psychologists offering compassionate support for all ages, every day.
               </div>
               <div className='whyChooseUsTextBold'>
-                Outcome Letters That Change Everything
+                Outcome Letters to Support Your Next Steps.
               </div>
               <div className='whyChooseUsTextRegular'>
-                Instantly accepted by schools, colleges, universities, employers and the DWP.
-                {/* – whether it confirms a diagnosis or gives you peace of mind. */}
+                Receive a clear outcome letter and detailed assessment report that you can share with schools, colleges, universities, employers and relevant services. Each organisation applies its own requirements.
               </div>
               <div className='whyChooseUsTextBold'>
-                100% Online, Anywhere in the UK
+                100% Online, Anywhere in the UK.
               </div>
               <div className='whyChooseUsTextRegular'>
                 No Travel, No Stress. Perfect for busy parents, anxious teens, or adults juggling work.
@@ -220,7 +218,7 @@ export default function Home() {
           <div className='isThisForMeText'>
             Every child, teen and adult is unique - but sometimes those little (or big) differences start to feel like something more.
             If school is a battle, work feels overwhelming, or daily life just seems harder than it should… you’re in the right place.
-            We’ve helped thousands recognise the signs of Autism, ADHD (or both) - and discover it’s NOT a lack of effort or “bad behaviour”.
+            Our team can help you explore whether autism, ADHD or both may explain some of these experiences, and understand the next steps available to you.
           </div>
         </div>
       </div>
