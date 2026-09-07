@@ -1,6 +1,16 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { requestContactModal } from '../utils/contactModalService';
+import { trackPricingSeen } from '../utils/googleAnalytics';
 import './pricesSection.css';
+
+const PRICE_FORM_SOURCE = {
+    autism: 'autism_price',
+    adhd: 'adhd_price',
+    combined: 'combined_price',
+};
+
+const PRICING_SEEN_RATIO = 0.5;
+const PRICING_SEEN_DWELL_MS = 1000;
 
 // Prices also live in index.html JSON-LD, public/llms.txt, and QuestionsAnswered FAQs.
 
@@ -120,6 +130,94 @@ const PRICE_CARDS = [
     },
 ];
 
+function PriceCard({ card }) {
+    const cardRef = useRef(null);
+
+    useEffect(() => {
+        const node = cardRef.current;
+        if (!node || typeof IntersectionObserver === 'undefined') {
+            return undefined;
+        }
+
+        let dwellTimer = null;
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (!entry) {
+                    return;
+                }
+                if (entry.isIntersecting && entry.intersectionRatio >= PRICING_SEEN_RATIO) {
+                    if (dwellTimer != null) {
+                        return;
+                    }
+                    dwellTimer = window.setTimeout(() => {
+                        dwellTimer = null;
+                        trackPricingSeen({ item_id: card.key });
+                        observer.disconnect();
+                    }, PRICING_SEEN_DWELL_MS);
+                    return;
+                }
+                if (dwellTimer != null) {
+                    window.clearTimeout(dwellTimer);
+                    dwellTimer = null;
+                }
+            },
+            { threshold: PRICING_SEEN_RATIO },
+        );
+
+        observer.observe(node);
+        return () => {
+            if (dwellTimer != null) {
+                window.clearTimeout(dwellTimer);
+            }
+            observer.disconnect();
+        };
+    }, [card.key]);
+
+    return (
+        <article
+            ref={cardRef}
+            className="priceCard"
+            data-key={card.key}
+        >
+            <p className="priceCardEyebrow">{card.eyebrow}</p>
+            <h3 className="priceCardTitle">{card.title}</h3>
+            <p className="priceCardIntro">{card.description}</p>
+            <div className="priceCardDivider" />
+            <p className="priceCardPrice">{card.price}</p>
+            <div className="priceCardDivider" />
+            <p className="priceCardSectionTitle">Clinical components</p>
+            <ul className="priceCardList">
+                {card.components.map((item) => (
+                    <li className="priceCardListItem" key={item}>
+                        <i className="pi pi-check-circle" aria-hidden="true" />
+                        <span>{item}</span>
+                    </li>
+                ))}
+            </ul>
+            <p className="priceCardSectionTitle priceCardSectionTitle--results">
+                <i className="pi pi-clock" aria-hidden="true" />
+                Results
+            </p>
+            <p className="priceCardResults">
+                {card.resultsLead}
+                {' '}
+                {card.resultsRest}
+            </p>
+            <button
+                type="button"
+                className="priceCardCta"
+                onClick={() => requestContactModal({
+                    message: card.message,
+                    source: PRICE_FORM_SOURCE[card.key],
+                    itemId: card.key,
+                })}
+            >
+                {card.cta}
+            </button>
+        </article>
+    );
+}
+
 export default function PricesSection() {
     return (
         <section className="pricesOffer" aria-labelledby="prices-intro-title">
@@ -192,47 +290,7 @@ export default function PricesSection() {
 
                 <div className="pricesSectionContent">
                     {PRICE_CARDS.map((card) => (
-                        <article
-                            key={card.key}
-                            className="priceCard"
-                            data-key={card.key}
-                        >
-                            <p className="priceCardEyebrow">{card.eyebrow}</p>
-                            <h3 className="priceCardTitle">{card.title}</h3>
-                            <p className="priceCardIntro">{card.description}</p>
-                            <div className="priceCardDivider" />
-                            <p className="priceCardPrice">{card.price}</p>
-                            <div className="priceCardDivider" />
-                            <p className="priceCardSectionTitle">Clinical components</p>
-                            <ul className="priceCardList">
-                                {card.components.map((item) => (
-                                    <li className="priceCardListItem" key={item}>
-                                        <i className="pi pi-check-circle" aria-hidden="true" />
-                                        <span>{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                            <p className="priceCardSectionTitle priceCardSectionTitle--results">
-                                <i className="pi pi-clock" aria-hidden="true" />
-                                Results
-                            </p>
-                            <p className="priceCardResults">
-                                {card.resultsLead}
-                                {' '}
-                                {card.resultsRest}
-                            </p>
-                            <button
-                                type="button"
-                                className="priceCardCta"
-                                onClick={() => requestContactModal({
-                                    message: card.message,
-                                    source: 'pricing',
-                                    itemId: card.key,
-                                })}
-                            >
-                                {card.cta}
-                            </button>
-                        </article>
+                        <PriceCard key={card.key} card={card} />
                     ))}
                 </div>
             </section>

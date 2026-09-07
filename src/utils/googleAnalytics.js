@@ -254,3 +254,21 @@ export function trackContactFormOpen({ form_source = 'unknown', item_id } = {}) 
 
   window.gtag('event', 'contact_form_open', params);
 }
+
+const seenPriceCards = new Set();
+
+/**
+ * Fired once per price card per page load after the card has been ≥50% visible
+ * for at least 1s. item_id is the card key (autism | adhd | combined).
+ */
+export function trackPricingSeen({ item_id } = {}) {
+  if (typeof window === 'undefined' || typeof window.gtag !== 'function') {
+    return;
+  }
+  if (!item_id || seenPriceCards.has(item_id)) {
+    return;
+  }
+  seenPriceCards.add(item_id);
+
+  window.gtag('event', 'pricing_seen', { item_id });
+}
