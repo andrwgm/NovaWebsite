@@ -7,12 +7,13 @@ import 'primeicons/primeicons.css';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Footer from './components/Footer';
+import CookieBanner from './components/CookieBanner';
 import { onContactModalRequest } from './utils/contactModalService';
 import {
-  COOKIE_CONSENT_KEY,
   applyBannerConsentChoice,
   denyAllGoogleConsent,
-  grantAnalyticsConsent,
+  readConsentPreferences,
+  writeConsentPreferences,
 } from './utils/googleAnalytics';
 
 import { Image } from 'primereact/image';
@@ -41,13 +42,7 @@ function AppContent() {
   const [showSplash, setShowSplash] = useState(false);
   const [isFading, setIsFading] = useState(false);
   const hasShownSplash = useRef(false);
-  const [cookieConsent, setCookieConsent] = useState(() => {
-    if (typeof window === 'undefined') {
-      return null;
-    }
-    const stored = window.localStorage.getItem(COOKIE_CONSENT_KEY);
-    return stored === 'accepted' || stored === 'rejected' ? stored : null;
-  });
+  const [cookieConsent, setCookieConsent] = useState(() => readConsentPreferences());
   const previousCookieConsent = useRef(cookieConsent);
   const shouldShowCookieBanner = cookieConsent === null;
   const [isCookieBannerReady, setIsCookieBannerReady] = useState(false);
@@ -103,8 +98,7 @@ function AppContent() {
       }
     };
 
-    if (cookieConsent === 'accepted') {
-      grantAnalyticsConsent();
+    if (cookieConsent?.analytics) {
       if (!document.querySelector('script[data-cf-beacon]')) {
         const script = document.createElement('script');
         script.defer = true;
@@ -112,17 +106,21 @@ function AppContent() {
         script.setAttribute('data-cf-beacon', '{"token":"4ca237c52da34a759461480f964a0fc3"}');
         document.body.appendChild(script);
       }
-      return undefined;
+    } else {
+      removeCloudflareBeacon();
     }
-
-    removeCloudflareBeacon();
 
     // First visit (null, never chosen): leave Consent Mode default denied.
     // Do not send a consent update — Google treats that as "user denied everything".
-    if (cookieConsent === 'rejected' || previous === 'accepted' || previous === 'rejected') {
-      denyAllGoogleConsent();
+    if (cookieConsent === null) {
+      if (previous !== null) {
+        denyAllGoogleConsent();
+      }
+      return undefined;
     }
 
+    // Hydration / withdraw→new choice: keep gtag aligned with stored prefs.
+    // Banner clicks already called applyBannerConsentChoice synchronously.
     return undefined;
   }, [cookieConsent]);
 
@@ -153,30 +151,32 @@ function AppContent() {
     return unsubscribe;
   }, []);
 
+  const handleCookieChoice = (preferences) => {
+    applyBannerConsentChoice(preferences);
+    writeConsentPreferences(preferences);
+    setCookieConsent(preferences);
+  };
+
   useEffect(() => {
     const handleConsentEvent = (event) => {
-      const choice = event?.detail;
-      if (choice !== 'accepted' && choice !== 'rejected' && choice !== null) {
+      const detail = event?.detail;
+      if (detail === null) {
+        handleCookieChoice(null);
         return;
       }
-      handleCookieChoice(choice);
+      if (
+        detail
+        && typeof detail === 'object'
+        && typeof detail.analytics === 'boolean'
+        && typeof detail.ads === 'boolean'
+      ) {
+        handleCookieChoice({ analytics: detail.analytics, ads: detail.ads });
+      }
     };
 
     window.addEventListener('nova-cookie-consent', handleConsentEvent);
     return () => window.removeEventListener('nova-cookie-consent', handleConsentEvent);
   }, []);
-
-  const handleCookieChoice = (choice) => {
-    applyBannerConsentChoice(choice);
-    setCookieConsent(choice);
-    if (typeof window !== 'undefined') {
-      if (choice === null) {
-        window.localStorage.removeItem(COOKIE_CONSENT_KEY);
-      } else {
-        window.localStorage.setItem(COOKIE_CONSENT_KEY, choice);
-      }
-    }
-  };
 
   return (
     <div className="app-shell">
@@ -220,30 +220,7 @@ function AppContent() {
         </Suspense>
       )}
       {shouldShowCookieBanner && isCookieBannerReady && (
-        <div className="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent">
-          <div className="cookie-banner__content">
-            <p>
-            We use analytics cookies to understand how visitors interact with our website and to improve performance.
-            These cookies are only set if you give your consent.
-            You can accept or reject analytics cookies at any time.
-            </p>
-            <div className="cookie-banner__actions">
-              <button
-                type="button"
-                className="cookie-banner__button cookie-banner__button--secondary"
-                onClick={() => handleCookieChoice('rejected')}
-              >
-                Reject
-              </button>
-              <button type="button" className="cookie-banner__button" onClick={() => handleCookieChoice('accepted')}>
-                Accept
-              </button>
-              <a className="cookie-banner__link" href="/cookies-policy">
-                View details
-              </a>
-            </div>
-          </div>
-        </div>
+        <CookieBanner onChoice={handleCookieChoice} />
       )}
       {showSplash && (
         <div className={`splash-screen${isFading ? ' is-fading' : ''}`} aria-hidden="true">
@@ -262,4 +239,4 @@ export default function AppRoot() {
       </Router>
     </HelmetProvider>
   );
-} 
+}

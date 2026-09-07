@@ -1,5 +1,7 @@
 export const GA_MEASUREMENT_ID = 'G-ZWND4BHC68';
 export const COOKIE_CONSENT_KEY = 'nova_cookie_consent';
+/** Bump when banner categories change so prior Accept/Reject must be asked again. */
+export const COOKIE_CONSENT_VERSION = 2;
 
 const ALL_DENIED = {
   ad_storage: 'denied',
@@ -8,20 +10,93 @@ const ALL_DENIED = {
   analytics_storage: 'denied',
 };
 
-/** Analytics accepted; ads stay denied until a marketing category exists. */
-const ANALYTICS_ONLY = {
-  analytics_storage: 'granted',
-  ad_storage: 'denied',
-  ad_user_data: 'denied',
-  ad_personalization: 'denied',
-};
+/**
+ * @typedef {{ analytics: boolean, ads: boolean }} ConsentPreferences
+ */
 
-/** Ad consent for when Google Ads is enabled — call alongside analytics if marketing cookies are accepted. */
-const ADS_GRANTED = {
-  ad_storage: 'granted',
-  ad_user_data: 'granted',
-  ad_personalization: 'granted',
-};
+/**
+ * Legacy `accepted` / `rejected` (v1) are ignored so the banner returns when
+ * marketing is introduced. Valid v2 JSON: {"v":2,"analytics":true,"ads":false}.
+ * @returns {ConsentPreferences | null}
+ */
+export function parseStoredConsent(raw) {
+  if (!raw || typeof raw !== 'string') {
+    return null;
+  }
+
+  if (raw === 'accepted' || raw === 'rejected') {
+    return null;
+  }
+
+  try {
+    const parsed = JSON.parse(raw);
+    if (
+      !parsed
+      || typeof parsed !== 'object'
+      || parsed.v !== COOKIE_CONSENT_VERSION
+      || typeof parsed.analytics !== 'boolean'
+      || typeof parsed.ads !== 'boolean'
+    ) {
+      return null;
+    }
+    return { analytics: parsed.analytics, ads: parsed.ads };
+  } catch {
+    return null;
+  }
+}
+
+/** @returns {ConsentPreferences | null} */
+export function readConsentPreferences() {
+  if (typeof window === 'undefined') {
+    return null;
+  }
+  try {
+    const raw = window.localStorage.getItem(COOKIE_CONSENT_KEY);
+    const parsed = parseStoredConsent(raw);
+    // Drop legacy v1 Accept/Reject so the marketing banner is asked again.
+    if (raw && !parsed) {
+      window.localStorage.removeItem(COOKIE_CONSENT_KEY);
+    }
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
+/** @param {ConsentPreferences | null} preferences */
+export function writeConsentPreferences(preferences) {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  try {
+    if (!preferences) {
+      window.localStorage.removeItem(COOKIE_CONSENT_KEY);
+      return;
+    }
+    window.localStorage.setItem(
+      COOKIE_CONSENT_KEY,
+      JSON.stringify({
+        v: COOKIE_CONSENT_VERSION,
+        analytics: Boolean(preferences.analytics),
+        ads: Boolean(preferences.ads),
+      }),
+    );
+  } catch {
+    // Private mode / blocked storage — Consent Mode still updates in-session.
+  }
+}
+
+/** @param {ConsentPreferences} preferences */
+export function consentStateFromPreferences(preferences) {
+  const ads = preferences.ads ? 'granted' : 'denied';
+  return {
+    analytics_storage: preferences.analytics ? 'granted' : 'denied',
+    ad_storage: ads,
+    ad_user_data: ads,
+    ad_personalization: ads,
+  };
+}
 
 function updateConsent(consentState) {
   if (typeof window === 'undefined' || typeof window.gtag !== 'function') {
@@ -30,7 +105,7 @@ function updateConsent(consentState) {
   window.gtag('consent', 'update', consentState);
 }
 
-function clearGoogleAnalyticsCookies() {
+function expireCookiesMatching(isMatch) {
   if (typeof document === 'undefined') {
     return;
   }
@@ -38,17 +113,11 @@ function clearGoogleAnalyticsCookies() {
   const hostname = window.location.hostname;
   const rootDomain = hostname.replace(/^www\./, '');
   const domains = [undefined, hostname, `.${hostname}`, rootDomain, `.${rootDomain}`];
-  const measurementSuffix = GA_MEASUREMENT_ID.replace(/^G-/, '');
-
-  const cookieNames = new Set([
-    '_ga',
-    `_ga_${measurementSuffix}`,
-    '_gid',
-  ]);
+  const cookieNames = new Set();
 
   document.cookie.split(';').forEach((part) => {
     const name = part.split('=')[0]?.trim();
-    if (name && (/^(_ga|_gid|_gat|_gac_|FPID|FPLC)/.test(name) || name.startsWith('_ga_'))) {
+    if (name && isMatch(name)) {
       cookieNames.add(name);
     }
   });
@@ -61,42 +130,91 @@ function clearGoogleAnalyticsCookies() {
   });
 }
 
-export function grantAnalyticsConsent() {
-  updateConsent(ANALYTICS_ONLY);
+function clearAnalyticsCookies() {
+  const measurementSuffix = GA_MEASUREMENT_ID.replace(/^G-/, '');
+  expireCookiesMatching((name) => (
+    name === '_ga'
+    || name === `_ga_${measurementSuffix}`
+    || name === '_gid'
+    || name === 'FPID'
+    || name === 'FPLC'
+    || /^(_gat|_gac_)/.test(name)
+    || name.startsWith('_ga_')
+  ));
 }
 
-export function denyAllGoogleConsent() {
-  updateConsent(ALL_DENIED);
-  clearGoogleAnalyticsCookies();
+function clearAdsCookies() {
+  expireCookiesMatching((name) => (
+    name === '_gads'
+    || name === 'IDE'
+    || name.startsWith('_gcl_')
+  ));
+}
+
+function clearGoogleConsentCookies() {
+  clearAnalyticsCookies();
+  clearAdsCookies();
+}
+
+/** @param {ConsentPreferences} preferences */
+export function applyConsentPreferences(preferences) {
+  const next = {
+    analytics: Boolean(preferences.analytics),
+    ads: Boolean(preferences.ads),
+  };
+
+  updateConsent(consentStateFromPreferences(next));
+
+  if (!next.analytics) {
+    clearAnalyticsCookies();
+  }
+  if (!next.ads) {
+    clearAdsCookies();
+  }
+
+  if (typeof window === 'undefined' || typeof window.gtag !== 'function') {
+    return next;
+  }
+
+  window.gtag('event', 'cookie_consent', {
+    consent_analytics: next.analytics ? 'granted' : 'denied',
+    consent_ads: next.ads ? 'granted' : 'denied',
+  });
+
+  return next;
 }
 
 /**
  * Apply a banner choice immediately (not in a React effect) so Tag Assistant
  * records the consent update before the next event.
+ * @param {ConsentPreferences | null} preferences
  */
-export function applyBannerConsentChoice(choice) {
-  if (choice === 'accepted') {
-    grantAnalyticsConsent();
-  } else {
-    denyAllGoogleConsent();
+export function applyBannerConsentChoice(preferences) {
+  if (!preferences) {
+    updateConsent(ALL_DENIED);
+    clearGoogleConsentCookies();
+    return null;
   }
-
-  if (
-    (choice !== 'accepted' && choice !== 'rejected')
-    || typeof window === 'undefined'
-    || typeof window.gtag !== 'function'
-  ) {
-    return;
-  }
-
-  window.gtag('event', 'cookie_consent', {
-    consent_analytics: choice === 'accepted' ? 'granted' : 'denied',
-  });
+  return applyConsentPreferences(preferences);
 }
 
-/** Enable when a marketing/advertising cookie category is added to the banner. */
+export function denyAllGoogleConsent() {
+  updateConsent(ALL_DENIED);
+  clearGoogleConsentCookies();
+}
+
+/** @deprecated Prefer applyConsentPreferences — kept for clarity in call sites. */
+export function grantAnalyticsConsent() {
+  updateConsent(consentStateFromPreferences({ analytics: true, ads: false }));
+}
+
+/** Enable advertising storage when the visitor accepts the marketing category. */
 export function grantAdsConsent() {
-  updateConsent(ADS_GRANTED);
+  updateConsent({
+    ad_storage: 'granted',
+    ad_user_data: 'granted',
+    ad_personalization: 'granted',
+  });
 }
 
 /**
