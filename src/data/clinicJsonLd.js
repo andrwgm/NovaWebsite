@@ -5,7 +5,7 @@ export const HOME_FAQS = [
   {
     question: 'How much does an assessment cost?',
     answer:
-      'A full ADHD assessment is £1,800, a full autism assessment is £2,400, and a combined autism + ADHD assessment is £3,200. Prices include all stages, from questionnaires to feedback. We offer transparent pricing with no hidden fees - contact us for full details or payment options.',
+      'A full ADHD assessment is £1,000, a full autism assessment is £2,400, and a combined autism + ADHD assessment is £3,000. Prices include all stages, from questionnaires to feedback. We offer transparent pricing with no hidden fees - contact us for full details or payment options.',
   },
   {
     question: 'Are appointments online only?',

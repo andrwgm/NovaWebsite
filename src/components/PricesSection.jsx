@@ -94,7 +94,7 @@ const PRICE_CARDS = [
         ),
         description:
             'One coordinated assessment exploring both profiles and how they may interact.',
-        price: '£3,200',
+        price: '£3,000',
         components: [
             'All Autism assessment components',
             'All ADHD assessment components',
@@ -116,7 +116,7 @@ const PRICE_CARDS = [
         ),
         description:
             'A thorough assessment exploring attention, activity levels, impulsivity and their impact on everyday life.',
-        price: '£1,800',
+        price: '£1,000',
         components: [
             'DIVA or ACE clinical interview',
             'Structured ADHD questionnaires',
