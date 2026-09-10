@@ -22,6 +22,21 @@ export const HOME_FAQS = [
     answer:
       'We focus on assessments, we recommend you speak with you GP about medication. ',
   },
+  {
+    question: 'Do you assess ADHD in young children?',
+    answer:
+      'No. Our clinical policy requires children to be at least 8 years old for an ADHD assessment. We do not offer ADHD assessments for children under 8.',
+  },
+  {
+    question: 'Do you assess Autism under age 8?',
+    answer:
+      'Our current online service is for ages 8 and above. However, we are actively setting up a hybrid pathway featuring face-to-face appointments for children under 8 with Autism. Please register your interest with our team.',
+  },
+  {
+    question: 'Do you accept NHS Right to Choose?',
+    answer:
+      'No. Nova Clinics is an independent private provider and does not accept NHS Right to Choose funding or GP referrals.',
+  },
 ]
 
 export function buildHomeFaqJsonLd() {

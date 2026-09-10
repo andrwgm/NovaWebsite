@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 import { Carousel } from 'primereact/carousel';
 import './questionsAnswered.css';
 
-/** Cost / online / clinician / medication answers are also in src/data/clinicJsonLd.js (FAQ schema). */
+/** Cost / online / clinician / medication / eligibility answers are also in src/data/clinicJsonLd.js (FAQ schema). */
 
 
 const SLIDES = [
@@ -68,15 +68,33 @@ const SLIDES = [
   },
   {
     img: '/images/faqs/10.avif',
-    question: 'What is your cancellation and refund policy?',
-    answer:
-      'We understand that plans can change, and we\'re here to make things as straightforward as possible. Here\'s a clear breakdown:\n\n• More than 14 days before your first appointment: Full refund of amounts paid, minus the deposit.\n• Between 48 hours and 14 days before: 50% of the total fee is payable (we\'ll refund the rest).\n• Less than 48 hours before, or if you don\'t attend: The full fee is payable, with no refund. (If you\'re more than 20 minutes late, we\'ll treat it as a non-attendance, but please don\'t worry - our admin team will happily help reschedule to our next available slot that suits you.)\n\nThe deposit amount is confirmed in writing when your booking is confirmed. Refunds are processed within 10 working days to your original payment method. You can reschedule once for free with at least 48 hours\' notice; any further changes or those within 48 hours will be handled as a cancellation under the above terms. We may call you around 72 hours before your appointment to confirm details, on a best-effort basis. Full details are in our Terms and Conditions.',
-  },
-  {
-    img: '/images/faqs/11.avif',
     question: 'Am I eligible for an assessment at Nova Clinics?',
     answer:
       'We\'re open to children, young people, and adults across the UK who suspect they may be neurodivergent. No referral is needed - if you\'re curious about ADHD or autism traits, our initial screening can help determine if an assessment fits your journey.',
+  },
+  {
+    img: '/images/faqs/11.avif',
+    question: 'Do you assess ADHD in young children?',
+    answer:
+      'No. Our clinical policy requires children to be at least 8 years old for an ADHD assessment. We do not offer ADHD assessments for children under 8.',
+  },
+  {
+    img: '/images/faqs/12.avif',
+    question: 'Do you assess Autism under age 8?',
+    answer:
+      'Our current online service is for ages 8 and above. However, we are actively setting up a hybrid pathway featuring face-to-face appointments for children under 8 with Autism. Please register your interest with our team.',
+  },
+  {
+    img: '/images/faqs/13.avif',
+    question: 'Do you accept NHS Right to Choose?',
+    answer:
+      'No. Nova Clinics is an independent private provider and does not accept NHS Right to Choose funding or GP referrals.',
+  },
+  {
+    img: '/images/faqs/14.avif',
+    question: 'What is your cancellation and refund policy?',
+    answer:
+      'We understand that plans can change, and we\'re here to make things as straightforward as possible. Here\'s a clear breakdown:\n\n• More than 14 days before your first appointment: Full refund of amounts paid, minus the deposit.\n• Between 48 hours and 14 days before: 50% of the total fee is payable (we\'ll refund the rest).\n• Less than 48 hours before, or if you don\'t attend: The full fee is payable, with no refund. (If you\'re more than 20 minutes late, we\'ll treat it as a non-attendance, but please don\'t worry - our admin team will happily help reschedule to our next available slot that suits you.)\n\nThe deposit amount is confirmed in writing when your booking is confirmed. Refunds are processed within 10 working days to your original payment method. You can reschedule once for free with at least 48 hours\' notice; any further changes or those within 48 hours will be handled as a cancellation under the above terms. We may call you around 72 hours before your appointment to confirm details, on a best-effort basis. Full details are in our Terms and Conditions.',
   },
 ];
 
