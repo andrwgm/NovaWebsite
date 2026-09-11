@@ -265,7 +265,9 @@ function AgeEligibilityNote({ assessment, audience }) {
 
   return (
     <div className="hiw-age-note" role="status">
-      <i className="pi pi-info-circle" aria-hidden="true" />
+      <span className="hiw-age-note__icon" aria-hidden="true">
+        <i className="pi pi-info-circle" />
+      </span>
       <span>{body}</span>
     </div>
   );
