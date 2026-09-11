@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { BLOG_LIST_PAGE_SIZE, SITE_ORIGIN } from '../blog/blogConfig'
 import { computeTopicCounts } from '../blog/blogStats'
 import { getFeaturedPost, getSidebarFeaturedPost } from '../blog/featured'
@@ -11,6 +11,8 @@ import BlogPostRowCard from '../components/blog/BlogPostRowCard'
 import BlogSeo from '../components/blog/BlogSeo'
 import BlogSidebar from '../components/blog/BlogSidebar'
 import '../components/blog/blog.css'
+
+const FEED_PREFETCH_MARGIN = '640px 0px'
 
 export default function Blog() {
   const [filterId, setFilterId] = useState('all')
@@ -43,6 +45,30 @@ export default function Blog() {
 
   const visiblePosts = useMemo(() => filtered.slice(0, visibleCount), [filtered, visibleCount])
   const canLoadMore = visibleCount < filtered.length
+  const sentinelRef = useRef(null)
+
+  useEffect(() => {
+    if (!canLoadMore) return undefined
+
+    const node = sentinelRef.current
+    if (!node) return undefined
+
+    if (typeof IntersectionObserver === 'undefined') {
+      setVisibleCount(filtered.length)
+      return undefined
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return
+        setVisibleCount((count) => count + BLOG_LIST_PAGE_SIZE)
+      },
+      { rootMargin: FEED_PREFETCH_MARGIN }
+    )
+
+    observer.observe(node)
+    return () => observer.disconnect()
+  }, [canLoadMore, filtered.length, visibleCount])
 
   return (
     <div className="blog-page">
@@ -76,15 +102,7 @@ export default function Blog() {
             )}
 
             {canLoadMore ? (
-              <div className="blog-load-more">
-                <button
-                  type="button"
-                  className="blog-button blog-button--ghost"
-                  onClick={() => setVisibleCount((count) => count + BLOG_LIST_PAGE_SIZE)}
-                >
-                  Load more
-                </button>
-              </div>
+              <div ref={sentinelRef} className="blog-feed-sentinel" aria-hidden="true" />
             ) : null}
           </div>
 

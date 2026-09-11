@@ -198,10 +198,10 @@
   color: rgba(31, 42, 61, 0.78);
 }
 
-.blog-load-more {
-  display: flex;
-  justify-content: center;
-  padding: 18px 0 0;
+.blog-feed-sentinel {
+  height: 1px;
+  width: 100%;
+  pointer-events: none;
 }
 
 .blog-featured {
@@ -515,16 +515,6 @@
 
 .blog-button--block {
   width: 100%;
-}
-
-.blog-button--ghost {
-  background: #ffffff;
-  border: 1px solid rgba(45, 59, 85, 0.14);
-}
-
-.blog-button--ghost:hover {
-  background: rgba(158, 205, 201, 0.35);
-  color: #2d3b55;
 }
 
 .blog-button--on-dark {
