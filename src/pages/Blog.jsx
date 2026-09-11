@@ -32,10 +32,10 @@ export default function Blog() {
   const showFeaturedCard = Boolean(featured && universe.some((candidate) => candidate.slug === featured.slug))
 
   const filtered = useMemo(() => {
-    const feed = getFeedPosts(allPosts, showFeaturedCard ? featured : null, sidebarMini)
+    const feed = getFeedPosts(allPosts, showFeaturedCard ? featured : null)
     const byCategory = filterPostsByCategory(feed, filterId)
     return filterPostsBySearch(byCategory, query)
-  }, [allPosts, featured, sidebarMini, filterId, query, showFeaturedCard])
+  }, [allPosts, featured, filterId, query, showFeaturedCard])
 
   useEffect(() => {
     setVisibleCount(BLOG_LIST_PAGE_SIZE)

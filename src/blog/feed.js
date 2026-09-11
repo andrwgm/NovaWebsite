@@ -1,11 +1,10 @@
 /**
+ * Exclude the large featured card from the list. Sidebar featured stays in.
+ *
  * @param {import('./types').BlogPost[]} posts
  * @param {import('./types').BlogPost|null} featured
- * @param {import('./types').BlogPost|null} sidebarMini
  */
-export function getFeedPosts(posts, featured, sidebarMini) {
-  const skip = new Set()
-  if (featured) skip.add(featured.slug)
-  if (sidebarMini) skip.add(sidebarMini.slug)
-  return posts.filter((post) => !skip.has(post.slug))
+export function getFeedPosts(posts, featured) {
+  if (!featured) return posts
+  return posts.filter((post) => post.slug !== featured.slug)
 }
