@@ -22,13 +22,61 @@
   color: #344759;
 }
 
+.hiw-timeline-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  width: 100%;
+  margin-bottom: 1.5em;
+}
+
 .hiw-toggles {
   display: flex;
   align-items: center;
   gap: 1.4rem;
   flex-wrap: wrap;
   width: 100%;
-  margin-bottom: 2em;
+  margin-bottom: 0;
+}
+
+.hiw-age-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin: 0;
+  color: #344759;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
+.hiw-age-note .pi {
+  font-size: 1.25rem;
+  line-height: 1;
+  margin-top: 0.12rem;
+  flex-shrink: 0;
+  color: #344759;
+}
+
+.hiw-age-note__link {
+  border: none;
+  background: none;
+  padding: 0;
+  font: inherit;
+  color: #137a72;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  cursor: pointer;
+}
+
+.hiw-age-note__link:hover {
+  color: #0f5f59;
+}
+
+.hiw-age-note__link:focus-visible {
+  outline: 2px solid #5c8ba3;
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 .hiw-toggle {
@@ -331,6 +379,10 @@
   .hiw-toggles {
     justify-content: center;
   }
+
+  .hiw-age-note {
+    font-size: 0.93rem;
+  }
 }
 
 @media (max-width: 600px) {
@@ -395,5 +447,13 @@
 
   .hiw-toggles {
     justify-content: center;
+  }
+
+  .hiw-age-note {
+    font-size: 0.9rem;
+  }
+
+  .hiw-age-note .pi {
+    font-size: 1.05rem;
   }
 }

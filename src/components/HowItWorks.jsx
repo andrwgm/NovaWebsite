@@ -3,6 +3,7 @@ import './howItWorks.css';
 
 import { Timeline } from 'primereact/timeline';
 import { Image } from 'primereact/image';
+import { requestContactModal } from '../utils/contactModalService';
 
 const CHILD_STEPS_AUTISM = [
   {
@@ -217,6 +218,59 @@ const FLOWS = {
   },
 };
 
+const UNDER8_WAITLIST_MESSAGE =
+  'I would like to join the waiting list for the upcoming in-person hybrid autism pathway for a child under 8.';
+
+function openUnder8Waitlist(assessment) {
+  requestContactModal({
+    message: UNDER8_WAITLIST_MESSAGE,
+    source: 'how_it_works_under8_waitlist',
+    itemId: assessment,
+  });
+}
+
+function AgeEligibilityNote({ assessment, audience }) {
+  if (audience !== 'child') return null;
+
+  const waitlistLink = (
+    <button
+      type="button"
+      className="hiw-age-note__link"
+      onClick={() => openUnder8Waitlist(assessment)}
+    >
+      join the waiting list
+    </button>
+  );
+
+  let body = null;
+  if (assessment === 'adhd') {
+    body = 'We do not assess ADHD in children under 8. Please speak with your GP.';
+  } else if (assessment === 'autism') {
+    body = (
+      <>
+        Our remote autism service is for ages 8 and above. If your child is under 8, you can{' '}
+        {waitlistLink} for our upcoming in-person hybrid pathway.
+      </>
+    );
+  } else if (assessment === 'combined') {
+    body = (
+      <>
+        We do not assess ADHD under age 8. Please speak with your GP. Remote autism assessments
+        are also 8+ only; you can {waitlistLink} for our upcoming in-person hybrid pathway.
+      </>
+    );
+  }
+
+  if (!body) return null;
+
+  return (
+    <div className="hiw-age-note" role="status">
+      <i className="pi pi-info-circle" aria-hidden="true" />
+      <span>{body}</span>
+    </div>
+  );
+}
+
 export default function HowItWorks() {
   const [assessment, setAssessment] = useState('autism');
   const [audience, setAudience] = useState('child');
@@ -271,46 +325,49 @@ export default function HowItWorks() {
       </div>
       <div className="howItWorksContent">
         <div className="howItWorksTimeline">
-          <div className="hiw-toggles" aria-label="Select timeline filters">
-            <div className="hiw-toggle" role="group" aria-label="Select assessment type">
-              <button
-                type="button"
-                className={`hiw-toggle-btn${assessment === 'autism' ? ' active' : ''}`}
-                onClick={() => setAssessment('autism')}
-              >
-                Autism
-              </button>
-              <button
-                type="button"
-                className={`hiw-toggle-btn${assessment === 'adhd' ? ' active' : ''}`}
-                onClick={() => setAssessment('adhd')}
-              >
-                ADHD
-              </button>
-              <button
-                type="button"
-                className={`hiw-toggle-btn${assessment === 'combined' ? ' active' : ''}`}
-                onClick={() => setAssessment('combined')}
-              >
-                Combined
-              </button>
+          <div className="hiw-timeline-head">
+            <div className="hiw-toggles" aria-label="Select timeline filters">
+              <div className="hiw-toggle" role="group" aria-label="Select assessment type">
+                <button
+                  type="button"
+                  className={`hiw-toggle-btn${assessment === 'autism' ? ' active' : ''}`}
+                  onClick={() => setAssessment('autism')}
+                >
+                  Autism
+                </button>
+                <button
+                  type="button"
+                  className={`hiw-toggle-btn${assessment === 'adhd' ? ' active' : ''}`}
+                  onClick={() => setAssessment('adhd')}
+                >
+                  ADHD
+                </button>
+                <button
+                  type="button"
+                  className={`hiw-toggle-btn${assessment === 'combined' ? ' active' : ''}`}
+                  onClick={() => setAssessment('combined')}
+                >
+                  Combined
+                </button>
+              </div>
+              <div className="hiw-toggle" role="group" aria-label="Select audience">
+                <button
+                  type="button"
+                  className={`hiw-toggle-btn${audience === 'child' ? ' active' : ''}`}
+                  onClick={() => setAudience('child')}
+                >
+                  Child
+                </button>
+                <button
+                  type="button"
+                  className={`hiw-toggle-btn${audience === 'adult' ? ' active' : ''}`}
+                  onClick={() => setAudience('adult')}
+                >
+                  Adult
+                </button>
+              </div>
             </div>
-            <div className="hiw-toggle" role="group" aria-label="Select audience">
-              <button
-                type="button"
-                className={`hiw-toggle-btn${audience === 'child' ? ' active' : ''}`}
-                onClick={() => setAudience('child')}
-              >
-                Child
-              </button>
-              <button
-                type="button"
-                className={`hiw-toggle-btn${audience === 'adult' ? ' active' : ''}`}
-                onClick={() => setAudience('adult')}
-              >
-                Adult
-              </button>
-            </div>
+            <AgeEligibilityNote assessment={assessment} audience={audience} />
           </div>
           <Timeline
             value={items}
