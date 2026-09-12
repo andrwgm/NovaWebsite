@@ -199,7 +199,7 @@ export default function ChildAtHomeGuide() {
           headline={SCHOOL_HEADLINE}
           headlineVariant="section"
           cover={{
-            src: '/images/my-school-passport-cover.avif',
+            src: '/images/my-world-my-way-cover.avif',
             alt: 'My world, my way guide cover',
             rotate: '-16deg',
             className: 'childGuideCover--school',
