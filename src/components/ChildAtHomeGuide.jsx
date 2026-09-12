@@ -81,7 +81,7 @@ const HOME_PAGES = [
 ];
 
 const SCHOOL_INTRO = [
-  'My School Passport is a child-friendly booklet designed to help families share important information with school about their child’s strengths, preferences, communication style and support needs.',
+  'My world, my way is a child-friendly booklet designed to help families share important information with school about their child’s strengths, preferences, communication style and support needs.',
   'It gives children and parents a simple, creative way to explain what helps them feel comfortable, understood and supported in the classroom, so teachers can build a clearer picture of the individual behind the diagnosis.',
 ];
 
@@ -155,10 +155,10 @@ const SCHOOL_TOPICS = [
 ];
 
 const SCHOOL_PAGES = [
-  { src: '/images/page-13.avif', alt: 'My School Passport page: the hard moment map' },
-  { src: '/images/page-14.avif', alt: 'My School Passport page: first, next, then' },
-  { src: '/images/page-15.avif', alt: 'My School Passport page: window painting activity' },
-  { src: '/images/page-16.avif', alt: 'My School Passport page: sensory comfort' },
+  { src: '/images/page-13.avif', alt: 'My world, my way page: the hard moment map' },
+  { src: '/images/page-14.avif', alt: 'My world, my way page: first, next, then' },
+  { src: '/images/page-15.avif', alt: 'My world, my way page: window painting activity' },
+  { src: '/images/page-16.avif', alt: 'My world, my way page: sensory comfort' },
 ];
 
 export default function ChildAtHomeGuide() {
@@ -200,18 +200,18 @@ export default function ChildAtHomeGuide() {
           headlineVariant="section"
           cover={{
             src: '/images/my-school-passport-cover.avif',
-            alt: 'My School Passport guide cover',
+            alt: 'My world, my way guide cover',
             rotate: '-16deg',
             className: 'childGuideCover--school',
           }}
           showExplore={false}
           topics={SCHOOL_TOPICS}
           pages={SCHOOL_PAGES}
-          topicsLabel="Topics inside My School Passport"
+          topicsLabel="Topics inside My world, my way"
           orientation="media-right"
           topicVisual={{
             src: '/images/passport-mock.avif',
-            alt: 'My School Passport booklet open in someone’s hands',
+            alt: 'My world, my way booklet open in someone’s hands',
           }}
         />
       </section>
