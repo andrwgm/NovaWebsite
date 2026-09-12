@@ -1,4 +1,4 @@
-export const META_PIXEL_ID = '3206290686427770';
+export const META_PIXEL_ID = '2455382454991184';
 
 let lastPageViewPath = null;
 
