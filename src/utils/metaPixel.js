@@ -10,9 +10,16 @@ function customParams({ form_source, item_id } = {}) {
   const params = {};
   if (form_source) {
     params.form_source = form_source;
+    params.content_name = form_source;
   }
   if (item_id) {
     params.item_id = item_id;
+    params.content_ids = [item_id];
+    if (params.content_name) {
+      params.content_category = item_id;
+    } else {
+      params.content_name = item_id;
+    }
   }
   return params;
 }
@@ -48,7 +55,7 @@ export function trackMetaPricingSeen({ item_id } = {}) {
   if (!hasFbq() || !item_id) {
     return;
   }
-  window.fbq('trackCustom', 'PricingSeen', { item_id });
+  window.fbq('trackCustom', 'PricingSeen', customParams({ item_id }));
 }
 
 export function trackMetaContactFormOpen({ form_source = 'unknown', item_id } = {}) {
