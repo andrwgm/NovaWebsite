@@ -61,9 +61,10 @@ function AppContent() {
     if (!cookieConsent?.ads) {
       return undefined;
     }
-    trackMetaPageView(location.pathname);
+    const path = `${location.pathname}${location.search}`;
+    trackMetaPageView(path);
     return undefined;
-  }, [location.pathname, cookieConsent?.ads]);
+  }, [location.pathname, location.search, location.key, cookieConsent?.ads]);
 
   useEffect(() => {
     if (hasShownSplash.current || location.pathname !== '/') {

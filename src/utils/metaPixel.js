@@ -39,13 +39,18 @@ export function trackMetaPageView(path) {
   if (!hasFbq()) {
     return;
   }
-  const nextPath = path || window.location.pathname;
+  const nextPath = path || `${window.location.pathname}${window.location.search}`;
   if (lastPageViewPath === nextPath) {
     return;
   }
   lastPageViewPath = nextPath;
-  window.fbq('track', 'PageView');
-}
+
+  const pageLocation = `${window.location.origin}${nextPath}`;
+  window.fbq('trackCustom', 'PageView', {
+    content_name: nextPath,
+    page_path: nextPath,
+    page_location: pageLocation,
+  });
 
 /**
  * Price card seen. Custom, not ViewContent: this is not a product catalogue.
