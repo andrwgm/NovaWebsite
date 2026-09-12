@@ -51,6 +51,7 @@ export function trackMetaPageView(path) {
     page_path: nextPath,
     page_location: pageLocation,
   });
+}
 
 /**
  * Price card seen. Custom, not ViewContent: this is not a product catalogue.
