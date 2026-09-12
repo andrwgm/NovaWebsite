@@ -41,18 +41,14 @@ export function trackMetaPageView(path) {
 }
 
 /**
- * Price card seen. Do not pass value/currency — enquiry is not a purchase.
- * content_ids stays the card key (autism | adhd | combined).
+ * Price card seen. Custom, not ViewContent: this is not a product catalogue.
+ * item_id is the card key (autism | adhd | combined).
  */
-export function trackMetaViewContent({ item_id } = {}) {
+export function trackMetaPricingSeen({ item_id } = {}) {
   if (!hasFbq() || !item_id) {
     return;
   }
-  window.fbq('track', 'ViewContent', {
-    content_ids: [item_id],
-    content_name: item_id,
-    content_category: 'assessment',
-  });
+  window.fbq('trackCustom', 'PricingSeen', { item_id });
 }
 
 export function trackMetaContactFormOpen({ form_source = 'unknown', item_id } = {}) {

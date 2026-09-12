@@ -1,4 +1,4 @@
-import { applyMetaConsent, trackMetaContactFormOpen, trackMetaLead, trackMetaViewContent } from './metaPixel';
+import { applyMetaConsent, trackMetaContactFormOpen, trackMetaLead, trackMetaPricingSeen } from './metaPixel';
 
 export const GA_MEASUREMENT_ID = 'G-ZWND4BHC68';
 export const COOKIE_CONSENT_KEY = 'nova_cookie_consent';
@@ -289,5 +289,5 @@ export function trackPricingSeen({ item_id } = {}) {
   if (typeof window.gtag === 'function') {
     window.gtag('event', 'pricing_seen', { item_id });
   }
-  trackMetaViewContent({ item_id });
+  trackMetaPricingSeen({ item_id });
 }
