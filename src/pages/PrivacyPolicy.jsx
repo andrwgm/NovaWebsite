@@ -123,6 +123,7 @@ const sections = [
       'Cloudflare — website delivery, security, and analytics (only where you consent to analytics cookies).',
       'Google Analytics — website analytics under Google Consent Mode v2 (only where you consent to analytics cookies).',
       'Google Ads — advertising measurement and conversion attribution under Google Consent Mode v2 (only where you consent to advertising cookies). We do not use clinical-path remarketing audiences or Customer Match with enquiry form data.',
+      'Meta (Facebook and Instagram) — advertising measurement and conversion attribution via the Meta Pixel (only where you consent to advertising cookies). We do not use Automatic Advanced Matching, we do not send enquiry form emails or phone numbers to Meta, and we do not build remarketing audiences from clinical page paths.',
       'Google Workspace — video appointments (Google Meet), meeting recordings and transcripts, and internal business documents.',
       'Stripe — payment processing and receipts.',
     ],
@@ -224,7 +225,7 @@ const sections = [
   },
   {
     title: 'Review cycle',
-    body: ['Date of last review: 26 August 2026', 'Next review due: 26 February 2027 (bi-annual cycle).'],
+    body: ['Date of last review: 12 September 2026', 'Next review due: 12 March 2027 (bi-annual cycle).'],
   },
 ];
 

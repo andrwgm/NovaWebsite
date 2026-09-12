@@ -15,7 +15,7 @@ export default function CookieBanner({ onChoice }) {
           <>
             <p>
               We use analytics cookies to understand how visitors use this site, and advertising
-              cookies (Google Ads) to measure and improve our campaigns — only if you allow them.
+              cookies (Google Ads and Meta) to measure and improve our campaigns — only if you allow them.
               You can accept all, reject all, or choose by category. Essential storage that remembers
               your choice does not require consent.
             </p>
@@ -50,7 +50,8 @@ export default function CookieBanner({ onChoice }) {
           <>
             <p>
               Choose which optional cookies to allow. Nothing is pre-selected. Advertising cookies
-              are used for Google Ads measurement and are separate from analytics.
+              are used for Google Ads and Meta (Facebook and Instagram) measurement and are
+              separate from analytics.
             </p>
             <div className="cookie-banner__categories" role="group" aria-label="Cookie categories">
               <label className="cookie-banner__category">
@@ -74,7 +75,8 @@ export default function CookieBanner({ onChoice }) {
                 <span>
                   <strong>Advertising</strong>
                   {' '}
-                  — Google Ads cookies for campaign measurement (not clinical remarketing lists).
+                  — Google Ads and Meta Pixel cookies for campaign measurement (not clinical
+                  remarketing lists, and not matching enquiry emails or phone numbers).
                 </span>
               </label>
             </div>

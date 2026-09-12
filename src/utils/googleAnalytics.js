@@ -1,7 +1,9 @@
+import { applyMetaConsent, trackMetaContactFormOpen, trackMetaLead, trackMetaViewContent } from './metaPixel';
+
 export const GA_MEASUREMENT_ID = 'G-ZWND4BHC68';
 export const COOKIE_CONSENT_KEY = 'nova_cookie_consent';
 /** Bump when banner categories change so prior Accept/Reject must be asked again. */
-export const COOKIE_CONSENT_VERSION = 2;
+export const COOKIE_CONSENT_VERSION = 3;
 
 const ALL_DENIED = {
   ad_storage: 'denied',
@@ -15,8 +17,9 @@ const ALL_DENIED = {
  */
 
 /**
- * Legacy `accepted` / `rejected` (v1) are ignored so the banner returns when
- * marketing is introduced. Valid v2 JSON: {"v":2,"analytics":true,"ads":false}.
+ * Legacy `accepted` / `rejected` (v1) and v2 JSON are ignored so the banner
+ * returns when advertising providers change. Valid v3 JSON:
+ * {"v":3,"analytics":true,"ads":false}.
  * @returns {ConsentPreferences | null}
  */
 export function parseStoredConsent(raw) {
@@ -148,6 +151,8 @@ function clearAdsCookies() {
     name === '_gads'
     || name === 'IDE'
     || name.startsWith('_gcl_')
+    || name === '_fbp'
+    || name === '_fbc'
   ));
 }
 
@@ -164,6 +169,7 @@ export function applyConsentPreferences(preferences) {
   };
 
   updateConsent(consentStateFromPreferences(next));
+  applyMetaConsent(next.ads);
 
   if (!next.analytics) {
     clearAnalyticsCookies();
@@ -192,6 +198,7 @@ export function applyConsentPreferences(preferences) {
 export function applyBannerConsentChoice(preferences) {
   if (!preferences) {
     updateConsent(ALL_DENIED);
+    applyMetaConsent(false);
     clearGoogleConsentCookies();
     return null;
   }
@@ -200,12 +207,14 @@ export function applyBannerConsentChoice(preferences) {
 
 export function denyAllGoogleConsent() {
   updateConsent(ALL_DENIED);
+  applyMetaConsent(false);
   clearGoogleConsentCookies();
 }
 
 /** @deprecated Prefer applyConsentPreferences — kept for clarity in call sites. */
 export function grantAnalyticsConsent() {
   updateConsent(consentStateFromPreferences({ analytics: true, ads: false }));
+  applyMetaConsent(false);
 }
 
 /** Enable advertising storage when the visitor accepts the marketing category. */
@@ -215,6 +224,7 @@ export function grantAdsConsent() {
     ad_user_data: 'granted',
     ad_personalization: 'granted',
   });
+  applyMetaConsent(true);
 }
 
 /**
@@ -223,7 +233,7 @@ export function grantAdsConsent() {
  * Do not pass name, email, phone, or message.
  */
 export function trackGenerateLead({ method = 'contact_form', form_source, item_id } = {}) {
-  if (typeof window === 'undefined' || typeof window.gtag !== 'function') {
+  if (typeof window === 'undefined') {
     return;
   }
 
@@ -235,7 +245,10 @@ export function trackGenerateLead({ method = 'contact_form', form_source, item_i
     params.item_id = item_id;
   }
 
-  window.gtag('event', 'generate_lead', params);
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', 'generate_lead', params);
+  }
+  trackMetaLead({ form_source, item_id });
 }
 
 /**
@@ -243,7 +256,7 @@ export function trackGenerateLead({ method = 'contact_form', form_source, item_i
  * source is a reserved GA4 traffic-source dimension.
  */
 export function trackContactFormOpen({ form_source = 'unknown', item_id } = {}) {
-  if (typeof window === 'undefined' || typeof window.gtag !== 'function') {
+  if (typeof window === 'undefined') {
     return;
   }
 
@@ -252,7 +265,10 @@ export function trackContactFormOpen({ form_source = 'unknown', item_id } = {}) 
     params.item_id = item_id;
   }
 
-  window.gtag('event', 'contact_form_open', params);
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', 'contact_form_open', params);
+  }
+  trackMetaContactFormOpen({ form_source, item_id });
 }
 
 const seenPriceCards = new Set();
@@ -262,7 +278,7 @@ const seenPriceCards = new Set();
  * for at least 1s. item_id is the card key (autism | adhd | combined).
  */
 export function trackPricingSeen({ item_id } = {}) {
-  if (typeof window === 'undefined' || typeof window.gtag !== 'function') {
+  if (typeof window === 'undefined') {
     return;
   }
   if (!item_id || seenPriceCards.has(item_id)) {
@@ -270,5 +286,8 @@ export function trackPricingSeen({ item_id } = {}) {
   }
   seenPriceCards.add(item_id);
 
-  window.gtag('event', 'pricing_seen', { item_id });
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', 'pricing_seen', { item_id });
+  }
+  trackMetaViewContent({ item_id });
 }

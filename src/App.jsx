@@ -15,6 +15,7 @@ import {
   readConsentPreferences,
   writeConsentPreferences,
 } from './utils/googleAnalytics';
+import { trackMetaPageView } from './utils/metaPixel';
 
 import { Image } from 'primereact/image';
 
@@ -55,6 +56,14 @@ function AppContent() {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   }, [location.pathname]);
+
+  useEffect(() => {
+    if (!cookieConsent?.ads) {
+      return undefined;
+    }
+    trackMetaPageView(location.pathname);
+    return undefined;
+  }, [location.pathname, cookieConsent?.ads]);
 
   useEffect(() => {
     if (hasShownSplash.current || location.pathname !== '/') {

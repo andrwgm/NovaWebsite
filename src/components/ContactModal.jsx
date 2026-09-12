@@ -10,6 +10,7 @@ import ContactVacationModal from './ContactVacationModal';
 import { CONTACT_FORM_RESPONSE_MODE } from '../config/contactFormResponse';
 import { CONTACT_SUBMISSIONS_ENDPOINT } from '../utils/api';
 import { trackContactFormOpen, trackGenerateLead } from '../utils/googleAnalytics';
+import { trackMetaFormStart } from '../utils/metaPixel';
 import './contactModal.css';
 
 const INITIAL_FORM = {
@@ -32,10 +33,12 @@ export default function ContactModal({
   const [submitError, setSubmitError] = useState('');
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const overlayRef = useRef(null);
+  const formStartTracked = useRef(false);
 
   useEffect(() => {
     if (requestId > 0) {
       setVisible(true);
+      formStartTracked.current = false;
       setFormData((prev) => ({ ...prev, message: prefillMessage }));
       trackContactFormOpen({ form_source: formSource, item_id: itemId });
     }
@@ -68,10 +71,20 @@ export default function ContactModal({
     };
   }, [visible]);
 
+  const trackFormStartOnce = () => {
+    if (formStartTracked.current) return;
+    formStartTracked.current = true;
+    trackMetaFormStart({ form_source: formSource, item_id: itemId });
+  };
+
   const handleFieldFocus = (event) => {
     const target = event.target;
     if (!(target instanceof HTMLElement)) return;
     if (!['INPUT', 'TEXTAREA'].includes(target.tagName)) return;
+
+    if (target.getAttribute('type') !== 'checkbox') {
+      trackFormStartOnce();
+    }
 
     window.requestAnimationFrame(() => {
       target.scrollIntoView({ block: 'center', inline: 'nearest' });
@@ -82,6 +95,7 @@ export default function ContactModal({
     if (field === 'consent') {
       setFormData((prev) => ({ ...prev, consent: event.target.checked }));
     } else {
+      trackFormStartOnce();
       setFormData((prev) => ({ ...prev, [field]: event.target.value }));
     }
   };
