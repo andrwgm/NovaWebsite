@@ -46,7 +46,7 @@ export default function AboutPeople() {
             from psychology, occupational therapy, speech and language therapy and other relevant
             disciplines, depending on the assessment and the person’s individual needs.
           </p>
-          <p>
+          <p className="aboutPeopleTeamBold">
             By looking at development, communication, behaviour, sensory needs and everyday life
             together, the team can build a fuller picture and reach conclusions that are
             thoughtful, evidence-based and genuinely useful.
