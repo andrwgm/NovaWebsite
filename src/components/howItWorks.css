@@ -6,6 +6,52 @@
   padding: 4em 0;
 }
 
+.hiw-document {
+  width: 90%;
+  max-width: 52rem;
+  margin: 2.5rem 0 0;
+  color: #344759;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.hiw-document summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: #324253;
+  list-style-position: outside;
+}
+
+.hiw-document summary:focus-visible {
+  outline: 2px solid #5c8ba3;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.hiw-document article {
+  margin-top: 1.25rem;
+}
+
+.hiw-document h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.hiw-document ol {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.hiw-document li + li {
+  margin-top: 0.55rem;
+}
+
+.hiw-document p {
+  margin: 0.25rem 0 0;
+}
+
 .howItWorksHeader {
   display: flex;
   gap: 1rem;
@@ -340,6 +386,10 @@
     gap: 2rem;
     width: 94%;
     align-items: center;
+  }
+
+  .hiw-document {
+    width: 94%;
   }
 
   .howItWorksTimeline {

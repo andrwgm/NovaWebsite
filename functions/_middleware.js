@@ -1,5 +1,5 @@
 const BOT_UA =
-  /Googlebot|Google-InspectionTool|Storebot-Google|GoogleOther|AdsBot-Google|APIs-Google|Mediapartners-Google|Google-Read-Aloud|Bingbot|bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|facebookexternalhit|Facebot|Twitterbot|LinkedInBot|WhatsApp|TelegramBot|Applebot|Bytespider|SemrushBot|AhrefsBot|DotBot|MJ12bot|PetalBot|ia_archiver/i
+  /Googlebot|Google-InspectionTool|Storebot-Google|GoogleOther|Google-Extended|AdsBot-Google|APIs-Google|Mediapartners-Google|Google-Read-Aloud|Bingbot|bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|facebookexternalhit|Facebot|Twitterbot|LinkedInBot|WhatsApp|TelegramBot|Applebot|Bytespider|SemrushBot|AhrefsBot|DotBot|MJ12bot|PetalBot|ia_archiver|ChatGPT-User|OAI-SearchBot|PerplexityBot|Claude-User/i
 
 const STAGING_ROBOTS = 'User-agent: *\nDisallow: /\n'
 

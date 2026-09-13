@@ -13,10 +13,61 @@ Services:
 - Combined autism + ADHD assessment: £3,000
 Assessments are online via video call, NICE-aligned, and led by HCPC-registered clinical psychologists. Online ADHD and autism assessments are for ages 8 and above; ADHD assessments are not offered under age 8. A hybrid face-to-face autism pathway for children under 8 is being set up. Reports typically within 4 weeks (often about 10 working days after the final appointment). Nova Clinics does not prescribe medication; patients should speak with their GP.
 
+How it works (https://www.novaclinics.co.uk/#how-it-works):
+
+Child ADHD:
+1. Online questionnaires (60+ minutes)
+2. Parent/carer interview (90 minutes)
+3. Child/young person observation (60 minutes)
+4. Multi-disciplinary team review
+5. Report and feedback session (30 minutes)
+6. Post-assessment follow-up (within 4 weeks of feedback)
+
+Child autism:
+1. Online questionnaires (60+ minutes)
+2. Parent/carer interview (90 minutes)
+3. Child/young person observation (60 minutes)
+4. Multi-disciplinary team review
+5. Report and feedback session (30 minutes)
+6. Post-assessment follow-up (within 4 weeks of feedback)
+
+Child combined autism and ADHD:
+1. Online questionnaires (60+ minutes)
+2. Parent/carer interview (150 minutes)
+3. Child/young person observation (60 minutes)
+4. Multi-disciplinary team review
+5. Report and feedback session (under 45 minutes)
+6. Post-assessment follow-up (within 4 weeks of feedback)
+
+Adult ADHD:
+1. Online questionnaires (60 minutes)
+2. Personal interview (90 minutes)
+3. Informant interview (60 minutes)
+4. Multi-disciplinary team review
+5. Report and feedback session (60 minutes)
+6. Post-assessment follow-up (within 4 weeks of feedback)
+
+Adult autism:
+1. Online questionnaires (60 minutes)
+2. Personal interview (90 minutes)
+3. Informant interview (60 minutes)
+4. Multi-disciplinary team review
+5. Report and feedback session (60 minutes)
+6. Post-assessment follow-up (within 4 weeks of feedback)
+
+Adult combined autism and ADHD:
+1. Online questionnaires (60 minutes)
+2. Personal interview (150 minutes)
+3. Informant interview (60 minutes)
+4. Multi-disciplinary team review
+5. Report and feedback session (60 minutes)
+6. Post-assessment follow-up (within 4 weeks of feedback)
+
 Key pages:
 - https://www.novaclinics.co.uk/
 - https://www.novaclinics.co.uk/about
 - https://www.novaclinics.co.uk/#pricing
+- https://www.novaclinics.co.uk/#how-it-works
 - https://www.novaclinics.co.uk/#faqs
 - https://www.novaclinics.co.uk/blog
 

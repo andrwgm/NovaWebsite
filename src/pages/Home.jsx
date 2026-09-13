@@ -6,14 +6,15 @@ import { Image } from 'primereact/image';
 import { Button } from 'primereact/button';
 import { requestContactModal } from '../utils/contactModalService';
 import LazySection from '../components/LazySection';
+import HowItWorks from '../components/HowItWorks';
 import BlogJsonLd from '../components/blog/BlogJsonLd';
 import { buildHomeFaqJsonLd } from '../data/clinicJsonLd';
+import { buildHowItWorksJsonLd } from '../data/howItWorksPathways';
 
 const CompressedSections = React.lazy(() => import('../components/CompressedSections'));
 const QuestionnaireSection = React.lazy(() => import('../components/QuestionnaireSection'));
 const PricesSection = React.lazy(() => import('../components/PricesSection'));
 const SupportBoxSection = React.lazy(() => import('../components/SupportBoxSection'));
-const HowItWorks = React.lazy(() => import('../components/HowItWorks'));
 const QuestionsAnswered = React.lazy(() => import('../components/QuestionsAnswered'));
 const TrustBadges = React.lazy(() => import('../components/TrustBadges'));
 
@@ -143,6 +144,7 @@ export default function Home() {
   return (
     <div className="mainContent">
       <BlogJsonLd schema={buildHomeFaqJsonLd()} />
+      <BlogJsonLd schema={buildHowItWorksJsonLd()} />
       <div className='titleAndButton parallax' fetchpriority="high">
         <div className='titles'>
           <p className='bigTitle'>
@@ -238,9 +240,7 @@ export default function Home() {
         </Suspense>
       </LazySection>
       <LazySection id="how-it-works" forceVisible={forceLazySections}>
-        <Suspense fallback={null}>
-          <HowItWorks />
-        </Suspense>
+        <HowItWorks />
       </LazySection>
       <LazySection id="faqs" forceVisible={forceLazySections}>
         <Suspense fallback={null}>
