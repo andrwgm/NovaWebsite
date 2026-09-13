@@ -1,4 +1,4 @@
-"""Record one public blog post hit. No cookie, no identity, fail closed."""
+/** Record one public blog post hit. No cookie, no identity, fail closed. */
 
 import { API_BASE_URL } from './api';
 
