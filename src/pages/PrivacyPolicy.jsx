@@ -99,6 +99,7 @@ const sections = [
       'Administer the Website, troubleshoot issues, analyse usage, and improve services.',
       'Keep our systems secure.',
       'Generate anonymised statistics for clinical audit and service development.',
+      'Count how many times each public blog article is opened, as an aggregate number per article. We do not store a visitor identifier, cookie, or IP address for that count.',
     ],
   },
   {
@@ -119,7 +120,7 @@ const sections = [
       'Clinical and portal data are hosted in AWS London (UK). We use approved service providers to deliver our services, including:',
     ],
     list: [
-      'Amazon Web Services (AWS) — hosting and email delivery from the UK.',
+      'Amazon Web Services (AWS) — hosting, email delivery from the UK, and first-party aggregate blog view counts (no visitor identifier).',
       'Cloudflare — website delivery, security, and analytics (only where you consent to analytics cookies).',
       'Google Analytics — website analytics under Google Consent Mode v2 (only where you consent to analytics cookies).',
       'Google Ads — advertising measurement and conversion attribution under Google Consent Mode v2 (only where you consent to advertising cookies). We do not use clinical-path remarketing audiences or Customer Match with enquiry form data.',
@@ -225,7 +226,7 @@ const sections = [
   },
   {
     title: 'Review cycle',
-    body: ['Date of last review: 12 September 2026', 'Next review due: 12 March 2027 (bi-annual cycle).'],
+    body: ['Date of last review: 13 September 2026', 'Next review due: 13 March 2027 (bi-annual cycle).'],
   },
 ];
 

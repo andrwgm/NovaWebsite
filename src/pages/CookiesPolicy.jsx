@@ -22,6 +22,7 @@ const sections = [
       'Remember which analytics and advertising categories you have accepted or rejected.',
       'Provide analytics so we can monitor performance — but only if you give consent.',
       'Measure and improve Google Ads and Meta (Facebook and Instagram) campaigns — but only if you give separate consent for advertising cookies.',
+      'The Website also records an aggregate hit count per public blog article on our own servers. That count does not use a cookie, local storage, or a visitor identifier, and it is not shown on the public site.',
     ],
   },
   {
@@ -74,7 +75,7 @@ const sections = [
   },
   {
     title: 'Policy reviews',
-    body: ['Last reviewed: 12 September 2026', 'Next review: 12 March 2027'],
+    body: ['Last reviewed: 13 September 2026', 'Next review: 13 March 2027'],
   },
 ];
 

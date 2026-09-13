@@ -1,5 +1,6 @@
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import { recordBlogPostHit } from '../utils/blogViews'
 import { resolvePostCanonicalUrl } from '../blog/canonical'
 import { getRelatedPosts } from '../blog/relatedPosts'
 import { getAllPosts, getPostBySlug } from '../blog/loadPosts'
@@ -25,6 +26,13 @@ export default function BlogPost() {
   const related = useMemo(() => (post ? getRelatedPosts(post, allPosts, 2) : []), [post, allPosts])
   const sidebarMini = useMemo(() => (post ? getSidebarFeaturedPost(allPosts, post) : null), [post, allPosts])
   const tocItems = useMemo(() => (post ? extractTocFromMarkdown(post.body) : []), [post])
+
+  useEffect(() => {
+    if (!post?.slug) {
+      return
+    }
+    recordBlogPostHit(post.slug)
+  }, [post])
 
   if (!post) {
     return <NotFound />
