@@ -42,13 +42,14 @@ export default function AboutPeople() {
             <span className="aboutPeopleTeamTitleLine">team</span>
           </h3>
           <p>
-            Good care is never the work of just one person. Behind every assessment is a
-            multidisciplinary team of professionals and support specialists working together to
-            understand the whole picture and guide you every step of the way.
+            No single perspective tells the whole story. Our clinicians bring together expertise
+            from psychology, occupational therapy, speech and language therapy and other relevant
+            disciplines, depending on the assessment and the person’s individual needs.
           </p>
-          <p className="aboutPeopleTeamBold">
-            All of our clinical psychologists, occupational therapists and speech and language
-            therapists are HCPC-registered professionals.
+          <p>
+            By looking at development, communication, behaviour, sensory needs and everyday life
+            together, the team can build a fuller picture and reach conclusions that are
+            thoughtful, evidence-based and genuinely useful.
           </p>
         </div>
       </div>

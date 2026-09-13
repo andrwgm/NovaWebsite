@@ -107,10 +107,6 @@
   margin-left: 2.65rem;
 }
 
-.aboutPeopleTeamBold {
-  font-family: 'AthelasBold', 'Times New Roman', Times, serif !important;
-}
-
 @media (max-width: 900px) {
   .aboutPeople {
     padding-top: 3.25rem;
