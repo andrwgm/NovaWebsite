@@ -37,7 +37,7 @@ export default function BlogHero({ query, onQueryChange }) {
         </div>
 
         <div className="blog-hero__media" aria-hidden="true">
-          <img src="/images/beach-kid.avif" alt="" loading="lazy" decoding="async" />
+          <img src="/images/vision-magazin-dWHxllFMHw0-unsplash.avif" alt="" loading="lazy" decoding="async" />
         </div>
       </div>
     </header>
