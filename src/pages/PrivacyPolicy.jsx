@@ -38,7 +38,7 @@ const sections = [
       'Submit an enquiry or contact form on the Website.',
       'Book or proceed with a private-pay autism, ADHD, or combined assessment (for clinical delivery, service management, audits, complaint handling, and evidence within investigations).',
       'Create or use a patient portal account, complete questionnaires or consent forms, upload documents, send messages, or manage your profile.',
-      'Make a payment through our payment provider.',
+      'Make a payment through Stripe Checkout (including a first payment that unlocks portal questionnaires, and any remaining balance collected before we book an assessment appointment).',
       'Sign up to our blog newsletter.',
       'Apply for a role through our careers pages.',
       'Submit a complaint about our services or about how we handle your data.',
@@ -60,7 +60,7 @@ const sections = [
     list: [
       'Personal identifiers and contact details (name, date of birth, contact information, NHS number, address, and GP details where provided).',
       'Account and portal activity (profile information, form responses, uploaded documents, appointment details, and messages with our team).',
-      'Payment and billing information processed through our payment provider (we do not store your full card or bank details).',
+      'Payment and billing records associated with your assessment (amounts, dates, payment status, and Stripe identifiers). We do not store your full card or bank details. If you pay with PayPal or Klarna, those providers process payment data under their own notices. Any pay-later option they show (for example Pay in 3) is offered only if they consider you eligible; we do not decide that.',
       'Recruitment information submitted with job applications (such as CVs, cover letters, and application answers).',
       'Cookie and similar technology data captured under the Cookie Policy, based on your consent where required.',
       'Technical information (device details, IP address, browser type/version, time zone, operating system, page response times, interaction data, and exit routes).',
@@ -92,7 +92,9 @@ const sections = [
       'Deliver autism, ADHD, and combined assessments and issue diagnostic reports.',
       'Provide included follow-up support, including the post-assessment session where offered as part of your pathway.',
       'Manage bookings, appointments, questionnaires, documents, and communication through our patient portal and by email or telephone.',
-      'Process payments and issue receipts through our payment provider.',
+      'Control access to portal questionnaires until a required first payment has completed, unless we have agreed a fee waiver in writing.',
+      'Confirm that any remaining balance is paid before we book an assessment appointment, and that the published fee is paid in full before we issue the diagnostic report, unless waived in writing.',
+      'Process payments and issue receipts through Stripe Checkout.',
       'Provide relevant information, resources, or offers (you may opt out at any time).',
       'Send evaluation questionnaires or service updates by email or through the patient portal (opt-out available).',
       'Assess and manage job applications.',
@@ -126,7 +128,7 @@ const sections = [
       'Google Ads — advertising measurement and conversion attribution under Google Consent Mode v2 (only where you consent to advertising cookies). We do not use clinical-path remarketing audiences or Customer Match with enquiry form data.',
       'Meta (Facebook and Instagram) — advertising measurement and conversion attribution via the Meta Pixel (only where you consent to advertising cookies). We do not use Automatic Advanced Matching, we do not send enquiry form emails or phone numbers to Meta, and we do not build remarketing audiences from clinical page paths.',
       'Google Workspace — video appointments (Google Meet), meeting recordings and transcripts, and internal business documents.',
-      'Stripe — payment processing and receipts.',
+      'Stripe — payment processing (Checkout), receipts, and related fraud prevention. We receive confirmation that a payment succeeded or failed, not your full card number.',
     ],
     bodyAfterList: [
       'Some of these providers may process limited personal data outside the UK. Where that happens, we rely on appropriate safeguards such as the UK International Data Transfer Agreement, adequacy regulations, or equivalent contractual protections.',
@@ -143,9 +145,9 @@ const sections = [
     body: ['Depending on the activity we rely on:'],
     list: [
       'Consent — e.g. cookies, marketing communications, newsletter sign-up, sharing reports with your GP where requested, and some optional processing.',
-      'Contract — fulfilling your assessment booking and delivering our services.',
+      'Contract — fulfilling your assessment, collecting fees through Stripe Checkout, and operating the patient portal (including payment status that gates questionnaires and booking).',
       'Legal obligation — such as safeguarding reports or regulatory duties.',
-      'Legitimate interests — including service improvement, fraud prevention, recruitment administration, and providing relevant neurodevelopmental resources (balanced against your rights).',
+      'Legitimate interests — including service improvement, fraud prevention, recruitment administration, providing relevant neurodevelopmental resources, and delivering an assessment without a charge where we have agreed a fee waiver in writing (balanced against your rights).',
     ],
   },
   {
@@ -226,7 +228,7 @@ const sections = [
   },
   {
     title: 'Review cycle',
-    body: ['Date of last review: 13 September 2026', 'Next review due: 13 March 2027 (bi-annual cycle).'],
+    body: ['Date of last review: 17 September 2026', 'Next review due: 17 March 2027 (bi-annual cycle).'],
   },
 ];
 

@@ -24,24 +24,29 @@ const sections = [
   {
     title: 'Private-pay model',
     body: [
-      'All Services are delivered on a private-pay basis. Your booking confirmation sets out the requirements and price for your chosen Service.',
-      'Current standard fees are: autism assessment £2,400; ADHD assessment £1,000; combined autism and ADHD assessment £3,000. These fees include questionnaires, clinical assessment, multi-disciplinary review, feedback, and the included post-assessment support session where offered as part of your pathway.',
+      'Unless we agree otherwise in writing (for example a fee waiver), Services are delivered on a private-pay basis. We do not currently accept NHS Right to Choose funding or GP referrals.',
+      'We confirm in writing the Service selected, the published fee, and how that fee will be collected. Current standard fees are: autism assessment £2,400; ADHD assessment £1,000; combined autism and ADHD assessment £3,000. These fees include questionnaires, clinical assessment, multi-disciplinary review, the diagnostic report, feedback, and the included post-assessment support session where offered as part of your pathway.',
       'For further information email team@novaclinics.co.uk or write to Nova Clinics UK, 82a James Carter Road, Mildenhall, Bury St. Edmunds, IP28 7DE, United Kingdom.',
     ],
   },
   {
     title: 'Booking process',
     body: [
-      'You may submit an enquiry through our Website contact form or by email. Our team will contact you to discuss suitability, explain the pathway, and confirm next steps.',
-      'A booking is confirmed only when Nova Clinics confirms it in writing (usually by email), including the Service selected, fee, and any deposit required.',
+      'You may submit an enquiry through our Website contact form or by email. Our team will contact you to discuss suitability, explain the pathway, and confirm next steps, including patient portal access.',
+      'A first payment towards the published fee (the amount we confirm in writing) is required before you can complete questionnaires and other forms in the patient portal, unless we have agreed a fee waiver in writing.',
+      'Any remaining balance must be paid before we book your assessment appointment. We will usually collect that remaining balance at the point we book the appointment with you.',
+      'An assessment appointment is confirmed only when Nova Clinics confirms it in writing (usually by email), including the Service, date and time, and that the remaining balance has been paid or waived.',
     ],
   },
   {
-    title: 'Deposits and payments',
+    title: 'Fees and payments',
     body: [
-      'A deposit is required to confirm your booking. The deposit amount will be communicated to you in writing at the time of booking confirmation.',
-      'Payments are processed securely through Stripe Checkout. Nova Clinics does not store your full card or bank details.',
-      'Receipts and payment records are issued through Stripe. Any remaining balance and payment schedule will be confirmed in your booking correspondence.',
+      'Where a payment plan applies, we will tell you in writing: (1) the first payment amount, which unlocks portal questionnaires and forms; and (2) any remaining balance, which is due before we book the assessment appointment.',
+      'The first payment amount is not a fixed published figure; it is a portion of the published fee (including, where we so confirm, the full fee). For refunds, that first payment is the “deposit”.',
+      'Payments are processed securely through Stripe Checkout, including from the patient portal. Nova Clinics does not store your full card or bank details.',
+      'Checkout may offer card, Apple Pay, Google Pay, Revolut Pay, PayPal, and Klarna. PayPal and Klarna may, at their own discretion, also offer a pay-later option (for example Pay in 3) to customers they consider eligible. That is not available to everyone, is subject to their checks and approval, and is governed by their terms — not by Nova Clinics. If Checkout completes, Nova Clinics receives that instalment in full; any spreading of payments is between you and PayPal or Klarna.',
+      'Receipts and payment records are issued through Stripe.',
+      'If we agree a fee waiver in writing, no portal payment is required and these payment steps do not apply.',
     ],
   },
   {
@@ -77,6 +82,7 @@ const sections = [
     body: [
       'Your diagnostic report will be made available as a digital PDF through the patient portal when it is ready.',
       'Where available, we will also arrange secure delivery of a printed copy to your home address.',
+      'We will not issue the diagnostic report until the published fee has been paid in full, unless we have agreed a fee waiver in writing.',
       'We aim to issue reports as soon as clinically appropriate following completion of the assessment pathway. We do not guarantee a fixed delivery date.',
     ],
   },
@@ -90,7 +96,8 @@ const sections = [
   {
     title: 'Patient portal',
     body: [
-      'We provide a secure patient portal for completing forms, uploading requested documents, viewing appointments, receiving messages from our team, and accessing your report when available.',
+      'We provide a secure patient portal for completing forms, uploading requested documents, viewing appointments, receiving messages from our team, paying where a payment plan applies, and accessing your report when available.',
+      'Questionnaires and other assessment forms in the portal are available after the first payment has completed, or immediately if we have agreed a fee waiver in writing. An unpaid remaining balance does not by itself block those forms, but we will not book the assessment appointment until that remaining balance is paid or waived.',
       'The portal does not currently support self-service booking, rescheduling, or cancellation. Please contact our team for appointment changes.',
     ],
   },
@@ -132,7 +139,7 @@ const sections = [
     title: 'Applicable law & jurisdiction',
     body: [
       'These Terms are governed exclusively by English law. The courts of England and Wales have exclusive jurisdiction over any dispute.',
-      'Effective date: 14 August 2026.',
+      'Effective date: 17 September 2026.',
     ],
   },
 ];

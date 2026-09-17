@@ -34,7 +34,7 @@ const SLIDES = [
     img: '/images/faqs/4.avif',
     question: 'How much does an assessment cost?',
     answer:
-      'A full ADHD assessment is £1,000, a full autism assessment is £2,400, and a combined autism + ADHD assessment is £3,000. Prices include all stages, from questionnaires to feedback. We offer transparent pricing with no hidden fees - contact us for full details or payment options.',
+      'A full ADHD assessment is £1,000, a full autism assessment is £2,400, and a combined autism + ADHD assessment is £3,000. Prices include all stages, from questionnaires to feedback. We typically collect a first payment so you can complete portal forms, with any remaining balance due before we book your assessment appointment. Amounts are confirmed in writing. Contact us for full details.',
   },
   {
     img: '/images/faqs/5.avif',
@@ -94,7 +94,7 @@ const SLIDES = [
     img: '/images/faqs/14.avif',
     question: 'What is your cancellation and refund policy?',
     answer:
-      'We understand that plans can change, and we\'re here to make things as straightforward as possible. Here\'s a clear breakdown:\n\n• More than 14 days before your first appointment: Full refund of amounts paid, minus the deposit.\n• Between 48 hours and 14 days before: 50% of the total fee is payable (we\'ll refund the rest).\n• Less than 48 hours before, or if you don\'t attend: The full fee is payable, with no refund. (If you\'re more than 20 minutes late, we\'ll treat it as a non-attendance, but please don\'t worry - our admin team will happily help reschedule to our next available slot that suits you.)\n\nThe deposit amount is confirmed in writing when your booking is confirmed. Refunds are processed within 10 working days to your original payment method. You can reschedule once for free with at least 48 hours\' notice; any further changes or those within 48 hours will be handled as a cancellation under the above terms. We may call you around 72 hours before your appointment to confirm details, on a best-effort basis. Full details are in our Terms and Conditions.',
+      'We understand that plans can change, and we\'re here to make things as straightforward as possible. Here\'s a clear breakdown:\n\n• More than 14 days before your first appointment: Full refund of amounts paid, minus the deposit.\n• Between 48 hours and 14 days before: 50% of the total fee is payable (we\'ll refund the rest).\n• Less than 48 hours before, or if you don\'t attend: The full fee is payable, with no refund. (If you\'re more than 20 minutes late, we\'ll treat it as a non-attendance, but please don\'t worry - our admin team will happily help reschedule to our next available slot that suits you.)\n\nThe deposit is the first payment amount we confirm in writing — the payment that unlocks your questionnaires. Any remaining balance is due before we book your assessment appointment, usually when that appointment is booked. Refunds are processed within 10 working days to your original payment method. You can reschedule once for free with at least 48 hours\' notice; any further changes or those within 48 hours will be handled as a cancellation under the above terms. We may call you around 72 hours before your appointment to confirm details, on a best-effort basis. Full details are in our Terms and Conditions.',
   },
 ];
 
