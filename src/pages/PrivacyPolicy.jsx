@@ -36,6 +36,7 @@ const sections = [
     body: ['We collect personal information directly when you:'],
     list: [
       'Submit an enquiry or contact form on the Website.',
+      'Open or interact with emails we send you in response to an enquiry or about our services (we use delivery and read verification so we can confirm that requested information reached you).',
       'Book or proceed with a private-pay autism, ADHD, or combined assessment (for clinical delivery, service management, audits, complaint handling, and evidence within investigations).',
       'Create or use a patient portal account, complete questionnaires or consent forms, upload documents, send messages, or manage your profile.',
       'Make a payment through Stripe Checkout (including a first payment that unlocks portal questionnaires, and any remaining balance collected before we book an assessment appointment).',
@@ -62,7 +63,8 @@ const sections = [
       'Account and portal activity (profile information, form responses, uploaded documents, appointment details, and messages with our team).',
       'Payment and billing records associated with your assessment (amounts, dates, payment status, and Stripe identifiers). We do not store your full card or bank details. If you pay with PayPal or Klarna, those providers process payment data under their own notices. Any pay-later option they show (for example Pay in 3) is offered only if they consider you eligible; we do not decide that.',
       'Recruitment information submitted with job applications (such as CVs, cover letters, and application answers).',
-      'Cookie and similar technology data captured under the Cookie Policy, based on your consent where required.',
+      'Cookie and similar technology data captured under the Cookie Policy, based on your consent where required. Email delivery and read verification uses a small tracking image in the email itself; that is not a website cookie and is described under “Service providers and international transfers”.',
+      'Email delivery and read-verification data for customer-service emails we send you (whether a message was delivered and opened, dates and times, and technical data such as IP address, browser, and operating system).',
       'Technical information (device details, IP address, browser type/version, time zone, operating system, page response times, interaction data, and exit routes).',
       'Usage and activity data showing how you use the Website and resources.',
     ],
@@ -92,6 +94,7 @@ const sections = [
       'Deliver autism, ADHD, and combined assessments and issue diagnostic reports.',
       'Provide included follow-up support, including the post-assessment session where offered as part of your pathway.',
       'Manage bookings, appointments, questionnaires, documents, and communication through our patient portal and by email or telephone.',
+      'Confirm that customer-service emails and requested information have been delivered and opened, so we can follow up on enquiries.',
       'Control access to portal questionnaires until a required first payment has completed.',
       'Confirm that any remaining balance is paid before we book an assessment appointment, and that the published fee is paid in full before we issue the diagnostic report.',
       'Process payments and issue receipts through Stripe Checkout.',
@@ -127,7 +130,8 @@ const sections = [
       'Google Analytics — website analytics under Google Consent Mode v2 (only where you consent to analytics cookies).',
       'Google Ads — advertising measurement and conversion attribution under Google Consent Mode v2 (only where you consent to advertising cookies). We do not use clinical-path remarketing audiences or Customer Match with enquiry form data.',
       'Meta (Facebook and Instagram) — advertising measurement and conversion attribution via the Meta Pixel (only where you consent to advertising cookies). We do not use Automatic Advanced Matching, we do not send enquiry form emails or phone numbers to Meta, and we do not build remarketing audiences from clinical page paths.',
-      'Google Workspace — video appointments (Google Meet), meeting recordings and transcripts, and internal business documents.',
+      'Google Workspace — business email (Gmail), video appointments (Google Meet), meeting recordings and transcripts, and internal business documents.',
+      'Mailsuite (MAILSUITE S.L., Spain) — basic delivery and read verification on outbound customer-service emails sent from our Gmail, so we can confirm that requested information reached you and follow up on enquiries. This uses a small tracking image in the email. When the message is opened, Mailsuite may record the open (date and time) and technical data such as IP address, browser, and operating system. We do not use this for marketing or advertising, and we do not build advertising audiences from it. Emails that use this technology include a short notice. Mailsuite acts as our processor under our instructions.',
       'Stripe — payment processing (Checkout), receipts, and related fraud prevention. We receive confirmation that a payment succeeded or failed, not your full card number.',
     ],
     bodyAfterList: [
@@ -147,7 +151,7 @@ const sections = [
       'Consent — e.g. cookies, marketing communications, newsletter sign-up, sharing reports with your GP where requested, and some optional processing.',
       'Contract — fulfilling your assessment, collecting fees through Stripe Checkout, and operating the patient portal (including payment status that gates questionnaires and booking).',
       'Legal obligation — such as safeguarding reports or regulatory duties.',
-      'Legitimate interests — including service improvement, fraud prevention, recruitment administration, and providing relevant neurodevelopmental resources (balanced against your rights).',
+      'Legitimate interests — including service improvement, fraud prevention, recruitment administration, confirming that customer-service emails have been delivered and opened so we can follow up on enquiries, and providing relevant neurodevelopmental resources (balanced against your rights).',
     ],
   },
   {
@@ -182,7 +186,7 @@ const sections = [
       'Child health records: we follow the Records Management Code of Practice 2021 — records are retained until the patient’s 25th birthday (or 26th if the record was created at age 17) and then securely destroyed.',
       'Adult health records: retained for eight years from the date of last contact or treatment, then securely destroyed.',
       'Recruitment records for unsuccessful applicants: retained for up to six months, unless you have given separate consent to remain in a talent pool.',
-      'Website enquiries and general correspondence: typically up to twelve months, unless needed longer for an active enquiry or dispute.',
+      'Website enquiries and general correspondence: typically up to twelve months, unless needed longer for an active enquiry or dispute. Email delivery and read-verification records are kept for the same period.',
       'Cookie consent preferences: stored in your browser until you clear them or withdraw consent via the Website footer. When we change cookie categories (for example adding advertising), you will be asked again.',
     ],
   },
@@ -190,6 +194,7 @@ const sections = [
     title: 'Consent and opt-outs',
     body: [
       'You can withdraw consent or opt out of marketing, newsletters, or non-essential communications at any time by emailing dpo@novaclinics.co.uk.',
+      'You can object to email delivery and read verification by emailing dpo@novaclinics.co.uk. You can also prevent the tracking image from loading by blocking remote images in your email client. We will still send you the emails you have requested.',
       'Where another lawful basis applies, we may continue to process historical data to meet regulatory, contractual, or safeguarding duties.',
     ],
   },
@@ -228,7 +233,7 @@ const sections = [
   },
   {
     title: 'Review cycle',
-    body: ['Date of last review: 17 September 2026', 'Next review due: 17 March 2027 (bi-annual cycle).'],
+    body: ['Date of last review: 23 September 2026', 'Next review due: 23 March 2027 (bi-annual cycle).'],
   },
 ];
 
