@@ -11,7 +11,7 @@
 
       (function () {
         var CONSENT_KEY = 'nova_cookie_consent';
-        var CONSENT_VERSION = 3;
+        var CONSENT_VERSION = 4;
         var analyticsGranted = false;
         var adsGranted = false;
         var hasChoice = false;
@@ -24,6 +24,7 @@
               && parsed.v === CONSENT_VERSION
               && typeof parsed.analytics === 'boolean'
               && typeof parsed.ads === 'boolean'
+              && typeof parsed.stats === 'boolean'
             ) {
               hasChoice = true;
               analyticsGranted = parsed.analytics;
@@ -62,7 +63,7 @@
           var raw = localStorage.getItem('nova_cookie_consent');
           if (raw && raw !== 'accepted' && raw !== 'rejected') {
             var parsed = JSON.parse(raw);
-            if (parsed && parsed.v === 3 && parsed.ads === true) {
+            if (parsed && parsed.v === 4 && parsed.ads === true) {
               adsGranted = true;
             }
           }

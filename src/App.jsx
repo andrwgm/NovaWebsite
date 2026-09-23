@@ -12,6 +12,7 @@ import { onContactModalRequest } from './utils/contactModalService';
 import {
   applyBannerConsentChoice,
   denyAllGoogleConsent,
+  normaliseConsentPreferences,
   readConsentPreferences,
   writeConsentPreferences,
 } from './utils/googleAnalytics';
@@ -167,9 +168,11 @@ function AppContent() {
   }, []);
 
   const handleCookieChoice = (preferences) => {
-    applyBannerConsentChoice(preferences);
-    writeConsentPreferences(preferences);
-    setCookieConsent(preferences);
+    const next = normaliseConsentPreferences(preferences);
+    applyBannerConsentChoice(next);
+    writeConsentPreferences(next);
+    setCookieConsent(next);
+    captureEnquiryAttribution();
   };
 
   useEffect(() => {
@@ -185,7 +188,11 @@ function AppContent() {
         && typeof detail.analytics === 'boolean'
         && typeof detail.ads === 'boolean'
       ) {
-        handleCookieChoice({ analytics: detail.analytics, ads: detail.ads });
+        handleCookieChoice({
+          analytics: detail.analytics,
+          ads: detail.ads,
+          stats: typeof detail.stats === 'boolean' ? detail.stats : true,
+        });
       }
     };
 

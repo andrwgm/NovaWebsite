@@ -3,7 +3,7 @@ import { applyMetaConsent, trackMetaContactFormOpen, trackMetaLead, trackMetaPri
 export const GA_MEASUREMENT_ID = 'G-ZWND4BHC68';
 export const COOKIE_CONSENT_KEY = 'nova_cookie_consent';
 /** Bump when banner categories change so prior Accept/Reject must be asked again. */
-export const COOKIE_CONSENT_VERSION = 3;
+export const COOKIE_CONSENT_VERSION = 4;
 
 const ALL_DENIED = {
   ad_storage: 'denied',
@@ -13,13 +13,15 @@ const ALL_DENIED = {
 };
 
 /**
- * @typedef {{ analytics: boolean, ads: boolean }} ConsentPreferences
+ * @typedef {{ analytics: boolean, ads: boolean, stats: boolean }} ConsentPreferences
  */
 
 /**
- * Legacy `accepted` / `rejected` (v1) and v2 JSON are ignored so the banner
- * returns when advertising providers change. Valid v3 JSON:
- * {"v":3,"analytics":true,"ads":false}.
+ * Legacy `accepted` / `rejected` (v1), v2, and v3 JSON are ignored so the
+ * banner returns when categories change. Valid v4 JSON:
+ * {"v":4,"analytics":true,"ads":false,"stats":true}.
+ * `stats` is first-party campaign statistics (opt-out). Analytics and ads
+ * remain opt-in.
  * @returns {ConsentPreferences | null}
  */
 export function parseStoredConsent(raw) {
@@ -39,13 +41,30 @@ export function parseStoredConsent(raw) {
       || parsed.v !== COOKIE_CONSENT_VERSION
       || typeof parsed.analytics !== 'boolean'
       || typeof parsed.ads !== 'boolean'
+      || typeof parsed.stats !== 'boolean'
     ) {
       return null;
     }
-    return { analytics: parsed.analytics, ads: parsed.ads };
+    return {
+      analytics: parsed.analytics,
+      ads: parsed.ads,
+      stats: parsed.stats,
+    };
   } catch {
     return null;
   }
+}
+
+/** @param {Partial<ConsentPreferences> | null} preferences */
+export function normaliseConsentPreferences(preferences) {
+  if (!preferences) {
+    return null;
+  }
+  return {
+    analytics: Boolean(preferences.analytics),
+    ads: Boolean(preferences.ads),
+    stats: preferences.stats !== false,
+  };
 }
 
 /** @returns {ConsentPreferences | null} */
@@ -77,12 +96,14 @@ export function writeConsentPreferences(preferences) {
       window.localStorage.removeItem(COOKIE_CONSENT_KEY);
       return;
     }
+    const next = normaliseConsentPreferences(preferences);
     window.localStorage.setItem(
       COOKIE_CONSENT_KEY,
       JSON.stringify({
         v: COOKIE_CONSENT_VERSION,
-        analytics: Boolean(preferences.analytics),
-        ads: Boolean(preferences.ads),
+        analytics: next.analytics,
+        ads: next.ads,
+        stats: next.stats,
       }),
     );
   } catch {
@@ -163,10 +184,7 @@ function clearGoogleConsentCookies() {
 
 /** @param {ConsentPreferences} preferences */
 export function applyConsentPreferences(preferences) {
-  const next = {
-    analytics: Boolean(preferences.analytics),
-    ads: Boolean(preferences.ads),
-  };
+  const next = normaliseConsentPreferences(preferences);
 
   updateConsent(consentStateFromPreferences(next));
   applyMetaConsent(next.ads);

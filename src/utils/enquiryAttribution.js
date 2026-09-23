@@ -1,16 +1,35 @@
+import { readConsentPreferences } from './googleAnalytics';
+
 const STORAGE_KEY = 'nova_enquiry_attribution';
 
-export const ATTRIBUTION_PARAM_KEYS = [
+export const ATTRIBUTION_UTM_KEYS = [
   'utm_source',
   'utm_medium',
   'utm_campaign',
   'utm_content',
   'utm_term',
+];
+
+export const ATTRIBUTION_CLICK_ID_KEYS = [
   'gclid',
   'gbraid',
   'wbraid',
   'fbclid',
 ];
+
+export const ATTRIBUTION_PARAM_KEYS = [
+  ...ATTRIBUTION_UTM_KEYS,
+  ...ATTRIBUTION_CLICK_ID_KEYS,
+];
+
+function emptyClickIds() {
+  return {
+    gclid: null,
+    gbraid: null,
+    wbraid: null,
+    fbclid: null,
+  };
+}
 
 function emptyParams() {
   return {
@@ -19,10 +38,7 @@ function emptyParams() {
     utm_campaign: null,
     utm_content: null,
     utm_term: null,
-    gclid: null,
-    gbraid: null,
-    wbraid: null,
-    fbclid: null,
+    ...emptyClickIds(),
   };
 }
 
@@ -100,7 +116,12 @@ function writeStored(snapshot) {
   if (typeof window === 'undefined') {
     return;
   }
+  const hasValue = Object.values(snapshot).some((value) => value != null);
   try {
+    if (!hasValue) {
+      window.sessionStorage.removeItem(STORAGE_KEY);
+      return;
+    }
     window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(snapshot));
   } catch {
     // Private mode / blocked storage — still attach what we can from the current URL.
@@ -112,9 +133,35 @@ function firstTouch(current, incoming) {
 }
 
 /**
- * Capture UTMs and click IDs from the current URL and persist them for the visit.
- * First non-empty value wins so a later internal page does not wipe an ad landing.
- * Safe to call on every route change. Does not touch Google Analytics, Ads, or Meta.
+ * First-party campaign statistics (UTMs, landing, referrer) use the PECR
+ * statistics exemption: on unless the visitor opts out. No choice yet = on.
+ */
+export function isEnquiryStatsAllowed() {
+  const prefs = readConsentPreferences();
+  if (prefs === null) {
+    return true;
+  }
+  return prefs.stats !== false;
+}
+
+/** Advertising click IDs are only stored after Advertising consent. */
+export function isEnquiryClickIdAllowed() {
+  return Boolean(readConsentPreferences()?.ads);
+}
+
+let pendingClickIds = emptyClickIds();
+
+function rememberClickIdsFromUrl(params) {
+  ATTRIBUTION_CLICK_ID_KEYS.forEach((key) => {
+    pendingClickIds[key] = firstTouch(pendingClickIds[key], normalizeValue(params.get(key)));
+  });
+}
+
+/**
+ * Capture campaign parameters from the current URL for this visit.
+ * UTMs / landing / referrer: first-party statistics, unless opted out.
+ * Click IDs: in-memory until Advertising is allowed; then session-persisted.
+ * Does not touch Google Analytics, Ads, or Meta.
  */
 export function captureEnquiryAttribution() {
   if (typeof window === 'undefined') {
@@ -124,14 +171,30 @@ export function captureEnquiryAttribution() {
   const stored = readStored();
   const params = new URLSearchParams(window.location.search);
   const next = emptySnapshot();
+  const statsOn = isEnquiryStatsAllowed();
+  const adsOn = isEnquiryClickIdAllowed();
+  const prefs = readConsentPreferences();
 
-  ATTRIBUTION_PARAM_KEYS.forEach((key) => {
-    next[key] = firstTouch(stored[key], normalizeValue(params.get(key)));
-  });
+  rememberClickIdsFromUrl(params);
 
-  const pageUrl = currentPageUrl();
-  next.first_landing_page = firstTouch(stored.first_landing_page, pageUrl);
-  next.referrer = firstTouch(stored.referrer, externalReferrer());
+  if (statsOn) {
+    ATTRIBUTION_UTM_KEYS.forEach((key) => {
+      next[key] = firstTouch(stored[key], normalizeValue(params.get(key)));
+    });
+    const pageUrl = currentPageUrl();
+    next.first_landing_page = firstTouch(stored.first_landing_page, pageUrl);
+    next.referrer = firstTouch(stored.referrer, externalReferrer());
+  }
+
+  if (prefs && prefs.ads === false) {
+    pendingClickIds = emptyClickIds();
+  }
+
+  if (adsOn) {
+    ATTRIBUTION_CLICK_ID_KEYS.forEach((key) => {
+      next[key] = firstTouch(stored[key], pendingClickIds[key]);
+    });
+  }
 
   writeStored(next);
   return next;
@@ -144,19 +207,21 @@ export function captureEnquiryAttribution() {
  */
 export function getEnquiryAttributionPayload() {
   const stored = captureEnquiryAttribution();
+  const statsOn = isEnquiryStatsAllowed();
+  const adsOn = isEnquiryClickIdAllowed();
   return {
-    utm_source: stored.utm_source,
-    utm_medium: stored.utm_medium,
-    utm_campaign: stored.utm_campaign,
-    utm_content: stored.utm_content,
-    utm_term: stored.utm_term,
-    gclid: stored.gclid,
-    gbraid: stored.gbraid,
-    wbraid: stored.wbraid,
-    fbclid: stored.fbclid,
-    landing_page: currentPageUrl(),
-    first_landing_page: stored.first_landing_page,
-    referrer: stored.referrer,
+    utm_source: statsOn ? stored.utm_source : null,
+    utm_medium: statsOn ? stored.utm_medium : null,
+    utm_campaign: statsOn ? stored.utm_campaign : null,
+    utm_content: statsOn ? stored.utm_content : null,
+    utm_term: statsOn ? stored.utm_term : null,
+    gclid: adsOn ? stored.gclid : null,
+    gbraid: adsOn ? stored.gbraid : null,
+    wbraid: adsOn ? stored.wbraid : null,
+    fbclid: adsOn ? stored.fbclid : null,
+    landing_page: statsOn ? currentPageUrl() : null,
+    first_landing_page: statsOn ? stored.first_landing_page : null,
+    referrer: statsOn ? stored.referrer : null,
   };
 }
 
