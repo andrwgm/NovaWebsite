@@ -17,7 +17,8 @@ export default function CookieBanner({ onChoice }) {
               We use analytics cookies to understand how visitors use this site, and advertising
               cookies (Google Ads and Meta) to measure and improve our campaigns — only if you allow them.
               You can accept all, reject all, or choose by category. Essential storage that remembers
-              your choice does not require consent.
+              your choice, and first-party session storage that keeps campaign details with an
+              enquiry you send, does not require consent.
             </p>
             <div className="cookie-banner__actions">
               <button

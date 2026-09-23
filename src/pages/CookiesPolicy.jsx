@@ -11,14 +11,14 @@ const sections = [
     title: 'What are cookies?',
     body: [
       'Cookies are small text files stored in your browser that let Nova Clinics or an approved third party recognise you across visits. They help us remember preferences and deliver a secure, consistent experience on this Website.',
-      'We also use similar technologies such as local storage to remember your cookie consent choice.',
+      'We also use similar technologies such as local storage to remember your cookie consent choice, and session storage to keep campaign parameters with an enquiry you may send.',
     ],
   },
   {
     title: 'How we use cookies',
     body: ['Cookies and similar technologies on this Website are used to:'],
     list: [
-      'Enable essential website functions.',
+      'Enable essential website functions, including remembering campaign parameters from the URL you arrived with so they can be stored with an enquiry you submit.',
       'Remember which analytics and advertising categories you have accepted or rejected.',
       'Provide analytics so we can monitor performance — but only if you give consent.',
       'Measure and improve Google Ads and Meta (Facebook and Instagram) campaigns — but only if you give separate consent for advertising cookies.',
@@ -29,7 +29,7 @@ const sections = [
     title: 'Cookies we use',
     body: ['We currently use the following categories:'],
     list: [
-      'Strictly necessary — a local storage entry (`nova_cookie_consent`) that records your analytics and advertising choices. This is required to honour your preference and does not require consent.',
+      'Strictly necessary — a local storage entry (`nova_cookie_consent`) that records your analytics and advertising choices, and a session storage entry (`nova_enquiry_attribution`) that keeps first-party campaign parameters (UTMs, gclid, gbraid, wbraid, fbclid), the first page of this visit, and the referring website so we can attach them to an enquiry you submit. These are required to operate the Website and the contact form and do not require consent. Enquiry attribution is not sent to Google or Meta from the form.',
       'Analytics (consent required) — Google Analytics (via Google Consent Mode v2) and Cloudflare Web Analytics. Google Analytics may send cookieless, aggregated measurement signals before you choose; full analytics cookies and detailed measurement are only enabled if you allow Analytics (Accept all, or Customise). Cloudflare Web Analytics is loaded only after Analytics is allowed.',
       'Advertising (consent required) — Google Ads cookies and the Meta Pixel, used for campaign measurement and conversion attribution. These are only enabled if you allow Advertising. We do not build remarketing audiences from clinical page paths (for example ADHD or autism assessment pages), we do not use Google Customer Match or Meta Automatic Advanced Matching with enquiry form data, and we do not send name, email, phone, or message from the contact form to advertising platforms.',
     ],
@@ -38,6 +38,7 @@ const sections = [
     title: 'Session vs. persistent cookies',
     body: [
       'Your cookie consent choice is stored in your browser as a persistent local storage entry until you clear it or withdraw consent via the footer link.',
+      'First-party enquiry attribution is stored in session storage for this visit only and is cleared when you close the tab.',
       'Analytics and advertising cookies, if accepted, remain for the lifetime defined by the relevant provider.',
     ],
   },
@@ -62,7 +63,7 @@ const sections = [
     title: 'Contact and compliance',
     body: [
       'Questions about this Cookie Policy can be directed to our Data Protection Officer at dpo@novaclinics.co.uk.',
-      'We comply with the Privacy and Electronic Communications Regulations (PECR) as aligned with UK GDPR. Consent for non-essential cookies is specific, informed, and unambiguous; strictly necessary storage is limited to core functionality such as remembering your consent choice.',
+      'We comply with the Privacy and Electronic Communications Regulations (PECR) as aligned with UK GDPR. Consent for non-essential cookies is specific, informed, and unambiguous; strictly necessary storage is limited to core functionality such as remembering your consent choice and keeping campaign parameters with an enquiry you send.',
     ],
     list: [
       'Non-essential analytics cookies are only set if you allow Analytics.',
@@ -75,7 +76,7 @@ const sections = [
   },
   {
     title: 'Policy reviews',
-    body: ['Last reviewed: 13 September 2026', 'Next review: 13 March 2027'],
+    body: ['Last reviewed: 23 September 2026', 'Next review: 23 March 2027'],
   },
 ];
 

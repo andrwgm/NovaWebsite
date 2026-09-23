@@ -11,6 +11,7 @@ import { CONTACT_FORM_RESPONSE_MODE } from '../config/contactFormResponse';
 import { CONTACT_SUBMISSIONS_ENDPOINT } from '../utils/api';
 import { trackContactFormOpen, trackGenerateLead } from '../utils/googleAnalytics';
 import { trackMetaFormStart } from '../utils/metaPixel';
+import { getEnquiryAttributionPayload } from '../utils/enquiryAttribution';
 import './contactModal.css';
 
 const INITIAL_FORM = {
@@ -126,6 +127,7 @@ export default function ContactModal({
           phone: formData.phone || 'Not provided',
           message: formData.message || 'Not provided',
           consent: Boolean(formData.consent),
+          attribution: getEnquiryAttributionPayload(),
         }),
       });
 
