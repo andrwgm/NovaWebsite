@@ -16,12 +16,11 @@ export default function CookieBanner({ onChoice }) {
           <>
             <p>
               We use analytics cookies to understand how visitors use this site, and advertising
-              cookies (Google Ads and Meta) to measure and improve our campaigns — only if you allow them.
-              You can accept all, reject all, or choose by category. We also keep first-party campaign
-              details (UTMs, landing page, and referring website) with an enquiry you send, under the
-              PECR statistics exemption. You can opt out in Customise. Advertising click IDs are only
-              stored if you allow Advertising. Essential storage that remembers your choice does not
-              require consent.
+              cookies (Google Ads and Meta) to measure and improve our campaigns, only if you allow them.
+              You can accept all, reject all, or choose by category. We use essential storage to run
+              this site, and first-party website statistics to see which campaigns and pages lead people
+              to contact us. These stay with Nova Clinics and are never sent to Google or Meta. You can
+              switch statistics off in Customise.
             </p>
             <div className="cookie-banner__actions">
               <button
@@ -55,9 +54,22 @@ export default function CookieBanner({ onChoice }) {
             <p>
               Analytics and advertising cookies are optional and are not pre-selected. Advertising
               cookies are used for Google Ads and Meta (Facebook and Instagram) measurement and are
-              separate from analytics. Campaign statistics are on by default; untick to opt out.
+              separate from analytics. Website statistics are on by default; you can switch them off.
             </p>
             <div className="cookie-banner__categories" role="group" aria-label="Cookie categories">
+              <label className="cookie-banner__category">
+                <input
+                  type="checkbox"
+                  checked={stats}
+                  onChange={(event) => setStats(event.target.checked)}
+                />
+                <span>
+                  <strong>Website statistics</strong>
+                  {' '}
+                  Helps us see which campaigns and pages lead people to get in touch. Used only by
+                  Nova Clinics. Switch off at any time; the site works the same either way.
+                </span>
+              </label>
               <label className="cookie-banner__category">
                 <input
                   type="checkbox"
@@ -67,7 +79,7 @@ export default function CookieBanner({ onChoice }) {
                 <span>
                   <strong>Analytics</strong>
                   {' '}
-                  — Google Analytics and Cloudflare Web Analytics (site performance).
+                  Google Analytics and Cloudflare Web Analytics (site performance).
                 </span>
               </label>
               <label className="cookie-banner__category">
@@ -79,24 +91,10 @@ export default function CookieBanner({ onChoice }) {
                 <span>
                   <strong>Advertising</strong>
                   {' '}
-                  — Google Ads and Meta Pixel cookies for campaign measurement (not clinical
+                  Google Ads and Meta Pixel cookies for campaign measurement (not clinical
                   remarketing lists, and not matching enquiry emails or phone numbers). Also
                   allows us to store advertising click IDs (gclid, gbraid, wbraid, fbclid) with
                   an enquiry you send.
-                </span>
-              </label>
-              <label className="cookie-banner__category">
-                <input
-                  type="checkbox"
-                  checked={stats}
-                  onChange={(event) => setStats(event.target.checked)}
-                />
-                <span>
-                  <strong>Campaign statistics</strong>
-                  {' '}
-                  — First-party UTMs, landing page, and referring website, stored with an enquiry
-                  you send. On by default. Untick to opt out. Not sent to Google or Meta from the
-                  form.
                 </span>
               </label>
             </div>

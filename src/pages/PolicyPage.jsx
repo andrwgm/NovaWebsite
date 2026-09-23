@@ -26,10 +26,39 @@ export default function PolicyPage({ title, caption, intro = [], sections = [] }
               ))}
               {section.list && (
                 <ul>
-                  {section.list.map((item) => (
-                    <li key={item}>{item}</li>
+                  {section.list.map((item, index) => (
+                    <li key={index}>{item}</li>
                   ))}
                 </ul>
+              )}
+              {section.orderedList && (
+                <ol>
+                  {section.orderedList.map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
+                </ol>
+              )}
+              {section.table && (
+                <div className="policy-table-wrap">
+                  <table className="policy-table">
+                    <thead>
+                      <tr>
+                        {section.table.headers.map((header) => (
+                          <th key={header} scope="col">{header}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {section.table.rows.map((row, rowIndex) => (
+                        <tr key={rowIndex}>
+                          {row.map((cell, cellIndex) => (
+                            <td key={cellIndex}>{cell}</td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               )}
               {section.bodyAfterList?.map((paragraph, index) => (
                 <p key={`after-${index}`} className="policy-paragraph">

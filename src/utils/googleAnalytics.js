@@ -20,8 +20,8 @@ const ALL_DENIED = {
  * Legacy `accepted` / `rejected` (v1), v2, and v3 JSON are ignored so the
  * banner returns when categories change. Valid v4 JSON:
  * {"v":4,"analytics":true,"ads":false,"stats":true}.
- * `stats` is first-party campaign statistics (opt-out). Analytics and ads
- * remain opt-in.
+ * `stats` is first-party website statistics (on by default; opt-out).
+ * Analytics and ads remain opt-in.
  * @returns {ConsentPreferences | null}
  */
 export function parseStoredConsent(raw) {

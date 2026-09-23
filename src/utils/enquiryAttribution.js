@@ -133,7 +133,7 @@ function firstTouch(current, incoming) {
 }
 
 /**
- * First-party campaign statistics (UTMs, landing, referrer) use the PECR
+ * First-party website statistics (UTMs, landing, referrer) use the PECR
  * statistics exemption: on unless the visitor opts out. No choice yet = on.
  */
 export function isEnquiryStatsAllowed() {
@@ -157,10 +157,20 @@ function rememberClickIdsFromUrl(params) {
   });
 }
 
+function emptyPayload() {
+  return {
+    ...emptyParams(),
+    landing_page: null,
+    first_landing_page: null,
+    referrer: null,
+  };
+}
+
 /**
  * Capture campaign parameters from the current URL for this visit.
- * UTMs / landing / referrer: first-party statistics, unless opted out.
- * Click IDs: in-memory until Advertising is allowed; then session-persisted.
+ * UTMs / landing / referrer: first-party website statistics, unless opted out.
+ * Click IDs: only written when Website statistics are on and Advertising is allowed.
+ * If Website statistics are off, session storage is not written and nothing is saved.
  * Does not touch Google Analytics, Ads, or Meta.
  */
 export function captureEnquiryAttribution() {
@@ -168,27 +178,32 @@ export function captureEnquiryAttribution() {
     return emptySnapshot();
   }
 
-  const stored = readStored();
   const params = new URLSearchParams(window.location.search);
-  const next = emptySnapshot();
   const statsOn = isEnquiryStatsAllowed();
   const adsOn = isEnquiryClickIdAllowed();
   const prefs = readConsentPreferences();
 
   rememberClickIdsFromUrl(params);
 
-  if (statsOn) {
-    ATTRIBUTION_UTM_KEYS.forEach((key) => {
-      next[key] = firstTouch(stored[key], normalizeValue(params.get(key)));
-    });
-    const pageUrl = currentPageUrl();
-    next.first_landing_page = firstTouch(stored.first_landing_page, pageUrl);
-    next.referrer = firstTouch(stored.referrer, externalReferrer());
-  }
-
   if (prefs && prefs.ads === false) {
     pendingClickIds = emptyClickIds();
   }
+
+  if (!statsOn) {
+    pendingClickIds = emptyClickIds();
+    writeStored(emptySnapshot());
+    return emptySnapshot();
+  }
+
+  const stored = readStored();
+  const next = emptySnapshot();
+
+  ATTRIBUTION_UTM_KEYS.forEach((key) => {
+    next[key] = firstTouch(stored[key], normalizeValue(params.get(key)));
+  });
+  const pageUrl = currentPageUrl();
+  next.first_landing_page = firstTouch(stored.first_landing_page, pageUrl);
+  next.referrer = firstTouch(stored.referrer, externalReferrer());
 
   if (adsOn) {
     ATTRIBUTION_CLICK_ID_KEYS.forEach((key) => {
@@ -202,26 +217,33 @@ export function captureEnquiryAttribution() {
 
 /**
  * Payload to attach to any enquiry/form POST. Missing values are null, never invented.
+ * If Website statistics are off, every attribution field is empty.
+ * Click IDs are included only when Advertising consent is granted.
  * `landing_page` is the page at submit time. `first_landing_page` is the first page of the visit.
  * `attribution_source` and `created_at` are derived/stored by the backend.
  */
 export function getEnquiryAttributionPayload() {
-  const stored = captureEnquiryAttribution();
   const statsOn = isEnquiryStatsAllowed();
+  if (!statsOn) {
+    captureEnquiryAttribution();
+    return emptyPayload();
+  }
+
+  const stored = captureEnquiryAttribution();
   const adsOn = isEnquiryClickIdAllowed();
   return {
-    utm_source: statsOn ? stored.utm_source : null,
-    utm_medium: statsOn ? stored.utm_medium : null,
-    utm_campaign: statsOn ? stored.utm_campaign : null,
-    utm_content: statsOn ? stored.utm_content : null,
-    utm_term: statsOn ? stored.utm_term : null,
+    utm_source: stored.utm_source,
+    utm_medium: stored.utm_medium,
+    utm_campaign: stored.utm_campaign,
+    utm_content: stored.utm_content,
+    utm_term: stored.utm_term,
     gclid: adsOn ? stored.gclid : null,
     gbraid: adsOn ? stored.gbraid : null,
     wbraid: adsOn ? stored.wbraid : null,
     fbclid: adsOn ? stored.fbclid : null,
-    landing_page: statsOn ? currentPageUrl() : null,
-    first_landing_page: statsOn ? stored.first_landing_page : null,
-    referrer: statsOn ? stored.referrer : null,
+    landing_page: currentPageUrl(),
+    first_landing_page: stored.first_landing_page,
+    referrer: stored.referrer,
   };
 }
 
