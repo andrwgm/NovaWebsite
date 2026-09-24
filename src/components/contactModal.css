@@ -58,6 +58,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
+  position: relative;
 }
 
 .contact-modal-form .p-inputtext,
@@ -113,6 +114,15 @@
 .contact-modal-turnstile {
   width: 100%;
   min-height: 65px;
+}
+
+.contact-modal-hp {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 .contact-modal-error {

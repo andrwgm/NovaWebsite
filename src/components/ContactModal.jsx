@@ -21,6 +21,7 @@ const INITIAL_FORM = {
   phone: '',
   message: '',
   consent: false,
+  website: '',
 };
 
 export default function ContactModal({
@@ -134,6 +135,7 @@ export default function ContactModal({
     const target = event.target;
     if (!(target instanceof HTMLElement)) return;
     if (!['INPUT', 'TEXTAREA'].includes(target.tagName)) return;
+    if (target.id === 'contact-website') return;
 
     if (target.getAttribute('type') !== 'checkbox') {
       trackFormStartOnce();
@@ -147,6 +149,8 @@ export default function ContactModal({
   const handleChange = (field) => (event) => {
     if (field === 'consent') {
       setFormData((prev) => ({ ...prev, consent: event.target.checked }));
+    } else if (field === 'website') {
+      setFormData((prev) => ({ ...prev, website: event.target.value }));
     } else {
       trackFormStartOnce();
       setFormData((prev) => ({ ...prev, [field]: event.target.value }));
@@ -186,6 +190,7 @@ export default function ContactModal({
           consent: Boolean(formData.consent),
           attribution: getEnquiryAttributionPayload(),
           'cf-turnstile-response': turnstileToken,
+          website: formData.website,
         }),
       });
 
@@ -240,6 +245,18 @@ export default function ContactModal({
                 />
                 <label htmlFor="contact-name">Full name</label>
               </span>
+              <div className="contact-modal-hp" aria-hidden="true">
+                <label htmlFor="contact-website">Website</label>
+                <input
+                  id="contact-website"
+                  name="website"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={formData.website}
+                  onChange={handleChange('website')}
+                />
+              </div>
               <span className="p-float-label">
                 <InputText
                   id="contact-email"
