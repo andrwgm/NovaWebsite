@@ -12,6 +12,7 @@ import { CONTACT_SUBMISSIONS_ENDPOINT } from '../utils/api';
 import { trackContactFormOpen, trackGenerateLead } from '../utils/googleAnalytics';
 import { trackMetaFormStart } from '../utils/metaPixel';
 import { getEnquiryAttributionPayload } from '../utils/enquiryAttribution';
+import { TURNSTILE_CONTACT_ACTION, TURNSTILE_SITE_KEY, whenTurnstileReady } from '../utils/turnstile';
 import './contactModal.css';
 
 const INITIAL_FORM = {
@@ -34,7 +35,10 @@ export default function ContactModal({
   const [submitError, setSubmitError] = useState('');
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const overlayRef = useRef(null);
+  const turnstileContainerRef = useRef(null);
+  const turnstileWidgetIdRef = useRef(null);
   const formStartTracked = useRef(false);
+  const [turnstileToken, setTurnstileToken] = useState('');
 
   useEffect(() => {
     if (requestId > 0) {
@@ -71,6 +75,54 @@ export default function ContactModal({
       overlay?.style.setProperty('--keyboard-inset', '0px');
     };
   }, [visible]);
+
+  useEffect(() => {
+    if (!visible) {
+      return undefined;
+    }
+
+    setTurnstileToken('');
+    let cancelled = false;
+
+    const cancelReadyWait = whenTurnstileReady(() => {
+      if (cancelled || !turnstileContainerRef.current || !window.turnstile?.render) {
+        return;
+      }
+      if (turnstileWidgetIdRef.current) {
+        window.turnstile.remove(turnstileWidgetIdRef.current);
+        turnstileWidgetIdRef.current = null;
+      }
+      turnstileWidgetIdRef.current = window.turnstile.render(turnstileContainerRef.current, {
+        sitekey: TURNSTILE_SITE_KEY,
+        action: TURNSTILE_CONTACT_ACTION,
+        theme: 'light',
+        size: 'flexible',
+        language: 'en',
+        'refresh-expired': 'auto',
+        callback: (token) => setTurnstileToken(token),
+        'expired-callback': () => setTurnstileToken(''),
+        'error-callback': () => setTurnstileToken(''),
+        'timeout-callback': () => setTurnstileToken(''),
+      });
+    });
+
+    return () => {
+      cancelled = true;
+      cancelReadyWait();
+      if (turnstileWidgetIdRef.current && window.turnstile?.remove) {
+        window.turnstile.remove(turnstileWidgetIdRef.current);
+      }
+      turnstileWidgetIdRef.current = null;
+      setTurnstileToken('');
+    };
+  }, [visible]);
+
+  const resetTurnstile = () => {
+    setTurnstileToken('');
+    if (turnstileWidgetIdRef.current && window.turnstile?.reset) {
+      window.turnstile.reset(turnstileWidgetIdRef.current);
+    }
+  };
 
   const trackFormStartOnce = () => {
     if (formStartTracked.current) return;
@@ -114,6 +166,11 @@ export default function ContactModal({
       return;
     }
 
+    if (!turnstileToken) {
+      setSubmitError('Please complete the verification before submitting.');
+      return;
+    }
+
     setIsSubmitting(true);
     try {
       const response = await fetch(CONTACT_SUBMISSIONS_ENDPOINT, {
@@ -128,10 +185,12 @@ export default function ContactModal({
           message: formData.message || 'Not provided',
           consent: Boolean(formData.consent),
           attribution: getEnquiryAttributionPayload(),
+          'cf-turnstile-response': turnstileToken,
         }),
       });
 
       if (!response.ok) {
+        resetTurnstile();
         const message = `Request failed with status ${response.status}`;
         throw new Error(message);
       }
@@ -146,6 +205,7 @@ export default function ContactModal({
       close();
     } catch (error) {
       console.error('Failed to submit contact form', error);
+      resetTurnstile();
       setSubmitError('No se pudo enviar la solicitud. Inténtalo de nuevo.');
     } finally {
       setIsSubmitting(false);
@@ -219,6 +279,11 @@ export default function ContactModal({
                 />
                 <label htmlFor="contact-consent">I have read and understood the <a href="/privacy-policy" target="_blank">Privacy Policy</a> and agree to the processing of my personal data for the purpose of responding to my enquiry.</label>
               </div>
+              <div
+                ref={turnstileContainerRef}
+                className="contact-modal-turnstile"
+                aria-label="Bot verification"
+              />
               {submitError && <p className="contact-modal-error">{submitError}</p>}
 
               <Button
@@ -227,7 +292,7 @@ export default function ContactModal({
                 icon="pi pi-send"
                 iconPos="right"
                 className="contact-modal-submit"
-                disabled={isSubmitting || !formData.consent}
+                disabled={isSubmitting || !formData.consent || !turnstileToken}
               />
             </form>
           </div>

@@ -110,6 +110,11 @@
   margin-bottom: 0;
 }
 
+.contact-modal-turnstile {
+  width: 100%;
+  min-height: 65px;
+}
+
 .contact-modal-error {
   font-family: 'AthelasRegular', 'Times New Roman';
   font-size: 0.9rem;

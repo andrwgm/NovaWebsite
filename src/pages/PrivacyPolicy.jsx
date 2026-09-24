@@ -146,7 +146,7 @@ const sections = [
     ],
     list: [
       'Amazon Web Services (AWS): hosting (including enquiries and enquiry source information), email delivery from the UK, and first-party aggregate blog view counts (no visitor identifier).',
-      'Cloudflare: website delivery, security and analytics (only where you consent to analytics cookies).',
+      'Cloudflare: website delivery and security, including Turnstile bot protection on the contact form. Cloudflare Web Analytics is used only where you consent to analytics cookies.',
       'Google Analytics: website analytics under Google Consent Mode v2 (only where you consent to analytics cookies).',
       'Google Ads: advertising measurement and conversion attribution under Google Consent Mode v2 (only where you consent to advertising cookies). We do not use clinical-path remarketing audiences or Customer Match with enquiry or referral form data.',
       'Meta (Facebook and Instagram): advertising measurement and conversion attribution via the Meta Pixel (only where you consent to advertising cookies). We do not use Automatic Advanced Matching, we do not send enquiry or referral form emails or phone numbers to Meta, and we do not build remarketing audiences from clinical page paths.',
