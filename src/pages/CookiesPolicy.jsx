@@ -19,6 +19,7 @@ const sections = [
     body: ['Cookies and similar technologies on this Website are used to:'],
     list: [
       'Remember which categories you have accepted or rejected.',
+      'Protect the contact form from automated spam using Cloudflare Turnstile. This is strictly necessary security and does not need extra consent.',
       'Keep first-party website statistics about which campaigns and pages lead people to contact us. You can switch this off.',
       'Provide analytics so we can monitor performance, but only if you give consent.',
       'Measure and improve Google Ads and Meta (Facebook and Instagram) campaigns, but only if you give separate consent for advertising cookies.',
@@ -36,6 +37,11 @@ const sections = [
           'Strictly necessary',
           'A local storage entry (nova_cookie_consent) that records your choices for website statistics, analytics and advertising',
           'Not needed. Required to remember your choices',
+        ],
+        [
+          'Strictly necessary',
+          'Cloudflare Turnstile, loaded from challenges.cloudflare.com, to check that a visitor is human before we accept a contact-form enquiry. Cloudflare may use cookies or similar storage and technical data (such as IP address and browser signals) for that check. We do not send the name, email, phone or message from the form to Cloudflare. Details: cloudflare.com/turnstile-privacy-policy',
+          'Not needed. Required to keep the contact form secure',
         ],
         [
           'Website statistics',
@@ -68,6 +74,7 @@ const sections = [
     body: [
       'If you accept analytics cookies, Google Analytics and Cloudflare Web Analytics may capture usage data to help us understand how the site performs. Before you choose, Google Analytics may still receive limited, cookieless signals under Consent Mode to support privacy-safe measurement.',
       'If you accept advertising cookies, Google Ads and Meta may set cookies and use consent signals to measure ads and conversions. Advertising remains denied until you allow that category. The Meta Pixel is loaded in a consent-revoked state until Advertising is allowed, and Automatic Advanced Matching is disabled so form fields are not scraped.',
+      'Cloudflare Turnstile runs as a security check on the Website so we can accept genuine contact-form enquiries and reject automated spam. It is strictly necessary for that purpose. It is not used for analytics or advertising, and it is not switched off if you reject optional cookies.',
     ],
   },
   {
@@ -87,7 +94,7 @@ const sections = [
       'We comply with the Privacy and Electronic Communications Regulations (PECR), as amended by the Data (Use and Access) Act 2025, and with UK GDPR.',
     ],
     list: [
-      'Strictly necessary storage is limited to remembering your cookie choices.',
+      'Strictly necessary storage covers remembering your cookie choices and Cloudflare Turnstile bot protection on the contact form.',
       'Website statistics are first-party, used only by Nova Clinics, explained clearly here, and can be switched off free of charge at any time.',
       'Analytics cookies are only set if you allow Analytics.',
       'Advertising cookies, and advert click identifiers in our website statistics, are only set if you allow Advertising.',
@@ -99,7 +106,7 @@ const sections = [
   {
     title: 'Policy reviews',
     body: [
-      'Last reviewed: 23/9/26',
+      'Last reviewed: 25/9/26',
       'Next review: 6 months from the date of last review.',
     ],
   },

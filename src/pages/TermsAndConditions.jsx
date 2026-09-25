@@ -193,7 +193,7 @@ const sections = [
     title: 'Applicable law and jurisdiction',
     body: [
       'These Terms are governed exclusively by English law. The courts of England and Wales have exclusive jurisdiction over any dispute.',
-      'Effective date: 23/9/26',
+      'Effective date: 25/9/26',
     ],
   },
 ];

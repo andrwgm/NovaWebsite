@@ -36,6 +36,7 @@ const sections = [
     body: ['We collect personal information directly when you:'],
     list: [
       'Submit an enquiry or contact form on the Website, or email us. When you send an enquiry through the Website, we also save details of how you arrived at the Website (see "How we record where enquiries come from").',
+      'When you use the Website, including the contact form, Cloudflare Turnstile may process technical information (such as IP address and browser signals) to check you are not a bot. We send Cloudflare a one-time verification token from the form; we do not send your name, email, phone number or message to Cloudflare for that check.',
       'Complete our referral form, which helps us decide whether our service is the right fit before any payment is taken.',
       'Join our interest list for assessments for children under 8.',
       'Book or proceed with a private-pay autism, ADHD or combined assessment (for clinical delivery, service management, audits, complaint handling and evidence within investigations).',
@@ -146,7 +147,7 @@ const sections = [
     ],
     list: [
       'Amazon Web Services (AWS): hosting (including enquiries and enquiry source information), email delivery from the UK, and first-party aggregate blog view counts (no visitor identifier).',
-      'Cloudflare: website delivery and security, including Turnstile bot protection on the contact form. Cloudflare Web Analytics is used only where you consent to analytics cookies.',
+      'Cloudflare: website delivery and security, including Turnstile bot protection on the contact form (see Cloudflare\'s Turnstile Privacy Addendum at cloudflare.com/turnstile-privacy-policy). Cloudflare Web Analytics is used only where you consent to analytics cookies.',
       'Google Analytics: website analytics under Google Consent Mode v2 (only where you consent to analytics cookies).',
       'Google Ads: advertising measurement and conversion attribution under Google Consent Mode v2 (only where you consent to advertising cookies). We do not use clinical-path remarketing audiences or Customer Match with enquiry or referral form data.',
       'Meta (Facebook and Instagram): advertising measurement and conversion attribution via the Meta Pixel (only where you consent to advertising cookies). We do not use Automatic Advanced Matching, we do not send enquiry or referral form emails or phone numbers to Meta, and we do not build remarketing audiences from clinical page paths.',
@@ -170,7 +171,7 @@ const sections = [
       'Consent: for example cookies, marketing communications, newsletter sign-up, our under-8 interest list, sharing reports with your GP where requested, and some optional processing.',
       'Contract, or steps taken at your request before entering a contract: reviewing your referral form, fulfilling your assessment (including recording appointments), collecting fees through Stripe Checkout, and operating the patient portal (including payment status that gates questionnaires and booking).',
       'Legal obligation: such as safeguarding reports or regulatory duties.',
-      'Legitimate interests: including service improvement, fraud prevention, recruitment administration, providing relevant neurodevelopmental resources, and recording where enquiries come from (balanced against your rights).',
+      'Legitimate interests: including service improvement, fraud prevention, keeping the Website secure (including bot protection on the contact form), recruitment administration, providing relevant neurodevelopmental resources, and recording where enquiries come from (balanced against your rights).',
     ],
   },
   {
@@ -216,6 +217,14 @@ const sections = [
           'Until the 25th birthday (26th if the young person was 17 at last contact)',
         ],
         [
+          'Safeguarding information',
+          'Kept with your health record for the same period, or longer if the agency we shared it with advises us to',
+        ],
+        [
+          'Complaints',
+          '10 years after the complaint is closed',
+        ],
+        [
           'Appointment recordings',
           '90 days after the final report or last appointment, whichever is later. Longer only while a complaint, legal or safeguarding matter is open, and we will tell you',
         ],
@@ -243,6 +252,9 @@ const sections = [
         ],
       ],
     },
+    bodyAfterList: [
+      'We email your final report to you when your assessment is complete. Please keep it somewhere safe. Once the periods above have ended, we will no longer hold a copy and cannot send you another.',
+    ],
   },
   {
     title: 'Consent and opt-outs',
@@ -287,7 +299,7 @@ const sections = [
   {
     title: 'Review cycle',
     body: [
-      'Date of last review: 23/9/26',
+      'Date of last review: 25/9/26',
       'Next review due: 6 months from the date of last review.',
     ],
   },
