@@ -18,6 +18,7 @@ import {
 } from './utils/googleAnalytics';
 import { trackMetaPageView } from './utils/metaPixel';
 import { captureEnquiryAttribution } from './utils/enquiryAttribution';
+import { ensureTurnstileScript } from './utils/turnstile';
 
 import { Image } from 'primereact/image';
 
@@ -151,6 +152,7 @@ function AppContent() {
 
   useEffect(() => {
     const unsubscribe = onContactModalRequest((payload) => {
+      ensureTurnstileScript();
       setIsContactModalEnabled(true);
       const nextMessage = typeof payload?.message === 'string' ? payload.message : '';
       const nextSource = typeof payload?.source === 'string' && payload.source
