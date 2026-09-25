@@ -319,7 +319,7 @@ export default function ContactModal({
         <ApplicationSuccessModal
           visible={submitSuccess}
           onClose={() => setSubmitSuccess(false)}
-          message="Done! We'll get back to you as soon as possible."
+          message="Done! We'll get back to you by email as soon as possible. Please keep an eye on your inbox."
         />
       )}
       {CONTACT_FORM_RESPONSE_MODE === 'vacation' && (
