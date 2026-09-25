@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { InputTextarea } from 'primereact/inputtextarea';
-import { InputMask } from 'primereact/inputmask';
 import { Button } from 'primereact/button';
 import { Checkbox } from 'primereact/checkbox';
 
@@ -14,6 +13,27 @@ import { trackMetaFormStart } from '../utils/metaPixel';
 import { getEnquiryAttributionPayload } from '../utils/enquiryAttribution';
 import { TURNSTILE_CONTACT_ACTION, TURNSTILE_SITE_KEY, whenTurnstileReady } from '../utils/turnstile';
 import './contactModal.css';
+
+function formatUkPhone(raw) {
+  let digits = String(raw ?? '').replace(/\D/g, '');
+
+  if (digits.startsWith('0044')) {
+    digits = digits.slice(4);
+  } else if (digits.startsWith('44')) {
+    digits = digits.slice(2);
+  }
+
+  if (digits.startsWith('0')) {
+    digits = digits.slice(1);
+  }
+
+  digits = digits.slice(0, 10);
+  if (!digits) return '';
+
+  const first = digits.slice(0, 4);
+  const rest = digits.slice(4);
+  return rest ? `+44 ${first} ${rest}` : `+44 ${first}`;
+}
 
 const INITIAL_FORM = {
   name: '',
@@ -157,6 +177,11 @@ export default function ContactModal({
     }
   };
 
+  const handlePhoneChange = (event) => {
+    trackFormStartOnce();
+    setFormData((prev) => ({ ...prev, phone: formatUkPhone(event.target.value) }));
+  };
+
   const close = () => {
     setVisible(false);
   };
@@ -268,15 +293,17 @@ export default function ContactModal({
                 <label htmlFor="contact-email">Email address</label>
               </span>
               <span className="p-float-label">
-                <InputMask
+                <InputText
                   id="contact-phone"
-                  mask="+44 9999 999999"
+                  inputMode="tel"
+                  autoComplete="tel"
                   value={formData.phone}
-                  onChange={handleChange('phone')}
-                  placeholder="+44 ____ ______"
+                  onChange={handlePhoneChange}
+                  placeholder="+44 7700 900123"
                 />
                 <label htmlFor="contact-phone">Phone (UK) (optional)</label>
               </span>
+              <p className="contact-modal-phone-hint">Leave out the first 0. For example, 07700 900123 is +44 7700 900123.</p>
               <span className="p-float-label textarea-field">
                 <InputTextarea
                   id="contact-message"

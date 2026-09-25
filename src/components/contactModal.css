@@ -90,6 +90,13 @@
   color: #6b7a93;
 }
 
+.contact-modal-phone-hint {
+  font-family: 'AthelasRegular', 'Times New Roman';
+  font-size: 0.85rem;
+  color: #6b7a93;
+  margin: -0.8rem 0 0;
+}
+
 .contact-modal-consent-notice {
   font-family: 'AthelasRegular', 'Times New Roman';
   font-size: 0.9rem;
