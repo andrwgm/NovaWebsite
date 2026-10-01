@@ -1,0 +1,9 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "Nova Clinics",
+    "documentationUrl": "https://www.novaclinics.co.uk/llms.txt",
+    "logoUrl": "https://www.novaclinics.co.uk/images/icon.png"
+  },
+  "entries": []
+}
