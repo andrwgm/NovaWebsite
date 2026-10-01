@@ -28,7 +28,6 @@ User-Agent: *
 Allow: /
 
 Sitemap: https://www.novaclinics.co.uk/sitemap.xml
-Agentmap: https://www.novaclinics.co.uk/.well-known/ard.json
 
 User-agent: Amazonbot
 Disallow: /
