@@ -3,17 +3,19 @@ import './howItWorks.css';
 
 import { Timeline } from 'primereact/timeline';
 import { Image } from 'primereact/image';
-import { requestContactModal } from '../utils/contactModalService';
+import { requestContact } from '../utils/contactRequestService';
 import { FLOWS, HOW_IT_WORKS_PATHWAYS } from '../data/howItWorksPathways';
 
 const UNDER8_WAITLIST_MESSAGE =
   'I would like to join the waiting list for the upcoming in-person hybrid autism pathway for a child under 8.';
 
 function openUnder8Waitlist(assessment) {
-  requestContactModal({
+  requestContact({
     message: UNDER8_WAITLIST_MESSAGE,
     source: 'how_it_works_under8_waitlist',
     itemId: assessment,
+    audience: 'child',
+    waitlist: true,
   });
 }
 

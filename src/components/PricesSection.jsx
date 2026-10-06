@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { requestContactModal } from '../utils/contactModalService';
+import { requestContact } from '../utils/contactRequestService';
 import { trackPricingSeen } from '../utils/googleAnalytics';
 import {
     ADHD_ENQUIRY_MESSAGE,
@@ -214,7 +214,7 @@ function PriceCard({ card }) {
             <button
                 type="button"
                 className="priceCardCta"
-                onClick={() => requestContactModal({
+                onClick={() => requestContact({
                     message: card.message,
                     source: PRICE_FORM_SOURCE[card.key],
                     itemId: card.key,

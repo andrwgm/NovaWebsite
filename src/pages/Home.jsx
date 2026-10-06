@@ -4,7 +4,7 @@ import './home.css';
 
 import { Image } from 'primereact/image';
 import { Button } from 'primereact/button';
-import { requestContactModal } from '../utils/contactModalService';
+import { requestContact } from '../utils/contactRequestService';
 import LazySection from '../components/LazySection';
 import HowItWorks from '../components/HowItWorks';
 import BlogJsonLd from '../components/blog/BlogJsonLd';
@@ -163,7 +163,7 @@ export default function Home() {
           </div>
         </div>
         <div className='bookButton'>
-          <Button onClick={() => requestContactModal({ source: 'hero' })}>
+          <Button onClick={() => requestContact({ source: 'hero' })}>
             <Image src="/images/bookButton.avif" alt="Book Button" />
             Contact us
           </Button>
@@ -252,7 +252,7 @@ export default function Home() {
           <p className='stillHaveQuestionsTitle'>
             Still have questions?
           </p>
-          <Button label="Get in contact" icon="pi pi-send" iconPos="right" onClick={() => requestContactModal({ source: 'still_have_questions' })} />
+          <Button label="Get in contact" icon="pi pi-send" iconPos="right" onClick={() => requestContact({ source: 'still_have_questions' })} />
         </div>
       </LazySection>
       <LazySection forceVisible={forceLazySections}>

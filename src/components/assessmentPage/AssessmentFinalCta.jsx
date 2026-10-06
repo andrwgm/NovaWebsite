@@ -1,12 +1,12 @@
 import React from 'react';
-import { requestContactModal } from '../../utils/contactModalService';
+import { requestContact } from '../../utils/contactRequestService';
 import './assessmentFinalCta.css';
 
 export default function AssessmentFinalCta({ content }) {
   const { enquiry, finalCta } = content;
 
   const openEnquiry = () => {
-    requestContactModal({
+    requestContact({
       message: enquiry.message,
       source: enquiry.finalSource,
       itemId: enquiry.itemId,

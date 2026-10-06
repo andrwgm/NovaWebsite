@@ -5,7 +5,7 @@ import './navbar.css';
 import { Menubar } from 'primereact/menubar';
 import { Image } from 'primereact/image';
 import { Button } from 'primereact/button';
-import { requestContactModal } from '../utils/contactModalService';
+import { requestContact } from '../utils/contactRequestService';
 
 const ASSESSMENT_LINKS = [
   { label: 'Overview', path: '/' },
@@ -30,7 +30,7 @@ export default function Navbar() {
   const { pathname } = useLocation();
 
   const handleContactClick = () => {
-    requestContactModal({ source: 'navbar' });
+    requestContact({ source: 'navbar' });
   };
 
   const items = useMemo(

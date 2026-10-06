@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { Button } from 'primereact/button';
-import { requestContactModal } from '../utils/contactModalService';
+import { requestContact } from '../utils/contactRequestService';
 import './questionnaireSection.css';
 
 const START_COPY = {
@@ -270,7 +270,7 @@ export default function QuestionnaireSection() {
                 label="Get in contact"
                 icon="pi pi-send"
                 iconPos="right"
-                onClick={() => requestContactModal({ source: 'questionnaire' })}
+                onClick={() => requestContact({ source: 'questionnaire' })}
               >
               </Button>
               <Button className="questionnaire-secondary" onClick={handleTopicReset}>

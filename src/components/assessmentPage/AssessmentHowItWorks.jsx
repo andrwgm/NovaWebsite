@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { requestContactModal } from '../../utils/contactModalService';
+import { requestContact } from '../../utils/contactRequestService';
 import './assessmentHowItWorks.css';
 
 const TITLE_WITH_DURATION = /^(.*?)\s*\(([^)]+)\)\s*$/;
@@ -157,10 +157,12 @@ export default function AssessmentHowItWorks({ content }) {
                     <button
                       type="button"
                       className="asmt-steps__note-action"
-                      onClick={() => requestContactModal({
+                      onClick={() => requestContact({
                         message: pathways.childNoteAction.message,
                         source: pathways.childNoteAction.source,
                         itemId: pathways.childNoteAction.itemId,
+                        audience: pathways.childNoteAction.audience,
+                        waitlist: pathways.childNoteAction.waitlist,
                       })}
                     >
                       {pathways.childNoteAction.label}

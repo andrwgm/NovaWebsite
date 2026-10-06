@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { requestContactModal } from '../../utils/contactModalService';
+import { requestContact } from '../../utils/contactRequestService';
 import './assessmentHero.css';
 
 export default function AssessmentHero({ content }) {
   const { hero, enquiry, seo } = content;
 
   const openEnquiry = () => {
-    requestContactModal({
+    requestContact({
       message: enquiry.message,
       source: enquiry.heroSource,
       itemId: enquiry.itemId,
@@ -70,10 +70,12 @@ export default function AssessmentHero({ content }) {
                   <button
                     type="button"
                     className="asmt-hero__footnote-action"
-                    onClick={() => requestContactModal({
+                    onClick={() => requestContact({
                       message: hero.footnote.action.message,
                       source: hero.footnote.action.source,
                       itemId: hero.footnote.action.itemId,
+                      audience: hero.footnote.action.audience,
+                      waitlist: hero.footnote.action.waitlist,
                     })}
                   >
                     {hero.footnote.action.label}
@@ -90,8 +92,6 @@ export default function AssessmentHero({ content }) {
             className="asmt-hero__image"
             src={seo.heroImage}
             alt={seo.heroImageAlt}
-            width={1536}
-            height={1024}
             decoding="async"
             fetchpriority="high"
           />

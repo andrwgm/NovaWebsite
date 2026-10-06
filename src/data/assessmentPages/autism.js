@@ -11,8 +11,6 @@ import {
   FAQ_GP_REFERRAL,
   FAQ_INFORMANT,
   FAQ_ONLINE,
-  HERO_IMAGE,
-  HERO_IMAGE_ALT,
   INCLUDED_NOTE,
   NO_TREATMENT_NOTE,
   PATHWAYS_INTRO,
@@ -30,12 +28,14 @@ const PATH = '/autism-assessment'
 
 const UNDER_AGE_NOTE = `Our online service is for ages ${ASSESSMENT_MIN_AGE} and above. If your child is under ${ASSESSMENT_MIN_AGE}, you can join the waiting list for our upcoming in-person hybrid pathway.`
 
-// Opens the contact form with a waiting-list message (same modal as the enquiry buttons).
+// Opens /contact with a waiting-list message and the child + waiting list boxes pre-selected.
 const WAITING_LIST_ACTION = {
   label: 'Join the waiting list',
   message: `\n[You're welcome to edit this message if you wish]\n\nHello, my child is under ${ASSESSMENT_MIN_AGE} and I would like to join the waiting list for your upcoming in-person hybrid autism assessment pathway. Please let me know what information you need from me. Thank you.`,
   source: 'autism_page_waiting_list',
   itemId: 'autism',
+  audience: 'child',
+  waitlist: true,
 }
 
 export const AUTISM_PAGE = {
@@ -46,8 +46,8 @@ export const AUTISM_PAGE = {
   seo: {
     title: 'Private Autism Assessment (UK, Ages 8+) | Nova Clinics',
     description: `Private online autism assessment for adults and children aged ${ASSESSMENT_MIN_AGE}+ across the UK. ${AUTISM_PRICE.display} complete pathway, ADOS-2 and ADI-R-informed, HCPC-registered psychologists, no GP referral needed.`,
-    heroImage: HERO_IMAGE,
-    heroImageAlt: HERO_IMAGE_ALT,
+    heroImage: '/images/autism.avif',
+    heroImageAlt: 'Nova Clinics autism assessment',
   },
 
   enquiry: {

@@ -1,6 +1,6 @@
 import React, { Suspense, useEffect, useRef, useState } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import 'primereact/resources/themes/lara-light-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
@@ -8,7 +8,8 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Footer from './components/Footer';
 import CookieBanner from './components/CookieBanner';
-import { onContactModalRequest } from './utils/contactModalService';
+import { onContactRequest } from './utils/contactRequestService';
+import { CONTACT_PATH } from './data/contactPage';
 import {
   applyBannerConsentChoice,
   denyAllGoogleConsent,
@@ -38,7 +39,7 @@ const BlogPost = React.lazy(() => import('./pages/BlogPost'));
 const AdhdAssessment = React.lazy(() => import('./pages/AdhdAssessment'));
 const AutismAssessment = React.lazy(() => import('./pages/AutismAssessment'));
 const AutismAdhdAssessment = React.lazy(() => import('./pages/AutismAdhdAssessment'));
-const ContactModal = React.lazy(() => import('./components/ContactModal'));
+const Contact = React.lazy(() => import('./pages/Contact'));
 
 export function App() {
   return <AppContent />;
@@ -46,6 +47,9 @@ export function App() {
 
 function AppContent() {
   const location = useLocation();
+  const navigate = useNavigate();
+  const locationRef = useRef(location);
+  locationRef.current = location;
   const [showSplash, setShowSplash] = useState(false);
   const [isFading, setIsFading] = useState(false);
   const hasShownSplash = useRef(false);
@@ -53,11 +57,6 @@ function AppContent() {
   const previousCookieConsent = useRef(cookieConsent);
   const shouldShowCookieBanner = cookieConsent === null;
   const [isCookieBannerReady, setIsCookieBannerReady] = useState(false);
-  const [contactModalRequestId, setContactModalRequestId] = useState(0);
-  const [contactModalPrefill, setContactModalPrefill] = useState('');
-  const [contactModalSource, setContactModalSource] = useState('unknown');
-  const [contactModalItemId, setContactModalItemId] = useState(undefined);
-  const [isContactModalEnabled, setIsContactModalEnabled] = useState(false);
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -164,24 +163,29 @@ function AppContent() {
     return () => clearTimeout(timer);
   }, [showSplash, shouldShowCookieBanner]);
 
+  // Every contact button on the site calls requestContact(). They all land on /contact with
+  // the pre-made message, source and pre-selected service in router state. `from` keeps the
+  // page the visitor was reading so the enquiry still records where they came from.
   useEffect(() => {
-    const unsubscribe = onContactModalRequest((payload) => {
+    const unsubscribe = onContactRequest((payload) => {
       ensureTurnstileScript();
-      setIsContactModalEnabled(true);
-      const nextMessage = typeof payload?.message === 'string' ? payload.message : '';
-      const nextSource = typeof payload?.source === 'string' && payload.source
-        ? payload.source
-        : 'unknown';
-      const nextItemId = typeof payload?.itemId === 'string' && payload.itemId
-        ? payload.itemId
-        : undefined;
-      setContactModalPrefill(nextMessage);
-      setContactModalSource(nextSource);
-      setContactModalItemId(nextItemId);
-      setContactModalRequestId((current) => current + 1);
+      const current = locationRef.current;
+      const from = current.pathname === CONTACT_PATH
+        ? current.state?.from ?? null
+        : `${current.pathname}${current.search}`;
+      navigate(CONTACT_PATH, {
+        state: {
+          message: typeof payload?.message === 'string' ? payload.message : '',
+          source: typeof payload?.source === 'string' && payload.source ? payload.source : 'unknown',
+          itemId: typeof payload?.itemId === 'string' && payload.itemId ? payload.itemId : undefined,
+          audience: typeof payload?.audience === 'string' ? payload.audience : undefined,
+          waitlist: payload?.waitlist === true,
+          from,
+        },
+      });
     });
     return unsubscribe;
-  }, []);
+  }, [navigate]);
 
   const handleCookieChoice = (preferences) => {
     const next = normaliseConsentPreferences(preferences);
@@ -241,6 +245,7 @@ function AppContent() {
               <Route path="/cookies-policy" element={<CookiesPolicy />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+              <Route path="/contact" element={<Contact />} />
               <Route path="/adhd-assessment" element={<AdhdAssessment />} />
               <Route path="/autism-assessment" element={<AutismAssessment />} />
               <Route path="/autism-adhd-assessment" element={<AutismAdhdAssessment />} />
@@ -250,16 +255,6 @@ function AppContent() {
           <Footer />
         </>
       </Suspense>
-      {isContactModalEnabled && (
-        <Suspense fallback={null}>
-          <ContactModal
-            requestId={contactModalRequestId}
-            prefillMessage={contactModalPrefill}
-            formSource={contactModalSource}
-            itemId={contactModalItemId}
-          />
-        </Suspense>
-      )}
       {shouldShowCookieBanner && isCookieBannerReady && (
         <CookieBanner onChoice={handleCookieChoice} />
       )}
