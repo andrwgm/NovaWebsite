@@ -1,0 +1,142 @@
+.cpage {
+  background-color: #ffffff;
+  color: #344759;
+  /* clip (not hidden) keeps position: sticky working for the aside. */
+  overflow-x: clip;
+  /* White breathing room between the form and the footer. */
+  padding-bottom: 5rem;
+}
+
+/* Soft band behind the title. The form card below overlaps its bottom edge. */
+.cpage__hero {
+  --cpage-gutter: max(5%, calc((100% - 1320px) / 2));
+  padding: 1.25rem var(--cpage-gutter) 6rem;
+  background:
+    radial-gradient(circle at 92% 18%, rgba(158, 205, 201, 0.55) 0, rgba(158, 205, 201, 0) 42%),
+    radial-gradient(circle at 4% 100%, rgba(150, 29, 78, 0.07) 0, rgba(150, 29, 78, 0) 38%),
+    #eef7f6;
+}
+
+.cpage__breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  margin: 0 0 1.75rem;
+  padding: 0;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: 0.88rem;
+  line-height: 1.4;
+  color: #5c6a76;
+}
+
+.cpage__breadcrumb li + li::before {
+  content: '/';
+  margin-right: 0.4rem;
+  color: #9aa7b2;
+}
+
+.cpage__breadcrumb a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.cpage__breadcrumb a:hover {
+  color: #344759;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.cpage__breadcrumb a:focus-visible {
+  outline: 2px solid #344759;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.cpage__breadcrumb [aria-current='page'] {
+  color: #344759;
+}
+
+.cpage__label {
+  margin: 0 0 1rem;
+  font-family: 'LemonMilkLight', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: clamp(0.78rem, 1.1vw, 0.95rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #961d4e;
+}
+
+.cpage__title {
+  margin: 0 0 1.1rem;
+  font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
+  font-size: clamp(3.2rem, 6vw, 5rem);
+  font-weight: normal;
+  line-height: 0.98;
+  color: #344759;
+}
+
+.cpage__title-italic {
+  display: block;
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman';
+}
+
+.cpage__intro {
+  max-width: 34rem;
+  margin: 0;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: clamp(1.1rem, 1.7vw, 1.35rem);
+  line-height: 1.45;
+  color: #4c545d;
+}
+
+.cpage__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 2.5rem;
+  width: min(90%, 1320px);
+  margin: -3.5rem auto 0;
+  position: relative;
+}
+
+.cpage__form-card {
+  min-width: 0;
+  padding: 2.25rem;
+  border: 1px solid #e3ecec;
+  border-radius: 1.75rem;
+  background: #ffffff;
+  box-shadow: 0 18px 45px rgba(52, 71, 89, 0.12);
+  box-sizing: border-box;
+}
+
+@media (max-width: 960px) {
+  .cpage__body {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .cpage {
+    padding-bottom: 3rem;
+  }
+
+  .cpage__hero {
+    padding-top: 0.75rem;
+    padding-bottom: 5rem;
+  }
+
+  .cpage__breadcrumb ol {
+    margin-bottom: 1.4rem;
+  }
+
+  .cpage__body {
+    width: 94%;
+    margin-top: -3rem;
+  }
+
+  .cpage__form-card {
+    padding: 1.4rem 1.1rem;
+    border-radius: 1.25rem;
+  }
+}

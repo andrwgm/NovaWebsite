@@ -270,7 +270,7 @@ export function trackGenerateLead({ method = 'contact_form', form_source, item_i
 }
 
 /**
- * Fired when the contact modal opens. Use form_source, not source:
+ * Fired when the contact page opens (any contact button, or a direct visit). Use form_source, not source:
  * source is a reserved GA4 traffic-source dimension.
  */
 export function trackContactFormOpen({ form_source = 'unknown', item_id } = {}) {

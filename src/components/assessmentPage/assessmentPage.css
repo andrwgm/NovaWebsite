@@ -1,0 +1,14 @@
+.asmt-page {
+  background-color: #ffffff;
+  color: #344759;
+  /* clip (not hidden) keeps position: sticky working for the header above. */
+  overflow-x: clip;
+  /* White breathing room between the closing CTA band and the footer. */
+  padding-bottom: 5rem;
+}
+
+@media (max-width: 600px) {
+  .asmt-page {
+    padding-bottom: 3rem;
+  }
+}

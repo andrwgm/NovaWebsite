@@ -1,0 +1,421 @@
+.asmt-steps {
+  background-color: #eefffe;
+  padding: 5rem 0;
+  scroll-margin-top: 5rem;
+}
+
+.asmt-steps__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: start;
+  gap: 3rem 4rem;
+  width: min(90%, 1200px);
+  margin: 0 auto;
+}
+
+.asmt-steps__intro {
+  min-width: 0;
+}
+
+.asmt-steps__title {
+  margin: 0 0 1.5rem;
+  font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
+  font-size: clamp(3.2rem, 5.6vw, 4.8rem);
+  font-weight: normal;
+  line-height: 0.95;
+  color: #344759;
+}
+
+.asmt-steps__title-italic {
+  display: block;
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman';
+}
+
+.asmt-steps__text {
+  max-width: 26rem;
+  margin: 0 0 1.8rem;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  line-height: 1.6;
+  color: #344759;
+}
+
+.asmt-steps__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2em;
+  padding: 0.35rem;
+  background: #ffffff;
+  border: 1px solid #d3e7e5;
+  border-radius: 999px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.asmt-steps__toggle-btn {
+  min-width: 5.5rem;
+  padding: 0.5rem 1.1rem;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #4c545d;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease, box-shadow 150ms ease;
+}
+
+.asmt-steps__toggle-btn:hover {
+  background: #eef7f6;
+}
+
+.asmt-steps__toggle-btn:focus-visible {
+  outline: 2px solid #5c8ba3;
+  outline-offset: 1px;
+}
+
+.asmt-steps__toggle-btn.is-active {
+  background: #b0e0de;
+  color: #324253;
+  box-shadow: 0 6px 16px rgba(55, 181, 188, 0.35);
+}
+
+.asmt-steps__note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  max-width: 26rem;
+  margin: 1.4rem 0 0;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #344759;
+}
+
+/* Text-link button, same burgundy accent as the other links on the page. */
+.asmt-steps__note-action {
+  display: inline;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #961d4e;
+  cursor: pointer;
+}
+
+.asmt-steps__note-action:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.asmt-steps__note-action:focus-visible {
+  outline: 2px solid #961d4e;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.asmt-steps__note .pi {
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+  font-size: 0.9rem;
+}
+
+/* ---- Step list ---- */
+
+.asmt-steps__list {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* display:flex above would otherwise beat the hidden attribute used for the inactive pathway. */
+.asmt-steps__list[hidden] {
+  display: none;
+}
+
+.asmt-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.2rem minmax(0, 1fr);
+  column-gap: 1rem;
+  padding-bottom: 0.9rem;
+}
+
+.asmt-step:last-child {
+  padding-bottom: 0;
+}
+
+/* Dashed line joining one numbered circle to the next. */
+.asmt-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 2.95rem;
+  bottom: -0.1rem;
+  left: calc(1.1rem - 1px);
+  border-left: 2px dashed #b7c9cf;
+}
+
+.asmt-step__marker {
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  margin-top: 0.5rem;
+  border-radius: 50%;
+  background: #cfeeed;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #137a72;
+  transition: background-color 200ms ease;
+}
+
+.asmt-step.is-open .asmt-step__marker {
+  background: #b0e0de;
+}
+
+.asmt-step__pill {
+  min-width: 0;
+  background: #cfeeed;
+  border-radius: 1.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: background-color 200ms ease, box-shadow 200ms ease;
+}
+
+.asmt-step.is-open .asmt-step__pill {
+  background: #ffffff;
+  box-shadow: 0 8px 22px rgba(52, 71, 89, 0.1);
+}
+
+.asmt-step__head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.6rem 0.35rem 1.3rem;
+}
+
+.asmt-step__toggle {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.15rem 0.7rem;
+  min-width: 0;
+  padding: 0.6rem 0;
+  border: none;
+  background: transparent;
+  text-align: left;
+  color: #344759;
+  cursor: pointer;
+}
+
+.asmt-step__toggle:focus-visible {
+  outline: 2px solid #5c8ba3;
+  outline-offset: 4px;
+  border-radius: 0.5rem;
+}
+
+.asmt-step__name {
+  font-family: 'LemonMilkLight', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.25;
+}
+
+.asmt-step__duration {
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.25;
+  color: #4c545d;
+}
+
+.asmt-step__duration::before {
+  content: '·';
+  margin-right: 0.55rem;
+}
+
+.asmt-step__info-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.asmt-step__info {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: #344759;
+  cursor: pointer;
+}
+
+.asmt-step__info .pi {
+  font-size: 1.25rem;
+}
+
+.asmt-step__info:hover,
+.asmt-step__info:focus-visible {
+  background: rgba(52, 71, 89, 0.08);
+}
+
+.asmt-step__info:focus-visible {
+  outline: 2px solid #5c8ba3;
+  outline-offset: 1px;
+}
+
+.asmt-step__tooltip {
+  position: absolute;
+  top: calc(100% + 0.3rem);
+  right: -0.6rem;
+  z-index: 12;
+  width: min(34rem, calc(100vw - 4rem));
+  padding: 1rem 1.15rem;
+  background: #ffffff;
+  border: 1px solid #85b9bc;
+  border-radius: 1.5rem;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: 1rem;
+  line-height: 1.4;
+  white-space: pre-line;
+  color: #172431;
+  opacity: 0;
+  transform: translateY(6px);
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
+}
+
+/* Invisible bridge over the gap under the icon, so the pointer can reach the bubble without losing hover. */
+.asmt-step__tooltip::before {
+  content: '';
+  position: absolute;
+  top: -0.8rem;
+  left: 0;
+  right: 0;
+  height: 0.8rem;
+}
+
+.asmt-step__tooltip.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* The explanation stays in the DOM while collapsed, so it is still crawlable. */
+.asmt-step__body {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition: grid-template-rows 300ms ease, visibility 0s linear 300ms;
+}
+
+.asmt-step.is-open .asmt-step__body {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  transition: grid-template-rows 300ms ease, visibility 0s linear 0s;
+}
+
+.asmt-step__body-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.asmt-step__detail {
+  margin: 0;
+  padding: 0 1.4rem 1.1rem 1.3rem;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #4c545d;
+}
+
+@media (max-width: 900px) {
+  .asmt-steps {
+    padding: 3.5rem 0;
+  }
+
+  .asmt-steps__layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+    width: 90%;
+  }
+
+  .asmt-steps__text,
+  .asmt-steps__note {
+    max-width: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .asmt-step {
+    grid-template-columns: 1.9rem minmax(0, 1fr);
+    column-gap: 0.7rem;
+  }
+
+  .asmt-step__marker {
+    width: 1.9rem;
+    height: 1.9rem;
+    margin-top: 0.65rem;
+    font-size: 0.85rem;
+  }
+
+  .asmt-step:not(:last-child)::after {
+    top: 2.8rem;
+    left: calc(0.95rem - 1px);
+  }
+
+  .asmt-step__head {
+    padding-left: 1rem;
+  }
+
+  .asmt-step__name {
+    font-size: 0.98rem;
+  }
+
+  /* Name and duration stack on narrow screens, so the separator dot is dropped. */
+  .asmt-step__toggle {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.1rem;
+  }
+
+  .asmt-step__duration::before {
+    content: none;
+  }
+
+  .asmt-step__tooltip {
+    right: -0.25rem;
+    width: min(24rem, calc(100vw - 2.5rem));
+    padding: 0.8rem 0.9rem;
+    border-radius: 1rem;
+  }
+
+  .asmt-step__detail {
+    padding: 0 1.1rem 1rem 1rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .asmt-steps__toggle-btn,
+  .asmt-step__marker,
+  .asmt-step__pill,
+  .asmt-step__tooltip,
+  .asmt-step__body,
+  .asmt-step.is-open .asmt-step__body {
+    transition: none;
+  }
+}

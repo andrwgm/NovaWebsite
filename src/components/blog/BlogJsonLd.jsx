@@ -2,15 +2,18 @@ import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { SITE_ORIGIN } from '../../blog/blogConfig'
 
+// react-helmet-async only reads a script's body from its text children. With
+// dangerouslySetInnerHTML the tag came out empty and was dropped, in the
+// prerender and in the browser. "<" is escaped so content can never close the tag.
+function serializeJsonLd(schema) {
+  return JSON.stringify(schema).replace(/</g, '\\u003c')
+}
+
 export default function BlogJsonLd({ schema }) {
   if (!schema) return null
   return (
     <Helmet>
-      <script
-        type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
+      <script type="application/ld+json">{serializeJsonLd(schema)}</script>
     </Helmet>
   )
 }

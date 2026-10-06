@@ -1,0 +1,290 @@
+.asmt-hero {
+  width: min(90%, 1320px);
+  margin: 0 auto;
+  padding: 1.25rem 0 3rem;
+  box-sizing: border-box;
+  scroll-margin-top: 5rem;
+}
+
+.asmt-hero__breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  margin: 0 0 1.75rem;
+  padding: 0;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: 0.88rem;
+  line-height: 1.4;
+  color: #5c6a76;
+}
+
+.asmt-hero__breadcrumb li + li::before {
+  content: '/';
+  margin-right: 0.4rem;
+  color: #9aa7b2;
+}
+
+.asmt-hero__breadcrumb a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.asmt-hero__breadcrumb a:hover {
+  color: #344759;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.asmt-hero__breadcrumb a:focus-visible {
+  outline: 2px solid #344759;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.asmt-hero__breadcrumb [aria-current='page'] {
+  color: #344759;
+}
+
+.asmt-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 3rem 4rem;
+}
+
+.asmt-hero__copy {
+  min-width: 0;
+}
+
+.asmt-hero__label {
+  margin: 0 0 1.2rem;
+  font-family: 'LemonMilkLight', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: clamp(0.78rem, 1.1vw, 0.95rem);
+  font-weight: normal;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #961d4e;
+}
+
+.asmt-hero__title {
+  margin: 0 0 1.4rem;
+  font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
+  font-size: clamp(3.6rem, 6.2vw, 5.4rem);
+  font-weight: normal;
+  line-height: 0.95;
+  color: #344759;
+}
+
+.asmt-hero__title-italic {
+  display: block;
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman';
+}
+
+.asmt-hero__intro {
+  max-width: 30rem;
+  margin: 0 0 0.8rem;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: clamp(1.25rem, 1.9vw, 1.55rem);
+  line-height: 1.35;
+  color: #344759;
+}
+
+.asmt-hero__body {
+  max-width: 32rem;
+  margin: 0 0 1.8rem;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: clamp(1.02rem, 1.4vw, 1.2rem);
+  line-height: 1.6;
+  color: #4c545d;
+}
+
+.asmt-hero__price {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin: 0 0 1.8rem;
+}
+
+.asmt-hero__price p {
+  margin: 0;
+}
+
+.asmt-hero__price-value {
+  font-family: 'LemonMilkLight', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: clamp(2.3rem, 3.4vw, 3rem);
+  line-height: 1.05;
+  color: #344759;
+}
+
+.asmt-hero__price-caption {
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: 1.05rem;
+  line-height: 1.4;
+  color: #344759;
+}
+
+.asmt-hero__price-note {
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: #5c6a76;
+}
+
+.asmt-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.asmt-hero__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.95rem 1.6rem;
+  border-radius: 9999px;
+  font-family: 'LemonMilkLight', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.07em;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.asmt-hero__button:focus-visible {
+  outline: 2px solid #344759;
+  outline-offset: 3px;
+}
+
+.asmt-hero__button--primary {
+  border: none;
+  background-color: #344759;
+  color: #ffffff;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
+}
+
+.asmt-hero__button--primary:hover {
+  background-color: #2d3b55;
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.22);
+  transform: translateY(-1px);
+}
+
+.asmt-hero__button--primary .pi {
+  font-size: 0.85rem;
+}
+
+.asmt-hero__button--secondary {
+  border: 1.5px solid #344759;
+  background-color: transparent;
+  color: #344759;
+}
+
+.asmt-hero__button--secondary:hover {
+  background-color: #eef7f6;
+  transform: translateY(-1px);
+}
+
+/* Small line under the buttons, e.g. the waiting list for children under 8 on the autism page. */
+.asmt-hero__footnote {
+  max-width: 30rem;
+  margin: 1.1rem 0 0;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: #344759;
+}
+
+.asmt-hero__footnote-action {
+  display: inline;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #961d4e;
+  cursor: pointer;
+}
+
+.asmt-hero__footnote-action:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.asmt-hero__footnote-action:focus-visible {
+  outline: 2px solid #961d4e;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.asmt-hero__media {
+  margin: 0;
+  min-width: 0;
+}
+
+.asmt-hero__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
+  /* Same radius on all four corners. object-fit crops images wider than the box. */
+  border-radius: 2.5rem;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 900px) {
+  .asmt-hero {
+    padding-bottom: 2.5rem;
+  }
+
+  /* Copy, price and buttons come first in the DOM, so the photo follows them. */
+  .asmt-hero__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+
+  .asmt-hero__image {
+    aspect-ratio: 4 / 3;
+    border-radius: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .asmt-hero {
+    padding-top: 0.75rem;
+  }
+
+  .asmt-hero__breadcrumb ol {
+    margin-bottom: 1.4rem;
+  }
+
+  .asmt-hero__actions {
+    flex-direction: column;
+  }
+
+  .asmt-hero__button {
+    width: 100%;
+  }
+
+  .asmt-hero__image {
+    border-radius: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .asmt-hero__button {
+    transition: none;
+  }
+
+  .asmt-hero__button--primary:hover,
+  .asmt-hero__button--secondary:hover {
+    transform: none;
+  }
+}
