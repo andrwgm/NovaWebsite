@@ -1,6 +1,17 @@
 import React, { useEffect, useRef } from 'react';
 import { requestContactModal } from '../utils/contactModalService';
 import { trackPricingSeen } from '../utils/googleAnalytics';
+import {
+    ADHD_ENQUIRY_MESSAGE,
+    ADHD_PRICE,
+    ADHD_RESULTS,
+    AUTISM_ENQUIRY_MESSAGE,
+    AUTISM_PRICE,
+    AUTISM_RESULTS,
+    COMBINED_ENQUIRY_MESSAGE,
+    COMBINED_PRICE,
+    COMBINED_RESULTS,
+} from '../data/assessmentPricing';
 import './pricesSection.css';
 
 const PRICE_FORM_SOURCE = {
@@ -70,17 +81,16 @@ const PRICE_CARDS = [
         ),
         description:
             'A comprehensive assessment exploring communication, social interaction, development and everyday experiences.',
-        price: '£2,400',
+        price: AUTISM_PRICE.display,
         components: [
             'ADOS-2-informed observation',
             'ADI-R-informed developmental interview',
             'Developmental and social-context evidence',
         ],
-        resultsLead: 'Approximately 10 working days',
-        resultsRest: 'after the final appointment.',
+        resultsLead: AUTISM_RESULTS.lead,
+        resultsRest: AUTISM_RESULTS.rest,
         cta: 'Enquire about Autism assessment',
-        message:
-            "\n[You're welcome to edit this message if you wish]\n\nHello, I would like to receive more information and proceed with the Full Autism Assessment. I'm interested in understanding the next steps, availability, and how to begin the assessment process. Thank you.",
+        message: AUTISM_ENQUIRY_MESSAGE,
     },
     {
         key: 'combined',
@@ -94,17 +104,16 @@ const PRICE_CARDS = [
         ),
         description:
             'One coordinated assessment exploring both profiles and how they may interact.',
-        price: '£3,000',
+        price: COMBINED_PRICE.display,
         components: [
             'All Autism assessment components',
             'All ADHD assessment components',
             'One integrated Autism and ADHD formulation',
         ],
-        resultsLead: 'Approximately 15 working days',
-        resultsRest: 'after the final appointment.',
+        resultsLead: COMBINED_RESULTS.lead,
+        resultsRest: COMBINED_RESULTS.rest,
         cta: 'Enquire about Combined assessment',
-        message:
-            "\n[You're welcome to edit this message if you wish]\n\nHello, I would like to receive more information and proceed with the Combined Autism and ADHD Assessment. I'm keen to understand the process, next steps, and how to start. Thank you.",
+        message: COMBINED_ENQUIRY_MESSAGE,
     },
     {
         key: 'adhd',
@@ -116,17 +125,16 @@ const PRICE_CARDS = [
         ),
         description:
             'A thorough assessment exploring attention, activity levels, impulsivity and their impact on everyday life.',
-        price: '£1,000',
+        price: ADHD_PRICE.display,
         components: [
             'DIVA or ACE clinical interview',
             'Structured ADHD questionnaires',
             'Developmental and social-context evidence',
         ],
-        resultsLead: 'Approximately 10 working days',
-        resultsRest: 'after the final appointment.',
+        resultsLead: ADHD_RESULTS.lead,
+        resultsRest: ADHD_RESULTS.rest,
         cta: 'Enquire about ADHD assessment',
-        message:
-            "\n[You're welcome to edit this message if you wish]\n\nHello, I would like to receive more information and proceed with the Full ADHD Assessment. I'd appreciate details on the next steps, timelines, and how to move forward with the assessment. Thank you.",
+        message: ADHD_ENQUIRY_MESSAGE,
     },
 ];
 
