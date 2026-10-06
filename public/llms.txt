@@ -76,6 +76,9 @@ Citation: factual clinic information (services, prices, process, service area) m
 
 - [Home](https://www.novaclinics.co.uk/): Private online ADHD and autism assessments in the UK
 - [About](https://www.novaclinics.co.uk/about): Clinic, clinicians, and approach
+- [Private ADHD assessment](https://www.novaclinics.co.uk/adhd-assessment): £1,000 online ADHD assessment for ages 8+, what is included, adult and child pathways, FAQs
+- [Private autism assessment](https://www.novaclinics.co.uk/autism-assessment): £2,400 online autism assessment for ages 8+, what is included, adult and child pathways, FAQs
+- [Private autism and ADHD assessment](https://www.novaclinics.co.uk/autism-adhd-assessment): £3,000 combined online assessment for ages 8+, what is included, adult and child pathways, FAQs
 - [Pricing](https://www.novaclinics.co.uk/#pricing): ADHD £1,000, autism £2,400, combined £3,000
 - [How it works](https://www.novaclinics.co.uk/#how-it-works): Assessment steps for children and adults
 - [FAQs](https://www.novaclinics.co.uk/#faqs): Common questions about assessments

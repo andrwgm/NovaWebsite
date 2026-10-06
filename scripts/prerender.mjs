@@ -19,7 +19,10 @@ const STATIC_ROUTES = [
   '/best-practices',
   '/cookies-policy',
   '/privacy-policy',
-  '/terms-and-conditions'
+  '/terms-and-conditions',
+  '/adhd-assessment',
+  '/autism-assessment',
+  '/autism-adhd-assessment'
 ]
 
 async function collectBlogRoutes() {
