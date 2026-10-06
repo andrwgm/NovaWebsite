@@ -1,0 +1,124 @@
+/* Very pale tint of the burgundy accent (#961d4e) used on the home eyebrows. */
+.asmt-faq {
+  background-color: #fbf3f6;
+  padding: 5rem 0;
+  scroll-margin-top: 5rem;
+}
+
+.asmt-faq__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: start;
+  gap: 3rem 4rem;
+  width: min(90%, 1200px);
+  margin: 0 auto;
+}
+
+.asmt-faq__title {
+  margin: 0;
+  font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
+  font-size: clamp(3.2rem, 5.6vw, 4.8rem);
+  font-weight: normal;
+  line-height: 0.95;
+  color: #344759;
+}
+
+.asmt-faq__title-italic {
+  display: block;
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman';
+}
+
+.asmt-faq__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  min-width: 0;
+}
+
+.asmt-faq__item {
+  background: #ffffff;
+  border-radius: 1.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 200ms ease;
+}
+
+.asmt-faq__item[open] {
+  box-shadow: 0 8px 22px rgba(52, 71, 89, 0.1);
+}
+
+.asmt-faq__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.15rem 1.5rem;
+  list-style: none;
+  cursor: pointer;
+  border-radius: 1.75rem;
+}
+
+.asmt-faq__summary::-webkit-details-marker {
+  display: none;
+}
+
+.asmt-faq__summary:focus-visible {
+  outline: 2px solid #5c8ba3;
+  outline-offset: 2px;
+}
+
+.asmt-faq__question {
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: #344759;
+}
+
+.asmt-faq__icon {
+  flex-shrink: 0;
+  font-size: 0.95rem;
+  color: #344759;
+  transition: transform 200ms ease;
+}
+
+.asmt-faq__item[open] .asmt-faq__icon {
+  transform: rotate(45deg);
+}
+
+.asmt-faq__answer {
+  margin: 0;
+  padding: 0 1.5rem 1.4rem;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: #4c545d;
+}
+
+@media (max-width: 900px) {
+  .asmt-faq {
+    padding: 3.5rem 0;
+  }
+
+  .asmt-faq__layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .asmt-faq__summary {
+    padding: 1rem 1.2rem;
+  }
+
+  .asmt-faq__answer {
+    padding: 0 1.2rem 1.2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .asmt-faq__item,
+  .asmt-faq__icon {
+    transition: none;
+  }
+}

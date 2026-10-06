@@ -1,0 +1,145 @@
+.asmt-box {
+  background-color: #ffffff;
+  padding: 5rem 0;
+  scroll-margin-top: 5rem;
+}
+
+.asmt-box__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: 3rem 4rem;
+  width: min(90%, 1200px);
+  margin: 0 auto;
+}
+
+.asmt-box__copy {
+  min-width: 0;
+}
+
+.asmt-box__title {
+  margin: 0 0 1.4rem;
+  font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
+  font-size: clamp(3.4rem, 5.6vw, 4.8rem);
+  font-weight: normal;
+  line-height: 0.95;
+  color: #344759;
+}
+
+.asmt-box__title-italic {
+  display: block;
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman';
+}
+
+.asmt-box__text {
+  max-width: 28rem;
+  margin: 0 0 1.2rem;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  line-height: 1.65;
+  color: #4c545d;
+}
+
+.asmt-box__delivery {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0 1.6rem;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #344759;
+}
+
+.asmt-box__delivery .pi {
+  font-size: 1rem;
+  color: #137a72;
+}
+
+.asmt-box__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #961d4e;
+  text-decoration: none;
+}
+
+.asmt-box__link:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.asmt-box__link:focus-visible {
+  outline: 2px solid #961d4e;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.asmt-box__link-arrow {
+  transition: transform 0.2s ease;
+}
+
+.asmt-box__link:hover .asmt-box__link-arrow {
+  transform: translateX(3px);
+}
+
+/*
+ * The box photo is a cut-out image on a soft tinted square. The square matches the photo's own
+ * proportions (941x892) and the photo is pinned to the bottom-right corner, so it fills the
+ * square and looks like it is resting on it.
+ */
+.asmt-box__media {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  aspect-ratio: 941 / 892;
+  background-color: #eefffe;
+  border-radius: 1.75rem;
+  overflow: hidden;
+}
+
+.asmt-box__image {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: right bottom;
+}
+
+@media (max-width: 900px) {
+  .asmt-box {
+    padding: 3.5rem 0;
+  }
+
+  .asmt-box__layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+    width: 90%;
+  }
+
+  .asmt-box__text {
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .asmt-box__media {
+    border-radius: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .asmt-box__link-arrow {
+    transition: none;
+  }
+
+  .asmt-box__link:hover .asmt-box__link-arrow {
+    transform: none;
+  }
+}

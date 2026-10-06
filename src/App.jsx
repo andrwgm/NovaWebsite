@@ -35,6 +35,9 @@ const NotFound = React.lazy(() => import('./pages/NotFound'));
 const UnderConstruction = React.lazy(() => import('./pages/UnderConstruction'));
 const Blog = React.lazy(() => import('./pages/Blog'));
 const BlogPost = React.lazy(() => import('./pages/BlogPost'));
+const AdhdAssessment = React.lazy(() => import('./pages/AdhdAssessment'));
+const AutismAssessment = React.lazy(() => import('./pages/AutismAssessment'));
+const AutismAdhdAssessment = React.lazy(() => import('./pages/AutismAdhdAssessment'));
 const ContactModal = React.lazy(() => import('./components/ContactModal'));
 
 export function App() {
@@ -238,6 +241,9 @@ function AppContent() {
               <Route path="/cookies-policy" element={<CookiesPolicy />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+              <Route path="/adhd-assessment" element={<AdhdAssessment />} />
+              <Route path="/autism-assessment" element={<AutismAssessment />} />
+              <Route path="/autism-adhd-assessment" element={<AutismAdhdAssessment />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
