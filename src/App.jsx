@@ -74,16 +74,24 @@ function AppContent() {
   }, [location.pathname, location.search, location.key, cookieConsent?.ads]);
 
   useEffect(() => {
-    if (hasShownSplash.current || location.pathname !== '/') {
+    if (location.pathname !== '/') {
       return undefined;
     }
 
-    hasShownSplash.current = true;
+    // Dev StrictMode runs this effect, cleans it up, then runs it again.
+    // Setting the ref on the first run made the second run return early
+    // after the cleanup had already removed the load listener, so the
+    // white splash stayed up in browsers that had not finished loading.
+    if (hasShownSplash.current) {
+      return undefined;
+    }
+
     setShowSplash(true);
     let hasHidden = false;
     const hideSplash = () => {
       if (hasHidden) return;
       hasHidden = true;
+      hasShownSplash.current = true;
       setIsFading(true);
       setTimeout(() => setShowSplash(false), 300);
     };
@@ -98,6 +106,9 @@ function AppContent() {
     return () => {
       window.removeEventListener('load', hideSplash);
       clearTimeout(fallbackTimer);
+      if (!hasHidden) {
+        setShowSplash(false);
+      }
     };
   }, [location.pathname]);
 
