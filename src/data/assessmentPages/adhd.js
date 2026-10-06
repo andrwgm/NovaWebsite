@@ -11,8 +11,6 @@ import {
   FAQ_GP_REFERRAL,
   FAQ_INFORMANT,
   FAQ_ONLINE,
-  HERO_IMAGE,
-  HERO_IMAGE_ALT,
   INCLUDED_NOTE,
   NO_TREATMENT_NOTE,
   PATHWAYS_INTRO,
@@ -36,8 +34,8 @@ export const ADHD_PAGE = {
   seo: {
     title: 'Private ADHD Assessment (UK, Ages 8+) | Nova Clinics',
     description: `Private online ADHD assessment for adults and children aged ${ADHD_MIN_AGE}+ across the UK. ${ADHD_PRICE.display} complete pathway, HCPC-registered psychologists, no GP referral needed.`,
-    heroImage: HERO_IMAGE,
-    heroImageAlt: HERO_IMAGE_ALT,
+    heroImage: '/images/adhd.avif',
+    heroImageAlt: 'Nova Clinics ADHD assessment',
   },
 
   enquiry: {

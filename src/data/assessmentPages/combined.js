@@ -11,8 +11,6 @@ import {
   FAQ_GP_REFERRAL,
   FAQ_INFORMANT,
   FAQ_ONLINE,
-  HERO_IMAGE,
-  HERO_IMAGE_ALT,
   INCLUDED_NOTE,
   NO_TREATMENT_NOTE,
   PATHWAYS_INTRO,
@@ -38,8 +36,8 @@ export const COMBINED_PAGE = {
   seo: {
     title: 'Private Autism and ADHD Assessment (UK, Ages 8+) | Nova Clinics',
     description: `Private online combined autism and ADHD assessment for adults and children aged ${ASSESSMENT_MIN_AGE}+ across the UK. ${COMBINED_PRICE.display} for one integrated pathway, HCPC-registered psychologists, no GP referral needed.`,
-    heroImage: HERO_IMAGE,
-    heroImageAlt: HERO_IMAGE_ALT,
+    heroImage: '/images/combined.avif',
+    heroImageAlt: 'Nova Clinics combined autism and ADHD assessment',
   },
 
   enquiry: {

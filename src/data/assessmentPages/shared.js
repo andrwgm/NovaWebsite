@@ -8,10 +8,6 @@ import { ASSESSMENT_MIN_AGE } from '../assessmentPricing'
 
 export { SITE_ORIGIN }
 
-// One path to change the photo (and the social share image) on all three pages.
-export const HERO_IMAGE = '/images/meeting.avif'
-export const HERO_IMAGE_ALT = 'People in a calm, supportive conversation'
-
 export const NO_TREATMENT_NOTE = 'We do not provide medication or ongoing treatment.'
 
 export const SECTION_LINKS = [
