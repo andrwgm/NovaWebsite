@@ -7,11 +7,22 @@ import { Image } from 'primereact/image';
 import { Button } from 'primereact/button';
 import { requestContactModal } from '../utils/contactModalService';
 
+const ASSESSMENT_LINKS = [
+  { label: 'Overview', path: '/' },
+  { label: 'ADHD', path: '/adhd-assessment' },
+  { label: 'Autism', path: '/autism-assessment' },
+  { label: 'Combined', path: '/autism-adhd-assessment' },
+];
+
 function isRouteActive(pathname, path) {
   if (path === '/') {
     return pathname === '/';
   }
   return pathname === path || pathname.startsWith(`${path}/`);
+}
+
+function isAssessmentsSection(pathname) {
+  return ASSESSMENT_LINKS.some((link) => isRouteActive(pathname, link.path));
 }
 
 export default function Navbar() {
@@ -26,8 +37,12 @@ export default function Navbar() {
     () => [
       {
         label: 'Assessments',
-        className: isRouteActive(pathname, '/') ? 'is-active' : undefined,
-        command: () => navigate('/'),
+        className: isAssessmentsSection(pathname) ? 'is-active' : undefined,
+        items: ASSESSMENT_LINKS.map((link) => ({
+          label: link.label,
+          className: isRouteActive(pathname, link.path) ? 'is-active' : undefined,
+          command: () => navigate(link.path),
+        })),
       },
       {
         label: 'Support',
