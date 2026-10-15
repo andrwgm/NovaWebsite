@@ -24,6 +24,7 @@ const LINK_COLUMNS = [
   {
     title: 'Support',
     links: [
+      { label: 'Free resources', to: '/support#free-resources' },
       { label: 'Before the assessment', to: '/support#before-the-assessment' },
       { label: 'During the assessment', to: '/support#during-the-assessment' },
       { label: 'Supporting your child', to: '/support#supporting-your-child' },

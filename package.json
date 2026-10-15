@@ -14,6 +14,7 @@
   "dependencies": {
     "github-slugger": "^2.0.0",
     "js-yaml": "^4.1.0",
+    "pdfjs-dist": "4.10.38",
     "primeicons": "^7.0.0",
     "primereact": "^10.0.0",
     "react": "^18.2.0",

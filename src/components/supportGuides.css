@@ -51,6 +51,11 @@
   overflow: hidden;
 }
 
+.support-guides__tab--resources .support-guides__header .p-accordion-header-text {
+  color: #642434;
+}
+
+.support-guides__tab:has(.support-guides__panel--resources) .support-guides__content,
 .support-guides__tab:has(.support-guides__panel--before) .support-guides__content,
 .support-guides__tab:has(.support-guides__panel--after) .support-guides__content,
 .support-guides__tab:has(.support-guides__panel--child) .support-guides__content,
@@ -58,6 +63,7 @@
   overflow: visible;
 }
 
+.support-guides__panel--resources,
 .support-guides__panel--before,
 .support-guides__panel--after,
 .support-guides__panel--child,
