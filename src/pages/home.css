@@ -124,6 +124,10 @@
     align-items: center;
 }
 
+.titleAndButton .bookButton__magnet {
+    display: inline-flex;
+}
+
 .titleAndButton .bookButton img {
     width: 9em;
 }

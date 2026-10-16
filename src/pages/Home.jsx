@@ -5,6 +5,7 @@ import './home.css';
 import { Image } from 'primereact/image';
 import { Button } from 'primereact/button';
 import { requestContact } from '../utils/contactRequestService';
+import useMagnetic from '../lib/useMagnetic';
 import LazySection from '../components/LazySection';
 import HowItWorks from '../components/HowItWorks';
 import BlogJsonLd from '../components/blog/BlogJsonLd';
@@ -21,6 +22,8 @@ const TrustBadges = React.lazy(() => import('../components/TrustBadges'));
 export default function Home() {
   const gentleSlideRef = useRef(null);
   const ageSectionsRef = useRef(null);
+  const contactRef = useRef(null);
+  useMagnetic(contactRef);
   const location = useLocation();
   const anchorId = location.hash ? location.hash.replace('#', '') : '';
   const forceLazySections = ['pricing', 'how-it-works', 'faqs'].includes(anchorId);
@@ -163,10 +166,12 @@ export default function Home() {
           </div>
         </div>
         <div className='bookButton'>
-          <Button onClick={() => requestContact({ source: 'hero' })}>
-            <Image src="/images/bookButton.avif" alt="Book Button" />
-            Contact us
-          </Button>
+          <div ref={contactRef} className='bookButton__magnet'>
+            <Button onClick={() => requestContact({ source: 'hero' })}>
+              <Image src="/images/bookButton.avif" alt="Book Button" />
+              Contact us
+            </Button>
+          </div>
         </div>
       </div>
       <div className='whiteBg withHeight'>
