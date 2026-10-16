@@ -117,57 +117,21 @@ function useMagnetic(ref, active) {
 }
 
 function ResourcePreview({ resource }) {
+  const previews = resource.previews ?? [];
   const [page, setPage] = useState(1);
-  const [pageCount, setPageCount] = useState(0);
-  const [status, setStatus] = useState(resource.kind === 'pdf' ? 'loading' : 'ready');
-  const canvasRef = React.useRef(null);
-  const renderTaskRef = React.useRef(null);
+  const [failed, setFailed] = useState(false);
 
   useEffect(() => {
     setPage(1);
+    setFailed(false);
   }, [resource.src]);
 
   useEffect(() => {
-    if (resource.kind !== 'pdf') {
-      return undefined;
-    }
-
-    const canvas = canvasRef.current;
-    if (!canvas) {
-      return undefined;
-    }
-
-    let cancelled = false;
-    setStatus((current) => (current === 'ready' ? current : 'loading'));
-
-    import('../lib/pdfPreview.js')
-      .then(async ({ loadPdf, renderPdfPage }) => {
-        const pdf = await loadPdf(resource.src);
-        if (cancelled) {
-          return;
-        }
-        renderTaskRef.current?.cancel();
-        const task = renderPdfPage(pdf, page, canvas);
-        renderTaskRef.current = task;
-        const count = await task.promise;
-        if (cancelled) {
-          return;
-        }
-        setPageCount(count);
-        setStatus('ready');
-      })
-      .catch((error) => {
-        if (cancelled || error?.name === 'RenderingCancelledException') {
-          return;
-        }
-        setStatus('error');
-      });
-
-    return () => {
-      cancelled = true;
-      renderTaskRef.current?.cancel();
-    };
-  }, [page, resource.kind, resource.src]);
+    previews.forEach((src) => {
+      const image = new Image();
+      image.src = src;
+    });
+  }, [resource.src, previews]);
 
   if (resource.kind === 'image') {
     return (
@@ -177,12 +141,22 @@ function ResourcePreview({ resource }) {
     );
   }
 
+  const pageCount = previews.length;
   const canTurn = pageCount > 1;
+  const showMore = Boolean(resource.moreBeyondPreview) && page === pageCount;
+  const src = previews[page - 1];
 
   return (
     <div className="freeResourcesPreview">
       <div className="freeResourcesPreview__sheet">
-        <canvas ref={canvasRef} role="img" aria-label={`${resourceLabel(resource)}, page ${page}${pageCount ? ` of ${pageCount}` : ''}`} />
+        {src ? (
+          <img
+            src={src}
+            alt={`${resourceLabel(resource)}, preview page ${page}`}
+            onError={() => setFailed(true)}
+          />
+        ) : null}
+        {showMore ? <p className="freeResourcesPreview__more">There's more if you download</p> : null}
         {canTurn ? (
           <>
             <button
@@ -206,8 +180,7 @@ function ResourcePreview({ resource }) {
           </>
         ) : null}
       </div>
-      {status === 'loading' ? <p className="freeResourcesPreview__status">Opening preview…</p> : null}
-      {status === 'error' ? (
+      {failed ? (
         <p className="freeResourcesPreview__status">The preview could not be opened. You can still download the file.</p>
       ) : null}
       {canTurn ? (
