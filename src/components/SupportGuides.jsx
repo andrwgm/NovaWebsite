@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Accordion, AccordionTab } from 'primereact/accordion';
+import FreeResourcesGuide from './FreeResourcesGuide';
 import BeforeAssessmentGuide from './BeforeAssessmentGuide';
 import AfterAssessmentGuide from './AfterAssessmentGuide';
 import ChildAtHomeGuide from './ChildAtHomeGuide';
@@ -12,7 +13,7 @@ const HINT_REPLAY_MS = 12000;
 
 export default function SupportGuides() {
   const tabSlugs = useMemo(
-    () => ['before-the-assessment', 'during-the-assessment', 'supporting-your-child', 'youre-not-alone'],
+    () => ['free-resources', 'before-the-assessment', 'during-the-assessment', 'supporting-your-child', 'youre-not-alone'],
     []
   );
   const slugToIndex = useMemo(() => {
@@ -204,6 +205,9 @@ export default function SupportGuides() {
   if (import.meta.env.SSR) {
     return (
       <section className="support-guides">
+        <div className="support-guides__panel support-guides__panel--resources">
+          <FreeResourcesGuide />
+        </div>
         <div className="support-guides__panel support-guides__panel--before">
           <BeforeAssessmentGuide />
         </div>
@@ -231,6 +235,23 @@ export default function SupportGuides() {
           onTabChange={handleTabChange}
           className="support-guides__accordion"
         >
+        <AccordionTab
+          id="free-resources"
+          header={
+            <h2>
+              <em>Free Resources</em>
+            </h2>
+          }
+          className="support-guides__tab support-guides__tab--resources"
+          headerClassName="support-guides__header"
+          contentClassName="support-guides__content"
+          style={{ '--support-guide-color': '#C9C6B3', '--support-guide-z': 5 }}
+        >
+          <div className="support-guides__panel support-guides__panel--resources">
+            <FreeResourcesGuide />
+          </div>
+        </AccordionTab>
+
         <AccordionTab
           id="before-the-assessment"
           header={
