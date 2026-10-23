@@ -8,6 +8,7 @@ import AssessmentHowItWorks from './AssessmentHowItWorks';
 import AssessmentSupportBox from './AssessmentSupportBox';
 import AssessmentFaqs from './AssessmentFaqs';
 import AssessmentFinalCta from './AssessmentFinalCta';
+import QuestionnaireSection from '../QuestionnaireSection';
 import { buildAssessmentPageJsonLd } from '../../data/assessmentPages/shared';
 import './assessmentPage.css';
 
@@ -33,6 +34,9 @@ export default function AssessmentPage({ content }) {
       <AssessmentIncluded content={content} />
       <AssessmentHowItWorks content={content} />
       <AssessmentSupportBox content={content} />
+      <div className="asmt-screening" id="screening">
+        <QuestionnaireSection />
+      </div>
       <AssessmentFaqs content={content} />
       <AssessmentFinalCta content={content} />
     </div>

@@ -12,3 +12,51 @@
     padding-bottom: 3rem;
   }
 }
+
+/* Same hands photo as the home screening band. z-index keeps the photo
+   inside this band: the page behind it is white, and a negative z-index
+   would otherwise slip under that background. */
+.asmt-screening {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  scroll-margin-top: 5rem;
+}
+
+.asmt-screening::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120%;
+  height: 130%;
+  background-image: url("/images/hands-background-compressed.avif");
+  background-size: cover;
+  background-position: center;
+  background-position-y: -3em;
+  background-attachment: fixed;
+  z-index: -1;
+}
+
+@supports (-webkit-touch-callout: none) {
+  .asmt-screening::before {
+    width: 100%;
+    height: 100%;
+    background-attachment: scroll;
+    background-position: center;
+    background-position-y: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .asmt-screening::before {
+    background-image: url("/images/hands-background-compressed-mobile.avif");
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .asmt-screening::before {
+    background-attachment: scroll;
+    background-position-y: 0;
+  }
+}
