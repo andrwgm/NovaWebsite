@@ -15,6 +15,7 @@ export const SECTION_LINKS = [
   { id: 'whats-included', label: 'What’s included' },
   { id: 'how-it-works', label: 'How it works' },
   { id: 'support-box', label: 'Support' },
+  { id: 'screening', label: 'Screening' },
   { id: 'faqs', label: 'FAQs' },
 ]
 
