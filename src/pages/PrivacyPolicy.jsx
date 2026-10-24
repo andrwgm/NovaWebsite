@@ -243,7 +243,7 @@ const sections = [
         ],
         [
           'Blog newsletter',
-          'While you are subscribed. If you do not confirm the email, 48 hours. Opt out any time by emailing team@novaclinics.co.uk',
+          'While you are subscribed. If you do not confirm the email, 48 hours. Each email has an unsubscribe link. You can also opt out by emailing team@novaclinics.co.uk',
         ],
         ['Payment and invoice records', '6 years after the end of the financial year'],
         [
@@ -263,7 +263,7 @@ const sections = [
   {
     title: 'Consent and opt-outs',
     body: [
-      'You can withdraw consent or opt out of marketing, newsletters, our interest list or non-essential communications at any time by emailing team@novaclinics.co.uk.',
+      'You can withdraw consent or opt out of marketing, newsletters, our interest list or non-essential communications at any time. Blog emails include an unsubscribe link. You can also email team@novaclinics.co.uk.',
       'Where another lawful basis applies, we may continue to process historical data to meet regulatory, contractual or safeguarding duties.',
     ],
   },

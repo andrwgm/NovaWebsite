@@ -37,6 +37,7 @@ const UnderConstruction = React.lazy(() => import('./pages/UnderConstruction'));
 const Blog = React.lazy(() => import('./pages/Blog'));
 const BlogPost = React.lazy(() => import('./pages/BlogPost'));
 const NewsletterConfirm = React.lazy(() => import('./pages/NewsletterConfirm'));
+const NewsletterUnsubscribe = React.lazy(() => import('./pages/NewsletterUnsubscribe'));
 const AdhdAssessment = React.lazy(() => import('./pages/AdhdAssessment'));
 const AutismAssessment = React.lazy(() => import('./pages/AutismAssessment'));
 const AutismAdhdAssessment = React.lazy(() => import('./pages/AutismAdhdAssessment'));
@@ -243,6 +244,7 @@ function AppContent() {
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/newsletter/confirm" element={<NewsletterConfirm />} />
+              <Route path="/newsletter/unsubscribe" element={<NewsletterUnsubscribe />} />
               <Route path="/best-practices" element={<UnderConstruction />} />
               <Route path="/cookies-policy" element={<CookiesPolicy />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
