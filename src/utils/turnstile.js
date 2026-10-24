@@ -2,6 +2,7 @@ export const TURNSTILE_SITE_KEY =
   import.meta.env.VITE_TURNSTILE_SITE_KEY || '0x4AAAAAAFCG9r8jPfyiMJ7c';
 
 export const TURNSTILE_CONTACT_ACTION = 'contact';
+export const TURNSTILE_NEWSLETTER_ACTION = 'newsletter';
 
 const TURNSTILE_SCRIPT_ID = 'cf-turnstile-api';
 const TURNSTILE_SCRIPT_SRC =

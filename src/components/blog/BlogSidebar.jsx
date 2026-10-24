@@ -1,42 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { formatBlogDate } from '../../utils/formatBlogDate'
+import BlogNewsletterForm from './BlogNewsletterForm'
 
 export default function BlogSidebar({ popularTopics, miniPost }) {
-  const [email, setEmail] = useState('')
-
   return (
     <aside className="blog-sidebar" aria-label="Blog sidebar">
       <section className="blog-card blog-card--newsletter">
         <h2 className="blog-card__title">Stay updated</h2>
-        <p className="blog-card__text">Subscribe to receive new articles and clinical guidance updates from Nova Clinics.</p>
-        <form
-          className="blog-newsletter"
-          onSubmit={(event) => {
-            event.preventDefault()
-          }}
-        >
-          <label className="sr-only" htmlFor="blog-newsletter-email">
-            Email address
-          </label>
-          <input
-            id="blog-newsletter-email"
-            className="blog-input"
-            type="email"
-            name="email"
-            autoComplete="email"
-            placeholder="Email address"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          />
-          <span className="blog-newsletter__coming-soon">
-            <button type="submit" className="blog-button blog-button--block" disabled aria-disabled="true">
-              Subscribe
-            </button>
-            <span className="blog-newsletter__tooltip" role="tooltip">Coming soon</span>
-          </span>
-          <p className="blog-card__fineprint">Newsletter subscriptions are coming soon.</p>
-        </form>
+        <p className="blog-card__text">Get an email when we publish a new article.</p>
+        <BlogNewsletterForm />
       </section>
 
       <section className="blog-card">
@@ -83,39 +56,12 @@ export default function BlogSidebar({ popularTopics, miniPost }) {
 }
 
 export function BlogPostSidebar({ miniPost, relatedPosts }) {
-  const [email, setEmail] = useState('')
-
   return (
     <aside className="blog-sidebar" aria-label="Article sidebar">
       <section className="blog-card blog-card--newsletter blog-card--newsletter-strong">
         <h2 className="blog-card__title">Stay updated</h2>
         <p className="blog-card__text">Get our latest blog posts straight to your inbox.</p>
-        <form
-          className="blog-newsletter"
-          onSubmit={(event) => {
-            event.preventDefault()
-          }}
-        >
-          <label className="sr-only" htmlFor="blog-post-newsletter-email">
-            Email address
-          </label>
-          <input
-            id="blog-post-newsletter-email"
-            className="blog-input blog-input--on-teal"
-            type="email"
-            name="email"
-            autoComplete="email"
-            placeholder="Email address"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          />
-          <span className="blog-newsletter__coming-soon">
-            <button type="submit" className="blog-button blog-button--block" disabled aria-disabled="true">
-              Subscribe
-            </button>
-            <span className="blog-newsletter__tooltip" role="tooltip">Coming soon</span>
-          </span>
-        </form>
+        <BlogNewsletterForm inputClassName="blog-input--on-teal" />
       </section>
 
       <section className="blog-card">
