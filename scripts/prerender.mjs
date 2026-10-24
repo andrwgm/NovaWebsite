@@ -23,7 +23,9 @@ const STATIC_ROUTES = [
   '/adhd-assessment',
   '/autism-assessment',
   '/autism-adhd-assessment',
-  '/contact'
+  '/contact',
+  '/newsletter/confirm',
+  '/newsletter/unsubscribe'
 ]
 
 async function collectBlogRoutes() {
