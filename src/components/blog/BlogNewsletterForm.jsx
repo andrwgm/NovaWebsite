@@ -21,10 +21,14 @@ export default function BlogNewsletterForm({ inputClassName = '' }) {
   const [submitting, setSubmitting] = useState(false)
   const [message, setMessage] = useState('')
   const [messageTone, setMessageTone] = useState('')
+  const [armChallenge, setArmChallenge] = useState(false)
   const turnstileContainerRef = useRef(null)
   const turnstileWidgetIdRef = useRef(null)
 
   useEffect(() => {
+    if (!armChallenge) {
+      return undefined
+    }
     setTurnstileToken('')
     let cancelled = false
     const cancelReadyWait = whenTurnstileReady(() => {
@@ -35,7 +39,7 @@ export default function BlogNewsletterForm({ inputClassName = '' }) {
         window.turnstile.remove(turnstileWidgetIdRef.current)
         turnstileWidgetIdRef.current = null
       }
-      turnstileWidgetIdRef.current = window.turnstile.render(turnstileContainerRef.current, {
+      const widgetId = window.turnstile.render(turnstileContainerRef.current, {
         sitekey: TURNSTILE_SITE_KEY,
         action: TURNSTILE_NEWSLETTER_ACTION,
         theme: 'light',
@@ -48,6 +52,11 @@ export default function BlogNewsletterForm({ inputClassName = '' }) {
         'error-callback': () => setTurnstileToken(''),
         'timeout-callback': () => setTurnstileToken(''),
       })
+      if (cancelled) {
+        window.turnstile.remove(widgetId)
+        return
+      }
+      turnstileWidgetIdRef.current = widgetId
     })
     return () => {
       cancelled = true
@@ -58,7 +67,7 @@ export default function BlogNewsletterForm({ inputClassName = '' }) {
       turnstileWidgetIdRef.current = null
       setTurnstileToken('')
     }
-  }, [])
+  }, [armChallenge])
 
   const resetTurnstile = () => {
     setTurnstileToken('')
@@ -76,8 +85,9 @@ export default function BlogNewsletterForm({ inputClassName = '' }) {
       return
     }
     if (!turnstileToken) {
+      setArmChallenge(true)
       setMessageTone('error')
-      setMessage('Please try that again.')
+      setMessage('Please wait a moment and try again.')
       return
     }
     setSubmitting(true)
@@ -101,6 +111,7 @@ export default function BlogNewsletterForm({ inputClassName = '' }) {
         return
       }
       setEmail('')
+      setArmChallenge(false)
       setMessageTone('ok')
       setMessage(ACCEPTED_MESSAGE)
       resetTurnstile()
@@ -131,6 +142,7 @@ export default function BlogNewsletterForm({ inputClassName = '' }) {
         required
         disabled={submitting}
         onChange={(event) => setEmail(event.target.value)}
+        onFocus={() => setArmChallenge(true)}
       />
       <div className="blog-newsletter__hp" aria-hidden="true">
         <label htmlFor={slug ? 'blog-post-newsletter-website' : 'blog-newsletter-website'}>Website</label>
@@ -144,7 +156,7 @@ export default function BlogNewsletterForm({ inputClassName = '' }) {
           onChange={(event) => setWebsite(event.target.value)}
         />
       </div>
-      <div ref={turnstileContainerRef} className="blog-newsletter__turnstile" />
+      {armChallenge ? <div ref={turnstileContainerRef} className="blog-newsletter__turnstile" /> : null}
       <button type="submit" className="blog-button blog-button--block" disabled={submitting}>
         {submitting ? 'Sending…' : 'Subscribe'}
       </button>
