@@ -30,6 +30,29 @@
   margin: 0 0 1.2rem 0;
 }
 
+.qa-answer-link {
+  display: inline;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  font-weight: 600;
+  color: #961d4e;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  cursor: pointer;
+}
+
+.qa-answer-link:hover {
+  color: #6f1538;
+}
+
+.qa-answer-link:focus-visible {
+  outline: 2px solid #961d4e;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
 .qa-dots {
   display: inline-flex;
   gap: .5rem;

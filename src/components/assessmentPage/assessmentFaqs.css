@@ -94,6 +94,30 @@
   color: #4c545d;
 }
 
+/* Text-link button, same burgundy accent as the other links on the page. */
+.asmt-faq__action {
+  display: inline;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #961d4e;
+  cursor: pointer;
+}
+
+.asmt-faq__action:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.asmt-faq__action:focus-visible {
+  outline: 2px solid #961d4e;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
 @media (max-width: 900px) {
   .asmt-faq {
     padding: 3.5rem 0;

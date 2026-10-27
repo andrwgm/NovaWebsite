@@ -4,6 +4,7 @@ import {
   ASSESSMENT_MIN_AGE,
   AUTISM_PRICE,
   COMBINED_PRICE,
+  UNDER8_MESSAGE,
 } from './assessmentPricing'
 
 // Content and small rules for /contact. Prices and the minimum age come from
@@ -69,25 +70,15 @@ export const CONTACT_AUDIENCES = [
 const SERVICE_IDS = CONTACT_SERVICES.map((service) => service.id)
 const AUDIENCE_IDS = CONTACT_AUDIENCES.map((audience) => audience.id)
 
-// Copy for the child block. The waiting list text is the same sentence used on the
-// autism page and in "How it works".
+// Copy for the child block. The under-8 message is the same sentence used on the service
+// pages and in "How it works"; the interest list form sits below the enquiry form.
 export const CHILD_COPY = {
   ageCheck: `I understand that this online service is for ages ${ASSESSMENT_MIN_AGE} and over.`,
-  waitlistText: `If your child is under ${ASSESSMENT_MIN_AGE}, you can join the waiting list for our upcoming in-person hybrid pathway.`,
-  waitlistCheck: `My child is under ${ASSESSMENT_MIN_AGE}. Please add us to the waiting list.`,
-  adhdNote: `We do not assess ADHD in children under ${ASSESSMENT_MIN_AGE}. Please speak with your GP.`,
-  combinedNote: `We do not assess ADHD under age ${ASSESSMENT_MIN_AGE}. Please speak with your GP. Remote autism assessments are also ${ASSESSMENT_MIN_AGE}+ only.`,
+  under8Note: UNDER8_MESSAGE,
 }
 
 export const PRIVATE_SERVICE_CHECK =
   'I understand that Nova Clinics is a private service. We cannot accept NHS Right to Choose or other publicly funded referrals.'
-
-export const WAITLIST_MESSAGE = `\n[You're welcome to edit this message if you wish]\n\nHello, my child is under ${ASSESSMENT_MIN_AGE} and I would like to join the waiting list for your upcoming in-person hybrid autism assessment pathway. Please let me know what information you need from me. Thank you.`
-
-/** The waiting list only exists for the autism pathway (autism, combined or still deciding). */
-export function waitlistAvailable(service) {
-  return service !== 'adhd'
-}
 
 /**
  * Turns the router state sent by requestContact() into form defaults. Unknown or missing
@@ -96,8 +87,8 @@ export function waitlistAvailable(service) {
 export function resolveContactRequest(state) {
   const request = state && typeof state === 'object' ? state : {}
   const service = SERVICE_IDS.includes(request.itemId) ? request.itemId : ''
-  const wantsWaitlist = request.waitlist === true && waitlistAvailable(service)
-  const audience = wantsWaitlist
+  const wantsUnder8Interest = request.under8Interest === true
+  const audience = wantsUnder8Interest
     ? 'child'
     : AUDIENCE_IDS.includes(request.audience)
       ? request.audience
@@ -106,7 +97,7 @@ export function resolveContactRequest(state) {
   return {
     service,
     audience,
-    waitlist: wantsWaitlist,
+    under8Interest: wantsUnder8Interest,
     message: typeof request.message === 'string' ? request.message : '',
     source:
       typeof request.source === 'string' && request.source

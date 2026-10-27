@@ -189,7 +189,7 @@
   transform: translateY(-1px);
 }
 
-/* Small line under the buttons, e.g. the waiting list for children under 8 on the autism page. */
+/* Small line under the buttons, e.g. the interest list for children under 8 on the autism page. */
 .asmt-hero__footnote {
   max-width: 30rem;
   margin: 1.1rem 0 0;

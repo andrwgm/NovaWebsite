@@ -4,12 +4,14 @@ import {
   AUTISM_ENQUIRY_MESSAGE,
   AUTISM_PRICE,
   AUTISM_RESULTS,
+  UNDER8_MESSAGE,
 } from '../assessmentPricing'
 import {
   FAQ_AFTERWARDS,
   FAQ_CLINICIANS,
   FAQ_GP_REFERRAL,
   FAQ_INFORMANT,
+  FAQ_LANGUAGES,
   FAQ_ONLINE,
   INCLUDED_NOTE,
   NO_TREATMENT_NOTE,
@@ -19,6 +21,7 @@ import {
   buildCostFaq,
   buildFinalCta,
   buildPageUrl,
+  buildUnder8Action,
 } from './shared'
 
 // Content for /autism-assessment. Steps and session times come from FLOWS.autism
@@ -26,17 +29,10 @@ import {
 
 const PATH = '/autism-assessment'
 
-const UNDER_AGE_NOTE = `Our online service is for ages ${ASSESSMENT_MIN_AGE} and above. If your child is under ${ASSESSMENT_MIN_AGE}, you can join the waiting list for our upcoming in-person hybrid pathway.`
+const UNDER_AGE_NOTE = UNDER8_MESSAGE
 
-// Opens /contact with a waiting-list message and the child + waiting list boxes pre-selected.
-const WAITING_LIST_ACTION = {
-  label: 'Join the waiting list',
-  message: `\n[You're welcome to edit this message if you wish]\n\nHello, my child is under ${ASSESSMENT_MIN_AGE} and I would like to join the waiting list for your upcoming in-person hybrid autism assessment pathway. Please let me know what information you need from me. Thank you.`,
-  source: 'autism_page_waiting_list',
-  itemId: 'autism',
-  audience: 'child',
-  waitlist: true,
-}
+// Opens /contact on the child route and scrolls to the under-8 interest list.
+const INTEREST_LIST_ACTION = buildUnder8Action('autism', 'autism_page_interest_list')
 
 export const AUTISM_PAGE = {
   key: 'autism',
@@ -70,8 +66,8 @@ export const AUTISM_PAGE = {
     priceNote: NO_TREATMENT_NOTE,
     // Shown under the main buttons so parents of under-8s see the option straight away.
     footnote: {
-      text: `If your child is under ${ASSESSMENT_MIN_AGE}, you can join the waiting list for our upcoming in-person hybrid pathway.`,
-      action: { ...WAITING_LIST_ACTION, source: 'autism_page_hero_waiting_list' },
+      text: UNDER_AGE_NOTE,
+      action: buildUnder8Action('autism', 'autism_page_hero_interest_list'),
     },
   },
 
@@ -132,7 +128,7 @@ export const AUTISM_PAGE = {
     titleItalic: 'step by step',
     intro: PATHWAYS_INTRO,
     childNote: UNDER_AGE_NOTE,
-    childNoteAction: WAITING_LIST_ACTION,
+    childNoteAction: INTEREST_LIST_ACTION,
     audiences: [
       { id: 'adult', label: 'Adult', steps: FLOWS.autism.adult },
       { id: 'child', label: 'Child', steps: FLOWS.autism.child },
@@ -147,6 +143,7 @@ export const AUTISM_PAGE = {
       id: 'child',
       question: 'Can my child have an autism assessment?',
       answer: `Yes, from age ${ASSESSMENT_MIN_AGE}. Our online autism service is open to children and young people aged ${ASSESSMENT_MIN_AGE} and over, as well as adults. ${UNDER_AGE_NOTE}`,
+      action: buildUnder8Action('autism', 'autism_page_faq_interest_list'),
     },
     {
       id: 'treatment',
@@ -165,6 +162,7 @@ export const AUTISM_PAGE = {
     }),
     FAQ_ONLINE,
     FAQ_CLINICIANS,
+    FAQ_LANGUAGES,
   ],
 
   finalCta: buildFinalCta('Enquire about autism assessment'),

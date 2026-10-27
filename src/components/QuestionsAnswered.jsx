@@ -1,8 +1,15 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { Carousel } from 'primereact/carousel';
+import { requestContact } from '../utils/contactRequestService';
+import { UNDER8_LINK_LABEL, UNDER8_MESSAGE } from '../data/assessmentPricing';
+import { FAQ_LANGUAGES_ANSWER, FAQ_LANGUAGES_QUESTION } from '../data/faqCopy';
 import './questionsAnswered.css';
 
-/** Cost / online / clinician / medication / eligibility answers are also in src/data/clinicJsonLd.js (FAQ schema). */
+/**
+ * Cost / online / clinician / medication / eligibility / under-8 / languages answers are also in
+ * src/data/clinicJsonLd.js (FAQ schema). Keep both in sync. `under8Item` adds a link to the
+ * under-8 interest list on /contact, for that service.
+ */
 
 
 const SLIDES = [
@@ -77,18 +84,26 @@ const SLIDES = [
     question: 'Do you assess ADHD in young children?',
     answer:
       'No. Our clinical policy requires children to be at least 8 years old for an ADHD assessment. We do not offer ADHD assessments for children under 8.',
+    under8Item: 'adhd',
   },
   {
     img: '/images/faqs/12.avif',
     question: 'Do you assess Autism under age 8?',
     answer:
-      'Our current online service is for ages 8 and above. However, we are actively setting up a hybrid pathway featuring face-to-face appointments for children under 8 with Autism. Please register your interest with our team.',
+      UNDER8_MESSAGE,
+    under8Item: 'autism',
   },
   {
     img: '/images/faqs/13.avif',
     question: 'Do you accept NHS Right to Choose?',
     answer:
       'No. Nova Clinics is an independent private provider and does not accept NHS Right to Choose funding or GP referrals.',
+  },
+  {
+    // No dedicated picture yet: reuses the eligibility one.
+    img: '/images/faqs/10.avif',
+    question: FAQ_LANGUAGES_QUESTION,
+    answer: FAQ_LANGUAGES_ANSWER,
   },
   {
     img: '/images/faqs/14.avif',
@@ -140,7 +155,26 @@ export default function QuestionsAnswered() {
     <section className="qa">
       <div className="qa-left">
         <h2 className="qa-title">Your questions <div style={{fontFamily: 'TimesNewRomanMTCondensedItalic', paddingLeft: '3rem'}}>answered</div></h2>
-        <p className="qa-answer">{slides[active]?.answer}</p>
+        <p className="qa-answer">
+          {slides[active]?.answer}
+          {slides[active]?.under8Item && (
+            <>
+              {' '}
+              <button
+                type="button"
+                className="qa-answer-link"
+                onClick={() => requestContact({
+                  source: 'home_faq_under8_interest_list',
+                  itemId: slides[active].under8Item,
+                  audience: 'child',
+                  under8Interest: true,
+                })}
+              >
+                {UNDER8_LINK_LABEL}
+              </button>
+            </>
+          )}
+        </p>
         <div className="qa-dots" role="group" aria-label="Carousel pagination">
           {slides.map((s, i) => (
             <button

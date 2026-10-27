@@ -1,0 +1,112 @@
+.contact-details {
+  min-width: 0;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+}
+
+.contact-details__title {
+  margin: 0 0 0.8rem;
+  font-family: 'LemonMilkLight', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 1.1rem;
+  font-weight: normal;
+  line-height: 1.3;
+}
+
+.contact-details__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+
+.contact-details__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.5rem;
+}
+
+.contact-details__row dt {
+  font-weight: bold;
+}
+
+.contact-details__row dd {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.contact-details__terms {
+  margin: 0 0 1rem;
+}
+
+.contact-details__crisis {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.contact-details a {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.contact-details a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Footer: light text on the dark blue footer */
+.contact-details--footer {
+  width: 100%;
+  max-width: 1280px;
+  font-size: 1.05rem;
+  color: rgba(232, 245, 244, 0.9);
+}
+
+.contact-details--footer .contact-details__title {
+  color: #ffffff;
+}
+
+.contact-details--footer a {
+  color: #ffffff;
+}
+
+.contact-details--footer .contact-details__crisis {
+  max-width: 50rem;
+}
+
+/* Contact page aside: pale card under the dark "What happens next" card */
+.contact-details--aside {
+  padding: 1.5rem 1.75rem;
+  border: 1px solid #d3e7e5;
+  border-radius: 1.5rem;
+  background: #eef7f6;
+  font-size: 1rem;
+  color: #344759;
+}
+
+.contact-details--aside .contact-details__title {
+  color: #344759;
+}
+
+.contact-details--aside a {
+  color: #961d4e;
+}
+
+@media (max-width: 520px) {
+  .contact-details--footer {
+    text-align: center;
+  }
+
+  .contact-details--footer .contact-details__row {
+    justify-content: center;
+  }
+
+  .contact-details--footer .contact-details__crisis {
+    margin-inline: auto;
+  }
+
+  .contact-details--aside {
+    padding: 1.3rem 1.2rem;
+  }
+}

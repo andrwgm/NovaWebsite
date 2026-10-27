@@ -5,7 +5,7 @@
 //   source    where the button lives (analytics form_source, stored with the enquiry)
 //   itemId    'adhd' | 'autism' | 'combined': pre-selects the service
 //   audience  'self' | 'child': pre-selects who the assessment is for
-//   waitlist  true: pre-ticks the under-8 hybrid waiting list (child + autism pathway)
+//   under8Interest  true: selects 'for my child' and scrolls to the under-8 interest list
 const listeners = new Set();
 
 export const onContactRequest = (listener) => {

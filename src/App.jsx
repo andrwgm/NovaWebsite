@@ -181,7 +181,7 @@ function AppContent() {
           source: typeof payload?.source === 'string' && payload.source ? payload.source : 'unknown',
           itemId: typeof payload?.itemId === 'string' && payload.itemId ? payload.itemId : undefined,
           audience: typeof payload?.audience === 'string' ? payload.audience : undefined,
-          waitlist: payload?.waitlist === true,
+          under8Interest: payload?.under8Interest === true,
           from,
         },
       });
