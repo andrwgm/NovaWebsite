@@ -44,6 +44,20 @@
   line-height: 1.5;
 }
 
+.contact-details__crisis-intro {
+  margin: 0 0 0.4rem;
+}
+
+.contact-details__crisis-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  text-align: left;
+}
+
+.contact-details__crisis-list li + li {
+  margin-top: 0.25rem;
+}
+
 .contact-details a {
   text-decoration: underline;
   text-underline-offset: 0.18em;

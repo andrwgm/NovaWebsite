@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import {
   CONTACT_EMAIL,
   CONTACT_HOURS,
-  CRISIS_NOTE_PARTS,
+  CRISIS_NOTE_INTRO,
+  CRISIS_NOTE_ITEMS,
   TERMS_PATH,
 } from '../data/contactDetails';
 import './contactDetails.css';
@@ -39,17 +40,26 @@ export default function ContactDetails({ variant = 'footer', headingId }) {
         Read our <Link to={TERMS_PATH}>Terms and Conditions</Link>.
       </p>
 
-      <p className="contact-details__crisis">
-        {CRISIS_NOTE_PARTS.map((part, index) =>
-          typeof part === 'string' ? (
-            <React.Fragment key={index}>{part}</React.Fragment>
-          ) : (
-            <a key={index} href={`tel:${part.tel}`}>
-              {part.text}
-            </a>
-          )
-        )}
-      </p>
+      <div className="contact-details__crisis">
+        <p className="contact-details__crisis-intro">{CRISIS_NOTE_INTRO}</p>
+        <ul className="contact-details__crisis-list">
+          {CRISIS_NOTE_ITEMS.map((parts, itemIndex) => (
+            <li key={itemIndex}>
+              {parts.map((part, index) => {
+                if (typeof part === 'string') {
+                  return <React.Fragment key={index}>{part}</React.Fragment>;
+                }
+                const href = part.sms ? `sms:${part.sms}` : `tel:${part.tel}`;
+                return (
+                  <a key={index} href={href}>
+                    {part.text}
+                  </a>
+                );
+              })}
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 }

@@ -6,7 +6,7 @@ const TEAM = [
     name: 'Dr. Sofia Patel',
     role: (
       <>
-        Consultant Psychiatrist
+        Clinical Psychologist (HCPC-registered)
         <br />
         Neurodevelopment specialist
       </>
@@ -41,7 +41,7 @@ const TEAM = [
     name: 'Dr. Sofia Patel',
     role: (
       <>
-        Consultant Psychiatrist
+        Clinical Psychologist (HCPC-registered)
         <br />
         Neurodevelopment specialist
       </>
@@ -83,11 +83,11 @@ export default function PeopleBehind() {
       <header className="team-head">
         <h2 className="team-title">People behind <div style={{fontFamily: 'TimesNewRomanMTCondensedItalic', paddingLeft: '3rem'}}>your care</div></h2>
         <p className="team-subtitle">
-          From consultant psychiatrists to friendly care-coordinators, every member of our team plays
-          a vital role in delivering a fast, seamless experience. You’ll meet GMC-registered clinicians
-          who follow NICE guidelines and the support specialists who schedule your appointments,
-          prepare reports and guide you through funding options—working together with zero waiting-list
-          frustration.
+          From clinical psychologists to friendly care-coordinators, every member of our team plays
+          a vital role in delivering a clear, well-organised experience. Our assessments are carried
+          out by HCPC-registered clinical psychologists working with a multidisciplinary team, and
+          they are supported by the specialists who schedule your appointments, prepare reports and
+          guide you through funding options.
         </p>
       </header>
 
