@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ContactDetails from './ContactDetails';
 import './footer.css';
 
 const SOCIAL_LINKS = [
@@ -101,6 +102,8 @@ export default function Footer() {
           ))}
         </nav>
       </div>
+
+      <ContactDetails variant="footer" headingId="footer-contact-title" />
 
       <div className="footer-bottom">
         <div className="footer-bottom-line" />

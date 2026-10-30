@@ -99,6 +99,10 @@
   position: relative;
 }
 
+.cpage__main {
+  min-width: 0;
+}
+
 .cpage__form-card {
   min-width: 0;
   padding: 2.25rem;

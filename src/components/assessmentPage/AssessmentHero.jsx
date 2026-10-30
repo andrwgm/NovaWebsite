@@ -71,11 +71,10 @@ export default function AssessmentHero({ content }) {
                     type="button"
                     className="asmt-hero__footnote-action"
                     onClick={() => requestContact({
-                      message: hero.footnote.action.message,
                       source: hero.footnote.action.source,
                       itemId: hero.footnote.action.itemId,
                       audience: hero.footnote.action.audience,
-                      waitlist: hero.footnote.action.waitlist,
+                      under8Interest: hero.footnote.action.under8Interest,
                     })}
                   >
                     {hero.footnote.action.label}

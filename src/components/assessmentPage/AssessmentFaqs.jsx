@@ -1,4 +1,5 @@
 import React from 'react';
+import { requestContact } from '../../utils/contactRequestService';
 import './assessmentFaqs.css';
 
 // Native <details>: every answer is in the HTML (and the prerender) even while collapsed.
@@ -20,7 +21,27 @@ export default function AssessmentFaqs({ content }) {
                 <span className="asmt-faq__question">{faq.question}</span>
                 <i className="pi pi-plus asmt-faq__icon" aria-hidden="true" />
               </summary>
-              <p className="asmt-faq__answer">{faq.answer}</p>
+              <p className="asmt-faq__answer">
+                {faq.answer}
+                {faq.action && (
+                  <>
+                    {' '}
+                    <button
+                      type="button"
+                      className="asmt-faq__action"
+                      onClick={() => requestContact({
+                        source: faq.action.source,
+                        itemId: faq.action.itemId,
+                        audience: faq.action.audience,
+                        under8Interest: faq.action.under8Interest,
+                      })}
+                    >
+                      {faq.action.label}
+                      <span aria-hidden="true"> →</span>
+                    </button>
+                  </>
+                )}
+              </p>
             </details>
           ))}
         </div>

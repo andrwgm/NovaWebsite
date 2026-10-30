@@ -1,5 +1,6 @@
 import React from 'react';
 import { CONTACT_ASIDE } from '../../data/contactPage';
+import ContactDetails from '../ContactDetails';
 import './contactAside.css';
 
 export default function ContactAside() {
@@ -44,6 +45,8 @@ export default function ContactAside() {
           ))}
         </ul>
       </div>
+
+      <ContactDetails variant="aside" headingId="caside-contact-title" />
     </aside>
   );
 }

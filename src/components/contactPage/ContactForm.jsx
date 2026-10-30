@@ -13,10 +13,9 @@ import {
   CONTACT_AUDIENCES,
   CONTACT_SERVICES,
   PRIVATE_SERVICE_CHECK,
-  WAITLIST_MESSAGE,
-  waitlistAvailable,
 } from '../../data/contactPage';
-import { ASSESSMENT_MIN_AGE } from '../../data/assessmentPricing';
+import { ASSESSMENT_MIN_AGE, UNDER8_INTEREST_ANCHOR, UNDER8_LINK_LABEL } from '../../data/assessmentPricing';
+import { TERMS_PATH } from '../../data/contactDetails';
 import { CONTACT_SUBMISSIONS_ENDPOINT } from '../../utils/api';
 import { formatUkPhone } from '../../utils/formatUkPhone';
 import { trackContactFormOpen, trackGenerateLead } from '../../utils/googleAnalytics';
@@ -54,11 +53,10 @@ function FieldError({ id, children }) {
  * it is a new object every time a contact button is pressed, which re-applies the pre-made
  * message and the pre-selected service.
  */
-export default function ContactForm({ request }) {
+export default function ContactForm({ request, onAudienceChange }) {
   const [details, setDetails] = useState(INITIAL_DETAILS);
   const [service, setService] = useState(request.service);
   const [audience, setAudience] = useState(request.audience);
-  const [waitlist, setWaitlist] = useState(request.waitlist);
   const [ageAcknowledged, setAgeAcknowledged] = useState(false);
   const [privateAcknowledged, setPrivateAcknowledged] = useState(false);
   const [errors, setErrors] = useState({});
@@ -73,12 +71,16 @@ export default function ContactForm({ request }) {
 
   const { source, itemId } = request;
 
+  // Lets the page show the under-8 interest list when the enquiry is for a child.
+  useEffect(() => {
+    onAudienceChange?.(audience);
+  }, [audience, onAudienceChange]);
+
   // A contact button was pressed (or the page was opened): apply its defaults.
   useEffect(() => {
     formStartTracked.current = false;
     setService(request.service);
     setAudience(request.audience);
-    setWaitlist(request.waitlist);
     setAgeAcknowledged(false);
     setErrors({});
     setDetails((prev) => ({
@@ -171,10 +173,6 @@ export default function ContactForm({ request }) {
   const handleServiceChange = (nextService) => {
     setService(nextService);
     clearError('service');
-    if (!waitlistAvailable(nextService) && waitlist) {
-      setWaitlist(false);
-      setDetails((prev) => (prev.message === WAITLIST_MESSAGE ? { ...prev, message: '' } : prev));
-    }
   };
 
   const handleAudienceChange = (nextAudience) => {
@@ -183,22 +181,6 @@ export default function ContactForm({ request }) {
     if (nextAudience !== 'child') {
       setAgeAcknowledged(false);
       clearError('age');
-      if (waitlist) {
-        setWaitlist(false);
-        setDetails((prev) => (prev.message === WAITLIST_MESSAGE ? { ...prev, message: '' } : prev));
-      }
-    }
-  };
-
-  const handleWaitlistChange = (checked) => {
-    setWaitlist(checked);
-    clearError('age');
-    if (checked) {
-      setAgeAcknowledged(false);
-      // Offer the same pre-made text as the waiting list buttons when the box is still empty.
-      setDetails((prev) => (prev.message.trim() ? prev : { ...prev, message: WAITLIST_MESSAGE }));
-    } else {
-      setDetails((prev) => (prev.message === WAITLIST_MESSAGE ? { ...prev, message: '' } : prev));
     }
   };
 
@@ -206,8 +188,8 @@ export default function ContactForm({ request }) {
     const next = {};
     if (!service) next.service = 'Please choose the assessment you are interested in.';
     if (!audience) next.audience = 'Please tell us who the assessment is for.';
-    if (audience === 'child' && !waitlist && !ageAcknowledged) {
-      next.age = `Please confirm that you understand the service is for ages ${ASSESSMENT_MIN_AGE} and over, or join the waiting list.`;
+    if (audience === 'child' && !ageAcknowledged) {
+      next.age = `Please confirm that you understand the service is for ages ${ASSESSMENT_MIN_AGE} and over.`;
     }
     if (!details.consent) next.consent = 'Please accept the privacy policy to continue.';
     if (!privateAcknowledged) next.private = 'Please confirm that you understand this is a private service.';
@@ -259,9 +241,8 @@ export default function ContactForm({ request }) {
           website: details.website,
           service_interest: service,
           enquiry_for: audience,
-          age_requirement_acknowledged: audience === 'child' && !waitlist ? true : null,
+          age_requirement_acknowledged: audience === 'child' ? true : null,
           private_service_acknowledged: true,
-          hybrid_waitlist_requested: waitlist,
           form_source: source,
         }),
       });
@@ -279,7 +260,6 @@ export default function ContactForm({ request }) {
       setDetails(INITIAL_DETAILS);
       setService('');
       setAudience('');
-      setWaitlist(false);
       setAgeAcknowledged(false);
       setPrivateAcknowledged(false);
       setErrors({});
@@ -295,11 +275,6 @@ export default function ContactForm({ request }) {
   };
 
   const showChildBlock = audience === 'child';
-  const canJoinWaitlist = showChildBlock && waitlistAvailable(service);
-
-  let childNote = null;
-  if (service === 'adhd') childNote = CHILD_COPY.adhdNote;
-  if (service === 'combined') childNote = CHILD_COPY.combinedNote;
 
   return (
     <>
@@ -389,7 +364,6 @@ export default function ContactForm({ request }) {
                 <Checkbox
                   inputId="contact-age"
                   checked={ageAcknowledged}
-                  disabled={waitlist}
                   onChange={(event) => {
                     setAgeAcknowledged(event.checked);
                     clearError('age');
@@ -399,29 +373,15 @@ export default function ContactForm({ request }) {
               </div>
               <FieldError id="cform-age-error">{errors.age}</FieldError>
 
-              {childNote && (
-                <p className="cform__note">
-                  <i className="pi pi-info-circle" aria-hidden="true" />
-                  <span>{childNote}</span>
-                </p>
-              )}
-
-              {canJoinWaitlist && (
-                <div className={`cform__waitlist${waitlist ? ' is-active' : ''}`}>
-                  <p className="cform__note">
-                    <i className="pi pi-clock" aria-hidden="true" />
-                    <span>{CHILD_COPY.waitlistText}</span>
-                  </p>
-                  <div className="cform__check">
-                    <Checkbox
-                      inputId="contact-waitlist"
-                      checked={waitlist}
-                      onChange={(event) => handleWaitlistChange(event.checked)}
-                    />
-                    <label htmlFor="contact-waitlist">{CHILD_COPY.waitlistCheck}</label>
-                  </div>
-                </div>
-              )}
+              <p className="cform__note">
+                <i className="pi pi-info-circle" aria-hidden="true" />
+                <span>
+                  {CHILD_COPY.under8Note}{' '}
+                  <a className="cform__note-link" href={`#${UNDER8_INTEREST_ANCHOR}`}>
+                    {UNDER8_LINK_LABEL}
+                  </a>
+                </span>
+              </p>
             </div>
           )}
         </fieldset>
@@ -538,6 +498,7 @@ export default function ContactForm({ request }) {
                 I have read and understood the{' '}
                 <Link to="/privacy-policy" target="_blank">Privacy Policy</Link>
                 {' '}and agree to the processing of my personal data for the purpose of responding to my enquiry.
+                {' '}Our <Link to={TERMS_PATH} target="_blank">Terms and Conditions</Link> also apply.
               </label>
             </div>
             <FieldError id="cform-consent-error">{errors.consent}</FieldError>

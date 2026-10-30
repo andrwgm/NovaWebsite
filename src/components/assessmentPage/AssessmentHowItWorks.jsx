@@ -158,11 +158,10 @@ export default function AssessmentHowItWorks({ content }) {
                       type="button"
                       className="asmt-steps__note-action"
                       onClick={() => requestContact({
-                        message: pathways.childNoteAction.message,
                         source: pathways.childNoteAction.source,
                         itemId: pathways.childNoteAction.itemId,
                         audience: pathways.childNoteAction.audience,
-                        waitlist: pathways.childNoteAction.waitlist,
+                        under8Interest: pathways.childNoteAction.under8Interest,
                       })}
                     >
                       {pathways.childNoteAction.label}

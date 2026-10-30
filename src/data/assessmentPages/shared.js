@@ -1,5 +1,6 @@
 import { SITE_ORIGIN } from '../../blog/blogConfig'
-import { ASSESSMENT_MIN_AGE } from '../assessmentPricing'
+import { ASSESSMENT_MIN_AGE, UNDER8_LINK_LABEL } from '../assessmentPricing'
+import { FAQ_LANGUAGES_ANSWER, FAQ_LANGUAGES_QUESTION } from '../faqCopy'
 
 // Pieces shared by the three service pages (ADHD, autism, combined autism + ADHD):
 // the common blocks, the FAQ answers that read the same for every service, and the
@@ -83,6 +84,27 @@ export const FAQ_CLINICIANS = {
   question: 'Who will conduct my assessment?',
   answer:
     'Your assessment is led by our team of HCPC-registered clinical psychologists with extensive NHS experience in neurodiversity. We take a multidisciplinary approach, compliant with NICE standards, to ensure a holistic view that honours your individuality.',
+}
+
+export const FAQ_LANGUAGES = {
+  id: 'languages',
+  question: FAQ_LANGUAGES_QUESTION,
+  answer: FAQ_LANGUAGES_ANSWER,
+}
+
+/**
+ * Link to the under-8 interest list on /contact. Used as a text button next to the under-8
+ * message (hero, "How it works" note) and under under-8 FAQ answers. `source` is stored with
+ * the analytics event, so each place gets its own.
+ */
+export function buildUnder8Action(itemId, source) {
+  return {
+    label: UNDER8_LINK_LABEL,
+    source,
+    itemId,
+    audience: 'child',
+    under8Interest: true,
+  }
 }
 
 /** "How much does it cost?" answer. The price and report timing are passed in, never typed here. */

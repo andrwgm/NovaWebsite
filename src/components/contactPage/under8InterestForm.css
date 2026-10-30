@@ -1,0 +1,160 @@
+/* Interest list for parents of children under 8, shown under the enquiry form on /contact. */
+
+.u8form {
+  min-width: 0;
+  margin-top: 2rem;
+  padding: 2.25rem;
+  border: 1px solid #d3e7e5;
+  border-radius: 1.75rem;
+  background: #f7fbfb;
+  box-sizing: border-box;
+  box-shadow: 0 12px 30px rgba(52, 71, 89, 0.08);
+  scroll-margin-top: 6.5rem;
+}
+
+.u8form:focus {
+  outline: none;
+}
+
+.u8form:focus-visible {
+  outline: 2px solid #344759;
+  outline-offset: 3px;
+}
+
+.u8form__title {
+  margin: 0 0 0.8rem;
+  font-family: 'TimesNewRomanMTCondensed', 'Times New Roman';
+  font-size: 2.2rem;
+  font-weight: normal;
+  line-height: 1.05;
+  color: #344759;
+}
+
+.u8form__title-italic {
+  font-family: 'TimesNewRomanMTCondensedItalic', 'Times New Roman';
+}
+
+.u8form__intro {
+  margin: 0 0 1.6rem;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: #344759;
+}
+
+.u8form__label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-family: 'LemonMilkLight', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: #344759;
+}
+
+.u8form__select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.95rem 1rem;
+  border: 1px solid #d8dee7;
+  border-radius: 0.8rem;
+  background: #ffffff;
+  font-family: inherit;
+  font-size: 16px;
+  color: #344759;
+}
+
+.u8form__select:focus-visible {
+  outline: none;
+  border-color: #344759;
+  box-shadow: 0 0 0 3px rgba(158, 205, 201, 0.45);
+}
+
+.u8form__year .cform__hint {
+  margin: 0.5rem 0 0;
+}
+
+.u8form__services {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.u8form__services .cform__question {
+  margin: 0 0 0.8rem;
+  padding: 0;
+}
+
+.u8form__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.u8form__option {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.7rem 1.2rem;
+  border: 1.5px solid #d8dee7;
+  border-radius: 9999px;
+  background: #ffffff;
+  font-family: 'LemonMilkLight', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #344759;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.u8form__option:hover {
+  border-color: #9ecdc9;
+}
+
+.u8form__option:has(.cform__card-input:focus-visible) {
+  outline: 2px solid #344759;
+  outline-offset: 2px;
+}
+
+.u8form__option.is-selected {
+  border-color: #344759;
+  background: #344759;
+  color: #ffffff;
+}
+
+.u8form__done {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin: 0;
+  font-family: 'AthelasRegular', 'Times New Roman', Times, serif;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  color: #344759;
+}
+
+.u8form__done .pi {
+  flex: 0 0 auto;
+  margin-top: 0.2rem;
+  color: #137a72;
+}
+
+@media (max-width: 600px) {
+  .u8form {
+    padding: 1.4rem 1.1rem;
+    border-radius: 1.25rem;
+  }
+
+  .u8form__title {
+    font-size: 1.9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .u8form__option {
+    transition: none;
+  }
+}

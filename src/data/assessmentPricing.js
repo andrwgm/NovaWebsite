@@ -23,9 +23,17 @@ export const COMBINED_PRICE = {
 }
 
 // Clinical policy: the online service is for ages 8 and above. ADHD is never
-// assessed under 8; a hybrid face-to-face autism pathway for under 8s is being set up.
+// assessed under 8. Parents of younger children can join the under-8 interest list
+// (Under8InterestForm), which is only a mailing list, not a waiting list.
 export const ADHD_MIN_AGE = 8
 export const ASSESSMENT_MIN_AGE = 8
+
+// The one approved sentence for the under-8 message, used everywhere it appears.
+export const UNDER8_MESSAGE = `We currently assess children aged ${ASSESSMENT_MIN_AGE} and over. If your child is younger, join our interest list and we'll let you know if this changes.`
+
+// Shared label for links to the interest list, and the in-page anchor on /contact.
+export const UNDER8_LINK_LABEL = 'Join the interest list'
+export const UNDER8_INTEREST_ANCHOR = 'under-8-interest'
 
 export const ADHD_RESULTS = {
   lead: 'Approximately 10 working days',

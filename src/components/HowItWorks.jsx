@@ -5,60 +5,35 @@ import { Timeline } from 'primereact/timeline';
 import { Image } from 'primereact/image';
 import { requestContact } from '../utils/contactRequestService';
 import { FLOWS, HOW_IT_WORKS_PATHWAYS } from '../data/howItWorksPathways';
+import { UNDER8_LINK_LABEL, UNDER8_MESSAGE } from '../data/assessmentPricing';
 
-const UNDER8_WAITLIST_MESSAGE =
-  'I would like to join the waiting list for the upcoming in-person hybrid autism pathway for a child under 8.';
-
-function openUnder8Waitlist(assessment) {
+function openUnder8Interest(assessment) {
   requestContact({
-    message: UNDER8_WAITLIST_MESSAGE,
-    source: 'how_it_works_under8_waitlist',
+    source: 'how_it_works_under8_interest_list',
     itemId: assessment,
     audience: 'child',
-    waitlist: true,
+    under8Interest: true,
   });
 }
 
 function AgeEligibilityNote({ assessment, audience }) {
   if (audience !== 'child') return null;
 
-  const waitlistLink = (
-    <button
-      type="button"
-      className="hiw-age-note__link"
-      onClick={() => openUnder8Waitlist(assessment)}
-    >
-      join the waiting list
-    </button>
-  );
-
-  let body = null;
-  if (assessment === 'adhd') {
-    body = 'We do not assess ADHD in children under 8. Please speak with your GP.';
-  } else if (assessment === 'autism') {
-    body = (
-      <>
-        Our remote autism service is for ages 8 and above. If your child is under 8, you can{' '}
-        {waitlistLink} for our upcoming in-person hybrid pathway.
-      </>
-    );
-  } else if (assessment === 'combined') {
-    body = (
-      <>
-        We do not assess ADHD under age 8. Please speak with your GP. Remote autism assessments
-        are also 8+ only; you can {waitlistLink} for our upcoming in-person hybrid pathway.
-      </>
-    );
-  }
-
-  if (!body) return null;
-
   return (
     <div className="hiw-age-note" role="status">
       <span className="hiw-age-note__icon" aria-hidden="true">
         <i className="pi pi-info-circle" />
       </span>
-      <span>{body}</span>
+      <span>
+        {UNDER8_MESSAGE}{' '}
+        <button
+          type="button"
+          className="hiw-age-note__link"
+          onClick={() => openUnder8Interest(assessment)}
+        >
+          {UNDER8_LINK_LABEL}
+        </button>
+      </span>
     </div>
   );
 }

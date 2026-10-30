@@ -9,6 +9,7 @@ const API_BASE_URL = (rawBaseUrl || '').replace(/\/$/, '');
 export const JOB_OFFERS_ENDPOINT = `${API_BASE_URL}/api/v1/job-offers/`;
 export const JOB_APPLICATIONS_ENDPOINT = `${API_BASE_URL}/api/v1/job-applications/`;
 export const CONTACT_SUBMISSIONS_ENDPOINT = `${API_BASE_URL}/api/v1/contact-submissions/`;
+export const UNDER8_INTEREST_ENDPOINT = `${API_BASE_URL}/api/v1/under8-interest/`;
 export const BLOG_NEWSLETTER_ENDPOINT = `${API_BASE_URL}/api/v1/blog/newsletter`;
 
 export { API_BASE_URL };

@@ -194,7 +194,7 @@ export default function Home() {
                 Experts Who Actually Listen.
               </div>
               <div className='whyChooseUsTextRegular'>
-                Experienced HCPC and BPS registered Clinical Psychologists offering compassionate support for all ages, every day.
+                Experienced HCPC-registered Clinical Psychologists who are members of the British Psychological Society (BPS), offering compassionate support for all ages, every day.
               </div>
               <div className='whyChooseUsTextBold'>
                 Outcome Letters to Support Your Next Steps.

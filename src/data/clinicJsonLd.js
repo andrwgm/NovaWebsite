@@ -1,4 +1,6 @@
 import { SITE_ORIGIN } from '../blog/blogConfig'
+import { UNDER8_MESSAGE } from './assessmentPricing'
+import { FAQ_LANGUAGES_ANSWER, FAQ_LANGUAGES_QUESTION } from './faqCopy'
 
 /** Keep answers in sync with QuestionsAnswered.jsx SLIDES. */
 export const HOME_FAQS = [
@@ -30,12 +32,16 @@ export const HOME_FAQS = [
   {
     question: 'Do you assess Autism under age 8?',
     answer:
-      'Our current online service is for ages 8 and above. However, we are actively setting up a hybrid pathway featuring face-to-face appointments for children under 8 with Autism. Please register your interest with our team.',
+      UNDER8_MESSAGE,
   },
   {
     question: 'Do you accept NHS Right to Choose?',
     answer:
       'No. Nova Clinics is an independent private provider and does not accept NHS Right to Choose funding or GP referrals.',
+  },
+  {
+    question: FAQ_LANGUAGES_QUESTION,
+    answer: FAQ_LANGUAGES_ANSWER,
   },
 ]
 

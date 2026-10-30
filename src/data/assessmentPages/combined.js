@@ -4,12 +4,14 @@ import {
   COMBINED_ENQUIRY_MESSAGE,
   COMBINED_PRICE,
   COMBINED_RESULTS,
+  UNDER8_MESSAGE,
 } from '../assessmentPricing'
 import {
   FAQ_AFTERWARDS,
   FAQ_CLINICIANS,
   FAQ_GP_REFERRAL,
   FAQ_INFORMANT,
+  FAQ_LANGUAGES,
   FAQ_ONLINE,
   INCLUDED_NOTE,
   NO_TREATMENT_NOTE,
@@ -19,6 +21,7 @@ import {
   buildCostFaq,
   buildFinalCta,
   buildPageUrl,
+  buildUnder8Action,
 } from './shared'
 
 // Content for /autism-adhd-assessment. Steps and session times come from FLOWS.combined
@@ -26,7 +29,10 @@ import {
 
 const PATH = '/autism-adhd-assessment'
 
-const UNDER_AGE_NOTE = `Our online service is for ages ${ASSESSMENT_MIN_AGE} and above. We do not assess ADHD in children under ${ASSESSMENT_MIN_AGE}, and a hybrid face-to-face autism pathway for younger children is being set up. Please speak with your GP or register your interest with our team.`
+const UNDER_AGE_NOTE = UNDER8_MESSAGE
+
+// Opens /contact on the child route and scrolls to the under-8 interest list.
+const INTEREST_LIST_ACTION = buildUnder8Action('combined', 'combined_page_interest_list')
 
 export const COMBINED_PAGE = {
   key: 'combined',
@@ -117,6 +123,7 @@ export const COMBINED_PAGE = {
     titleItalic: 'step by step',
     intro: PATHWAYS_INTRO,
     childNote: UNDER_AGE_NOTE,
+    childNoteAction: INTEREST_LIST_ACTION,
     audiences: [
       { id: 'adult', label: 'Adult', steps: FLOWS.combined.adult },
       { id: 'child', label: 'Child', steps: FLOWS.combined.child },
@@ -143,6 +150,7 @@ export const COMBINED_PAGE = {
       id: 'child',
       question: 'Can my child have a combined assessment?',
       answer: `Yes, from age ${ASSESSMENT_MIN_AGE}. Our online service is open to children and young people aged ${ASSESSMENT_MIN_AGE} and over, as well as adults. ${UNDER_AGE_NOTE}`,
+      action: buildUnder8Action('combined', 'combined_page_faq_interest_list'),
     },
     {
       id: 'medication',
@@ -161,6 +169,7 @@ export const COMBINED_PAGE = {
     }),
     FAQ_ONLINE,
     FAQ_CLINICIANS,
+    FAQ_LANGUAGES,
   ],
 
   finalCta: buildFinalCta('Enquire about combined assessment'),

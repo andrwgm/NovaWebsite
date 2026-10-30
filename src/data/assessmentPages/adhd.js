@@ -4,12 +4,14 @@ import {
   ADHD_MIN_AGE,
   ADHD_PRICE,
   ADHD_RESULTS,
+  UNDER8_MESSAGE,
 } from '../assessmentPricing'
 import {
   FAQ_AFTERWARDS,
   FAQ_CLINICIANS,
   FAQ_GP_REFERRAL,
   FAQ_INFORMANT,
+  FAQ_LANGUAGES,
   FAQ_ONLINE,
   INCLUDED_NOTE,
   NO_TREATMENT_NOTE,
@@ -19,6 +21,7 @@ import {
   buildCostFaq,
   buildFinalCta,
   buildPageUrl,
+  buildUnder8Action,
 } from './shared'
 
 // Content for /adhd-assessment. Steps and session times come from FLOWS.adhd
@@ -112,7 +115,8 @@ export const ADHD_PAGE = {
     titleLead: 'Your ADHD assessment,',
     titleItalic: 'step by step',
     intro: PATHWAYS_INTRO,
-    childNote: `We do not assess ADHD in children under ${ADHD_MIN_AGE}. Please speak with your GP.`,
+    childNote: UNDER8_MESSAGE,
+    childNoteAction: buildUnder8Action('adhd', 'adhd_page_interest_list'),
     audiences: [
       { id: 'adult', label: 'Adult', steps: FLOWS.adhd.adult },
       { id: 'child', label: 'Child', steps: FLOWS.adhd.child },
@@ -127,6 +131,7 @@ export const ADHD_PAGE = {
       id: 'child',
       question: 'Can my child have an ADHD assessment?',
       answer: `Yes, from age ${ADHD_MIN_AGE}. Our online ADHD service is open to children and young people aged ${ADHD_MIN_AGE} and over, as well as adults. Our clinical policy requires children to be at least ${ADHD_MIN_AGE} years old, so we do not offer ADHD assessments for children under ${ADHD_MIN_AGE}; if your child is younger, please speak with your GP.`,
+      action: buildUnder8Action('adhd', 'adhd_page_faq_interest_list'),
     },
     {
       id: 'medication',
@@ -145,6 +150,7 @@ export const ADHD_PAGE = {
     }),
     FAQ_ONLINE,
     FAQ_CLINICIANS,
+    FAQ_LANGUAGES,
   ],
 
   finalCta: buildFinalCta('Enquire about ADHD assessment'),
