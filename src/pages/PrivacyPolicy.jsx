@@ -36,13 +36,13 @@ const sections = [
     body: ['We collect personal information directly when you:'],
     list: [
       'Submit an enquiry or contact form on the Website, or email us. When you send an enquiry through the Website, we also save details of how you arrived at the Website (see "How we record where enquiries come from").',
-      'When you use the Website, including the contact form, Cloudflare Turnstile may process technical information (such as IP address and browser signals) to check you are not a bot. We send Cloudflare a one-time verification token from the form; we do not send your name, email, phone number or message to Cloudflare for that check.',
+      'When you use the Website, including the contact form and the blog newsletter form, Cloudflare Turnstile may process technical information (such as IP address and browser signals) to check you are not a bot. We send Cloudflare a one-time verification token from the form; we do not send your name, email, phone number or message to Cloudflare for that check.',
       'Complete our referral form, which helps us decide whether our service is the right fit before any payment is taken.',
       'Join our interest list for assessments for children under 8.',
       'Book or proceed with a private-pay autism, ADHD or combined assessment (for clinical delivery, service management, audits, complaint handling and evidence within investigations).',
       'Create or use a patient portal account, complete questionnaires or consent forms, upload documents, send messages or manage your profile.',
       'Make a payment through Stripe Checkout (including a first payment that unlocks portal questionnaires, and any remaining balance collected before we book an assessment appointment).',
-      'Sign up to our blog newsletter.',
+      'Sign up to our blog newsletter. We email a confirmation link and only add the address after you confirm. We do not store your IP address with that signup.',
       'Apply for a role through our careers pages.',
       'Submit a complaint about our services or about how we handle your data.',
     ],
@@ -156,7 +156,7 @@ const sections = [
     ],
     list: [
       'Amazon Web Services (AWS): hosting (including enquiries and enquiry source information), email delivery from the UK, text messages about enquiries (Amazon SNS, sent from the UK), and first-party aggregate blog view counts (no visitor identifier).',
-      'Cloudflare: website delivery and security, including Turnstile bot protection on the contact form (see Cloudflare\'s Turnstile Privacy Addendum at cloudflare.com/turnstile-privacy-policy). Cloudflare Web Analytics is used only where you consent to analytics cookies.',
+      'Cloudflare: website delivery and security, including Turnstile bot protection on the contact form and the blog newsletter form (see Cloudflare\'s Turnstile Privacy Addendum at cloudflare.com/turnstile-privacy-policy). Cloudflare Web Analytics is used only where you consent to analytics cookies.',
       'Google Analytics: website analytics under Google Consent Mode v2 (only where you consent to analytics cookies).',
       'Google Ads: advertising measurement and conversion attribution under Google Consent Mode v2 (only where you consent to advertising cookies). We do not use clinical-path remarketing audiences or Customer Match with enquiry or referral form data.',
       'Meta (Facebook and Instagram): advertising measurement and conversion attribution via the Meta Pixel (only where you consent to advertising cookies). We do not use Automatic Advanced Matching, we do not send enquiry or referral form emails or phone numbers to Meta, and we do not build remarketing audiences from clinical page paths.',
@@ -251,6 +251,10 @@ const sections = [
           'Website enquiries and general correspondence (including enquiry source information)',
           'Up to 12 months, unless needed longer for an active enquiry or dispute',
         ],
+        [
+          'Blog newsletter',
+          'While you are subscribed. If you do not confirm the email, 48 hours. Each email has an unsubscribe link. You can also opt out by emailing team@novaclinics.co.uk',
+        ],
         ['Payment and invoice records', '6 years after the end of the financial year'],
         [
           'Recruitment records for unsuccessful applicants',
@@ -269,7 +273,7 @@ const sections = [
   {
     title: 'Consent and opt-outs',
     body: [
-      'You can withdraw consent or opt out of marketing, newsletters, our interest list or non-essential communications at any time by emailing team@novaclinics.co.uk.',
+      'You can withdraw consent or opt out of marketing, newsletters, our interest list or non-essential communications at any time. Blog emails include an unsubscribe link. You can also email team@novaclinics.co.uk.',
       'Where another lawful basis applies, we may continue to process historical data to meet regulatory, contractual or safeguarding duties.',
     ],
   },
