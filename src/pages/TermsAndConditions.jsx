@@ -2,7 +2,7 @@ import React from 'react';
 import PolicyPage from './PolicyPage';
 
 const intro = [
-  'These Terms and Conditions (the "Terms") govern the relationship between you and NovaClinicsUK, trading as Nova Clinics UK ("Nova Clinics"), for all services and products ("Services").',
+  'These Terms and Conditions (the "Terms") govern the relationship between you and Novaclinicsuk Ltd, trading as Nova Clinics ("Nova Clinics"), for all services and products ("Services").',
   'By submitting a referral form, booking with us or using our Services, you agree to these Terms, our Privacy Policy and our Cookie Policy.',
 ];
 
@@ -42,7 +42,7 @@ const sections = [
     body: [
       'Services are delivered on a private-pay basis. We do not currently accept NHS Right to Choose funding or GP referrals.',
       'We confirm in writing the Service selected, the published fee and how that fee will be collected. Current standard fees are: autism assessment £2,400; ADHD assessment £1,000; combined autism and ADHD assessment £3,000. These fees include questionnaires, clinical assessment, multidisciplinary review, the diagnostic report, feedback, and the included post-assessment support session where offered as part of your pathway.',
-      'For further information email team@novaclinics.co.uk or write to Nova Clinics UK, 82a James Carter Road, Mildenhall, Bury St Edmunds, IP28 7DE, United Kingdom.',
+      'For further information email team@novaclinics.co.uk or write to Nova Clinics, 82a James Carter Road, Mildenhall, Bury St Edmunds, IP28 7DE, United Kingdom.',
     ],
   },
   {
@@ -63,7 +63,7 @@ const sections = [
     title: 'Fees and payments',
     body: [
       'Where a payment plan applies, we will tell you in writing: (1) the first payment amount, which unlocks portal questionnaires and forms; and (2) any remaining balance, which is due before we book the assessment appointment.',
-      'The first payment amount is not a fixed published figure; it is a portion of the published fee (including, where we so confirm, the full fee). For refunds, that first payment is the "deposit".',
+      'The first payment is a deposit of 25% of the published fee. For refunds, that first payment is the "deposit".',
       'Payments are processed securely through Stripe Checkout, including from the patient portal. Nova Clinics does not store your full card or bank details.',
       'Checkout may offer card, Apple Pay, Google Pay, Revolut Pay, PayPal and Klarna. PayPal and Klarna may, at their own discretion, also offer a pay-later option (for example Pay in 3) to customers they consider eligible. That is not available to everyone, is subject to their checks and approval, and is governed by their terms, not by Nova Clinics. If Checkout completes, Nova Clinics receives that instalment in full; any spreading of payments is between you and PayPal or Klarna.',
       'Receipts and payment records are issued through Stripe.',
@@ -104,7 +104,7 @@ const sections = [
     body: [
       'All assessment appointments are video recorded. Recording helps us keep everyone safe, make sure our notes and report are accurate, and check the quality of our work. Everyone who joins an appointment, including parents, carers and family members, is recorded and must keep their camera on throughout. If a camera is turned off during the observation part of the assessment, the observation will not be valid.',
       'Recording is a condition of our Services. If anyone taking part does not agree to being recorded, we are not able to carry out the assessment.',
-      'Recordings are stored securely in the UK, can only be seen by the clinicians involved in the assessment and their supervisor, and are deleted 90 days after your final report or last appointment, whichever is later, unless we need to keep them while a complaint, legal or safeguarding matter is resolved. More detail is in our Privacy Policy.',
+      'Recordings are saved securely by Google Meet in Nova Clinics\' Google Workspace, in Europe. They can only be seen by the clinicians involved in the assessment and their supervisor, and are deleted 90 days after your final report or last appointment, whichever is later, unless we need to keep them while a complaint, legal or safeguarding matter is resolved. More detail is in our Privacy Policy.',
     ],
   },
   {
@@ -132,7 +132,7 @@ const sections = [
     title: 'Reports and delivery',
     body: [
       'Your diagnostic report will be made available as a digital PDF through the patient portal when it is ready.',
-      'Where available, we will also arrange secure delivery of a printed copy to your home address.',
+      'We do not send reports by post or by email.',
       'We will not issue the diagnostic report until the published fee has been paid in full.',
       'We aim to issue reports as soon as clinically appropriate following completion of the assessment pathway. We do not guarantee a fixed delivery date.',
       'Our reports are written to support you and your wellbeing. They are not prepared for court, tribunal, legal or insurance purposes.',
@@ -193,7 +193,7 @@ const sections = [
     title: 'Applicable law and jurisdiction',
     body: [
       'These Terms are governed exclusively by English law. The courts of England and Wales have exclusive jurisdiction over any dispute.',
-      'Effective date: 25/9/26',
+      'Effective date: 30/10/26',
     ],
   },
 ];

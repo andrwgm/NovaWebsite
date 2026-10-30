@@ -446,6 +446,9 @@ export default function ContactForm({ request, onAudienceChange }) {
             <p className="cform__hint">
               Leave out the first 0. For example, 07700 900123 is +44 7700 900123.
             </p>
+            <p className="cform__hint">
+              Optional. UK mobiles only. We'll only use it to text you when we've emailed you about your enquiry.
+            </p>
 
             <span className="p-float-label cform__textarea">
               <InputTextarea

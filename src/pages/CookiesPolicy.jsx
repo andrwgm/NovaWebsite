@@ -2,7 +2,7 @@ import React from 'react';
 import PolicyPage from './PolicyPage';
 
 const intro = [
-  'This website, novaclinics.co.uk (the "Website"), is operated by NovaClinicsUK trading as Nova Clinics UK.',
+  'This website, novaclinics.co.uk (the "Website"), is operated by Novaclinicsuk Ltd, trading as Nova Clinics.',
   'Cookies and similar technologies are used in line with the consent banner that appears on your first visit (and again when our cookie categories change). You can accept all, reject all, or choose website statistics, analytics and advertising separately. You can change your choice at any time using the "Withdraw cookie consent" link in the footer.',
 ];
 
@@ -19,7 +19,7 @@ const sections = [
     body: ['Cookies and similar technologies on this Website are used to:'],
     list: [
       'Remember which categories you have accepted or rejected.',
-      'Protect the contact form and the blog newsletter form from automated spam using Cloudflare Turnstile. This is strictly necessary security and does not need extra consent.',
+      'Protect the contact form from automated spam using Cloudflare Turnstile. This is strictly necessary security and does not need extra consent.',
       'Keep first-party website statistics about which campaigns and pages lead people to contact us. You can switch this off.',
       'Provide analytics so we can monitor performance, but only if you give consent.',
       'Measure and improve Google Ads and Meta (Facebook and Instagram) campaigns, but only if you give separate consent for advertising cookies.',
@@ -40,8 +40,8 @@ const sections = [
         ],
         [
           'Strictly necessary',
-          'Cloudflare Turnstile, loaded from challenges.cloudflare.com, to check that a visitor is human before we accept a contact-form enquiry or a blog newsletter signup. Cloudflare may use cookies or similar storage and technical data (such as IP address and browser signals) for that check. We do not send the name, email, phone or message from the form to Cloudflare. Details: cloudflare.com/turnstile-privacy-policy',
-          'Not needed. Required to keep those forms secure',
+          'Cloudflare Turnstile, loaded from challenges.cloudflare.com, to check that a visitor is human before we accept a contact-form enquiry. Cloudflare may use cookies or similar storage and technical data (such as IP address and browser signals) for that check. We do not send the name, email, phone or message from the form to Cloudflare. Details: cloudflare.com/turnstile-privacy-policy',
+          'Not needed. Required to keep the contact form secure',
         ],
         [
           'Website statistics',
@@ -74,7 +74,7 @@ const sections = [
     body: [
       'If you accept analytics cookies, Google Analytics and Cloudflare Web Analytics may capture usage data to help us understand how the site performs. Before you choose, Google Analytics may still receive limited, cookieless signals under Consent Mode to support privacy-safe measurement.',
       'If you accept advertising cookies, Google Ads and Meta may set cookies and use consent signals to measure ads and conversions. Advertising remains denied until you allow that category. The Meta Pixel is loaded in a consent-revoked state until Advertising is allowed, and Automatic Advanced Matching is disabled so form fields are not scraped.',
-      'Cloudflare Turnstile runs as a security check on the Website so we can accept genuine contact-form enquiries and blog newsletter signups, and reject automated spam. It is strictly necessary for that purpose. It is not used for analytics or advertising, and it is not switched off if you reject optional cookies.',
+      'Cloudflare Turnstile runs as a security check on the Website so we can accept genuine contact-form enquiries and reject automated spam. It is strictly necessary for that purpose. It is not used for analytics or advertising, and it is not switched off if you reject optional cookies.',
     ],
   },
   {
@@ -90,11 +90,11 @@ const sections = [
   {
     title: 'Contact and compliance',
     body: [
-      'Questions about this Cookie Policy can be directed to our Data Protection Officer at dpo@novaclinics.co.uk.',
+      'Questions about this Cookie Policy can be directed to our data protection lead at dpo@novaclinics.co.uk.',
       'We comply with the Privacy and Electronic Communications Regulations (PECR), as amended by the Data (Use and Access) Act 2025, and with UK GDPR.',
     ],
     list: [
-      'Strictly necessary storage covers remembering your cookie choices and Cloudflare Turnstile bot protection on the contact form and the blog newsletter form.',
+      'Strictly necessary storage covers remembering your cookie choices and Cloudflare Turnstile bot protection on the contact form.',
       'Website statistics are first-party, used only by Nova Clinics, explained clearly here, and can be switched off free of charge at any time.',
       'Analytics cookies are only set if you allow Analytics.',
       'Advertising cookies, and advert click identifiers in our website statistics, are only set if you allow Advertising.',
@@ -106,7 +106,7 @@ const sections = [
   {
     title: 'Policy reviews',
     body: [
-      'Last reviewed: 25/9/26',
+      'Last reviewed: 23/10/26',
       'Next review: 6 months from the date of last review.',
     ],
   },
