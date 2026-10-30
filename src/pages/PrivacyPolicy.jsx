@@ -2,7 +2,7 @@ import React from 'react';
 import PolicyPage from './PolicyPage';
 
 const intro = [
-  'Nova Clinics UK (NovaClinicsUK, "Nova Clinics") provides private-pay neurodevelopmental diagnostic assessments, including autism, ADHD and combined assessments, for children aged 8 and over and adults across the UK.',
+  'Novaclinicsuk Ltd, trading as Nova Clinics ("Nova Clinics") provides private-pay neurodevelopmental diagnostic assessments, including autism, ADHD and combined assessments, for children aged 8 and over and adults across the UK.',
   'This notice explains how we handle your personal information whenever you contact us, complete our referral form, visit the Website, use our patient portal, or receive our services.',
 ];
 
@@ -16,8 +16,8 @@ const sections = [
   {
     title: 'Our contact details',
     body: [
-      'Name: NovaClinicsUK',
-      'Trading name: Nova Clinics UK',
+      'Name: Novaclinicsuk Ltd',
+      'Trading name: Nova Clinics',
       'Address: 82a James Carter Road, Mildenhall, Bury St Edmunds, IP28 7DE, UK',
       'Company number: 16344901',
       'ICO registration number: ZC224111 (registered 17 August 2026; listed at ico.org.uk/ESDWebPages/Entry/ZC224111)',
@@ -26,9 +26,9 @@ const sections = [
     ],
   },
   {
-    title: 'Data Protection Officer',
+    title: 'Data protection lead',
     body: [
-      'Our Data Protection Officer (DPO) monitors compliance with data protection rules. You can reach them at dpo@novaclinics.co.uk for any privacy-related query or concern.',
+      'We have not appointed a formal Data Protection Officer. Our data protection lead looks after data protection at Nova Clinics. You can reach them at dpo@novaclinics.co.uk for any privacy-related query or concern.',
     ],
   },
   {
@@ -61,7 +61,7 @@ const sections = [
     title: 'Personal information we collect',
     body: ['We process the following personal data:'],
     list: [
-      'Personal identifiers and contact details (name, preferred name, pronouns, date of birth, contact information and postcode). At onboarding we also collect your full address, NHS number and GP details.',
+      'Personal identifiers and contact details (name, preferred name, pronouns, date of birth, contact information and postcode). At onboarding we also collect your full address and GP details.',
       'Referral form answers, including information about health, wellbeing, current support, family and legal circumstances, and any adjustments you need.',
       'Account and portal activity (profile information, form responses, uploaded documents, appointment details and messages with our team).',
       'Payment and billing records associated with your assessment (amounts, dates, payment status and Stripe identifiers). We do not store your full card or bank details. If you pay with PayPal or Klarna, those providers process payment data under their own notices. Any pay-later option they show (for example Pay in 3) is offered only if they consider you eligible; we do not decide that.',
@@ -86,8 +86,8 @@ const sections = [
   {
     title: 'Pseudonymised and codified data',
     body: [
-      'Where applicable, we may share pseudonymised or coded datasets with authorised NHS commissioning bodies or research partners for service evaluation, invoicing or peer-reviewed research. Individuals cannot be re-identified from the statistics we publish.',
-      'Although our services are currently delivered on a private-pay basis, we may engage in NHS-commissioned or research activities in future. Where that applies, this section will govern those uses.',
+      'We do not currently share pseudonymised or coded data with NHS commissioning bodies or research partners. We create anonymised statistics for clinical audit and service development, and individuals cannot be identified from them.',
+      'Our services are currently delivered on a private-pay basis. If we take part in NHS-commissioned or research activities in future, we will update this policy before any sharing begins.',
     ],
   },
   {
@@ -129,10 +129,19 @@ const sections = [
     ],
   },
   {
+    title: 'Text messages about your enquiry',
+    body: [
+      'Our contact form has an optional box for a UK mobile number. If you give a complete UK mobile number, we store it with your enquiry and our team can see it. We use it only to send you a short text when we email you about your enquiry, so you know a message is waiting. The text is sent through Amazon Web Services (Amazon SNS) from the UK, and the sender name on your phone is NovaClinics.',
+      'The wording of the text is always the same. It does not include your name, your email address, what you wrote to us or any health information. We do not use your number for marketing.',
+      'If you leave the box blank, or the number is incomplete, a landline or not a UK mobile, we do not store it and we do not text you.',
+      'We rely on legitimate interests for this: making sure you know our reply has arrived, so it is not missed or lost in a spam folder. We keep your number with your enquiry, usually for up to 12 months (see "How long we keep information"). If you would rather not receive these texts, email team@novaclinics.co.uk and we will remove your number.',
+    ],
+  },
+  {
     title: 'Who we share information with',
     body: ['We may share your information with:'],
     list: [
-      'Your NHS GP practice, local NHS hospital or mental health service, where you have asked us to share information or have given your consent.',
+      'Your GP practice or other NHS health and care services, where we need information for your assessment and you have agreed, or where we must share information to keep you or someone else safe. We do not send assessment reports to GPs; you are welcome to share your report with your GP yourself.',
       'Schools, informants or other contacts you provide, where needed for the assessment. Nova Clinics may contact them directly on your behalf.',
       'Clinicians in our multidisciplinary team, care coordinators, and other staff or sub-contractors involved in delivering your assessment.',
       'Service providers that help us operate securely, including hosting, email, video conferencing, analytics, advertising measurement (where you consent) and payment processing (see "Service providers and international transfers").',
@@ -146,12 +155,12 @@ const sections = [
       'Clinical and portal data are hosted in AWS London (UK). We use approved service providers to deliver our services, including:',
     ],
     list: [
-      'Amazon Web Services (AWS): hosting (including enquiries and enquiry source information), email delivery from the UK, and first-party aggregate blog view counts (no visitor identifier).',
+      'Amazon Web Services (AWS): hosting (including enquiries and enquiry source information), email delivery from the UK, text messages about enquiries (Amazon SNS, sent from the UK), and first-party aggregate blog view counts (no visitor identifier).',
       'Cloudflare: website delivery and security, including Turnstile bot protection on the contact form and the blog newsletter form (see Cloudflare\'s Turnstile Privacy Addendum at cloudflare.com/turnstile-privacy-policy). Cloudflare Web Analytics is used only where you consent to analytics cookies.',
       'Google Analytics: website analytics under Google Consent Mode v2 (only where you consent to analytics cookies).',
       'Google Ads: advertising measurement and conversion attribution under Google Consent Mode v2 (only where you consent to advertising cookies). We do not use clinical-path remarketing audiences or Customer Match with enquiry or referral form data.',
       'Meta (Facebook and Instagram): advertising measurement and conversion attribution via the Meta Pixel (only where you consent to advertising cookies). We do not use Automatic Advanced Matching, we do not send enquiry or referral form emails or phone numbers to Meta, and we do not build remarketing audiences from clinical page paths.',
-      'Google Workspace: email (Gmail), video appointments (Google Meet), meeting recordings and transcripts, and internal business documents.',
+      'Google Workspace: email (Gmail), video appointments (Google Meet), meeting recordings and transcripts, and internal business documents. Our Google Workspace data is stored in Europe.',
       'Stripe: payment processing (Checkout), receipts and related fraud prevention. We receive confirmation that a payment succeeded or failed, not your full card number.',
     ],
     bodyAfterList: [
@@ -168,10 +177,10 @@ const sections = [
     title: 'Our lawful bases (Article 6 UK GDPR)',
     body: ['Depending on the activity, we rely on:'],
     list: [
-      'Consent: for example cookies, marketing communications, newsletter sign-up, our under-8 interest list, sharing reports with your GP where requested, and some optional processing.',
+      'Consent: for example cookies, marketing communications, newsletter sign-up, our under-8 interest list, and some optional processing.',
       'Contract, or steps taken at your request before entering a contract: reviewing your referral form, fulfilling your assessment (including recording appointments), collecting fees through Stripe Checkout, and operating the patient portal (including payment status that gates questionnaires and booking).',
       'Legal obligation: such as safeguarding reports or regulatory duties.',
-      'Legitimate interests: including service improvement, fraud prevention, keeping the Website secure (including bot protection on the contact form), recruitment administration, providing relevant neurodevelopmental resources, and recording where enquiries come from (balanced against your rights).',
+      'Legitimate interests: including service improvement, fraud prevention, keeping the Website secure (including bot protection on the contact form), recruitment administration, providing relevant neurodevelopmental resources, recording where enquiries come from, and texting you when we have emailed you about your enquiry (balanced against your rights).',
     ],
   },
   {
@@ -197,9 +206,10 @@ const sections = [
   {
     title: 'Data security and storage',
     list: [
-      'All data is encrypted at rest and in transit (AES-256, TLS 1.3).',
+      'All data is encrypted at rest and in transit (TLS).',
       'Access is strictly role-based and audited.',
-      'Clinical records, referral forms and recordings are stored in the UK.',
+      'Clinical records and referral forms are stored in the UK (AWS London). Appointment recordings and transcripts are stored in Nova Clinics\' Google Workspace, in Europe.',
+      'Backups of the Nova platform are kept for 30 days. When we delete information, it is removed from our backups within 30 days.',
       'Any personal data breach that must be reported is reported to the ICO within 72 hours, and to affected individuals without undue delay where there is a high risk to them.',
     ],
   },
@@ -257,7 +267,7 @@ const sections = [
       ],
     },
     bodyAfterList: [
-      'We email your final report to you when your assessment is complete. Please keep it somewhere safe. Once the periods above have ended, we will no longer hold a copy and cannot send you another.',
+      'We make your final report available in the patient portal when your assessment is complete. Please download it and keep it somewhere safe. Once the periods above have ended, we will no longer hold a copy and cannot send you another.',
     ],
   },
   {
@@ -303,7 +313,7 @@ const sections = [
   {
     title: 'Review cycle',
     body: [
-      'Date of last review: 25/9/26',
+      'Date of last review: 28/10/26',
       'Next review due: 6 months from the date of last review.',
     ],
   },

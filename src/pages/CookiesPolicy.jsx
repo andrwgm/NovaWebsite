@@ -2,7 +2,7 @@ import React from 'react';
 import PolicyPage from './PolicyPage';
 
 const intro = [
-  'This website, novaclinics.co.uk (the "Website"), is operated by NovaClinicsUK trading as Nova Clinics UK.',
+  'This website, novaclinics.co.uk (the "Website"), is operated by Novaclinicsuk Ltd, trading as Nova Clinics.',
   'Cookies and similar technologies are used in line with the consent banner that appears on your first visit (and again when our cookie categories change). You can accept all, reject all, or choose website statistics, analytics and advertising separately. You can change your choice at any time using the "Withdraw cookie consent" link in the footer.',
 ];
 
@@ -90,7 +90,7 @@ const sections = [
   {
     title: 'Contact and compliance',
     body: [
-      'Questions about this Cookie Policy can be directed to our Data Protection Officer at dpo@novaclinics.co.uk.',
+      'Questions about this Cookie Policy can be directed to our data protection lead at dpo@novaclinics.co.uk.',
       'We comply with the Privacy and Electronic Communications Regulations (PECR), as amended by the Data (Use and Access) Act 2025, and with UK GDPR.',
     ],
     list: [
@@ -106,7 +106,7 @@ const sections = [
   {
     title: 'Policy reviews',
     body: [
-      'Last reviewed: 25/9/26',
+      'Last reviewed: 23/10/26',
       'Next review: 6 months from the date of last review.',
     ],
   },
