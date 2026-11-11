@@ -13,12 +13,16 @@ export const FREE_RESOURCE_TAGS = [
   { id: 'everyday', label: 'Everyday' },
 ];
 
+function isText(value) {
+  return typeof value === 'string' && value.trim() !== '';
+}
+
 function parseRecord(source) {
   try {
     const record = typeof source === 'string' ? JSON.parse(source) : source?.default ?? source;
     if (!record || typeof record !== 'object' || Array.isArray(record)) return null;
     if (record.published !== true) return null;
-    if (typeof record.id !== 'string' || record.id === '') return null;
+    if (!isText(record.id) || !isText(record.line) || !isText(record.emphasis)) return null;
     return record;
   } catch {
     return null;
