@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FREE_RESOURCE_TAGS, FREE_RESOURCES } from '../data/freeResources';
 import useMagnetic from '../lib/useMagnetic';
+import { recordResourceDownload } from '../utils/resourceDownloads';
 import './freeResourcesGuide.css';
 
 const INTRO =
@@ -93,7 +94,7 @@ function matchesTags(resource, tags) {
 export default function FreeResourcesGuide() {
   const downloadRef = React.useRef(null);
   const [activeTags, setActiveTags] = useState(['children']);
-  const [resourceId, setResourceId] = useState(FREE_RESOURCES[0].id);
+  const [resourceId, setResourceId] = useState(FREE_RESOURCES[0]?.id ?? null);
   const visibleResources = FREE_RESOURCES.filter((item) => matchesTags(item, activeTags));
   const resource = visibleResources.find((item) => item.id === resourceId) ?? visibleResources[0] ?? null;
   useMagnetic(downloadRef, Boolean(resource));
@@ -182,7 +183,13 @@ export default function FreeResourcesGuide() {
           <div className="freeResources__detail">
             <ResourcePreview resource={resource} />
             <div className="freeResources__aside">
-              <a ref={downloadRef} className="freeResources__download" href={resource.src} download={resource.filename}>
+              <a
+                ref={downloadRef}
+                className="freeResources__download"
+                href={resource.src}
+                download={resource.filename}
+                onClick={() => recordResourceDownload(resource.id)}
+              >
                 <i className="pi pi-download" aria-hidden="true" />
                 Download
               </a>

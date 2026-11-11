@@ -1,17 +1,9 @@
-function pdfResource(id, filename, line, emphasis, tags, description, previewCount, moreBeyondPreview) {
-  return {
-    id,
-    line,
-    emphasis,
-    kind: 'pdf',
-    src: `/resources/${filename}`,
-    filename,
-    tags,
-    description,
-    previews: Array.from({ length: previewCount }, (_, index) => `/resources/previews/${id}-${index + 1}.webp`),
-    moreBeyondPreview,
-  };
-}
+// Raw text so one malformed file is skipped instead of breaking the page.
+const resourceModules = import.meta.glob('../../content/resources/*.json', {
+  eager: true,
+  query: '?raw',
+  import: 'default',
+});
 
 export const FREE_RESOURCE_TAGS = [
   { id: 'children', label: 'Children' },
@@ -21,34 +13,60 @@ export const FREE_RESOURCE_TAGS = [
   { id: 'everyday', label: 'Everyday' },
 ];
 
-export const FREE_RESOURCES = [
-  pdfResource(
-    'halloween',
-    'Halloween_Nova_Clinics.pdf',
-    'Trick or treat',
-    "your child's way",
-    ['children', 'everyday'],
-    `🎃 Halloween, your child's way.
+function parseRecord(source) {
+  try {
+    const record = typeof source === 'string' ? JSON.parse(source) : source?.default ?? source;
+    if (!record || typeof record !== 'object' || Array.isArray(record)) return null;
+    if (record.published !== true) return null;
+    if (typeof record.id !== 'string' || record.id === '') return null;
+    return record;
+  } catch {
+    return null;
+  }
+}
 
-A free collection of Halloween activities designed to help neurodivergent children prepare for the unexpected, explore sensory preferences and enjoy Halloween in a way that feels right for them. From costume comfort to planning the day, each activity encourages choice, understanding and confidence.
+function toGuideResource(record) {
+  const filename = typeof record.filename === 'string' ? record.filename : '';
+  const previewFiles = Array.isArray(record.previewFiles) ? record.previewFiles : [];
+  return {
+    id: record.id,
+    line: record.line,
+    emphasis: record.emphasis,
+    kind: 'pdf',
+    src: `/resources/${filename}`,
+    filename,
+    tags: Array.isArray(record.tags) ? record.tags : [],
+    description: typeof record.description === 'string' ? record.description : '',
+    previews: previewFiles.map((name) => `/resources/previews/${name}`),
+    moreBeyondPreview: record.moreBeyondPreview,
+  };
+}
 
-💡 Printing tip: We recommend printing single-sided, as some activities involve cutting out, arranging or personalising pages.`,
-    4,
-    true,
-  ),
-  pdfResource(
-    'dental-passport',
-    'My_Dental_Passport_Nova_Clinics.pdf',
-    'My dental',
-    'passport',
-    ['children', 'adults', 'everyday'],
-    `🦷 My Dental Passport
+function loadFreeResources(modules) {
+  const records = [];
+  for (const source of Object.values(modules || {})) {
+    try {
+      const record = parseRecord(source);
+      if (record) records.push(record);
+    } catch {
+      // One bad record must not empty the rest of the list.
+    }
+  }
 
-Dental visits can feel overwhelming, especially when sensory sensitivities, communication differences or unexpected situations are involved.
-Our free Dental Passport helps neurodivergent children and adults share their needs, preferences and what makes them feel comfortable, so dental teams can better understand and support them.
+  records.sort((a, b) => {
+    const orderA = Number.isFinite(a.order) ? a.order : 0;
+    const orderB = Number.isFinite(b.order) ? b.order : 0;
+    if (orderA !== orderB) return orderA - orderB;
+    return String(a.id).localeCompare(String(b.id));
+  });
 
-🖨️ Printing tip: Print on A4 paper, double-sided, using the 'flip on short edge' setting. Then simply fold the sheet in half to create a handy A5 booklet to take to your appointment.`,
-    2,
-    false,
-  ),
-];
+  return records.map((record) => {
+    try {
+      return toGuideResource(record);
+    } catch {
+      return null;
+    }
+  }).filter(Boolean);
+}
+
+export const FREE_RESOURCES = loadFreeResources(resourceModules);

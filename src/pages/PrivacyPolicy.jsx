@@ -109,6 +109,7 @@ const sections = [
       'Keep our systems secure.',
       'Generate anonymised statistics for clinical audit and service development.',
       'Count how many times each public blog article is opened, as an aggregate number per article. We do not store a visitor identifier, cookie or IP address for that count.',
+      'Count downloads of free resources on the Support page: the time, the country of the connection, and, when the link includes it, a campaign name and the website that referred the visit. We do not store an IP address, a cookie, or an identifier for that count.',
     ],
   },
   {
