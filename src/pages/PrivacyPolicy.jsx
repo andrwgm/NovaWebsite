@@ -37,7 +37,7 @@ const sections = [
     list: [
       'Submit an enquiry or contact form on the Website, or email us. When you send an enquiry through the Website, we also save details of how you arrived at the Website (see "How we record where enquiries come from").',
       'When you use the Website, including the contact form and the blog newsletter form, Cloudflare Turnstile may process technical information (such as IP address and browser signals) to check you are not a bot. We send Cloudflare a one-time verification token from the form; we do not send your name, email, phone number or message to Cloudflare for that check.',
-      'Complete our referral form, which helps us decide whether our service is the right fit before any payment is taken.',
+      'Complete our referral form after paying your deposit, which helps us decide whether our service is the right fit. If we cannot offer you an assessment, we refund your deposit in full.',
       'Join our interest list for assessments for children under 8.',
       'Book or proceed with a private-pay autism, ADHD or combined assessment (for clinical delivery, service management, audits, complaint handling and evidence within investigations).',
       'Create or use a patient portal account, complete questionnaires or consent forms, upload documents, send messages or manage your profile.',
@@ -237,7 +237,7 @@ const sections = [
         ],
         [
           'Appointment recordings',
-          '90 days after the final report or last appointment, whichever is later. Longer only while a complaint, legal or safeguarding matter is open, and we will tell you',
+          '90 days after the final report or last appointment, whichever is later. Not deleted while a complaint, contested outcome, safeguarding concern or legal claim is open, then deleted 90 days after it closes. We will tell you if this applies',
         ],
         [
           'Referral forms where we could not offer an assessment',
@@ -314,7 +314,7 @@ const sections = [
   {
     title: 'Review cycle',
     body: [
-      'Date of last review: 28/10/26',
+      'Date of last review: 12/11/26',
       'Next review due: 6 months from the date of last review.',
     ],
   },
