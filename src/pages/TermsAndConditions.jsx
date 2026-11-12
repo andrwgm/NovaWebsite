@@ -3,7 +3,7 @@ import PolicyPage from './PolicyPage';
 
 const intro = [
   'These Terms and Conditions (the "Terms") govern the relationship between you and Novaclinicsuk Ltd, trading as Nova Clinics ("Nova Clinics"), for all services and products ("Services").',
-  'By submitting a referral form, booking with us or using our Services, you agree to these Terms, our Privacy Policy and our Cookie Policy.',
+  'By paying a deposit, submitting a referral form, booking with us or using our Services, you agree to these Terms, our Privacy Policy and our Cookie Policy.',
 ];
 
 const sections = [
@@ -28,7 +28,7 @@ const sections = [
       'the assessment is not needed for a court case, tribunal, legal claim or insurance claim.',
     ],
     bodyAfterList: [
-      'Before any payment is taken, we ask you to complete a referral form. Our Clinical Lead reviews every referral form to decide whether our service is the right fit. Sometimes we may not be able to offer an assessment, for example where another service is better placed to help, or where an online assessment may not give an accurate picture. If so, we will explain this and suggest other sources of support. Our decision is based on clinical judgement and is not a comment on you or your family.',
+      'After you pay your deposit, we ask you to complete a referral form. Our Clinical Lead reviews every referral form to decide whether our service is the right fit. Sometimes we may not be able to offer an assessment, for example where another service is better placed to help, or where an online assessment may not give an accurate picture. If so, we will explain this and suggest other sources of support. Our decision is based on clinical judgement and is not a comment on you or your family.',
     ],
   },
   {
@@ -48,39 +48,57 @@ const sections = [
   {
     title: 'Booking process',
     list: [
-      'Enquiry. You contact us through our Website contact form or by email.',
-      'Referral form. We send you a secure login to complete our referral form. It takes about 15 minutes, and you can save your answers and come back later.',
-      'Review. Our Clinical Lead reviews your referral form and we will be in touch within 2 working days. We will either offer you an assessment, invite you to a short call to talk things through, or explain why we are not able to offer an assessment. No payment is taken at this stage.',
-      'First payment. If we offer you an assessment, a first payment towards the published fee (the amount we confirm in writing) unlocks the questionnaires and other forms in the patient portal.',
-      'Remaining balance. Any remaining balance must be paid before we book your assessment appointment. We will usually collect it at the point we book the appointment with you.',
-      'Confirmation. An assessment appointment is confirmed only when Nova Clinics confirms it in writing (usually by email), including the Service, date and time, and that the remaining balance has been paid.',
+      'Enquiry. You contact us through our website, by email or through our online sign-up. Before you pay, we show you the full price, the deposit, what is included and our refund terms.',
+      'Deposit. You pay a deposit of 25% of the fee, and we send you a secure login to our patient portal.',
+      'Referral form. You complete our referral form in the portal. It takes about 15 minutes, and you can save your answers and come back later.',
+      'Review. Our Clinical Lead reviews your referral form and we will be in touch within 2 working days. We will either confirm we can go ahead, ask you for more information, invite you to a short call to talk things through, or explain why we are not able to offer an assessment. If we cannot offer one, we refund your deposit in full.',
+      'Onboarding. If we can go ahead, we post your welcome pack and unlock the rest of the forms in the portal. Our Clinical Lead reviews these, no sooner than 15 days after your deposit, before confirming your assessment. If we then find we cannot offer an assessment, we refund everything you have paid.',
+      'Booking. You choose your appointment date in the portal and pay the remaining balance to confirm it.',
+      'Confirmation. Your appointment is confirmed in writing, usually by email.',
     ],
     bodyAfterList: [
-      'If, after your first payment, we learn something that means we cannot safely or accurately assess, we will explain why and refund the amounts you have paid in full.',
+      'If, after any payment, we find we cannot safely or accurately assess, we will explain why and refund everything you have paid. If that is because information on the referral form was wrong or incomplete, we keep our set-up costs and the cost of any appointments already held, and refund the rest.',
     ],
   },
   {
     title: 'Fees and payments',
     body: [
-      'Where a payment plan applies, we will tell you in writing: (1) the first payment amount, which unlocks portal questionnaires and forms; and (2) any remaining balance, which is due before we book the assessment appointment.',
-      'The first payment is a deposit of 25% of the published fee. For refunds, that first payment is the "deposit".',
+      'Where a payment plan applies, we will tell you in writing: (1) the deposit, which gives you access to the patient portal and the referral form (the other forms unlock once our Clinical Lead accepts your referral); and (2) the remaining balance, which you pay when you book your assessment appointment.',
+      'The first payment is a deposit of 25% of the published fee, which you pay before completing your referral form. If our Clinical Lead is not able to accept your referral, or you cancel within 14 days of paying your deposit, you get a full refund. After that, if you cancel, we keep only the costs we have already incurred and the value of work already done: card fees (£5 for an ADHD assessment, £10 for an autism or combined assessment), the cost of your welcome box once we have posted it (£25 or £50) and, once our Clinical Lead has reviewed your forms, a further £320 for that review. We never keep more than you have paid at that point. Please complete your referral form within 4 weeks of paying your deposit, your other forms within 8 weeks of our accepting your referral, and pay the balance within 12 weeks. If something outside your control holds things up, such as a school questionnaire over the holidays, let us know and we can extend this once. If we cannot reach you after a deadline, we will close your assessment and refund your deposit less these costs. You are welcome to come back at any time with a new referral.',
       'Payments are processed securely through Stripe Checkout, including from the patient portal. Nova Clinics does not store your full card or bank details.',
       'Checkout may offer card, Apple Pay, Google Pay, Revolut Pay, PayPal and Klarna. PayPal and Klarna may, at their own discretion, also offer a pay-later option (for example Pay in 3) to customers they consider eligible. That is not available to everyone, is subject to their checks and approval, and is governed by their terms, not by Nova Clinics. If Checkout completes, Nova Clinics receives that instalment in full; any spreading of payments is between you and PayPal or Klarna.',
       'Receipts and payment records are issued through Stripe.',
     ],
   },
   {
-    title: 'Cancellation, rescheduling and refunds',
+    title: 'Your right to cancel',
     body: [
-      'We understand that plans can change. Unless otherwise agreed in writing, the following applies to your first scheduled appointment:',
+      'You can cancel within 14 days of paying your deposit, for any reason. When you pay your deposit, you are asking us to start setting up your assessment straight away, so you can complete your referral form and, once it is accepted, your other forms. If you then cancel within the 14 days, we refund everything you have paid, and you can keep your welcome box if we have already posted it.',
+      'To cancel, email team@novaclinics.co.uk or send us a message in the patient portal. You can use the cancellation form below, but you do not have to. We will refund you within 14 days of hearing from you, to your original payment method.',
     ],
+  },
+  {
+    title: 'Changing or cancelling appointments',
     list: [
-      'More than 14 days before your first appointment: full refund of amounts paid, minus the deposit.',
-      'Between 48 hours and 14 days before your first appointment: 50% of the total fee is payable; we will refund the remainder of any amounts paid above that amount.',
-      'Less than 48 hours before your first appointment, or if you do not attend: the full fee is payable and no refund is due.',
-      'If you arrive more than 20 minutes late, we may treat the appointment as a non-attendance under these Terms.',
-      'Refunds, where due, are processed within 10 working days to your original payment method.',
-      'You may reschedule once free of charge with at least 48 hours\' notice. Any further changes, or changes with less than 48 hours\' notice, will be handled as a cancellation under these Terms.',
+      "You can move each appointment once, free of charge, with at least 48 hours' notice.",
+      "Moving an appointment with less than 48 hours' notice, or moving the same appointment a second time, costs £50.",
+      'If you do not join, or join more than 20 minutes late, the appointment is missed and costs £100 to rebook.',
+      'If something outside your control stops you attending, such as a bereavement or a hospital stay, please tell us. We will rebook free of charge. We can also waive any fee at our discretion.',
+      'If an appointment is missed or changed late a second time, the usual fee applies and we may close your assessment. We would keep our set-up costs, any fees owed and the cost of appointments already held, and refund the rest.',
+      'If you cancel your assessment after the first 14 days, the same applies.',
+      'If we need to move an appointment, there is no charge. If we cannot offer a new date within 4 weeks, you can choose a refund for everything not yet done.',
+      'Refunds are paid within 10 working days to your original payment method.',
+    ],
+  },
+  {
+    title: 'Model cancellation form',
+    body: [
+      'To: Novaclinicsuk Ltd, trading as Nova Clinics, 82a James Carter Road, Mildenhall, Bury St Edmunds, IP28 7DE, team@novaclinics.co.uk',
+      'I/We hereby give notice that I/We cancel my/our contract for the supply of the following service: [assessment type]',
+      'Ordered on: [date of deposit]',
+      'Name of consumer(s):',
+      'Address of consumer(s):',
+      'Date:',
     ],
   },
   {
@@ -95,8 +113,8 @@ const sections = [
       'a quiet, private space where you will not be interrupted.',
     ],
     bodyAfterList: [
-      'We may try to contact you by telephone around 72 hours before an appointment to confirm details and answer practical questions. This is offered on a best-effort basis and is not guaranteed.',
-      'Appointment changes must be requested by contacting our team. Self-service rescheduling or cancellation is not currently available through the patient portal.',
+      'We send automatic reminders 72 hours before and on the morning of each appointment. We may also try to contact you by telephone around 72 hours before an appointment to confirm details and answer practical questions. This call is offered on a best-effort basis and is not guaranteed.',
+      'To move or cancel an appointment, please contact our team by email or by sending us a message in the patient portal. You cannot currently move or cancel an appointment yourself in the portal.',
     ],
   },
   {
@@ -104,7 +122,7 @@ const sections = [
     body: [
       'All assessment appointments are video recorded. Recording helps us keep everyone safe, make sure our notes and report are accurate, and check the quality of our work. Everyone who joins an appointment, including parents, carers and family members, is recorded and must keep their camera on throughout. If a camera is turned off during the observation part of the assessment, the observation will not be valid.',
       'Recording is a condition of our Services. If anyone taking part does not agree to being recorded, we are not able to carry out the assessment.',
-      'Recordings are saved securely by Google Meet in Nova Clinics\' Google Workspace, in Europe. They can only be seen by the clinicians involved in the assessment and their supervisor, and are deleted 90 days after your final report or last appointment, whichever is later, unless we need to keep them while a complaint, legal or safeguarding matter is resolved. More detail is in our Privacy Policy.',
+      'Recordings are saved securely by Google Meet in Nova Clinics\' Google Workspace, in Europe. They can only be seen by the clinicians involved in the assessment and their supervisor, and are deleted 90 days after your final report or last appointment, whichever is later. Recordings are not deleted while a complaint, contested outcome, safeguarding concern or legal claim is open; they are then deleted 90 days after it closes. More detail is in our Privacy Policy.',
     ],
   },
   {
@@ -151,8 +169,7 @@ const sections = [
     title: 'Patient portal',
     body: [
       'We provide a secure patient portal for completing the referral form and other forms, uploading requested documents, viewing appointments, receiving messages from our team, paying where a payment plan applies, and accessing your report when available.',
-      'Before we have reviewed your referral, your portal login gives access to the referral form only. Questionnaires and other assessment forms are available after the first payment has completed. An unpaid remaining balance does not by itself block those forms, but we will not book the assessment appointment until that remaining balance is paid.',
-      'The portal does not currently support self-service booking, rescheduling or cancellation. Please contact our team for appointment changes.',
+      'You pay your deposit first, and we then give you access to the portal, where you complete the referral form. Once our Clinical Lead accepts your referral, the rest of the forms unlock. You book your appointment in the portal and pay the remaining balance when you book. When your report is ready, we let you know by text message and email.',
     ],
   },
   {
@@ -193,7 +210,7 @@ const sections = [
     title: 'Applicable law and jurisdiction',
     body: [
       'These Terms are governed exclusively by English law. The courts of England and Wales have exclusive jurisdiction over any dispute.',
-      'Effective date: 30/10/26',
+      'Effective date: 12/11/26',
     ],
   },
 ];
